@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+   <ControlData>
+      <UniqueDocumentID>FUNDSXML_FILE_1</UniqueDocumentID>
+      <DocumentGenerated>2025-10-01T00:00:00</DocumentGenerated>
+      <Version>4.2.2</Version>
+      <ContentDate>2025-10-01</ContentDate>
+      <DataSupplier>
+         <SystemCountry>AT</SystemCountry>
+         <Short>EAM</Short>
+         <Name>Erste Asset Management</Name>
+         <Type>Asset Manager</Type>
+      </DataSupplier>
+      <DataOperation>INITIAL</DataOperation>
+   </ControlData>
+   <Funds>
+      <Fund>
+         <Identifiers>
+            <LEI>529900T8BM49AURSDO50</LEI>
+         </Identifiers>
+         <Names>
+            <OfficialName>Official Fund Name</OfficialName>
+         </Names>
+         <Currency>EUR</Currency>
+         <SingleFundFlag>true</SingleFundFlag>
+         <FundStaticData>
+            <InceptionDate>2000-01-01</InceptionDate>
+            <OngoingCosts>
+               <OngoingCost>
+                  <CostType>Ongoing Costs</CostType>
+                  <PublicationDate>2025-02-01</PublicationDate>
+                  <Percentage>5</Percentage>
+               </OngoingCost>
+            </OngoingCosts>
+         </FundStaticData>
+         <FundDynamicData>
+            <TotalAssetValues>
+               <TotalAssetValue>
+                  <NavDate>2025-10-01</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                     <Amount ccy="EUR">1000000</Amount>
+                  </TotalNetAssetValue>
+               </TotalAssetValue>
+            </TotalAssetValues>
+            <Portfolios>
+               <Portfolio>
+                  <NavDate>2025-10-01</NavDate>
+                  <Positions>
+                     <Position>
+                        <UniqueID>ID_001</UniqueID>
+                        <Identifiers>
+                           <ISIN>AT0000000000</ISIN>
+                        </Identifiers>
+                        <Currency>EUR</Currency>
+                        <TotalValue>
+                           <Amount ccy="EUR">100000</Amount>
+                        </TotalValue>
+                        <TotalPercentage>1.00</TotalPercentage>
+                        <Equity>
+                           <Units>100</Units>
+                        </Equity>
+                     </Position>
+                  </Positions>
+               </Portfolio>
+            </Portfolios>
+         </FundDynamicData>
+      </Fund>
+   </Funds>
+   <AssetMasterData>
+      <Asset>
+         <UniqueID>ID_001</UniqueID>
+         <Identifiers>
+            <ISIN>AT0000000000</ISIN>
+         </Identifiers>
+         <Currency>EUR</Currency>
+         <Name>EQUITY NAME</Name>
+         <AssetType>EQ</AssetType>
+      </Asset>
+   </AssetMasterData>
+</FundsXML4>
