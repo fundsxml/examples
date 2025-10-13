@@ -242,20 +242,33 @@
 		</Asset>
 		<Asset>
 			<UniqueID>ID_020</UniqueID>
+			<Identifiers>
+				<ISIN>AT0000A296D0</ISIN>
+			</Identifiers>
 			<Currency>EUR</Currency>
-			<Name>XXX</Name>
+			<Country>AT</Country>
+			<Name>ERSTE FUTURE INVEST EUR R01 A</Name>
 			<AssetType>SC</AssetType>
 			<AssetDetails>
-				<ShareClass/>
+				<ShareClass>
+					<Issuer>
+						<Identifiers/>
+						<Name>ERSTE ASSET MANAGEMENT</Name>
+					</Issuer>
+				</ShareClass>
 			</AssetDetails>
 		</Asset>
 		<Asset>
 			<UniqueID>ID_021</UniqueID>
+			<Identifiers><ISIN>IE00BYSX4846</ISIN></Identifiers>
 			<Currency>EUR</Currency>
-			<Name>XXX</Name>
+			<Name>Fidelity Emerging Markets Quality Income UCITS ETF ACC-USD</Name>
 			<AssetType>SC</AssetType>
 			<AssetDetails>
-				<ShareClass/>
+				<ShareClass><Issuer>
+					<Identifiers></Identifiers>
+					<Name>Fidelity Investment</Name>
+				</Issuer></ShareClass>
 			</AssetDetails>
 		</Asset>
 		<Asset>
@@ -279,25 +292,45 @@
 			</AssetDetails>
 		</Asset>
 		<Asset>
-			<UniqueID>ID_031</UniqueID>
-			<Currency>EUR</Currency>
-			<Name>XXX</Name>
-			<AssetType>WA</AssetType>
-			<AssetDetails>
-				<Warrant>
-					<Issuer>
-						<Identifiers/>
-						<Name/>
-					</Issuer>
-					<ContractSize>100</ContractSize>
-					<MaturityDate>2030-01-01</MaturityDate>
-					<CallPutIndicator>CALL</CallPutIndicator>
-					<StrikePrice>
-						<Amount ccy="EUR">100</Amount>
-					</StrikePrice>
-				</Warrant>
-			</AssetDetails>
-		</Asset>
+	<UniqueID>ID_031</UniqueID>
+	<Identifiers>
+		<ISIN>US36467W1172</ISIN>
+		<Bloomberg>
+			<BBGID>BBG01X5XYNP3</BBGID>
+		</Bloomberg>
+	</Identifiers>
+	<Currency>USD</Currency>
+	<Country>US</Country>
+	<Name>GAMESTOP CORP. WTS26</Name>
+	<AssetType>WA</AssetType>
+	<AssetDetails>
+		<Warrant>
+			<Issuer>
+				<Identifiers>
+					<LEI>549300505KLOET039L77</LEI>
+				</Identifiers>
+				<Name>Gamestop Corp.</Name>
+				<Address>
+					<StreetName>625 Westport Parkway</StreetName>
+					<CityName>Grapevine, TX</CityName>
+					<CityCode>76051</CityCode>
+					<Country>US</Country>
+				</Address>
+				<OtherClassification ListedType="NACE Rev 2">G4765</OtherClassification>
+			</Issuer>
+			<Listing>K</Listing>
+			<IssueDate>2025-10-01</IssueDate>
+			<BasePrice>100</BasePrice>
+			<ContractSize>1</ContractSize>
+			<MaturityDate>2026-10-30</MaturityDate>
+			<CallPutIndicator>CALL</CallPutIndicator>
+			<StrikePrice>
+				<Amount ccy="USD">0</Amount>
+			</StrikePrice>
+		</Warrant>
+	</AssetDetails>
+	<Securitized>true</Securitized>
+</Asset>
 		<Asset>
 			<UniqueID>ID_040</UniqueID>
 			<Currency>EUR</Currency>
@@ -465,7 +498,7 @@
 		<Asset>
 			<UniqueID>ID_090</UniqueID>
 			<Currency>EUR</Currency>
-			<Name>IRSW fix/float</Name>
+			<Name>REPO</Name>
 			<AssetType>RP</AssetType>
 			<AssetDetails>
 				<Repo>
@@ -488,7 +521,7 @@
 		<Asset>
 			<UniqueID>ID_091</UniqueID>
 			<Currency>EUR</Currency>
-			<Name>IRSW fix/float</Name>
+			<Name>REPO</Name>
 			<AssetType>RP</AssetType>
 			<AssetDetails>
 				<Repo>
