@@ -38,7 +38,7 @@ locations. Items marked _(planned)_ are on the roadmap (see
 | XQuery analytics (aggregation, top-holdings, look-through) | Saxon CLI/Java, Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) | ✅ |
 | XML signature sign/verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) | ✅ |
 | Database load ↔ generate | SQLite (verified) + Oracle/SQL Server/Postgres (code) | [Database_Integration/](./Database_Integration/) | ✅ |
-| Large-file/stream processing | StAX/SAX/lxml iterparse | `Large_File_Processing/` | _(planned)_ |
+| Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) | ✅ |
 
 ## Repository Structure
 
