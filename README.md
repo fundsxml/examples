@@ -1,6 +1,6 @@
-# FundsXML Data Quality Examples
+# FundsXML Enterprise Examples
 
-A comprehensive collection of examples and tools for validating and checking data quality in [FundsXML](https://www.fundsxml.org) documents. This repository helps developers, system integrators, and financial technologists implement FundsXML data validation in their systems.
+A comprehensive, runnable reference for working with [FundsXML](https://www.fundsxml.org) in enterprise settings: sample data across versions and use cases, XSD validation, Schematron, XSLT transformations, XQuery analytics, XML signatures, database integration, large-file streaming, and data binding / JSON — each demonstrated across the common enterprise stacks (CLI, Python, Java, .NET/C#, Node.js) and exercised in CI.
 
 ## What is FundsXML?
 
@@ -18,10 +18,9 @@ FundsXML is an industry-standard XML format for exchanging fund and investment d
 
 ## What This Repository Provides
 
-This repository is being grown into a comprehensive **enterprise FundsXML
-reference**. The table below maps use cases to technologies and example
-locations. Items marked _(planned)_ are on the roadmap (see
-`.claude/plans/` / project plan).
+A comprehensive **enterprise FundsXML reference**. The table below maps use
+cases to technologies and example locations. Every row is implemented, has its
+own README, and is exercised by the CI workflow on each push.
 
 | Use case | Technology | Location | Status |
 |----------|-----------|----------|--------|
@@ -37,7 +36,7 @@ locations. Items marked _(planned)_ are on the roadmap (see
 | CI (validate all samples) | GitHub Actions | [.github/workflows/ci.yml](./.github/workflows/) | ✅ |
 | XQuery analytics (aggregation, top-holdings, look-through) | Saxon CLI/Java, Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) | ✅ |
 | XML signature sign/verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) | ✅ |
-| Database load ↔ generate (multi-fund) | Python · Java · JavaScript · C# standalone (SQLite), all verified; Oracle/SQL Server/Postgres SQL (code) | [Database_Integration/](./Database_Integration/) | ✅ |
+| Database import / export (multi-fund) | Separate standalone import + export programs in Python · Java · JavaScript · C# (SQLite), all verified; Oracle/SQL Server/Postgres SQL (code) | [Database_Integration/](./Database_Integration/) | ✅ |
 | Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) | ✅ |
 | Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) | ✅ |
 
@@ -47,29 +46,51 @@ locations. Items marked _(planned)_ are on the roadmap (see
 fundsxml_examples/
 ├── README.md                              # This file (index above)
 ├── LICENSE                                # Apache 2.0
-├── tools/fetch-schema.sh                  # Proxy-aware official-XSD fetcher
+├── tools/                                 # fetch-schema.sh, fetch-tools.sh
+│                                          #   (proxy-aware XSD / jar fetchers)
 │
 ├── FundsXML_Files/                        # Sample documents, per version & use-case
 │   ├── 4.2.9/{positions,transactions,documents,regulatory,signed}/
-│   ├── 4.1.0/positions/
-│   └── 4.0.0/positions/
+│   ├── 4.1.0/positions/   └── 4.0.0/positions/
 │
 ├── XSD_Validation/                        # Validation per stack
 │   └── {cli,python,java,dotnet,powershell}/
 │
 ├── Schematron_DataQuality_Checks/Basic_Checks/
-│   ├── basic_checks.sch                   # 7 patterns, 40+ rules
+│   ├── basic_checks.sch                   # patterns + rules
 │   └── invocation/                        # CLI, Python, Java, .NET
 │
 ├── XSLT_DataQuality_Checks/
-│   ├── Basic_Checks/  Enhanced_Check/     # existing reports
+│   ├── Basic_Checks/  Enhanced_Check/     # HTML/PDF DQ reports
 │   └── Custom_Internal_Checks/            # company-internal DQ rules
 │
 ├── XSLT_Transformations/                  # Factsheet (HTML/PDF), CSV export
 │   └── {Factsheet,CSV_Export,invocation}/
 │
-├── tests/fixtures/invalid/                # Deliberately broken negative fixtures
-└── .github/workflows/ci.yml               # XSD + Schematron over all samples
+├── XQuery_Examples/                       # aggregation, top-holdings, look-through
+│   └── invocation/                        # Saxon CLI, Java, Python
+│
+├── XML_Signature/                         # enveloped XML-DSig sign/verify
+│   ├── java/  csharp/  python/  cli/      # Apache Santuario, SignedXml, …
+│   └── generate-test-key.sh
+│
+├── Database_Integration/                  # FundsXML ⇄ relational DB (multi-fund)
+│   ├── ddl/schema.sql
+│   ├── python/{import,export}_fundsxml.py
+│   ├── java/{Import,Export}FundsXml.java
+│   ├── javascript/{import,export}_fundsxml.mjs
+│   ├── csharp/import/  csharp/export/     # one .csproj each
+│   ├── load_from_fundsxml/  generate_fundsxml/   # Oracle/MSSQL/PG SQL (code)
+│   └── tools/xml_equiv.py                 # normalized round-trip comparator
+│
+├── Large_File_Processing/                 # constant-memory streaming
+│   ├── python/  java/                     # iterparse / StAX, split, delta-diff
+│
+├── Data_Binding_JSON/                     # FundsXML ⇄ JSON, native binding
+│   └── python/  java/
+│
+├── tests/fixtures/invalid/                # deliberately broken negative fixtures
+└── .github/workflows/ci.yml               # validates everything on each push
 ```
 
 ## Quick Start
@@ -178,9 +199,16 @@ Each folder contains detailed README files with:
 
 | Documentation | Description |
 |--------------|-------------|
-| [FundsXML Files](./FundsXML_Files/README.md) | Understanding FundsXML structure and format |
-| [Schematron Validation](./Schematron_DataQuality_Checks/README.md) | Business rule validation with Schematron |
-| [XSLT Transformations](./XSLT_DataQuality_Checks/README.md) | Generating HTML quality reports |
+| [FundsXML Files](./FundsXML_Files/README.md) | FundsXML structure, versions and sample documents |
+| [XSD Validation](./XSD_Validation/README.md) | Schema validation per stack (CLI/Python/Java/.NET/PowerShell) |
+| [Schematron Validation](./Schematron_DataQuality_Checks/README.md) | Business-rule validation with Schematron + invocation |
+| [XSLT DQ Checks](./XSLT_DataQuality_Checks/README.md) | HTML/PDF data-quality reports & custom internal rules |
+| [XSLT Transformations](./XSLT_Transformations/README.md) | Factsheet (HTML/PDF) and CSV export |
+| [XQuery Examples](./XQuery_Examples/README.md) | Aggregation, top-holdings, look-through analytics |
+| [XML Signature](./XML_Signature/README.md) | Enveloped XML-DSig sign/verify (Apache Santuario & co.) |
+| [Database Integration](./Database_Integration/README.md) | Multi-fund import/export, 4 languages, round-trip-verified |
+| [Large-File Processing](./Large_File_Processing/README.md) | Constant-memory streaming, split, INITIAL/DELTA diff |
+| [Data Binding & JSON](./Data_Binding_JSON/README.md) | FundsXML⇄JSON and native binding vs. codegen |
 
 ## Requirements
 
@@ -236,6 +264,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
+- **Issues**: [GitHub Issues](https://github.com/fundsxml/examples/issues)
 - **FundsXML Standard**: [FundsXML.org](https://www.fundsxml.org)
 - **Schema Questions**: [FundsXML Schema Repository](https://github.com/fundsxml/schema)
