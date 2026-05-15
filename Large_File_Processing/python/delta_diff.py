@@ -13,6 +13,12 @@ by UniqueID and reports:
 
 Both files are streamed with iterparse (constant memory). Exit code: 0 if the
 sets are identical, 1 if there are differences, 2 on usage error.
+
+FundsXML 4.x has no XML namespace — bare element names.
+Dependencies: lxml (`pip install lxml`); Python stdlib otherwise.
+Security: iterparse runs with resolve_entities=False, no_network=True
+(XXE / external-entity safe on untrusted feeds). The 0.005 tolerance absorbs
+2-dp rounding so re-exported numbers don't show as spurious "changed".
 """
 import json
 import sys
