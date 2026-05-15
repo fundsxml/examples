@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FundsXML 4.2.9 — transactions example.
+     Shows Portfolio/Transactions (BUY, SELL, CASH) linked via AssetUniqueID
+     (xs:IDREF) to AssetMasterData. Version: see ControlData/Version and
+     xsi:noNamespaceSchemaLocation. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+   <ControlData>
+      <UniqueDocumentID>FUNDSXML_429_TXN_1</UniqueDocumentID>
+      <DocumentGenerated>2025-10-02T00:00:00</DocumentGenerated>
+      <Version>4.2.9</Version>
+      <ContentDate>2025-10-01</ContentDate>
+      <DataSupplier>
+         <SystemCountry>AT</SystemCountry>
+         <Short>EURAM</Short>
+         <Name>Erste Asset Management GmbH</Name>
+         <Type>Asset Manager</Type>
+      </DataSupplier>
+      <DataOperation>INITIAL</DataOperation>
+   </ControlData>
+   <Funds>
+      <Fund>
+         <Identifiers>
+            <LEI>529900T8BM49AURSDO55</LEI>
+         </Identifiers>
+         <Names>
+            <OfficialName>Erste Responsible Stock Global</OfficialName>
+         </Names>
+         <Currency>EUR</Currency>
+         <SingleFundFlag>true</SingleFundFlag>
+         <FundDynamicData>
+            <TotalAssetValues>
+               <TotalAssetValue>
+                  <NavDate>2025-10-01</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                     <Amount ccy="EUR">17500000</Amount>
+                  </TotalNetAssetValue>
+               </TotalAssetValue>
+            </TotalAssetValues>
+            <Portfolios>
+               <Portfolio>
+                  <NavDate>2025-10-01</NavDate>
+                  <Positions>
+                     <Position>
+                        <UniqueID>ID_001</UniqueID>
+                        <Identifiers>
+                           <ISIN>US0378331005</ISIN>
+                        </Identifiers>
+                        <Currency>USD</Currency>
+                        <TotalValue>
+                           <Amount ccy="EUR">9375000</Amount>
+                        </TotalValue>
+                        <TotalPercentage>53.57</TotalPercentage>
+                        <Equity>
+                           <Units>50000.00</Units>
+                           <Price>
+                              <Amount ccy="USD">202.50</Amount>
+                           </Price>
+                        </Equity>
+                     </Position>
+                     <Position>
+                        <UniqueID>ID_002</UniqueID>
+                        <Identifiers>
+                           <ISIN>NL0010273215</ISIN>
+                        </Identifiers>
+                        <Currency>EUR</Currency>
+                        <TotalValue>
+                           <Amount ccy="EUR">8125000</Amount>
+                        </TotalValue>
+                        <TotalPercentage>46.43</TotalPercentage>
+                        <Equity>
+                           <Units>8750.00</Units>
+                           <Price>
+                              <Amount ccy="EUR">928.57</Amount>
+                           </Price>
+                        </Equity>
+                     </Position>
+                  </Positions>
+                  <Transactions>
+                     <Transaction>
+                        <TransactionID>TXN_2025_0001</TransactionID>
+                        <AssetUniqueID>ID_001</AssetUniqueID>
+                        <Identifiers>
+                           <ISIN>US0378331005</ISIN>
+                        </Identifiers>
+                        <Currency>USD</Currency>
+                        <TransactionKind>BUY</TransactionKind>
+                        <SettlementCurrency>EUR</SettlementCurrency>
+                        <EntryDate>2025-09-29</EntryDate>
+                        <ValutaDate>2025-10-01</ValutaDate>
+                        <NominalOrUnitsOrContracts>10000.00</NominalOrUnitsOrContracts>
+                        <AgreedPrice>
+                           <Amount ccy="USD">200.00</Amount>
+                        </AgreedPrice>
+                        <MarketValue>
+                           <Amount ccy="EUR">1851000</Amount>
+                        </MarketValue>
+                        <PostingText>Purchase Apple Inc.</PostingText>
+                     </Transaction>
+                     <Transaction>
+                        <TransactionID>TXN_2025_0002</TransactionID>
+                        <AssetUniqueID>ID_002</AssetUniqueID>
+                        <Identifiers>
+                           <ISIN>NL0010273215</ISIN>
+                        </Identifiers>
+                        <Currency>EUR</Currency>
+                        <TransactionKind>SELL</TransactionKind>
+                        <SettlementCurrency>EUR</SettlementCurrency>
+                        <EntryDate>2025-09-30</EntryDate>
+                        <ValutaDate>2025-10-02</ValutaDate>
+                        <NominalOrUnitsOrContracts>1250.00</NominalOrUnitsOrContracts>
+                        <AgreedPrice>
+                           <Amount ccy="EUR">930.00</Amount>
+                        </AgreedPrice>
+                        <MarketValue>
+                           <Amount ccy="EUR">1162500</Amount>
+                        </MarketValue>
+                        <PostingText>Partial sale ASML Holding</PostingText>
+                     </Transaction>
+                     <Transaction>
+                        <TransactionID>TXN_2025_0003</TransactionID>
+                        <Currency>EUR</Currency>
+                        <TransactionKind>CASH</TransactionKind>
+                        <EntryDate>2025-10-01</EntryDate>
+                        <ValutaDate>2025-10-01</ValutaDate>
+                        <NominalOrUnitsOrContracts>500000.00</NominalOrUnitsOrContracts>
+                        <SettlementAmount>
+                           <Amount ccy="EUR">500000</Amount>
+                        </SettlementAmount>
+                        <PostingText>Subscription inflow</PostingText>
+                     </Transaction>
+                  </Transactions>
+               </Portfolio>
+            </Portfolios>
+         </FundDynamicData>
+      </Fund>
+   </Funds>
+   <AssetMasterData>
+      <Asset>
+         <UniqueID>ID_001</UniqueID>
+         <Identifiers>
+            <ISIN>US0378331005</ISIN>
+         </Identifiers>
+         <Currency>USD</Currency>
+         <Country>US</Country>
+         <Name>APPLE INC.</Name>
+         <AssetType>EQ</AssetType>
+         <AssetDetails>
+            <Equity>
+               <Issuer>
+                  <Identifiers>
+                     <LEI>HWUPKR0MPOU8FGXBT394</LEI>
+                  </Identifiers>
+                  <Name>APPLE INC.</Name>
+               </Issuer>
+            </Equity>
+         </AssetDetails>
+      </Asset>
+      <Asset>
+         <UniqueID>ID_002</UniqueID>
+         <Identifiers>
+            <ISIN>NL0010273215</ISIN>
+         </Identifiers>
+         <Currency>EUR</Currency>
+         <Country>NL</Country>
+         <Name>ASML HOLDING N.V.</Name>
+         <AssetType>EQ</AssetType>
+         <AssetDetails>
+            <Equity>
+               <Issuer>
+                  <Identifiers>
+                     <LEI>724500Y6P2B0MRLY2T56</LEI>
+                  </Identifiers>
+                  <Name>ASML HOLDING N.V.</Name>
+               </Issuer>
+            </Equity>
+         </AssetDetails>
+      </Asset>
+   </AssetMasterData>
+</FundsXML4>

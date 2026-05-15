@@ -18,33 +18,57 @@ FundsXML is an industry-standard XML format for exchanging fund and investment d
 
 ## What This Repository Provides
 
-| Component | Description | Location |
-|-----------|-------------|----------|
-| Sample Files | FundsXML example documents with diverse asset types | [FundsXML_Files/](./FundsXML_Files/) |
-| Schematron Rules | Business rule validation using ISO Schematron | [Schematron_DataQuality_Checks/](./Schematron_DataQuality_Checks/) |
-| XSLT Reports | HTML data quality report generators | [XSLT_DataQuality_Checks/](./XSLT_DataQuality_Checks/) |
+This repository is being grown into a comprehensive **enterprise FundsXML
+reference**. The table below maps use cases to technologies and example
+locations. Items marked _(planned)_ are on the roadmap (see
+`.claude/plans/` / project plan).
+
+| Use case | Technology | Location | Status |
+|----------|-----------|----------|--------|
+| Sample data (positions, transactions, documents, regulatory, signed) | XML, 3 versions | [FundsXML_Files/](./FundsXML_Files/) | ✅ |
+| XSD validation | CLI, Python, Java, .NET, PowerShell | [XSD_Validation/](./XSD_Validation/) | ✅ |
+| Schematron business rules | ISO Schematron + SchXslt | [Schematron_DataQuality_Checks/](./Schematron_DataQuality_Checks/) | ✅ |
+| Schematron invocation | CLI, Python, Java, .NET | [Schematron_DataQuality_Checks/Basic_Checks/invocation/](./Schematron_DataQuality_Checks/Basic_Checks/) | ✅ |
+| Data-quality reports | XSLT 1.0 / 2.0 | [XSLT_DataQuality_Checks/](./XSLT_DataQuality_Checks/) | ✅ |
+| Company-internal DQ rules | XSLT 2.0 | [XSLT_DataQuality_Checks/Custom_Internal_Checks/](./XSLT_DataQuality_Checks/) | ✅ |
+| Factsheet (HTML/PDF) & CSV export | XSLT, XSL-FO/FOP | [XSLT_Transformations/](./XSLT_Transformations/) | ✅ |
+| Transformation invocation | CLI, Python, Java, .NET, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) | ✅ |
+| Schema fetch (proxy-aware) | Bash | [tools/fetch-schema.sh](./tools/fetch-schema.sh) | ✅ |
+| CI (validate all samples) | GitHub Actions | [.github/workflows/ci.yml](./.github/workflows/) | ✅ |
+| XQuery examples | BaseX/Saxon, Python, Java, .NET | `XQuery_Examples/` | _(planned)_ |
+| XML signature sign/verify | Apache Santuario, .NET, xmlsec1, signxml | `XML_Signature/` | _(planned)_ |
+| Database load ↔ generate | Oracle/SQL Server/Postgres (code only) | `Database_Integration/` | _(planned)_ |
+| Large-file/stream processing | StAX/SAX/lxml iterparse | `Large_File_Processing/` | _(planned)_ |
 
 ## Repository Structure
 
 ```
-FundsXML-Examples/
-├── README.md                              # This file
+fundsxml_examples/
+├── README.md                              # This file (index above)
 ├── LICENSE                                # Apache 2.0
+├── tools/fetch-schema.sh                  # Proxy-aware official-XSD fetcher
 │
-├── FundsXML_Files/                        # Sample FundsXML documents
-│   └── 4.2.9/
-│       └── Mixed-Fund_Positions.xml       # Comprehensive example with 21 positions
+├── FundsXML_Files/                        # Sample documents, per version & use-case
+│   ├── 4.2.9/{positions,transactions,documents,regulatory,signed}/
+│   ├── 4.1.0/positions/
+│   └── 4.0.0/positions/
 │
-├── Schematron_DataQuality_Checks/         # Schematron validation rules
-│   └── Basic_Checks/
-│       └── basic_checks.sch               # 7 validation patterns, 40+ rules
+├── XSD_Validation/                        # Validation per stack
+│   └── {cli,python,java,dotnet,powershell}/
 │
-└── XSLT_DataQuality_Checks/               # XSLT transformation stylesheets
-    ├── Basic_Checks/
-    │   └── basic_checks.xslt              # XSLT 2.0 - 5 check sections
-    └── Enhanced_Check/
-        ├── FundsXML_CompleteDQReport_HTML.xsl  # XSLT 1.0 - 10-section dashboard
-        └── FundsXML Complete Data Quality Report.pdf  # Sample output
+├── Schematron_DataQuality_Checks/Basic_Checks/
+│   ├── basic_checks.sch                   # 7 patterns, 40+ rules
+│   └── invocation/                        # CLI, Python, Java, .NET
+│
+├── XSLT_DataQuality_Checks/
+│   ├── Basic_Checks/  Enhanced_Check/     # existing reports
+│   └── Custom_Internal_Checks/            # company-internal DQ rules
+│
+├── XSLT_Transformations/                  # Factsheet (HTML/PDF), CSV export
+│   └── {Factsheet,CSV_Export,invocation}/
+│
+├── tests/fixtures/invalid/                # Deliberately broken negative fixtures
+└── .github/workflows/ci.yml               # XSD + Schematron over all samples
 ```
 
 ## Quick Start
@@ -63,7 +87,7 @@ sudo apt install libsaxonhe-java
 choco install saxonhe
 
 # Generate a data quality report
-saxon -s:FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml \
+saxon -s:FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml \
       -xsl:XSLT_DataQuality_Checks/Basic_Checks/basic_checks.xslt \
       -o:report.html
 ```
@@ -76,7 +100,7 @@ sudo apt install xsltproc
 
 # Generate enhanced report (XSLT 1.0 compatible)
 xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
-         FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml > report.html
+         FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml > report.html
 ```
 
 ### Option 3: Python
@@ -91,7 +115,7 @@ python -c "
 from lxml import etree
 xslt = etree.parse('XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl')
 transform = etree.XSLT(xslt)
-doc = etree.parse('FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml')
+doc = etree.parse('FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml')
 result = transform(doc)
 with open('report.html', 'wb') as f:
     f.write(etree.tostring(result, pretty_print=True))
