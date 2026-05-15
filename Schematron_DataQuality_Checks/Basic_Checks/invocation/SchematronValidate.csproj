@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Reference project. Requires the Saxon-HE for .NET package:
+         dotnet add package SaxonHE
+       Run: dotnet run -- ../basic_checks.sch <xml-file> [--fail-on error|any] -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SchematronValidate</AssemblyName>
+    <RootNamespace>FundsXml.Schematron</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SaxonHE" Version="12.5.0" />
+  </ItemGroup>
+</Project>

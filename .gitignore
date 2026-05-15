@@ -4,6 +4,10 @@ CLAUDE.md
 # the source of truth is the official GitHub release.
 .schema-cache/
 
+# Locally fetched Java toolchain jars (via tools/fetch-tools.sh) — external
+# dependencies from Maven Central, not repo source.
+.lib/
+
 # Generated reports / outputs
 *.report.html
 report.html
