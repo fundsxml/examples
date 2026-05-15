@@ -31,6 +31,14 @@ jobs:
         with:
           python-version: "3.11"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0"
+
       - name: Fetch official schemas (4.2.9, 4.1.0, 4.0.0)
         run: |
           for v in 4.2.9 4.1.0 4.0.0; do tools/fetch-schema.sh "$v"; done
@@ -120,24 +128,50 @@ jobs:
           fi
           echo "tamper correctly detected"
 
-      - name: DB integration - FundsXML -> SQLite -> FundsXML round-trip
+      - name: DB integration - multi-fund round-trip in 4 languages
         run: |
           set -e
           python3 -m pip install --quiet lxml
-          SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          python3 Database_Integration/python/fundsxml_db.py roundtrip "$SRC" regen.xml
-          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd regen.xml
-          python3 - "$SRC" regen.xml <<'PY'
-          import re, sys
-          o, r = (open(p).read() for p in sys.argv[1:3])
-          nav = lambda x: re.search(r'<TotalNetAssetValue>\s*<Amount ccy="EUR">([0-9.]+)', x).group(1)
-          npos = lambda x: len(re.findall(r'<Position>', x))
-          spct = lambda x: round(sum(float(v) for v in re.findall(r'<TotalPercentage>([0-9.]+)', x)), 2)
-          assert abs(float(nav(o)) - float(nav(r))) < 0.01, (nav(o), nav(r))
-          assert npos(o) == npos(r), (npos(o), npos(r))
-          assert abs(spct(o) - spct(r)) < 0.01, (spct(o), spct(r))
-          print("round-trip figures preserved:", nav(r), npos(r), spct(r))
-          PY
+          tools/fetch-tools.sh                       # sqlite-jdbc -> .lib/
+          FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
+          MX=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          EQ="python3 Database_Integration/tools/xml_equiv.py"
+          XSD=".schema-cache/4.2.9/FundsXML.xsd"
+
+          # The multi-fund fixture must itself be schema-valid.
+          xmllint --noout --nonet --schema "$XSD" "$FX"
+
+          # Python
+          python3 Database_Integration/python/fundsxml_db.py roundtrip "$FX" py.xml
+          xmllint --noout --nonet --schema "$XSD" py.xml
+          $EQ "$FX" py.xml
+
+          # Java (sqlite-jdbc)
+          CP=.lib/sqlite-jdbc-3.46.1.3.jar
+          javac -cp "$CP" -d /tmp/jdb Database_Integration/java/FundsXmlDb.java
+          java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/jdb" \
+            FundsXmlDb roundtrip "$FX" java.xml
+          xmllint --noout --nonet --schema "$XSD" java.xml
+          $EQ "$FX" java.xml
+
+          # JavaScript (sql.js)
+          ( cd Database_Integration/javascript && npm install --no-audit --no-fund )
+          node Database_Integration/javascript/fundsxml_db.mjs roundtrip "$FX" js.xml
+          xmllint --noout --nonet --schema "$XSD" js.xml
+          $EQ "$FX" js.xml
+
+          # C# (.NET)
+          dotnet run --project Database_Integration/csharp -- roundtrip "$FX" cs.xml
+          xmllint --noout --nonet --schema "$XSD" cs.xml
+          $EQ "$FX" cs.xml
+
+          # Cross-language: every export identical to Python's.
+          $EQ py.xml java.xml && $EQ py.xml js.xml && $EQ py.xml cs.xml
+
+          # Single-fund sample still round-trips (lossy -> XSD-valid only).
+          python3 Database_Integration/python/fundsxml_db.py roundtrip "$MX" mx.xml
+          xmllint --noout --nonet --schema "$XSD" mx.xml
+          echo "multi-fund round-trip equivalent in python/java/javascript/csharp"
 
       - name: Large-file - streaming aggregate / split / delta (constant memory)
         run: |
@@ -164,6 +198,11 @@ jobs:
           SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
           python3 Data_Binding_JSON/python/fundsxml_json.py roundtrip "$SRC" rj.xml
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rj.xml
+          # Multi-fund JSON round-trip is lossless -> must be xml_equiv-equal.
+          MF=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
+          python3 Data_Binding_JSON/python/fundsxml_json.py roundtrip "$MF" rjm.xml
+          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rjm.xml
+          python3 Database_Integration/tools/xml_equiv.py "$MF" rjm.xml
           python3 - "$SRC" rj.xml <<'PY'
           import re, sys
           o, r = (open(p).read() for p in sys.argv[1:3])

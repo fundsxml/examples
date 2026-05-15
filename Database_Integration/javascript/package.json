@@ -1,0 +1,16 @@
+{
+  "name": "fundsxml-db-example",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone FundsXML <-> SQLite round-trip example (Node.js).",
+  "//": "Pure-JS deps so it runs anywhere with no native build: sql.js is SQLite compiled to WebAssembly; @xmldom/xmldom + xpath give a namespace-free DOM. Run: npm install && node fundsxml_db.mjs roundtrip <in.xml> <out.xml>",
+  "scripts": {
+    "roundtrip": "node fundsxml_db.mjs roundtrip"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.9.8",
+    "sql.js": "^1.13.0",
+    "xpath": "^0.0.34"
+  }
+}

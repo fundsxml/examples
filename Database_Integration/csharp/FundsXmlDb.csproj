@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Standalone console app. Microsoft.Data.Sqlite bundles the native SQLite,
+       so the example needs no system SQLite. Run (see FundsXmlDb.cs header for
+       the exact command and the init/import/export/roundtrip verbs). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>FundsXmlDb</AssemblyName>
+    <RootNamespace>FundsXml.DbExample</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.10" />
+  </ItemGroup>
+</Project>

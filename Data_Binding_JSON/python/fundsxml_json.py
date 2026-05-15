@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
-"""FundsXML <-> JSON — runnable, verified converter (stdlib + lxml).
-
-Many modern APIs speak JSON while the system of record is FundsXML. This maps
-the positions core to a clean, stable JSON shape and back to XSD-valid
-FundsXML.
-
-  to-json    <fundsxml.xml> <out.json>
-  from-json  <in.json> <out.xml>
-  roundtrip  <fundsxml.xml> <out.xml>     # xml -> json -> xml in one shot
-
-JSON shape (lossless for the positions core; intentionally lossy for issuer /
-derivative / regulatory detail — same scope boundary as Database_Integration/):
-
-  {"document": {...}, "fund": {...}, "shareClasses": [...],
-   "positions": [...], "assets": [...]}
-
-FundsXML 4.x has no XML namespace.
-"""
+# =============================================================================
+# FundsXML <-> JSON — runnable reference (Python 3, stdlib + lxml).
+#
+# Many systems speak JSON internally while exchanging FundsXML externally. This
+# shows a faithful, MULTI-FUND JSON projection and back to XSD-valid FundsXML.
+#
+#   to-json    <fundsxml.xml> <out.json>
+#   from-json  <in.json>      <out.xml>
+#   roundtrip  <fundsxml.xml> <out.xml>     # xml -> json -> xml in one shot
+#
+# JSON shape (multi-fund; mirrors Database_Integration/ddl/schema.sql):
+#   {
+#     "document":  {... ControlData ...},
+#     "funds":     [ { ... , "shareClasses":[...],
+#                            "portfolios":[ { "positions":[...] } ] } ],
+#     "assets":    [ ... document-scoped AssetMasterData ... ]
+#   }
+#
+# Lossless for the captured model -> a round-trip-faithful file compares EQUAL
+# with Database_Integration/tools/xml_equiv.py (ignoring the volatile
+# DocumentGenerated timestamp and numeric/whitespace formatting). FundsXML 4.x
+# has no XML namespace; the parser disables DTD/external entities (XXE-safe).
+# =============================================================================
 import json
 import sys
 import tempfile
@@ -27,6 +32,8 @@ from lxml import etree
 SCHEMA = ("https://github.com/fundsxml/schema/releases/download/"
           "4.2.9/FundsXML.xsd")
 XSI = "http://www.w3.org/2001/XMLSchema-instance"
+# Position instrument-class element + its mandatory quantity child (see the
+# Database_Integration examples for the rationale).
 POSITION_KINDS = {"Equity", "Bond", "ShareClass", "Warrant", "Certificate",
                   "Option", "Future", "FXForward", "Swap", "Repo",
                   "RealEstate", "CallMoney", "Account", "Generic"}
@@ -44,14 +51,12 @@ def _f(v):
     return float(v) if v not in (None, "") else None
 
 
-# --------------------------------------------------------------- to JSON -----
+# ---------------------------------------------------------------- to JSON ----
 def to_json(xml_path: str) -> dict:
-    doc = etree.parse(xml_path)
+    p = etree.XMLParser(resolve_entities=False, no_network=True,
+                        load_dtd=False)
+    doc = etree.parse(xml_path, p)
     cd = doc.xpath("/FundsXML4/ControlData")[0]
-    fund = doc.xpath("/FundsXML4/Funds/Fund")[0]
-    ccy = _t(fund, "Currency")
-    tav = fund.xpath("FundDynamicData/TotalAssetValues/TotalAssetValue")[0]
-
     out = {
         "document": {
             "id": _t(cd, "UniqueDocumentID"),
@@ -59,34 +64,60 @@ def to_json(xml_path: str) -> dict:
             "version": _t(cd, "Version"),
             "contentDate": _t(cd, "ContentDate"),
             "dataOperation": _t(cd, "DataOperation"),
+            "supplier": {
+                "country": _t(cd, "DataSupplier/SystemCountry"),
+                "short": _t(cd, "DataSupplier/Short"),
+                "name": _t(cd, "DataSupplier/Name"),
+                "type": _t(cd, "DataSupplier/Type"),
+            },
         },
-        "fund": {
+        "funds": [],
+        "assets": [],
+    }
+    for fund in doc.xpath("/FundsXML4/Funds/Fund"):       # every fund
+        ccy = _t(fund, "Currency")
+        tav = fund.xpath("FundDynamicData/TotalAssetValues/TotalAssetValue")[0]
+        fj = {
             "lei": _t(fund, "Identifiers/LEI"),
             "officialName": _t(fund, "Names/OfficialName"),
             "currency": ccy,
+            "singleFundFlag": _t(fund, "SingleFundFlag"),
             "navDate": _t(tav, "NavDate"),
             "totalNav": _f(tav.xpath(
                 f"TotalNetAssetValue/Amount[@ccy='{ccy}']")[0].text),
-        },
-        "shareClasses": [],
-        "positions": [],
-        "assets": [],
-    }
-    for sc in fund.xpath("SingleFund/ShareClasses/ShareClass"):
-        out["shareClasses"].append({
-            "isin": _t(sc, "Identifiers/ISIN"),
-            "officialName": _t(sc, "Names/OfficialName"),
-            "currency": _t(sc, "Currency"),
-            "navPrice": _f(_t(sc, "Prices/Price/NavPrice")),
-            "navFundCcy": _f((sc.xpath(
-                "TotalAssetValues/TotalAssetValue/TotalNetAssetValue/"
-                f"Amount[@ccy='{ccy}']") or [None])[0].text
-                if sc.xpath("TotalAssetValues/TotalAssetValue/"
+            "shareClasses": [],
+            "portfolios": [],
+        }
+        for sc in fund.xpath("SingleFund/ShareClasses/ShareClass"):
+            navf = sc.xpath("TotalAssetValues/TotalAssetValue/"
                             f"TotalNetAssetValue/Amount[@ccy='{ccy}']")
-                else None),
-            "sharesOutstanding": _f(_t(
-                sc, "TotalAssetValues/TotalAssetValue/SharesOutstanding")),
-        })
+            fj["shareClasses"].append({
+                "isin": _t(sc, "Identifiers/ISIN"),
+                "officialName": _t(sc, "Names/OfficialName"),
+                "currency": _t(sc, "Currency"),
+                "navPrice": _f(_t(sc, "Prices/Price/NavPrice")),
+                "navFundCcy": _f(navf[0].text) if navf else None,
+                "sharesOutstanding": _f(_t(
+                    sc, "TotalAssetValues/TotalAssetValue/SharesOutstanding")),
+            })
+        for port in fund.xpath("FundDynamicData/Portfolios/Portfolio"):
+            pj = {"navDate": _t(port, "NavDate"), "positions": []}
+            for pos in port.xpath("Positions/Position"):
+                kinds = [c.tag for c in pos if c.tag in POSITION_KINDS]
+                kind = kinds[0] if kinds else None
+                pj["positions"].append({
+                    "uniqueId": _t(pos, "UniqueID"),
+                    "isin": _t(pos, "Identifiers/ISIN"),
+                    "currency": _t(pos, "Currency"),
+                    "value": _f(pos.xpath(
+                        f"TotalValue/Amount[@ccy='{ccy}']")[0].text),
+                    "percentage": _f(_t(pos, "TotalPercentage")),
+                    "kind": kind,
+                    "kindQty": _f(_t(pos, f"{kind}/{QTY_ELEM[kind]}"))
+                    if kind in QTY_ELEM else None,
+                })
+            fj["portfolios"].append(pj)
+        out["funds"].append(fj)
     for a in doc.xpath("/FundsXML4/AssetMasterData/Asset"):
         out["assets"].append({
             "uniqueId": _t(a, "UniqueID"),
@@ -96,24 +127,10 @@ def to_json(xml_path: str) -> dict:
             "currency": _t(a, "Currency"),
             "country": _t(a, "Country"),
         })
-    for p in fund.xpath(
-            "FundDynamicData/Portfolios/Portfolio/Positions/Position"):
-        kinds = [c.tag for c in p if c.tag in POSITION_KINDS]
-        kind = kinds[0] if kinds else None
-        out["positions"].append({
-            "uniqueId": _t(p, "UniqueID"),
-            "isin": _t(p, "Identifiers/ISIN"),
-            "currency": _t(p, "Currency"),
-            "value": _f(p.xpath(f"TotalValue/Amount[@ccy='{ccy}']")[0].text),
-            "percentage": _f(_t(p, "TotalPercentage")),
-            "kind": kind,
-            "kindQty": _f(_t(p, f"{kind}/{QTY_ELEM[kind]}"))
-            if kind in QTY_ELEM else None,
-        })
     return out
 
 
-# ------------------------------------------------------------- from JSON -----
+# -------------------------------------------------------------- from JSON ----
 def _el(parent, tag, text=None, **attrs):
     e = etree.SubElement(parent, tag)
     for k, v in attrs.items():
@@ -124,77 +141,84 @@ def _el(parent, tag, text=None, **attrs):
 
 
 def from_json(data: dict, out_path: str) -> None:
-    d, fu = data["document"], data["fund"]
-    ccy = fu["currency"]
+    dd = data["document"]
     root = etree.Element("FundsXML4", nsmap={"xsi": XSI})
     root.set(f"{{{XSI}}}noNamespaceSchemaLocation", SCHEMA)
 
     cd = _el(root, "ControlData")
-    _el(cd, "UniqueDocumentID", d["id"])
-    _el(cd, "DocumentGenerated", d.get("generated") or "2025-10-02T00:00:00")
-    if d.get("version"):
-        _el(cd, "Version", d["version"])
-    _el(cd, "ContentDate", d["contentDate"])
+    _el(cd, "UniqueDocumentID", dd["id"])
+    _el(cd, "DocumentGenerated", dd.get("generated") or "2025-10-02T00:00:00")
+    if dd.get("version"):
+        _el(cd, "Version", dd["version"])
+    _el(cd, "ContentDate", dd["contentDate"])
+    s = dd["supplier"]
     ds = _el(cd, "DataSupplier")
-    _el(ds, "SystemCountry", "AT")
-    _el(ds, "Short", "EURAM")
-    _el(ds, "Name", "Erste Asset Management GmbH")
-    _el(ds, "Type", "Asset Manager")
-    _el(cd, "DataOperation", d.get("dataOperation") or "INITIAL")
+    _el(ds, "SystemCountry", s["country"])
+    _el(ds, "Short", s["short"])
+    _el(ds, "Name", s["name"])
+    _el(ds, "Type", s["type"])
+    _el(cd, "DataOperation", dd.get("dataOperation"))
 
-    fund = _el(_el(root, "Funds"), "Fund")
-    if fu.get("lei"):
-        _el(_el(fund, "Identifiers"), "LEI", fu["lei"])
-    _el(_el(fund, "Names"), "OfficialName", fu["officialName"])
-    _el(fund, "Currency", ccy)
-    _el(fund, "SingleFundFlag", "true")
-    fdd = _el(fund, "FundDynamicData")
-    tav = _el(_el(_el(fdd, "TotalAssetValues"), "TotalAssetValue"),
-              "NavDate", fu["navDate"]).getparent()
-    _el(tav, "TotalAssetNature", "OFFICIAL")
-    _el(_el(tav, "TotalNetAssetValue"), "Amount",
-        f'{fu["totalNav"]:.2f}', ccy=ccy)
-    port = _el(_el(fdd, "Portfolios"), "Portfolio")
-    _el(port, "NavDate", fu["navDate"])
-    poss = _el(port, "Positions")
-    for p in data["positions"]:
-        pos = _el(poss, "Position")
-        _el(pos, "UniqueID", p["uniqueId"])
-        if p.get("isin"):
-            _el(_el(pos, "Identifiers"), "ISIN", p["isin"])
-        if p.get("currency"):
-            _el(pos, "Currency", p["currency"])
-        _el(_el(pos, "TotalValue"), "Amount", f'{p["value"]:.2f}', ccy=ccy)
-        _el(pos, "TotalPercentage", f'{p["percentage"]:.2f}')
-        kind = p["kind"] if p.get("kind") in POSITION_KINDS else "Generic"
-        ke = _el(pos, kind)
-        if kind in QTY_ELEM and p.get("kindQty") is not None:
-            _el(ke, QTY_ELEM[kind], f'{p["kindQty"]:.2f}')
-
-    if data.get("shareClasses"):
-        sce = _el(_el(fund, "SingleFund"), "ShareClasses")
-        for sc in data["shareClasses"]:
-            x = _el(sce, "ShareClass")
-            _el(_el(x, "Identifiers"), "ISIN", sc["isin"])
-            if sc.get("officialName"):
-                _el(_el(x, "Names"), "OfficialName", sc["officialName"])
-            _el(x, "Currency", sc["currency"])
-            if sc.get("navPrice") is not None:
-                pr = _el(_el(x, "Prices"), "Price")
-                _el(pr, "ActionCode", "C")
-                _el(pr, "NavDate", fu["navDate"])
-                _el(pr, "PriceCurrency", sc["currency"])
-                _el(pr, "PriceNature", "OFFICIAL")
-                _el(pr, "NavPrice", f'{sc["navPrice"]:.2f}')
-            if sc.get("navFundCcy") is not None:
-                t = _el(_el(x, "TotalAssetValues"), "TotalAssetValue")
-                _el(t, "NavDate", fu["navDate"])
-                _el(t, "TotalAssetNature", "OFFICIAL")
-                _el(_el(t, "TotalNetAssetValue"), "Amount",
-                    f'{sc["navFundCcy"]:.2f}', ccy=ccy)
-                if sc.get("sharesOutstanding") is not None:
-                    _el(t, "SharesOutstanding",
-                        f'{sc["sharesOutstanding"]:.0f}')
+    funds_el = _el(root, "Funds")
+    for fj in data["funds"]:
+        ccy = fj["currency"]
+        fund = _el(funds_el, "Fund")
+        if fj.get("lei"):
+            _el(_el(fund, "Identifiers"), "LEI", fj["lei"])
+        _el(_el(fund, "Names"), "OfficialName", fj["officialName"])
+        _el(fund, "Currency", ccy)
+        if fj.get("singleFundFlag"):
+            _el(fund, "SingleFundFlag", fj["singleFundFlag"])
+        fdd = _el(fund, "FundDynamicData")
+        tav = _el(_el(_el(fdd, "TotalAssetValues"), "TotalAssetValue"),
+                  "NavDate", fj["navDate"]).getparent()
+        _el(tav, "TotalAssetNature", "OFFICIAL")
+        _el(_el(tav, "TotalNetAssetValue"), "Amount",
+            f'{fj["totalNav"]:.2f}', ccy=ccy)
+        ports = _el(fdd, "Portfolios")
+        for pj in fj["portfolios"]:
+            pe = _el(ports, "Portfolio")
+            _el(pe, "NavDate", pj["navDate"])
+            poss = _el(pe, "Positions")
+            for p in pj["positions"]:
+                pos = _el(poss, "Position")
+                _el(pos, "UniqueID", p["uniqueId"])
+                if p.get("isin"):
+                    _el(_el(pos, "Identifiers"), "ISIN", p["isin"])
+                if p.get("currency"):
+                    _el(pos, "Currency", p["currency"])
+                _el(_el(pos, "TotalValue"), "Amount",
+                    f'{p["value"]:.2f}', ccy=ccy)
+                _el(pos, "TotalPercentage", f'{p["percentage"]:.2f}')
+                kind = p["kind"] if p.get("kind") in POSITION_KINDS \
+                    else "Generic"
+                ke = _el(pos, kind)
+                if kind in QTY_ELEM and p.get("kindQty") is not None:
+                    _el(ke, QTY_ELEM[kind], f'{p["kindQty"]:.2f}')
+        if fj.get("shareClasses"):
+            sce = _el(_el(fund, "SingleFund"), "ShareClasses")
+            for sc in fj["shareClasses"]:
+                x = _el(sce, "ShareClass")
+                _el(_el(x, "Identifiers"), "ISIN", sc["isin"])
+                if sc.get("officialName"):
+                    _el(_el(x, "Names"), "OfficialName", sc["officialName"])
+                _el(x, "Currency", sc["currency"])
+                if sc.get("navPrice") is not None:
+                    pr = _el(_el(x, "Prices"), "Price")
+                    _el(pr, "ActionCode", "C")
+                    _el(pr, "NavDate", fj["navDate"])
+                    _el(pr, "PriceCurrency", sc["currency"])
+                    _el(pr, "PriceNature", "OFFICIAL")
+                    _el(pr, "NavPrice", f'{sc["navPrice"]:.2f}')
+                if sc.get("navFundCcy") is not None:
+                    t = _el(_el(x, "TotalAssetValues"), "TotalAssetValue")
+                    _el(t, "NavDate", fj["navDate"])
+                    _el(t, "TotalAssetNature", "OFFICIAL")
+                    _el(_el(t, "TotalNetAssetValue"), "Amount",
+                        f'{sc["navFundCcy"]:.2f}', ccy=ccy)
+                    if sc.get("sharesOutstanding") is not None:
+                        _el(t, "SharesOutstanding",
+                            f'{sc["sharesOutstanding"]:.0f}')
 
     if data.get("assets"):
         amd = _el(root, "AssetMasterData")
@@ -203,7 +227,7 @@ def from_json(data: dict, out_path: str) -> None:
             _el(ae, "UniqueID", a["uniqueId"])
             if a.get("isin"):
                 _el(_el(ae, "Identifiers"), "ISIN", a["isin"])
-            _el(ae, "Currency", a.get("currency") or ccy)
+            _el(ae, "Currency", a.get("currency"))
             if a.get("country"):
                 _el(ae, "Country", a["country"])
             _el(ae, "Name", a["name"])
