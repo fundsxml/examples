@@ -29,7 +29,6 @@ FundsXML is an industry-standard XML format for exchanging fund and investment d
 ```
 FundsXML-Examples/
 ├── README.md                              # This file
-├── CLAUDE.md                              # AI assistant guidance
 ├── LICENSE                                # Apache 2.0
 │
 ├── FundsXML_Files/                        # Sample FundsXML documents
