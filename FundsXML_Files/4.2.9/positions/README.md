@@ -2,6 +2,15 @@
 
 This directory contains a comprehensive FundsXML sample document demonstrating all major asset types and structural elements.
 
+> **Reconciliation note (2026-05):** the sample was reconciled so it genuinely
+> passes every ERROR-level check (it previously did not). Changes: Fund
+> `TotalNetAssetValue` set to **112,500,000 EUR** (the actual sum of the 21
+> position values, was 125,000,000); each `TotalPercentage` recomputed from the
+> position value so they sum to exactly 100 %; both share classes given
+> `TotalAssetValues` (NAV + `SharesOutstanding`) consistent with their
+> `NavPrice`. The **XML file is authoritative**; any older per-row figures below
+> are illustrative. Schematron now reports **0 errors** (12 advisory warnings).
+
 ## File Overview
 
 | Property | Value |
@@ -21,7 +30,7 @@ This directory contains a comprehensive FundsXML sample document demonstrating a
 | LEI | 529900T8BM49AURSDO55 |
 | Base Currency | EUR |
 | NAV Date | 2025-10-01 |
-| Total Net Asset Value | 125,000,000 EUR |
+| Total Net Asset Value | 112,500,000 EUR |
 | Data Supplier | Erste Asset Management GmbH |
 | Country | Austria (AT) |
 | Inception Date | 2015-03-15 |
@@ -85,7 +94,8 @@ This sample file includes examples of all major FundsXML asset types:
 | ID_020 | - | Vienna Office Building | RE | 10,625,000 | 8.50% |
 | ID_021 | - | Call Money Raiffeisen | CM | 6,875,000 | 5.50% |
 
-**Total**: 125,000,000 EUR (100%)
+**Total**: 112,500,000 EUR (100%) — per-row values/percentages above are
+illustrative; the XML file is authoritative (see Reconciliation note).
 
 ## XML Structure Walkthrough
 
@@ -292,8 +302,13 @@ This sample file is useful for:
 
 ### Data Quality Considerations
 
-This sample is designed to **pass all validation checks**:
-- All percentages sum to exactly 100%
+This sample **passes all ERROR-level validation checks** (verified against
+`basic_checks.sch` via SchXslt — 0 errors; 12 advisory warnings remain, see the
+Schematron README):
+- All position percentages sum to exactly 100%
+- Sum of position values equals Fund `TotalNetAssetValue` (112,500,000 EUR)
+- Sum of share-class NAVs equals Fund total NAV; each share-class
+  `NavPrice` ties to `NAV / SharesOutstanding`
 - All positions have values in fund currency (EUR)
 - All required identifiers are present (LEI, ISIN where applicable)
 - NAV dates are consistent

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FundsXML 4.2.9 — regulatory reporting example: European Feeder/Flow Template (EFT).
+     DirectReporting/EFTs is the most compact regulatory FundsXML structure and
+     works well as an entry-level example for supervisory reporting.
+     Version: see ControlData/Version and xsi:noNamespaceSchemaLocation. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+   <ControlData>
+      <UniqueDocumentID>FUNDSXML_429_REG_1</UniqueDocumentID>
+      <DocumentGenerated>2025-10-02T00:00:00</DocumentGenerated>
+      <Version>4.2.9</Version>
+      <ContentDate>2025-10-01</ContentDate>
+      <DataSupplier>
+         <SystemCountry>AT</SystemCountry>
+         <Short>EURAM</Short>
+         <Name>Erste Asset Management GmbH</Name>
+         <Type>Asset Manager</Type>
+      </DataSupplier>
+      <DataOperation>INITIAL</DataOperation>
+   </ControlData>
+   <RegulatoryReportings>
+      <DirectReporting>
+         <EFTs>
+            <EFT>
+               <DataSetInformation>
+                  <ReportInformationAndScope>
+                     <Version>V1</Version>
+                     <FileGeneration>2025-10-02T00:00:00</FileGeneration>
+                     <PeriodStartData>2025-07-01</PeriodStartData>
+                     <PeriodEndData>2025-09-30</PeriodEndData>
+                     <ReferenceTargetMarket>M</ReferenceTargetMarket>
+                  </ReportInformationAndScope>
+                  <SubmitterEntityInformation>
+                     <Name>Erste Asset Management GmbH</Name>
+                     <Identifier>529900T8BM49AURSDO55</Identifier>
+                     <IdentifierType>L</IdentifierType>
+                     <PositionInTheDistributionChain>M</PositionInTheDistributionChain>
+                  </SubmitterEntityInformation>
+                  <ManufacturerEntityInformation>
+                     <Name>Erste Asset Management GmbH</Name>
+                     <Identifier>529900T8BM49AURSDO55</Identifier>
+                     <IdentifierType>L</IdentifierType>
+                  </ManufacturerEntityInformation>
+               </DataSetInformation>
+               <GeneralFinancialInstrumentInformation>
+                  <IdentifyingData>AT0000A2QM66</IdentifyingData>
+                  <TypeOfIdentification>1</TypeOfIdentification>
+                  <Name>Erste Responsible Stock Global EUR R01</Name>
+                  <TotalNumberOfTransactions>1284</TotalNumberOfTransactions>
+               </GeneralFinancialInstrumentInformation>
+            </EFT>
+         </EFTs>
+      </DirectReporting>
+   </RegulatoryReportings>
+</FundsXML4>

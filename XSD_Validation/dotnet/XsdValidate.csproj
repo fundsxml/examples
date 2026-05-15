@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Minimal single-file console project.
+       Run:  dotnet run --project XSD_Validation/dotnet -- 4.2.9 <xml-file> -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>XsdValidate</AssemblyName>
+    <RootNamespace>FundsXml.XsdValidation</RootNamespace>
+  </PropertyGroup>
+</Project>
