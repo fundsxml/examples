@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- FundsXML 4.2.9 — MULTI-FUND positions fixture.
+     Exercises the Database_Integration examples with multiple <Fund> (2),
+     a fund with multiple <Portfolio> (2), and multiple positions / share
+     classes / assets. Authored to be ROUND-TRIP-FAITHFUL: it contains only
+     elements the relational model captures, so import -> DB -> export
+     reproduces it (compared with Database_Integration/tools/xml_equiv.py,
+     which ignores the DocumentGenerated timestamp and numeric/whitespace
+     formatting). Version: ControlData/Version + xsi:noNamespaceSchemaLocation. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+  <ControlData>
+    <UniqueDocumentID>FUNDSXML_MULTI_1</UniqueDocumentID>
+    <DocumentGenerated>2025-10-02T00:00:00</DocumentGenerated>
+    <Version>4.2.9</Version>
+    <ContentDate>2025-10-01</ContentDate>
+    <DataSupplier>
+      <SystemCountry>AT</SystemCountry>
+      <Short>EURAM</Short>
+      <Name>Erste Asset Management GmbH</Name>
+      <Type>Asset Manager</Type>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>529900T8BM49AURSDO55</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>Erste Multi Fund Alpha</OfficialName>
+      </Names>
+      <Currency>EUR</Currency>
+      <SingleFundFlag>false</SingleFundFlag>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2025-10-01</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">25000000.00</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2025-10-01</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>MF_001</UniqueID>
+                <Identifiers>
+                  <ISIN>US0378331005</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">8000000.00</Amount>
+                </TotalValue>
+                <TotalPercentage>32.00</TotalPercentage>
+                <Equity>
+                  <Units>50000.00</Units>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>MF_002</UniqueID>
+                <Identifiers>
+                  <ISIN>DE0001102424</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">6000000.00</Amount>
+                </TotalValue>
+                <TotalPercentage>24.00</TotalPercentage>
+                <Bond>
+                  <Nominal>6000000.00</Nominal>
+                </Bond>
+              </Position>
+            </Positions>
+          </Portfolio>
+          <Portfolio>
+            <NavDate>2025-10-01</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>MF_003</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00B5BMR087</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">10000000.00</Amount>
+                </TotalValue>
+                <TotalPercentage>40.00</TotalPercentage>
+                <ShareClass>
+                  <Shares>20000.00</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>MF_004</UniqueID>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1000000.00</Amount>
+                </TotalValue>
+                <TotalPercentage>4.00</TotalPercentage>
+                <Swap/>
+              </Position>
+            </Positions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>AT0000A2QM66</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Erste Multi Fund Alpha EUR R01</OfficialName>
+            </Names>
+            <Currency>EUR</Currency>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-10-01</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>100.00</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-10-01</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">15000000.00</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>150000</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>AT0000A2QM74</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Erste Multi Fund Alpha EUR I01</OfficialName>
+            </Names>
+            <Currency>EUR</Currency>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-10-01</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>100.00</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-10-01</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">10000000.00</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>100000</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+    <Fund>
+      <Identifiers>
+        <LEI>529900T8BM49AURSDO66</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>Erste Multi Fund Beta</OfficialName>
+      </Names>
+      <Currency>EUR</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2025-10-01</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">10000000.00</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2025-10-01</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>MF_101</UniqueID>
+                <Identifiers>
+                  <ISIN>NL0010273215</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">9000000.00</Amount>
+                </TotalValue>
+                <TotalPercentage>90.00</TotalPercentage>
+                <Equity>
+                  <Units>10000.00</Units>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>MF_102</UniqueID>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1000000.00</Amount>
+                </TotalValue>
+                <TotalPercentage>10.00</TotalPercentage>
+                <FXForward/>
+              </Position>
+            </Positions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>MF_001</UniqueID>
+      <Identifiers>
+        <ISIN>US0378331005</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>US</Country>
+      <Name>APPLE INC.</Name>
+      <AssetType>EQ</AssetType>
+    </Asset>
+    <Asset>
+      <UniqueID>MF_002</UniqueID>
+      <Identifiers>
+        <ISIN>DE0001102424</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>Germany, Federal Republic of 1.70% 2032</Name>
+      <AssetType>BO</AssetType>
+    </Asset>
+    <Asset>
+      <UniqueID>MF_003</UniqueID>
+      <Identifiers>
+        <ISIN>IE00B5BMR087</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>Vanguard S&amp;P 500 UCITS ETF EUR (Acc)</Name>
+      <AssetType>SC</AssetType>
+    </Asset>
+    <Asset>
+      <UniqueID>MF_004</UniqueID>
+      <Currency>EUR</Currency>
+      <Name>EUR 5Y Interest Rate Swap</Name>
+      <AssetType>SW</AssetType>
+    </Asset>
+    <Asset>
+      <UniqueID>MF_101</UniqueID>
+      <Identifiers>
+        <ISIN>NL0010273215</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>NL</Country>
+      <Name>ASML HOLDING N.V.</Name>
+      <AssetType>EQ</AssetType>
+    </Asset>
+    <Asset>
+      <UniqueID>MF_102</UniqueID>
+      <Currency>EUR</Currency>
+      <Name>FX Forward EUR/USD</Name>
+      <AssetType>FX</AssetType>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>

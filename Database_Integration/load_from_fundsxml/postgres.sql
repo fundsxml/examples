@@ -1,56 +1,77 @@
--- FundsXML -> PostgreSQL (code reference; no DB is provisioned in this repo).
+-- FundsXML -> PostgreSQL, MULTI-FUND (code reference; no DB is provisioned).
 --
--- Strategy: stage the document in a native `xml` column, then shred with
--- XMLTABLE. FundsXML 4.x has no namespace, so XPath uses bare element names.
--- Schema: ../ddl/schema.sql (run that first, plus the staging table below).
+-- Pattern: stage the document in a native `xml` column, then shred with
+-- nested XMLTABLE. The OUTER XMLTABLE emits one row per <Fund> and uses
+-- FOR ORDINALITY to get fund_seq; inner XMLTABLEs (PASSING the fund/portfolio
+-- node) do the same for portfolios and positions. FundsXML 4.x has no XML
+-- namespace, so XPath uses bare element names. The runnable Python/Java/
+-- JavaScript/C# examples implement this exact mapping end to end; see
+-- ../ddl/schema.sql for the full column list.
 
 CREATE TABLE IF NOT EXISTS fundsxml_stage (
     document_id text PRIMARY KEY,
     doc         xml NOT NULL
 );
 
--- Load the file into the stage (psql):
---   \set content `cat FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml`
---   INSERT INTO fundsxml_stage
---     SELECT (xpath('/FundsXML4/ControlData/UniqueDocumentID/text()',
---                   x.doc))[1]::text, x.doc
---     FROM (SELECT :'content'::xml AS doc) x;
-
--- fund -----------------------------------------------------------------------
-INSERT INTO fund (document_id, lei, official_name, currency,
-                  content_date, nav_date, total_nav, fxml_version)
-SELECT s.document_id, f.lei, f.official_name, f.currency,
-       f.content_date, f.nav_date, f.total_nav, f.fxml_version
+-- document (ControlData) ------------------------------------------------------
+INSERT INTO document
+SELECT s.document_id, c.*
 FROM fundsxml_stage s,
-     XMLTABLE('/FundsXML4' PASSING s.doc COLUMNS
-        lei           text          PATH 'Funds/Fund/Identifiers/LEI',
-        official_name text          PATH 'Funds/Fund/Names/OfficialName',
-        currency      text          PATH 'Funds/Fund/Currency',
-        content_date  date          PATH 'ControlData/ContentDate',
-        fxml_version  text          PATH 'ControlData/Version',
-        nav_date      date          PATH 'Funds/Fund/FundDynamicData/TotalAssetValues/TotalAssetValue/NavDate',
-        total_nav     numeric(20,2) PATH 'Funds/Fund/FundDynamicData/TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy=/FundsXML4/Funds/Fund/Currency]'
-     ) f;
+     XMLTABLE('/FundsXML4/ControlData' PASSING s.doc COLUMNS
+        generated        text PATH 'DocumentGenerated',
+        version          text PATH 'Version',
+        content_date     date PATH 'ContentDate',
+        data_operation   text PATH 'DataOperation',
+        supplier_country text PATH 'DataSupplier/SystemCountry',
+        supplier_short   text PATH 'DataSupplier/Short',
+        supplier_name    text PATH 'DataSupplier/Name',
+        supplier_type    text PATH 'DataSupplier/Type') c;
 
--- position -------------------------------------------------------------------
-INSERT INTO position (document_id, unique_id, isin, currency,
-                       value_fund_ccy, percentage, kind, kind_qty)
-SELECT s.document_id, p.unique_id, p.isin, p.currency,
-       p.value_fund_ccy, p.percentage, p.kind, p.kind_qty
+-- fund (one row per <Fund>; fund_seq via FOR ORDINALITY) ---------------------
+INSERT INTO fund
+SELECT s.document_id, f.fund_seq, f.lei, f.official_name, f.currency,
+       f.single_fund_flag, f.nav_date, f.total_nav
 FROM fundsxml_stage s,
-     LATERAL (SELECT (xpath('/FundsXML4/Funds/Fund/Currency/text()',
-                            s.doc))[1]::text AS ccy) c,
-     XMLTABLE('/FundsXML4/Funds/Fund/FundDynamicData/Portfolios/Portfolio/Positions/Position'
-        PASSING s.doc COLUMNS
+     XMLTABLE('/FundsXML4/Funds/Fund' PASSING s.doc COLUMNS
+        fund_seq         FOR ORDINALITY,
+        lei              text          PATH 'Identifiers/LEI',
+        official_name    text          PATH 'Names/OfficialName',
+        currency         text          PATH 'Currency',
+        single_fund_flag text          PATH 'SingleFundFlag',
+        nav_date         date          PATH 'FundDynamicData/TotalAssetValues/TotalAssetValue/NavDate',
+        total_nav        numeric(20,2) PATH 'FundDynamicData/TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy=ancestor::Fund/Currency]') f;
+
+-- portfolio + position (nested: portfolios per fund, positions per portfolio)
+INSERT INTO portfolio
+SELECT s.document_id, fu.fund_seq, pf.portfolio_seq, pf.nav_date
+FROM fundsxml_stage s,
+     XMLTABLE('/FundsXML4/Funds/Fund' PASSING s.doc COLUMNS
+        fund_seq  FOR ORDINALITY,
+        fund_node xml PATH '.') fu,
+     XMLTABLE('FundDynamicData/Portfolios/Portfolio' PASSING fu.fund_node
+        COLUMNS portfolio_seq FOR ORDINALITY,
+                nav_date      date PATH 'NavDate') pf;
+
+INSERT INTO position
+SELECT s.document_id, fu.fund_seq, pf.portfolio_seq, pos.position_seq,
+       pos.unique_id, pos.isin, pos.currency, pos.value_fund_ccy,
+       pos.percentage, pos.kind, pos.kind_qty
+FROM fundsxml_stage s,
+     XMLTABLE('/FundsXML4/Funds/Fund' PASSING s.doc COLUMNS
+        fund_seq FOR ORDINALITY, ccy text PATH 'Currency',
+        fund_node xml PATH '.') fu,
+     XMLTABLE('FundDynamicData/Portfolios/Portfolio' PASSING fu.fund_node
+        COLUMNS portfolio_seq FOR ORDINALITY, port_node xml PATH '.') pf,
+     XMLTABLE('Positions/Position' PASSING pf.port_node COLUMNS
+        position_seq   FOR ORDINALITY,
         unique_id      text          PATH 'UniqueID',
         isin           text          PATH 'Identifiers/ISIN',
         currency       text          PATH 'Currency',
         value_fund_ccy numeric(20,2) PATH 'TotalValue/Amount[1]',
         percentage     numeric(9,4)  PATH 'TotalPercentage',
         kind           text          PATH 'local-name(Equity|Bond|ShareClass|Warrant|Certificate|Option|Future|FXForward|Swap|Repo|RealEstate|CallMoney)',
-        kind_qty       numeric(28,6) PATH '(Equity/Units|Bond/Nominal|ShareClass/Shares|Warrant/Units|Certificate/Units|Option/Contracts|Future/Contracts)[1]'
-     ) p;
+        kind_qty       numeric(28,6) PATH '(Equity/Units|Bond/Nominal|ShareClass/Shares|Warrant/Units|Certificate/Units|Option/Contracts|Future/Contracts)[1]') pos;
 
--- asset and share_class follow the same XMLTABLE pattern over
--- /FundsXML4/AssetMasterData/Asset and
--- /FundsXML4/Funds/Fund/SingleFund/ShareClasses/ShareClass respectively.
+-- share_class (per fund) and asset (document-scoped) follow the same nested
+-- XMLTABLE pattern over SingleFund/ShareClasses/ShareClass and
+-- /FundsXML4/AssetMasterData/Asset respectively.
