@@ -39,6 +39,7 @@ locations. Items marked _(planned)_ are on the roadmap (see
 | XML signature sign/verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) | ✅ |
 | Database load ↔ generate | SQLite (verified) + Oracle/SQL Server/Postgres (code) | [Database_Integration/](./Database_Integration/) | ✅ |
 | Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) | ✅ |
+| Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) | ✅ |
 
 ## Repository Structure
 

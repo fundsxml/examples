@@ -157,6 +157,26 @@ jobs:
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd chunks/chunk-0001.xml
           python3 $P/delta_diff.py big.xml big.xml   # identical -> exit 0
 
+      - name: Data binding / JSON - round-trip + native Java binding
+        run: |
+          set -e
+          python3 -m pip install --quiet lxml
+          SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          python3 Data_Binding_JSON/python/fundsxml_json.py roundtrip "$SRC" rj.xml
+          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rj.xml
+          python3 - "$SRC" rj.xml <<'PY'
+          import re, sys
+          o, r = (open(p).read() for p in sys.argv[1:3])
+          nav = lambda x: re.search(r'<TotalNetAssetValue>\s*<Amount ccy="EUR">([0-9.]+)', x).group(1)
+          npos = lambda x: len(re.findall(r'<Position>', x))
+          assert abs(float(nav(o)) - float(nav(r))) < 0.01, (nav(o), nav(r))
+          assert npos(o) == npos(r), (npos(o), npos(r))
+          print("JSON round-trip preserved:", nav(r), npos(r))
+          PY
+          javac -d /tmp/nb Data_Binding_JSON/java/NativeBinding.java
+          java -cp /tmp/nb NativeBinding "$SRC" | tee nb.txt
+          grep -q '^Positions : 21$' nb.txt
+
       - name: Regression - legacy XSLT 1.0 report still runs
         run: |
           xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
