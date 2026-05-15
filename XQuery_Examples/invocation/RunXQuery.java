@@ -6,6 +6,14 @@
 //   java  -cp "$SCP:/tmp/xq" RunXQuery <query.xq> <input.xml> [k=v ...]
 // Exit: 0 success, 2 setup error.
 //
+// Dependencies: Saxon-HE + xmlresolver jars only (fetched by
+//   tools/fetch-tools.sh into .lib/); no other libraries.
+//
+// This is a generic, FundsXML-agnostic XQuery runner: it binds the input as
+// the context item and passes string external variables — the FundsXML
+// specifics (no XML namespace, Position↔Asset by UniqueID) live in the .xq
+// files it runs. s9api is Saxon's idiomatic Java API; no JAXB.
+//
 // External query variables are passed as k=v args (string-typed), e.g. n=5.
 
 import java.io.File;

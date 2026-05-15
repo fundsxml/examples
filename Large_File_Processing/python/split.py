@@ -10,6 +10,10 @@ percentages renormalized to 100, so **every chunk validates on its own**.
 
 Useful for parallel downstream processing or staying under message-size limits.
 FundsXML 4.x has no XML namespace.
+
+Dependencies: lxml (`pip install lxml`); Python stdlib otherwise.
+Security: iterparse runs with resolve_entities=False, no_network=True
+(XXE / external-entity safe on untrusted feeds).
 """
 import sys
 from pathlib import Path
