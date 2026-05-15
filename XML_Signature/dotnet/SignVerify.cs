@@ -7,7 +7,9 @@
 // Reference implementation — not executed in the dev environment (no .NET SDK).
 // Same profile as the Apache Santuario (Java) example: RSA-SHA256, exclusive
 // C14N, enveloped, signer cert embedded in KeyInfo, so files cross-verify.
-// Keys: XML_Signature/generate-test-key.sh (PKCS#12 test-signing.p12).
+// Keys: the Java GenerateTestKey (./mvnw -pl XML_Signature/java compile
+// exec:java -Dexec.mainClass=GenerateTestKey) writes the PKCS#12
+// test-signing.p12 used here.
 
 using System;
 using System.IO;

@@ -1,8 +1,10 @@
 // Constant-memory aggregation over a huge FundsXML file via StAX (native Java,
 // no JAXB, no DOM). Pull parser — never holds more than the current element.
 //
-//   javac -d /tmp/lf Large_File_Processing/java/StreamAggregate.java
-//   java  -cp /tmp/lf StreamAggregate <fundsxml.xml>
+// Standalone & cross-platform — run from the repo root with the Maven Wrapper:
+//   ./mvnw -q -pl Large_File_Processing/java compile exec:java \
+//       -Dexec.args="<fundsxml.xml>"
+// (Memory-bounded: set a small heap via MAVEN_OPTS=-Xmx64m to prove it.)
 //
 // FundsXML 4.x has no XML namespace — match the bare "Position" local name.
 // Security: external entities / DTDs disabled (XXE-safe).

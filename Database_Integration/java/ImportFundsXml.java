@@ -8,14 +8,13 @@
 //   share_class per fund; asset document-scoped). Creates the schema in a
 //   fresh SQLite DB, then loads the file.
 //
-// RUN  (sqlite-jdbc fetched by tools/fetch-tools.sh into .lib/)
-//   tools/fetch-tools.sh
-//   CP=.lib/sqlite-jdbc-3.46.1.3.jar
-//   javac -cp "$CP" -d /tmp/db Database_Integration/java/ImportFundsXml.java
-//   java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" \
-//     ImportFundsXml fx.db FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
+// RUN  Standalone & cross-platform, from the repo root via the Maven Wrapper:
+//   ./mvnw -q -pl Database_Integration/java compile exec:java \
+//     -Dexec.mainClass=ImportFundsXml \
+//     -Dexec.args="fx.db FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml"
 //
-// DEPENDENCIES  org.xerial:sqlite-jdbc + the JDK. XML via native javax.xml
+// DEPENDENCIES  org.xerial:sqlite-jdbc (Maven Central, see pom.xml) + the JDK.
+//   XML via native javax.xml
 //   DOM/XPath — NO JAXB (a thin DOM binding is smaller and version-tolerant).
 //
 // FUNDSXML ASSUMPTIONS

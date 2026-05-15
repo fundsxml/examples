@@ -1,12 +1,12 @@
 // SignFundsXml — enveloped XML-DSig signing with Apache Santuario (xmlsec 4.x).
 //
-//   tools/fetch-tools.sh
-//   XML_Signature/generate-test-key.sh
-//   CP=.lib/xmlsec-4.0.4.jar:.lib/commons-codec-1.18.0.jar:\
-//      .lib/slf4j-api-2.0.17.jar:.lib/slf4j-nop-2.0.17.jar
-//   javac -cp "$CP" -d /tmp/sig XML_Signature/java/SignFundsXml.java
-//   java  -cp "$CP:/tmp/sig" SignFundsXml <in.xml> <out.xml> \
-//         XML_Signature/keys/test-signing.p12 changeit fundsxml
+// Standalone & cross-platform — run from the repo root with the Maven Wrapper
+// (xmlsec comes from Maven Central; keys via the in-language GenerateTestKey):
+//   ./mvnw -q -pl XML_Signature/java compile exec:java \
+//       -Dexec.mainClass=GenerateTestKey
+//   ./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=SignFundsXml \
+//       -Dexec.args="<in.xml> <out.xml> \
+//                    XML_Signature/keys/test-signing.p12 changeit fundsxml"
 //
 // Produces an enveloped signature whose ds:Signature is appended as the last
 // child of <FundsXML4> — exactly where the FundsXML 4.2.9 schema allows it

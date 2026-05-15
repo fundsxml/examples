@@ -1,18 +1,19 @@
 // Native-Java Schematron validation using the SchXslt Java API.
 //
-// Compile + run against the SchXslt CLI classpath (it bundles Saxon):
-//   tools/fetch-tools.sh   # populates .lib/
-//   CP=.lib/schxslt-cli-1.10.1.jar:.lib/commons-cli-1.5.0.jar:\
-//      .lib/slf4j-api-1.7.32.jar:.lib/slf4j-nop-1.7.32.jar
-//   javac -cp "$CP" -d /tmp Schematron_DataQuality_Checks/Basic_Checks/invocation/SchematronValidate.java
-//   java -cp "$CP:/tmp" SchematronValidate basic_checks.sch document.xml
+// Standalone & cross-platform — run from the repo root with the Maven Wrapper
+// (no bash, no .lib/, works on Windows):
+//   ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation \
+//       compile exec:java \
+//       -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch \
+//                    FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
 //
 // Exit: 0 = no error-role failed-assert, 1 = at least one, 2 = setup error.
 //
-// Why this classpath: basic_checks.sch uses queryBinding="xslt2". SchXslt
-// compiles the Schematron to XSLT 2.0 and Saxon (bundled in the SchXslt CLI
-// jar) executes it. Do NOT add the standalone Saxon-HE jar — its org.xmlresolver
-// API differs from the one SchXslt bundles and the two conflict.
+// Why the SchXslt CLI dependency: basic_checks.sch uses queryBinding="xslt2".
+// SchXslt compiles the Schematron to XSLT 2.0 and the Saxon that the SchXslt
+// CLI jar BUNDLES executes it. Do NOT add the standalone Saxon-HE jar — its
+// org.xmlresolver API differs from the one SchXslt bundles and the two
+// conflict; that is why this is its own Maven module (see pom.xml).
 
 import java.io.File;
 import javax.xml.transform.stream.StreamSource;
