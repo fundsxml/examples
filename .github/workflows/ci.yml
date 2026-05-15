@@ -1,0 +1,93 @@
+name: FundsXML CI
+
+# Validates every committed sample against the official released XSD and the
+# Schematron ruleset, runs the XSLT transforms as a smoke test, and asserts the
+# negative fixtures still fail. Positive samples must stay green.
+#
+# Security note: no untrusted GitHub event data (issue/PR/commit text) is used
+# in any run: step, so there is no workflow-injection surface here.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tooling
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libxml2-utils xsltproc
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch official schemas (4.2.9, 4.1.0, 4.0.0)
+        run: |
+          for v in 4.2.9 4.1.0 4.0.0; do tools/fetch-schema.sh "$v"; done
+
+      - name: XSD - all positive samples must validate
+        run: |
+          set -e
+          declare -A S=(
+            ["4.2.9"]="positions/Mixed-Fund_Positions transactions/Fund_Transactions documents/Fund_Documents regulatory/EFT_Regulatory signed/Signed_Fund_Skeleton"
+            ["4.1.0"]="positions/Equity-Fund_Positions"
+            ["4.0.0"]="positions/Equity-Fund_Positions"
+          )
+          for v in "${!S[@]}"; do
+            for f in ${S[$v]}; do
+              echo "XSD $v/$f"
+              xmllint --noout --nonet --schema ".schema-cache/$v/FundsXML.xsd" \
+                      "FundsXML_Files/$v/$f.xml"
+            done
+          done
+
+      - name: XSD - negative fixture must FAIL
+        run: |
+          if xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd \
+                     tests/fixtures/invalid/xsd-invalid_Positions.xml 2>/dev/null; then
+            echo "::error::xsd-invalid fixture unexpectedly validated"; exit 1
+          fi
+          echo "xsd-invalid correctly rejected"
+
+      - name: Fetch Java toolchain (Saxon + SchXslt)
+        run: tools/fetch-tools.sh
+
+      - name: Schematron - canonical sample passes, fixture fails
+        run: |
+          RS=Schematron_DataQuality_Checks/Basic_Checks/invocation/run-schematron.sh
+          "$RS" FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          if "$RS" tests/fixtures/invalid/schematron-invalid_Positions.xml; then
+            echo "::error::schematron-invalid fixture unexpectedly passed"; exit 1
+          fi
+          echo "schematron-invalid correctly failed"
+
+      - name: Smoke - XSLT transforms produce non-empty output
+        run: |
+          set -e
+          RT=XSLT_Transformations/invocation/run-transform.sh
+          SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          "$RT" XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt "$SRC" out_dq.html
+          "$RT" XSLT_Transformations/Factsheet/factsheet_html.xslt "$SRC" out_fs.html
+          "$RT" XSLT_Transformations/Factsheet/factsheet_fo.xslt   "$SRC" out_fs.fo
+          "$RT" XSLT_Transformations/CSV_Export/positions_csv.xslt "$SRC" out_pos.csv
+          xmllint --noout out_fs.fo
+          for f in out_dq.html out_fs.html out_pos.csv; do
+            test -s "$f" || { echo "::error::$f is empty"; exit 1; }
+          done
+          test "$(wc -l < out_pos.csv)" -ge 2
+
+      - name: Regression - legacy XSLT 1.0 report still runs
+        run: |
+          xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
+                   FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml > out_enh.html
+          test -s out_enh.html

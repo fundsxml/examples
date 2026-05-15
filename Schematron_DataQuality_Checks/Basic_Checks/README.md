@@ -8,9 +8,27 @@ This directory contains comprehensive Schematron validation rules for FundsXML d
 |----------|-------|
 | **File** | `basic_checks.sch` |
 | **Query Binding** | XSLT 2.0 (`queryBinding="xslt2"`) |
-| **Patterns** | 7 validation patterns |
+| **Patterns** | 9 validation patterns |
 | **Total Rules** | 40+ assertions and reports |
 | **Purpose** | Comprehensive FundsXML data quality validation |
+
+## Known ruleset fix
+
+ISO Schematron matches each node against only the **first** `rule` whose
+`context` matches **within a pattern**. The `portfolio-validations` pattern
+previously held two `Fund[…]` rules (position-value sum *and* percentage sum);
+every real fund matched the first, so the **percentage-sum rule was dead code
+and never fired** (likewise a `Position` rule shadowed the multi-currency
+direction rule). These were split into their own patterns —
+`percentage-validations`, `position-currency-validations`,
+`position-direction-validations` — so each rule actually executes. Verified: a
+document with percentages summing to 120 % now produces an ERROR; the canonical
+sample (summing to 100 %) does not.
+
+Run it across stacks via [`invocation/`](invocation/) (CLI, native Java,
+Python/saxonche, .NET). The canonical sample yields **0 errors + 12 advisory
+warnings** (the broad `ShareClass` rule also matches `AssetDetails/ShareClass`;
+derivative assets without exposure info).
 
 ## Requirements
 
