@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  FundsXML Complete Data-Quality Report — HTML dashboard.
+
+  Purpose : one self-contained HTML page (10 sections) summarising the data
+            quality of a FundsXML document: control data, fund/share-class NAV
+            reconciliation, portfolio allocation, asset coverage, orphaned
+            positions / unused assets, identifier formats, date consistency.
+
+  Run     : deliberately **XSLT 1.0** for maximum processor compatibility (the
+            Basic_Checks report is XSLT 2.0 — this one runs anywhere):
+              xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
+                       FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml > report.html
+            Also works with Saxon, lxml (etree.XSLT), .NET XslCompiledTransform.
+            No parameters; output is method="html".
+
+  Depends : any XSLT 1.0 processor; no extension functions used.
+
+  FundsXML: FundsXML 4.x has NO XML namespace — all match/select use bare
+            element names. Positions and Assets are joined by a shared
+            <UniqueID>; the xsl:key definitions below index Assets by UniqueID
+            so orphaned positions / unused assets are flagged in O(1).
+            Tolerances mirror the Schematron / Basic XSLT (NAV sum < 1 ccy
+            unit, percentage sum within 1%, price calc < 0.1) — keep in sync.
+-->
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
