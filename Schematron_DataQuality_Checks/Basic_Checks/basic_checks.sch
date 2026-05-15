@@ -123,23 +123,46 @@
                 Difference: <value-of select="format-number($difference, '#,##0.00')"/>
             </assert>
         </rule>
-        
+    </pattern>
+
+    <!-- ============================================
+         PATTERN 3b: PERCENTAGE ALLOCATION
+         Split into its own pattern on purpose. ISO Schematron matches a node
+         against only the FIRST rule whose context matches WITHIN a pattern.
+         The rule below has context Fund[...], as does the position-value rule
+         in `portfolio-validations`. If both lived in one pattern the Fund node
+         would be consumed by the first rule and this percentage check would
+         never fire. Keep one Fund[...] rule per pattern.
+         ============================================ -->
+    <pattern id="percentage-validations">
+        <title>Portfolio Percentage Allocation</title>
+
         <!-- Rule: Portfolio percentages should sum to 100% -->
         <rule context="Fund[FundDynamicData/Portfolios/Portfolio/Positions/Position]">
             <let name="sumPercentages" value="sum(FundDynamicData/Portfolios/Portfolio/Positions/Position/TotalPercentage)"/>
             <let name="difference" value="abs($sumPercentages - 100)"/>
-            
+
             <!-- Allow 1% tolerance for rounding -->
             <assert test="$difference &lt;= 1" role="error">
-                ERROR: Portfolio position percentages sum to <value-of select="format-number($sumPercentages, '#,##0.0000')"/>% 
+                ERROR: Portfolio position percentages sum to <value-of select="format-number($sumPercentages, '#,##0.0000')"/>%
                 instead of 100%. Difference: <value-of select="format-number($difference, '#,##0.0000')"/>%
             </assert>
-            
+
             <report test="$difference > 0.01 and $difference &lt;= 1" role="warning">
                 WARNING: Small deviation in percentage sum. Total: <value-of select="format-number($sumPercentages, '#,##0.0000')"/>%
             </report>
         </rule>
-        
+    </pattern>
+
+    <!-- ============================================
+         PATTERN 3c: POSITION-LEVEL VALIDATIONS
+         Two Position-context rules, each in its own pattern for the same
+         first-match-per-pattern reason (the broad Position rule would
+         otherwise shadow the count(TotalValue/Amount) > 1 rule).
+         ============================================ -->
+    <pattern id="position-currency-validations">
+        <title>Position Currency Coverage</title>
+
         <!-- Rule: Each position should have value in fund currency -->
         <rule context="FundDynamicData/Portfolios/Portfolio/Positions/Position">
             <let name="fundCurrency" value="ancestor::Fund/Currency"/>
@@ -148,14 +171,18 @@
                 Available currencies: <value-of select="string-join(TotalValue/Amount/@ccy, ', ')"/>
             </assert>
         </rule>
-        
+    </pattern>
+
+    <pattern id="position-direction-validations">
+        <title>Position Value Direction Consistency</title>
+
         <!-- Rule: Position values should have consistent direction across currencies -->
         <rule context="FundDynamicData/Portfolios/Portfolio/Positions/Position[count(TotalValue/Amount) > 1]">
             <let name="hasPositiveSignificant" value="count(TotalValue/Amount[number(.) > 1]) > 0"/>
             <let name="hasNegativeSignificant" value="count(TotalValue/Amount[number(.) &lt; -1]) > 0"/>
-            
+
             <assert test="not($hasPositiveSignificant and $hasNegativeSignificant)" role="error">
-                ERROR: Position <value-of select="UniqueID"/> has mixed value directions across currencies. 
+                ERROR: Position <value-of select="UniqueID"/> has mixed value directions across currencies.
                 All values must be either positive or negative.
             </assert>
         </rule>
