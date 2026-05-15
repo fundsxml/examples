@@ -128,50 +128,62 @@ jobs:
           fi
           echo "tamper correctly detected"
 
-      - name: DB integration - multi-fund round-trip in 4 languages
+      - name: DB integration - multi-fund import+export in 4 languages
         run: |
           set -e
           python3 -m pip install --quiet lxml
           tools/fetch-tools.sh                       # sqlite-jdbc -> .lib/
           FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
           MX=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          DOC=FUNDSXML_MULTI_1
           EQ="python3 Database_Integration/tools/xml_equiv.py"
           XSD=".schema-cache/4.2.9/FundsXML.xsd"
 
           # The multi-fund fixture must itself be schema-valid.
           xmllint --noout --nonet --schema "$XSD" "$FX"
 
+          # Each language: separate import then export, then prove
+          # exported file == input file (and is schema-valid).
+
           # Python
-          python3 Database_Integration/python/fundsxml_db.py roundtrip "$FX" py.xml
+          python3 Database_Integration/python/import_fundsxml.py py.db "$FX"
+          python3 Database_Integration/python/export_fundsxml.py py.db "$DOC" py.xml
           xmllint --noout --nonet --schema "$XSD" py.xml
           $EQ "$FX" py.xml
 
           # Java (sqlite-jdbc)
           CP=.lib/sqlite-jdbc-3.46.1.3.jar
-          javac -cp "$CP" -d /tmp/jdb Database_Integration/java/FundsXmlDb.java
+          javac -cp "$CP" -d /tmp/jdb \
+            Database_Integration/java/ImportFundsXml.java \
+            Database_Integration/java/ExportFundsXml.java
           java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/jdb" \
-            FundsXmlDb roundtrip "$FX" java.xml
+            ImportFundsXml java.db "$FX"
+          java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/jdb" \
+            ExportFundsXml java.db "$DOC" java.xml
           xmllint --noout --nonet --schema "$XSD" java.xml
           $EQ "$FX" java.xml
 
           # JavaScript (sql.js)
           ( cd Database_Integration/javascript && npm install --no-audit --no-fund )
-          node Database_Integration/javascript/fundsxml_db.mjs roundtrip "$FX" js.xml
+          node Database_Integration/javascript/import_fundsxml.mjs js.db "$FX"
+          node Database_Integration/javascript/export_fundsxml.mjs js.db "$DOC" js.xml
           xmllint --noout --nonet --schema "$XSD" js.xml
           $EQ "$FX" js.xml
 
-          # C# (.NET)
-          dotnet run --project Database_Integration/csharp -- roundtrip "$FX" cs.xml
+          # C# (.NET): separate import and export projects
+          dotnet run --project Database_Integration/csharp/import -- cs.db "$FX"
+          dotnet run --project Database_Integration/csharp/export -- cs.db "$DOC" cs.xml
           xmllint --noout --nonet --schema "$XSD" cs.xml
           $EQ "$FX" cs.xml
 
           # Cross-language: every export identical to Python's.
           $EQ py.xml java.xml && $EQ py.xml js.xml && $EQ py.xml cs.xml
 
-          # Single-fund sample still round-trips (lossy -> XSD-valid only).
-          python3 Database_Integration/python/fundsxml_db.py roundtrip "$MX" mx.xml
+          # Single-fund sample still imports+exports (lossy -> XSD-valid only).
+          python3 Database_Integration/python/import_fundsxml.py mx.db "$MX"
+          python3 Database_Integration/python/export_fundsxml.py mx.db FUNDSXML_FILE_1 mx.xml
           xmllint --noout --nonet --schema "$XSD" mx.xml
-          echo "multi-fund round-trip equivalent in python/java/javascript/csharp"
+          echo "multi-fund import+export equivalent in python/java/javascript/csharp"
 
       - name: Large-file - streaming aggregate / split / delta (constant memory)
         run: |
