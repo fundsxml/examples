@@ -9,6 +9,10 @@ processed previous siblings so memory stays flat regardless of file size
 (the classic lxml fast_iter pattern). Prints the totals and peak RSS.
 
 FundsXML 4.x has no XML namespace — match the bare 'Position' tag.
+
+Dependencies: lxml (`pip install lxml`); Python stdlib otherwise.
+Security: iterparse runs with resolve_entities=False, no_network=True and
+huge_tree=False — XXE / entity-expansion safe even on untrusted feeds.
 """
 import resource
 import sys

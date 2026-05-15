@@ -6,8 +6,14 @@
 //   java  -cp "$SCP:/tmp/rt" RunTransform <stylesheet.xslt> <input.xml> <output> [k=v ...]
 // Exit: 0 success, 2 setup error.
 //
-// The repo's stylesheets are XSLT 2.0; Saxon supplies the engine. s9api is
-// Saxon's idiomatic Java API — no JAXB involved.
+// Dependencies: Saxon-HE + xmlresolver jars only (fetched by
+//   tools/fetch-tools.sh into .lib/); no other libraries.
+//
+// This is a generic, FundsXML-agnostic invocation wrapper: it applies any
+// stylesheet to any XML and passes through string parameters (k=v) — the
+// FundsXML specifics live in the .xslt files it runs. The repo's stylesheets
+// are XSLT 2.0; Saxon supplies the engine. s9api is Saxon's idiomatic Java
+// API — no JAXB involved (a full data binding would be needless here).
 
 import java.io.File;
 import net.sf.saxon.s9api.Processor;
