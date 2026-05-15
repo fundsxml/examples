@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Reference project. System.Security.Cryptography.Xml is a NuGet package
+       on .NET (Core): dotnet add package System.Security.Cryptography.Xml
+       Run: dotnet run -- sign|verify ... -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyName>SignVerify</AssemblyName>
+    <RootNamespace>FundsXml.XmlSignature</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.0" />
+  </ItemGroup>
+</Project>

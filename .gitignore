@@ -8,6 +8,10 @@ CLAUDE.md
 # dependencies from Maven Central, not repo source.
 .lib/
 
+# Throwaway signing keys (XML_Signature/generate-test-key.sh) — never commit
+# private keys, even demo ones.
+XML_Signature/keys/
+
 # Generated reports / outputs
 *.report.html
 report.html
