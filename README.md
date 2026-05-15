@@ -35,7 +35,7 @@ locations. Items marked _(planned)_ are on the roadmap (see
 | Transformation invocation | CLI, Python, Java, .NET, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) | ✅ |
 | Schema fetch (proxy-aware) | Bash | [tools/fetch-schema.sh](./tools/fetch-schema.sh) | ✅ |
 | CI (validate all samples) | GitHub Actions | [.github/workflows/ci.yml](./.github/workflows/) | ✅ |
-| XQuery examples | BaseX/Saxon, Python, Java, .NET | `XQuery_Examples/` | _(planned)_ |
+| XQuery analytics (aggregation, top-holdings, look-through) | Saxon CLI/Java, Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) | ✅ |
 | XML signature sign/verify | Apache Santuario, .NET, xmlsec1, signxml | `XML_Signature/` | _(planned)_ |
 | Database load ↔ generate | Oracle/SQL Server/Postgres (code only) | `Database_Integration/` | _(planned)_ |
 | Large-file/stream processing | StAX/SAX/lxml iterparse | `Large_File_Processing/` | _(planned)_ |
