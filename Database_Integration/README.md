@@ -2,26 +2,27 @@
 
 ![python](https://img.shields.io/badge/Python-verified-brightgreen) ![java](https://img.shields.io/badge/Java-verified-brightgreen) ![node](https://img.shields.io/badge/JavaScript-verified-brightgreen) ![csharp](https://img.shields.io/badge/C%23-verified-brightgreen) ![multi-fund](https://img.shields.io/badge/multi--node-yes-blue)
 
-Standalone, copy-me examples that move data **both directions** between FundsXML
-and a relational database, in the language you already use:
+Standalone, copy-me examples in the language you already use. **Import and
+export are separate programs** — one shows FundsXML → DB, the other DB →
+FundsXML — so you can lift exactly the direction you need:
 
-| Language | File | DB driver | Verified |
-|----------|------|-----------|----------|
-| Python | [`python/fundsxml_db.py`](python/fundsxml_db.py) | stdlib `sqlite3` | ✅ locally |
-| Java | [`java/FundsXmlDb.java`](java/FundsXmlDb.java) | `sqlite-jdbc` (native `javax.xml`, no JAXB) | ✅ locally |
-| JavaScript | [`javascript/fundsxml_db.mjs`](javascript/fundsxml_db.mjs) | `sql.js` (pure-WASM) | ✅ locally |
-| C# / .NET | [`csharp/FundsXmlDb.cs`](csharp/FundsXmlDb.cs) | `Microsoft.Data.Sqlite` | ✅ locally + CI |
+| Language | Import (FundsXML → DB) | Export (DB → FundsXML) | DB driver | Verified |
+|----------|------------------------|------------------------|-----------|----------|
+| Python | [`python/import_fundsxml.py`](python/import_fundsxml.py) | [`python/export_fundsxml.py`](python/export_fundsxml.py) | stdlib `sqlite3` | ✅ locally |
+| Java | [`java/ImportFundsXml.java`](java/ImportFundsXml.java) | [`java/ExportFundsXml.java`](java/ExportFundsXml.java) | `sqlite-jdbc` (native `javax.xml`, no JAXB) | ✅ locally |
+| JavaScript | [`javascript/import_fundsxml.mjs`](javascript/import_fundsxml.mjs) | [`javascript/export_fundsxml.mjs`](javascript/export_fundsxml.mjs) | `sql.js` (pure-WASM) | ✅ locally |
+| C# / .NET | [`csharp/import/`](csharp/import/) | [`csharp/export/`](csharp/export/) | `Microsoft.Data.Sqlite` | ✅ locally + CI |
 
-Every program is **self-contained**, heavily commented as a teaching artifact
-(read one top-to-bottom and reimplement the pattern), and exposes the **same
-CLI**:
+Every program is **self-contained** (one file / one project, its own copy of
+the small helper maps — nothing shared to import) and heavily commented as a
+teaching artifact. The CLI is uniform across languages:
 
 ```
-<prog> init      <db>                  create the schema
-<prog> import    <db> <fundsxml.xml>   FundsXML  -> rows
-<prog> export    <db> <docId> <out>    rows      -> FundsXML
-<prog> roundtrip <fundsxml.xml> <out>  import then export through the DB
+<import-prog> <db> <fundsxml.xml>      FundsXML -> rows  (creates the schema)
+<export-prog> <db> <docId> <out.xml>   rows -> FundsXML
 ```
+
+The round-trip is then simply: run import, then run export, then compare.
 
 ## Relational model — multi-node
 
@@ -54,27 +55,37 @@ XSD-validity is asserted.
 
 ## Run
 
+Each example is run as **import, then export** (the round-trip = both, then
+compare). `DOC` is the document id the import prints.
+
 ```bash
 tools/fetch-schema.sh 4.2.9          # XSD for validation
 FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
+DOC=FUNDSXML_MULTI_1
 
 # Python
-python3 Database_Integration/python/fundsxml_db.py roundtrip "$FX" out.xml
+python3 Database_Integration/python/import_fundsxml.py fx.db "$FX"
+python3 Database_Integration/python/export_fundsxml.py fx.db "$DOC" out.xml
 
 # Java  (sqlite-jdbc fetched into .lib/ by tools/fetch-tools.sh)
 tools/fetch-tools.sh
 CP=.lib/sqlite-jdbc-3.46.1.3.jar
-javac -cp "$CP" -d /tmp/db Database_Integration/java/FundsXmlDb.java
-java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" FundsXmlDb roundtrip "$FX" out.xml
+javac -cp "$CP" -d /tmp/db \
+  Database_Integration/java/ImportFundsXml.java \
+  Database_Integration/java/ExportFundsXml.java
+java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" ImportFundsXml fx.db "$FX"
+java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" ExportFundsXml fx.db "$DOC" out.xml
 
 # JavaScript
 ( cd Database_Integration/javascript && npm install )
-node Database_Integration/javascript/fundsxml_db.mjs roundtrip "$FX" out.xml
+node Database_Integration/javascript/import_fundsxml.mjs fx.db "$FX"
+node Database_Integration/javascript/export_fundsxml.mjs fx.db "$DOC" out.xml
 
 # C#
-dotnet run --project Database_Integration/csharp -- roundtrip "$FX" out.xml
+dotnet run --project Database_Integration/csharp/import -- fx.db "$FX"
+dotnet run --project Database_Integration/csharp/export -- fx.db "$DOC" out.xml
 
-# prove it: identical to the input, and schema-valid
+# prove it: exported file == input file, and schema-valid
 python3 Database_Integration/tools/xml_equiv.py "$FX" out.xml
 xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd out.xml
 ```
