@@ -1,5 +1,9 @@
 CLAUDE.md
 
+# macOS filesystem metadata (the working copy is on a WebDAV mount)
+.DS_Store
+._*
+
 # Locally fetched XSD releases (via tools/fetch-schema.sh) — not committed,
 # the source of truth is the official GitHub release.
 .schema-cache/
@@ -33,3 +37,11 @@ rj.xml
 fund.json
 *.db
 *.svrl
+
+# Node example deps (Database_Integration/javascript) — restored via npm install
+node_modules/
+package-lock.json
+
+# .NET build output (Database_Integration/csharp) — restored via dotnet build
+bin/
+obj/
