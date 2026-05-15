@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FundsXML 4.0.0 — compact equity-fund positions example.
+     FundsXML is backward compatible: the same structure also validates against
+     newer releases. NOTE for 4.0.0: ControlData has NO <Version> element
+     (introduced in 4.1.0). The version here is visible via
+     xsi:noNamespaceSchemaLocation and this comment. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.0.0/FundsXML.xsd">
+   <ControlData>
+      <UniqueDocumentID>FUNDSXML_400_POS_1</UniqueDocumentID>
+      <DocumentGenerated>2024-06-28T00:00:00</DocumentGenerated>
+      <ContentDate>2024-06-28</ContentDate>
+      <DataSupplier>
+         <SystemCountry>AT</SystemCountry>
+         <Short>EURAM</Short>
+         <Name>Erste Asset Management GmbH</Name>
+         <Type>Asset Manager</Type>
+      </DataSupplier>
+      <DataOperation>INITIAL</DataOperation>
+   </ControlData>
+   <Funds>
+      <Fund>
+         <Identifiers>
+            <LEI>529900T8BM49AURSDO55</LEI>
+         </Identifiers>
+         <Names>
+            <OfficialName>Erste Equity Europe Classic</OfficialName>
+         </Names>
+         <Currency>EUR</Currency>
+         <SingleFundFlag>true</SingleFundFlag>
+         <FundDynamicData>
+            <TotalAssetValues>
+               <TotalAssetValue>
+                  <NavDate>2024-06-28</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                     <Amount ccy="EUR">40000000</Amount>
+                  </TotalNetAssetValue>
+               </TotalAssetValue>
+            </TotalAssetValues>
+            <Portfolios>
+               <Portfolio>
+                  <NavDate>2024-06-28</NavDate>
+                  <Positions>
+                     <Position>
+                        <UniqueID>ID_001</UniqueID>
+                        <Identifiers>
+                           <ISIN>NL0010273215</ISIN>
+                        </Identifiers>
+                        <Currency>EUR</Currency>
+                        <TotalValue>
+                           <Amount ccy="EUR">16000000</Amount>
+                        </TotalValue>
+                        <TotalPercentage>40.00</TotalPercentage>
+                        <Equity>
+                           <Units>17000.00</Units>
+                           <Price>
+                              <Amount ccy="EUR">941.18</Amount>
+                           </Price>
+                        </Equity>
+                     </Position>
+                     <Position>
+                        <UniqueID>ID_002</UniqueID>
+                        <Identifiers>
+                           <ISIN>FR0000120578</ISIN>
+                        </Identifiers>
+                        <Currency>EUR</Currency>
+                        <TotalValue>
+                           <Amount ccy="EUR">14000000</Amount>
+                        </TotalValue>
+                        <TotalPercentage>35.00</TotalPercentage>
+                        <Equity>
+                           <Units>140000.00</Units>
+                           <Price>
+                              <Amount ccy="EUR">100.00</Amount>
+                           </Price>
+                        </Equity>
+                     </Position>
+                     <Position>
+                        <UniqueID>ID_003</UniqueID>
+                        <Identifiers>
+                           <ISIN>DE0007164600</ISIN>
+                        </Identifiers>
+                        <Currency>EUR</Currency>
+                        <TotalValue>
+                           <Amount ccy="EUR">10000000</Amount>
+                        </TotalValue>
+                        <TotalPercentage>25.00</TotalPercentage>
+                        <Equity>
+                           <Units>62500.00</Units>
+                           <Price>
+                              <Amount ccy="EUR">160.00</Amount>
+                           </Price>
+                        </Equity>
+                     </Position>
+                  </Positions>
+               </Portfolio>
+            </Portfolios>
+         </FundDynamicData>
+      </Fund>
+   </Funds>
+   <AssetMasterData>
+      <Asset>
+         <UniqueID>ID_001</UniqueID>
+         <Identifiers>
+            <ISIN>NL0010273215</ISIN>
+         </Identifiers>
+         <Currency>EUR</Currency>
+         <Country>NL</Country>
+         <Name>ASML HOLDING N.V.</Name>
+         <AssetType>EQ</AssetType>
+         <AssetDetails>
+            <Equity>
+               <Issuer>
+                  <Identifiers>
+                     <LEI>724500Y6P2B0MRLY2T56</LEI>
+                  </Identifiers>
+                  <Name>ASML HOLDING N.V.</Name>
+               </Issuer>
+            </Equity>
+         </AssetDetails>
+      </Asset>
+      <Asset>
+         <UniqueID>ID_002</UniqueID>
+         <Identifiers>
+            <ISIN>FR0000120578</ISIN>
+         </Identifiers>
+         <Currency>EUR</Currency>
+         <Country>FR</Country>
+         <Name>SANOFI S.A.</Name>
+         <AssetType>EQ</AssetType>
+         <AssetDetails>
+            <Equity>
+               <Issuer>
+                  <Identifiers>
+                     <LEI>549300E9PC51EN656011</LEI>
+                  </Identifiers>
+                  <Name>SANOFI S.A.</Name>
+               </Issuer>
+            </Equity>
+         </AssetDetails>
+      </Asset>
+      <Asset>
+         <UniqueID>ID_003</UniqueID>
+         <Identifiers>
+            <ISIN>DE0007164600</ISIN>
+         </Identifiers>
+         <Currency>EUR</Currency>
+         <Country>DE</Country>
+         <Name>SAP SE</Name>
+         <AssetType>EQ</AssetType>
+         <AssetDetails>
+            <Equity>
+               <Issuer>
+                  <Identifiers>
+                     <LEI>529900D6BF99LW9R2E68</LEI>
+                  </Identifiers>
+                  <Name>SAP SE</Name>
+               </Issuer>
+            </Equity>
+         </AssetDetails>
+      </Asset>
+   </AssetMasterData>
+</FundsXML4>

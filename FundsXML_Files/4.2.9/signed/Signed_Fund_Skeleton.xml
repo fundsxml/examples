@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FundsXML 4.2.9 — skeleton for a SIGNED FundsXML file (enveloped XMLDSig).
+     ds:Signature is the last optional child of <FundsXML4> (xmldsig-core-schema.xsd
+     is imported from release 4.2.9 on). The DigestValue/SignatureValue here are
+     PLACEHOLDERS — schema-valid but NOT cryptographically verifiable. Real
+     signing/verification (Apache Santuario etc.) follows in Phase 3 under
+     XML_Signature/. Version: see ControlData/Version and
+     xsi:noNamespaceSchemaLocation. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+   <ControlData>
+      <UniqueDocumentID>FUNDSXML_429_SIGNED_1</UniqueDocumentID>
+      <DocumentGenerated>2025-10-02T00:00:00</DocumentGenerated>
+      <Version>4.2.9</Version>
+      <ContentDate>2025-10-01</ContentDate>
+      <DataSupplier>
+         <SystemCountry>AT</SystemCountry>
+         <Short>EURAM</Short>
+         <Name>Erste Asset Management GmbH</Name>
+         <Type>Asset Manager</Type>
+      </DataSupplier>
+      <DataOperation>INITIAL</DataOperation>
+   </ControlData>
+   <Funds>
+      <Fund>
+         <Identifiers>
+            <LEI>529900T8BM49AURSDO55</LEI>
+         </Identifiers>
+         <Names>
+            <OfficialName>Erste Responsible Stock Global</OfficialName>
+         </Names>
+         <Currency>EUR</Currency>
+         <SingleFundFlag>true</SingleFundFlag>
+         <FundDynamicData>
+            <TotalAssetValues>
+               <TotalAssetValue>
+                  <NavDate>2025-10-01</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                     <Amount ccy="EUR">125000000</Amount>
+                  </TotalNetAssetValue>
+               </TotalAssetValue>
+            </TotalAssetValues>
+         </FundDynamicData>
+      </Fund>
+   </Funds>
+   <ds:Signature>
+      <ds:SignedInfo>
+         <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+         <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+         <ds:Reference URI="">
+            <ds:Transforms>
+               <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+            </ds:Transforms>
+            <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+            <ds:DigestValue>UExBQ0VIT0xERVItRElHRVNU</ds:DigestValue>
+         </ds:Reference>
+      </ds:SignedInfo>
+      <ds:SignatureValue>UExBQ0VIT0xERVItU0lHTkFUVVJFLVZBTFVFLU5PVC1DUllQVE9HUkFQSElDQUxMWS1WQUxJRA==</ds:SignatureValue>
+      <ds:KeyInfo>
+         <ds:KeyName>erste-am-funds-signing-2025</ds:KeyName>
+      </ds:KeyInfo>
+   </ds:Signature>
+</FundsXML4>

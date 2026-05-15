@@ -116,15 +116,30 @@ FundsXML documents should be validated against the official XSD schema:
 
 ### Download Schema
 
+Validation always targets the **official release** of the schema:
+
+```
+https://github.com/fundsxml/schema/releases/download/<version>/FundsXML.xsd
+```
+
+Two enterprise-relevant caveats are handled by the helper `tools/fetch-schema.sh`:
+
+1. That URL returns an HTTP 302 redirect; simple HTTP clients (libxml2 /
+   xmllint) do not follow it, so the schema must be fetched first (curl honours
+   `https_proxy`/`HTTPS_PROXY` for locked-down networks).
+2. From release 4.2.9 on, `FundsXML.xsd` imports `xmldsig-core-schema.xsd` via a
+   relative path — both files must sit in the same directory.
+
 ```bash
-# Get the official schema for version 4.2.9
-curl -O https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd
+# Fetches FundsXML.xsd (+ xmldsig-core-schema.xsd when needed) into .schema-cache/<version>/
+tools/fetch-schema.sh 4.2.9
 ```
 
 ### Validate with xmllint (macOS/Linux)
 
 ```bash
-xmllint --schema FundsXML.xsd FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml --noout
+xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd \
+        FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
 ```
 
 ### Validate with Saxon
@@ -194,9 +209,23 @@ Console.WriteLine("Validation complete");
 
 ## Available Samples
 
-| Version | File | Description |
-|---------|------|-------------|
-| [4.2.9](./4.2.9/) | Mixed-Fund_Positions.xml | Comprehensive example with 21 diverse positions |
+Samples are organized by **version** and **use case**: `FundsXML_Files/<version>/<use-case>/`.
+Each leaf directory has its own README with a version badge and the exact
+schema URL it was validated against.
+
+| Version | Use case | File | Description |
+|---------|----------|------|-------------|
+| [4.2.9](./4.2.9/positions/) | positions | `Mixed-Fund_Positions.xml` | Comprehensive, 21 diverse positions, 13 asset types |
+| [4.2.9](./4.2.9/transactions/) | transactions | `Fund_Transactions.xml` | BUY/SELL/CASH, `AssetUniqueID` IDREF linking |
+| [4.2.9](./4.2.9/documents/) | documents | `Fund_Documents.xml` | Factsheet (URL) + PRIIPS-KID (embedded base64) |
+| [4.2.9](./4.2.9/regulatory/) | regulatory | `EFT_Regulatory.xml` | `RegulatoryReportings/DirectReporting/EFTs` |
+| [4.2.9](./4.2.9/signed/) | signed | `Signed_Fund_Skeleton.xml` | Enveloped `ds:Signature` (placeholder, Phase 3) |
+| [4.1.0](./4.1.0/positions/) | positions | `Equity-Fund_Positions.xml` | Compact equity fund, older valid version |
+| [4.0.0](./4.0.0/positions/) | positions | `Equity-Fund_Positions.xml` | Oldest release — **no `ControlData/Version`** |
+
+> **Version visibility:** From 4.1.0 on, every file carries `ControlData/Version`.
+> For **4.0.0** that element does not exist — the version there is only
+> recognizable via `xsi:noNamespaceSchemaLocation` and the header comment.
 
 ## External Resources
 

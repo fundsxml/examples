@@ -1,1 +1,12 @@
 CLAUDE.md
+
+# Locally fetched XSD releases (via tools/fetch-schema.sh) — not committed,
+# the source of truth is the official GitHub release.
+.schema-cache/
+
+# Generated reports / outputs
+*.report.html
+report.html
+full_report.html
+validation_report.xml
+out/

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- FundsXML 4.2.9 — documents example.
+     Top-level <Documents>: a Factsheet linked by URL and an embedded
+     PRIIPS-KID (BinaryData, base64). Version: see ControlData/Version and
+     xsi:noNamespaceSchemaLocation. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+   <ControlData>
+      <UniqueDocumentID>FUNDSXML_429_DOC_1</UniqueDocumentID>
+      <DocumentGenerated>2025-10-02T00:00:00</DocumentGenerated>
+      <Version>4.2.9</Version>
+      <ContentDate>2025-10-01</ContentDate>
+      <DataSupplier>
+         <SystemCountry>AT</SystemCountry>
+         <Short>EURAM</Short>
+         <Name>Erste Asset Management GmbH</Name>
+         <Type>Asset Manager</Type>
+      </DataSupplier>
+      <DataOperation>INITIAL</DataOperation>
+   </ControlData>
+   <Documents>
+      <Document>
+         <Type>
+            <ListedType>Factsheet</ListedType>
+         </Type>
+         <Version>2025-09</Version>
+         <Language>de</Language>
+         <PublicationCountries>
+            <Country>AT</Country>
+            <Country>DE</Country>
+         </PublicationCountries>
+         <Fund>
+            <Identifiers>
+               <LEI>529900T8BM49AURSDO55</LEI>
+            </Identifiers>
+            <Name>Erste Responsible Stock Global</Name>
+            <Currency>EUR</Currency>
+         </Fund>
+         <Name>Factsheet Erste Responsible Stock Global 09/2025</Name>
+         <FileName>factsheet_errsg_202509_de.pdf</FileName>
+         <ForPublicUsage>true</ForPublicUsage>
+         <Format>application/pdf</Format>
+         <CreationDate>2025-09-30</CreationDate>
+         <DataSupplier>
+            <SystemCountry>AT</SystemCountry>
+            <Short>EURAM</Short>
+            <Name>Erste Asset Management GmbH</Name>
+            <Type>Asset Manager</Type>
+         </DataSupplier>
+         <DocumentURL>https://www.erste-am.at/factsheets/errsg_202509_de.pdf</DocumentURL>
+      </Document>
+      <Document>
+         <Type>
+            <ListedType>PRIIPS-KID</ListedType>
+         </Type>
+         <Version>3</Version>
+         <Language>en</Language>
+         <PublicationCountries>
+            <Country>AT</Country>
+         </PublicationCountries>
+         <Fund>
+            <Identifiers>
+               <LEI>529900T8BM49AURSDO55</LEI>
+            </Identifiers>
+            <Name>Erste Responsible Stock Global</Name>
+            <Currency>EUR</Currency>
+         </Fund>
+         <Name>PRIIPS KID EUR R01</Name>
+         <FileName>priips_kid_AT0000A2QM66_en.pdf</FileName>
+         <ForPublicUsage>true</ForPublicUsage>
+         <Format>application/pdf</Format>
+         <CreationDate>2025-01-02</CreationDate>
+         <ExpirationDate>2025-12-31</ExpirationDate>
+         <SizeInBytes>20</SizeInBytes>
+         <BinaryData>JVBERi0xLjQKJSBQUklJUFMgS0lEIHN0dWIK</BinaryData>
+      </Document>
+   </Documents>
+</FundsXML4>
