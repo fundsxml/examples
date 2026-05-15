@@ -1,60 +1,76 @@
--- Oracle -> FundsXML (code reference; no DB is provisioned in this repo).
+-- Oracle -> FundsXML, MULTI-FUND (code reference; no DB is provisioned).
 --
--- SQL/XML publishing: XMLElement / XMLAgg / XMLAttributes. Same FundsXML 4.2.9
--- positions shape as the Python reference. Bind :doc = fund.document_id.
+-- SQL/XML publishing with XMLAGG. Multi-node essence: XMLAGG over the fund
+-- rows (ORDER BY fund_seq) yields many <Fund>; nested correlated XMLAGG over
+-- portfolio then position. Same canonical shape as the runnable examples
+-- (xml_equiv.py-equal). :doc = document.document_id. Full per-column mapping:
+-- ../ddl/schema.sql and the Python/Java/JavaScript/C# programs.
 
-SELECT XMLElement("FundsXML4",
-         XMLAttributes(
-           'http://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd'
+SELECT XMLELEMENT("FundsXML4",
+         XMLATTRIBUTES(
+           'http://www.w3.org/2001/XMLSchema-instance' AS "xmlns:xsi",
+           'https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd'
              AS "xsi:noNamespaceSchemaLocation"),
-         XMLElement("ControlData",
-           XMLElement("UniqueDocumentID", f.document_id),
-           XMLElement("DocumentGenerated", '2025-10-02T00:00:00'),
-           CASE WHEN f.fxml_version IS NOT NULL
-                THEN XMLElement("Version", f.fxml_version) END,
-           XMLElement("ContentDate", TO_CHAR(f.content_date,'YYYY-MM-DD')),
-           XMLElement("DataSupplier",
-             XMLElement("SystemCountry",'AT'),
-             XMLElement("Short",'EURAM'),
-             XMLElement("Name",'Erste Asset Management GmbH'),
-             XMLElement("Type",'Asset Manager')),
-           XMLElement("DataOperation",'INITIAL')),
-         XMLElement("Funds",
-           XMLElement("Fund",
-             XMLElement("Identifiers", XMLElement("LEI", f.lei)),
-             XMLElement("Names", XMLElement("OfficialName", f.official_name)),
-             XMLElement("Currency", f.currency),
-             XMLElement("SingleFundFlag",'true'),
-             XMLElement("FundDynamicData",
-               XMLElement("TotalAssetValues",
-                 XMLElement("TotalAssetValue",
-                   XMLElement("NavDate", TO_CHAR(f.nav_date,'YYYY-MM-DD')),
-                   XMLElement("TotalAssetNature",'OFFICIAL'),
-                   XMLElement("TotalNetAssetValue",
-                     XMLElement("Amount",
-                       XMLAttributes(f.currency AS "ccy"),
-                       TO_CHAR(f.total_nav,'FM999999999990.00'))))),
-               XMLElement("Portfolios",
-                 XMLElement("Portfolio",
-                   XMLElement("NavDate", TO_CHAR(f.nav_date,'YYYY-MM-DD')),
-                   XMLElement("Positions",
-                     (SELECT XMLAgg(
-                        XMLElement("Position",
-                          XMLElement("UniqueID", p.unique_id),
-                          XMLElement("Currency", p.currency),
-                          XMLElement("TotalValue",
-                            XMLElement("Amount",
-                              XMLAttributes(f.currency AS "ccy"),
-                              TO_CHAR(p.value_fund_ccy,'FM999999999990.00'))),
-                          XMLElement("TotalPercentage",
-                            TO_CHAR(p.percentage,'FM990.00')),
-                          XMLElement(EVALNAME p.kind))
-                        ORDER BY p.unique_id)
-                      FROM position p
-                      WHERE p.document_id = f.document_id)))))))
-       ).getClobVal()
-FROM fund f
-WHERE f.document_id = :doc;
+         (SELECT XMLELEMENT("ControlData",
+            XMLFOREST(d.document_id AS "UniqueDocumentID",
+                      d.generated   AS "DocumentGenerated",
+                      d.version     AS "Version",
+                      TO_CHAR(d.content_date,'YYYY-MM-DD') AS "ContentDate"),
+            XMLELEMENT("DataSupplier",
+              XMLFOREST(d.supplier_country AS "SystemCountry",
+                        d.supplier_short   AS "Short",
+                        d.supplier_name    AS "Name",
+                        d.supplier_type    AS "Type")),
+            XMLELEMENT("DataOperation", d.data_operation))
+          FROM document d WHERE d.document_id = :doc),
+         XMLELEMENT("Funds",
+           (SELECT XMLAGG(
+              XMLELEMENT("Fund",
+                XMLELEMENT("Identifiers", XMLELEMENT("LEI", f.lei)),
+                XMLELEMENT("Names",
+                           XMLELEMENT("OfficialName", f.official_name)),
+                XMLELEMENT("Currency", f.currency),
+                XMLELEMENT("SingleFundFlag", f.single_fund_flag),
+                XMLELEMENT("FundDynamicData",
+                  XMLELEMENT("TotalAssetValues",
+                    XMLELEMENT("TotalAssetValue",
+                      XMLFOREST(TO_CHAR(f.nav_date,'YYYY-MM-DD') AS "NavDate",
+                                'OFFICIAL' AS "TotalAssetNature"),
+                      XMLELEMENT("TotalNetAssetValue",
+                        XMLELEMENT("Amount",
+                          XMLATTRIBUTES(f.currency AS "ccy"),
+                          TO_CHAR(f.total_nav,'FM999999990.00'))))),
+                  XMLELEMENT("Portfolios",
+                    (SELECT XMLAGG(
+                       XMLELEMENT("Portfolio",
+                         XMLELEMENT("NavDate",
+                           TO_CHAR(pf.nav_date,'YYYY-MM-DD')),
+                         XMLELEMENT("Positions",
+                           (SELECT XMLAGG(
+                              XMLELEMENT("Position",
+                                XMLFOREST(p.unique_id AS "UniqueID",
+                                          p.currency  AS "Currency"),
+                                XMLELEMENT("TotalValue",
+                                  XMLELEMENT("Amount",
+                                    XMLATTRIBUTES(f.currency AS "ccy"),
+                                    TO_CHAR(p.value_fund_ccy,'FM999999990.00'))),
+                                XMLELEMENT("TotalPercentage",
+                                  TO_CHAR(p.percentage,'FM990.00')),
+                                XMLELEMENT(EVALNAME p.kind))
+                              ORDER BY p.position_seq)
+                            FROM position p
+                            WHERE p.document_id=f.document_id
+                              AND p.fund_seq=f.fund_seq
+                              AND p.portfolio_seq=pf.portfolio_seq)))
+                       ORDER BY pf.portfolio_seq)
+                     FROM portfolio pf
+                     WHERE pf.document_id=f.document_id
+                       AND pf.fund_seq=f.fund_seq))))
+              ORDER BY f.fund_seq)
+            FROM fund f WHERE f.document_id = :doc))
+       ).getclobval()
+FROM dual;
 
--- As with the Postgres example, add the quantity child per kind
--- (position.kind_qty) to keep Equity/Bond/ShareClass/... schema-valid.
+-- Position class element emitted empty for brevity; add the quantity child
+-- (position.kind_qty) and the per-fund SingleFund/ShareClasses block as the
+-- runnable examples do.
