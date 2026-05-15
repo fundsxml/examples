@@ -251,12 +251,11 @@ The sample files demonstrate various FundsXML asset types:
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit pull requests with:
-- Additional sample FundsXML files
-- New Schematron validation rules
-- Additional XSLT report templates
-- Documentation improvements
-- Code examples in other languages
+Contributions are welcome — additional samples, rules, report templates,
+language examples, and documentation improvements. Please read
+**[CONTRIBUTING.md](./CONTRIBUTING.md)** first: it covers the FundsXML
+conventions, the secure-XML and round-trip requirements, local verification,
+and the branch/PR workflow this repo expects.
 
 ## License
 
