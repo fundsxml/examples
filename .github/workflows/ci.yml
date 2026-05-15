@@ -67,14 +67,37 @@ jobs:
           fi
           echo "xsd-invalid correctly rejected"
 
-      - name: Fetch Java toolchain (Saxon + SchXslt)
-        run: tools/fetch-tools.sh
+      # ---------------------------------------------------------------------
+      # Java examples — built & run via the committed Maven Wrapper. The first
+      # ./mvnw bootstraps Maven itself, then resolves all deps from Central.
+      # A repo-wide `compile` builds every module once so later `exec:java`
+      # steps need no `compile` goal (keeps stdout clean for the XQuery step,
+      # which serializes its result to stdout).
+      # ---------------------------------------------------------------------
+      - name: Java - build all modules (Maven Wrapper)
+        run: ./mvnw -q -B compile
+
+      - name: Java - XSD validation (in-language schema resolve)
+        run: |
+          set -e
+          M="./mvnw -q -B -pl XSD_Validation/java exec:java"
+          # Cache is warm from the xmllint step: exercises the resolver's
+          # cache-hit path and the $FUNDSXML_SCHEMA_DIR env override.
+          $M -Dexec.args="4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+          FUNDSXML_SCHEMA_DIR="$PWD/.schema-cache/4.1.0" \
+            $M -Dexec.args="4.1.0 FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml"
+          if $M -Dexec.args="4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml"; then
+            echo "::error::xsd-invalid unexpectedly validated (Java)"; exit 1
+          fi
+          echo "Java XsdValidate: positive ok, negative correctly rejected"
 
       - name: Schematron - canonical sample passes, fixture fails
         run: |
-          RS=Schematron_DataQuality_Checks/Basic_Checks/invocation/run-schematron.sh
-          "$RS" FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          if "$RS" tests/fixtures/invalid/schematron-invalid_Positions.xml; then
+          set -e
+          SCH=Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch
+          M="./mvnw -q -B -pl Schematron_DataQuality_Checks/Basic_Checks/invocation exec:java"
+          $M -Dexec.args="$SCH FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+          if $M -Dexec.args="$SCH tests/fixtures/invalid/schematron-invalid_Positions.xml"; then
             echo "::error::schematron-invalid fixture unexpectedly passed"; exit 1
           fi
           echo "schematron-invalid correctly failed"
@@ -82,12 +105,12 @@ jobs:
       - name: Smoke - XSLT transforms produce non-empty output
         run: |
           set -e
-          RT=XSLT_Transformations/invocation/run-transform.sh
+          M="./mvnw -q -B -pl XSLT_Transformations/invocation exec:java"
           SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          "$RT" XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt "$SRC" out_dq.html
-          "$RT" XSLT_Transformations/Factsheet/factsheet_html.xslt "$SRC" out_fs.html
-          "$RT" XSLT_Transformations/Factsheet/factsheet_fo.xslt   "$SRC" out_fs.fo
-          "$RT" XSLT_Transformations/CSV_Export/positions_csv.xslt "$SRC" out_pos.csv
+          $M -Dexec.args="XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt $SRC out_dq.html"
+          $M -Dexec.args="XSLT_Transformations/Factsheet/factsheet_html.xslt $SRC out_fs.html"
+          $M -Dexec.args="XSLT_Transformations/Factsheet/factsheet_fo.xslt $SRC out_fs.fo"
+          $M -Dexec.args="XSLT_Transformations/CSV_Export/positions_csv.xslt $SRC out_pos.csv"
           xmllint --noout out_fs.fo
           for f in out_dq.html out_fs.html out_pos.csv; do
             test -s "$f" || { echo "::error::$f is empty"; exit 1; }
@@ -97,12 +120,14 @@ jobs:
       - name: Smoke - XQuery examples run and produce XML
         run: |
           set -e
-          RQ=XQuery_Examples/invocation/run-xquery.sh
+          M="./mvnw -q -B -pl XQuery_Examples/invocation exec:java"
           SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          "$RQ" XQuery_Examples/aggregate-by-assettype.xq "$SRC" out_agg.xml
-          "$RQ" XQuery_Examples/top-holdings.xq "$SRC" out_top.xml n=5
-          "$RQ" XQuery_Examples/fund-summary.xq "$SRC" out_sum.xml
-          "$RQ" XQuery_Examples/look-through.xq "$SRC" out_lt.xml
+          # RunXQuery serializes to stdout; -q keeps Maven silent so the
+          # redirect captures pure XML.
+          $M -Dexec.args="XQuery_Examples/aggregate-by-assettype.xq $SRC" > out_agg.xml
+          $M -Dexec.args="XQuery_Examples/top-holdings.xq $SRC n=5"      > out_top.xml
+          $M -Dexec.args="XQuery_Examples/fund-summary.xq $SRC"          > out_sum.xml
+          $M -Dexec.args="XQuery_Examples/look-through.xq $SRC"          > out_lt.xml
           for f in out_agg.xml out_top.xml out_sum.xml out_lt.xml; do
             xmllint --noout "$f"
           done
@@ -111,19 +136,18 @@ jobs:
       - name: XML signature - Apache Santuario sign/verify/tamper roundtrip
         run: |
           set -e
-          XML_Signature/generate-test-key.sh
-          CP=.lib/xmlsec-4.0.4.jar:.lib/commons-codec-1.18.0.jar:.lib/slf4j-api-2.0.17.jar:.lib/slf4j-nop-2.0.17.jar
-          javac -cp "$CP" -d /tmp/sig \
-            XML_Signature/java/SignFundsXml.java XML_Signature/java/VerifyFundsXml.java
+          M="./mvnw -q -B -pl XML_Signature/java exec:java"
           SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          java -cp "$CP:/tmp/sig" SignFundsXml "$SRC" signed.xml \
-            XML_Signature/keys/test-signing.p12 changeit fundsxml
-          java -cp "$CP:/tmp/sig" VerifyFundsXml signed.xml \
-            XML_Signature/keys/test-signing-cert.pem
+          # In-language key generation (JDK keytool, no openssl).
+          $M -Dexec.mainClass=GenerateTestKey
+          $M -Dexec.mainClass=SignFundsXml \
+             -Dexec.args="$SRC signed.xml XML_Signature/keys/test-signing.p12 changeit fundsxml"
+          $M -Dexec.mainClass=VerifyFundsXml \
+             -Dexec.args="signed.xml XML_Signature/keys/test-signing-cert.pem"
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd signed.xml
           sed 's/<TotalPercentage>8.33</<TotalPercentage>9.33</' signed.xml > tampered.xml
-          if java -cp "$CP:/tmp/sig" VerifyFundsXml tampered.xml \
-               XML_Signature/keys/test-signing-cert.pem; then
+          if $M -Dexec.mainClass=VerifyFundsXml \
+               -Dexec.args="tampered.xml XML_Signature/keys/test-signing-cert.pem"; then
             echo "::error::tampered file unexpectedly verified"; exit 1
           fi
           echo "tamper correctly detected"
@@ -132,7 +156,6 @@ jobs:
         run: |
           set -e
           python3 -m pip install --quiet lxml
-          tools/fetch-tools.sh                       # sqlite-jdbc -> .lib/
           FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
           MX=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
           DOC=FUNDSXML_MULTI_1
@@ -151,15 +174,10 @@ jobs:
           xmllint --noout --nonet --schema "$XSD" py.xml
           $EQ "$FX" py.xml
 
-          # Java (sqlite-jdbc)
-          CP=.lib/sqlite-jdbc-3.46.1.3.jar
-          javac -cp "$CP" -d /tmp/jdb \
-            Database_Integration/java/ImportFundsXml.java \
-            Database_Integration/java/ExportFundsXml.java
-          java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/jdb" \
-            ImportFundsXml java.db "$FX"
-          java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/jdb" \
-            ExportFundsXml java.db "$DOC" java.xml
+          # Java (sqlite-jdbc via Maven; classes already built above)
+          MJ="./mvnw -q -B -pl Database_Integration/java exec:java"
+          $MJ -Dexec.mainClass=ImportFundsXml -Dexec.args="java.db $FX"
+          $MJ -Dexec.mainClass=ExportFundsXml -Dexec.args="java.db $DOC java.xml"
           xmllint --noout --nonet --schema "$XSD" java.xml
           $EQ "$FX" java.xml
 
@@ -195,8 +213,10 @@ jobs:
           python3 $P/stream_aggregate.py big.xml | tee agg.txt
           grep -q '^positions      : 30000$' agg.txt
           grep -q '^sum value (EUR): 30000000.00$' agg.txt
-          javac -d /tmp/lf Large_File_Processing/java/StreamAggregate.java
-          java -Xmx64m -cp /tmp/lf StreamAggregate big.xml | tee aggj.txt
+          # Java StreamAggregate (pure JDK) under a small heap proves the
+          # constant-memory claim; MAVEN_OPTS bounds the in-process JVM.
+          MAVEN_OPTS=-Xmx64m ./mvnw -q -B -pl Large_File_Processing/java exec:java \
+            -Dexec.args="big.xml" | tee aggj.txt
           grep -q '^positions      : 30000$' aggj.txt
           python3 $P/split.py big.xml chunks/ 10000
           test "$(ls chunks/chunk-*.xml | wc -l)" = "3"
@@ -224,8 +244,7 @@ jobs:
           assert npos(o) == npos(r), (npos(o), npos(r))
           print("JSON round-trip preserved:", nav(r), npos(r))
           PY
-          javac -d /tmp/nb Data_Binding_JSON/java/NativeBinding.java
-          java -cp /tmp/nb NativeBinding "$SRC" | tee nb.txt
+          ./mvnw -q -B -pl Data_Binding_JSON/java exec:java -Dexec.args="$SRC" | tee nb.txt
           grep -q '^Positions : 21$' nb.txt
 
       - name: Regression - legacy XSLT 1.0 report still runs

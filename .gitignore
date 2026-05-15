@@ -4,12 +4,15 @@ CLAUDE.md
 .DS_Store
 ._*
 
-# Locally fetched XSD releases (via tools/fetch-schema.sh) — not committed,
-# the source of truth is the official GitHub release.
+# Locally cached XSD releases — not committed, the source of truth is the
+# official GitHub release. Each example downloads + caches it here itself
+# (honouring $FUNDSXML_SCHEMA_DIR); see XSD_Validation/java/XsdValidate.java.
 .schema-cache/
 
-# Locally fetched Java toolchain jars (via tools/fetch-tools.sh) — external
-# dependencies from Maven Central, not repo source.
+# Maven build output. Dependencies come from Maven Central via ./mvnw; the
+# committed Maven Wrapper bootstraps Maven itself — nothing is vendored.
+target/
+# Legacy: jars the since-removed tools/fetch-tools.sh used to download here.
 .lib/
 
 # Throwaway signing keys (XML_Signature/generate-test-key.sh) — never commit
@@ -37,6 +40,10 @@ rj.xml
 fund.json
 *.db
 *.svrl
+
+# Python bytecode cache
+__pycache__/
+*.pyc
 
 # Node example deps (Database_Integration/javascript) — restored via npm install
 node_modules/

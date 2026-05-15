@@ -2,7 +2,8 @@
 
 Company-facing transformations of FundsXML positions data. All stylesheets are
 **XSLT 2.0** — run with Saxon (`xsltproc`/`lxml` are XSLT 1.0 and will not work).
-`tools/fetch-tools.sh` provides Saxon-HE in `.lib/`.
+Saxon-HE is a Maven dependency of `invocation/pom.xml`, resolved from Maven
+Central by the committed Maven Wrapper — no prior fetch step, no `.lib/`.
 
 | Output | Stylesheet | Notes |
 |--------|-----------|-------|
@@ -17,26 +18,25 @@ Company-internal DQ rules live next door in
 
 | Stack | Entry point | Status |
 |-------|-------------|--------|
-| CLI (Saxon) | [`invocation/run-transform.sh`](invocation/run-transform.sh) | ✅ verified |
-| Java (s9api, no JAXB) | [`invocation/RunTransform.java`](invocation/RunTransform.java) | ✅ verified |
+| Java (s9api, no JAXB) | [`invocation/RunTransform.java`](invocation/RunTransform.java) | ✅ verified (via Maven Wrapper) |
 | Python | [`invocation/run_transform.py`](invocation/run_transform.py) | needs `pip install saxonche` |
 | Node.js | see below | needs `npm i xslt3` (saxon-js) |
 
-```bash
-# CLI — HTML factsheet
-XSLT_Transformations/invocation/run-transform.sh \
-  XSLT_Transformations/Factsheet/factsheet_html.xslt \
-  FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml factsheet.html
+The Java runner is standalone & cross-platform via the committed Maven Wrapper
+(`./mvnw`, or `mvnw.cmd` on Windows), launched from the repo root:
 
-# CLI — CSV with semicolon delimiter (parameter pass-through)
-XSLT_Transformations/invocation/run-transform.sh \
-  XSLT_Transformations/CSV_Export/positions_csv.xslt \
-  FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml positions.csv "delimiter=;"
+```bash
+M="./mvnw -q -pl XSLT_Transformations/invocation compile exec:java"
+SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+
+# HTML factsheet
+$M -Dexec.args="XSLT_Transformations/Factsheet/factsheet_html.xslt $SRC factsheet.html"
+
+# CSV with semicolon delimiter (parameter pass-through)
+$M -Dexec.args="XSLT_Transformations/CSV_Export/positions_csv.xslt $SRC positions.csv delimiter=;"
 
 # PDF — two steps (Saxon then Apache FOP)
-XSLT_Transformations/invocation/run-transform.sh \
-  XSLT_Transformations/Factsheet/factsheet_fo.xslt \
-  FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml factsheet.fo
+$M -Dexec.args="XSLT_Transformations/Factsheet/factsheet_fo.xslt $SRC factsheet.fo"
 fop -fo factsheet.fo -pdf factsheet.pdf
 
 # Node.js (SaxonJS / xslt3) — XSLT 3.0 engine runs these XSLT 2.0 sheets:

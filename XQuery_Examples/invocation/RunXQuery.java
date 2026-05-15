@@ -1,13 +1,12 @@
 // Run an XQuery against FundsXML via the Saxon s9api (native Java, no JAXB).
 //
-//   tools/fetch-tools.sh
-//   SCP=.lib/Saxon-HE-12.5.jar:.lib/xmlresolver-5.2.2.jar:.lib/xmlresolver-5.2.2-data.jar
-//   javac -cp "$SCP" -d /tmp/xq XQuery_Examples/invocation/RunXQuery.java
-//   java  -cp "$SCP:/tmp/xq" RunXQuery <query.xq> <input.xml> [k=v ...]
+// Standalone & cross-platform — run from the repo root with the Maven Wrapper:
+//   ./mvnw -q -pl XQuery_Examples/invocation compile exec:java \
+//       -Dexec.args="<query.xq> <input.xml> [k=v ...]"
 // Exit: 0 success, 2 setup error.
 //
-// Dependencies: Saxon-HE + xmlresolver jars only (fetched by
-//   tools/fetch-tools.sh into .lib/); no other libraries.
+// Dependencies (from Maven Central, see pom.xml): Saxon-HE + xmlresolver
+// (+ its -data artifact); no other libraries.
 //
 // This is a generic, FundsXML-agnostic XQuery runner: it binds the input as
 // the context item and passes string external variables — the FundsXML

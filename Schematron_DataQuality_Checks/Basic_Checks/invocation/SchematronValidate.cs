@@ -7,7 +7,8 @@
 //
 // basic_checks.sch uses queryBinding="xslt2"; Saxon supplies the XSLT 3.0
 // engine. The SchXslt pipeline stylesheets are reused from the SchXslt CLI jar
-// (tools/fetch-tools.sh puts it in .lib/): the whole xslt/ tree is extracted so
+// (this .NET stack resolves it via NuGet once migrated; the Java example
+// already runs standalone via the Maven Wrapper): the whole xslt/ tree is extracted so
 // the pipeline's relative imports resolve, then compile .sch -> SVRL stylesheet
 // -> apply to instance -> SVRL, then classify (same logic as svrl-summary.py).
 //
@@ -42,7 +43,10 @@ internal static class SchematronValidate
         string cliJar = Path.Combine(repoRoot, ".lib", "schxslt-cli-1.10.1.jar");
         if (!File.Exists(cliJar))
         {
-            Console.Error.WriteLine("SchXslt jar missing; run: tools/fetch-tools.sh");
+            Console.Error.WriteLine(
+                "SchXslt jar missing (this .NET stack is migrated to NuGet in "
+                + "a later phase; the Java example already runs standalone via "
+                + "the Maven Wrapper)");
             return 2;
         }
 

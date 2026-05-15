@@ -17,17 +17,18 @@ On the canonical 4.2.9 sample all four rules **PASS** (verified).
 
 ## Run
 
+Run the generic XSLT runner via the committed Maven Wrapper (`mvnw.cmd` on
+Windows), from the repo root:
+
 ```bash
-tools/fetch-tools.sh
-XSLT_Transformations/invocation/run-transform.sh \
-  XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt \
-  FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml custom_dq.html
+M="./mvnw -q -pl XSLT_Transformations/invocation compile exec:java"
+XSL=XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt
+SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+
+$M -Dexec.args="$XSL $SRC custom_dq.html"
 
 # Tighten the concentration limit to 5% to see R3 fail:
-XSLT_Transformations/invocation/run-transform.sh \
-  XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt \
-  FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml custom_dq.html \
-  "concentrationLimitPct=5"
+$M -Dexec.args="$XSL $SRC custom_dq.html concentrationLimitPct=5"
 ```
 
 XSLT 2.0 → use Saxon (see [`../../XSLT_Transformations/`](../../XSLT_Transformations/)

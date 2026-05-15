@@ -9,7 +9,9 @@ required. `lxml` only does XSLT 1.0 and CANNOT run this ruleset — saxonche
 (`pip install saxonche`) embeds Saxon's XSLT 3.0 engine.
 
 The SchXslt pipeline stylesheets are reused straight out of the SchXslt CLI jar
-(`tools/fetch-tools.sh` puts it in .lib/). The whole `xslt/` tree is extracted
+(this Python stack will resolve it via pyproject.toml once migrated; the Java
+Schematron example already runs standalone via the Maven Wrapper). The whole
+`xslt/` tree is extracted
 to a temp dir so the pipeline's relative xsl:import/include resolve, then:
   1) compile the .sch into an SVRL stylesheet,
   2) apply it to the instance to get SVRL,
@@ -42,7 +44,10 @@ def main() -> int:
         return 2
 
     if not CLI_JAR.is_file():
-        print("SchXslt jar missing; run: tools/fetch-tools.sh", file=sys.stderr)
+        print("SchXslt jar missing (this Python stack is migrated to a build "
+              "system in a later phase; the Java example already runs "
+              "standalone: ./mvnw -pl Schematron_DataQuality_Checks/"
+              "Basic_Checks/invocation compile exec:java)", file=sys.stderr)
         return 2
 
     with tempfile.TemporaryDirectory() as tmp:

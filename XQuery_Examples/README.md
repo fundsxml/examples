@@ -18,25 +18,25 @@ no XML namespace — queries use bare element names, so they work unchanged on t
 
 | Stack | Entry point | Status |
 |-------|-------------|--------|
-| CLI (Saxon) | [`invocation/run-xquery.sh`](invocation/run-xquery.sh) | ✅ verified |
-| Java (s9api, no JAXB) | [`invocation/RunXQuery.java`](invocation/RunXQuery.java) | ✅ verified |
+| Java (s9api, no JAXB) | [`invocation/RunXQuery.java`](invocation/RunXQuery.java) | ✅ verified (via Maven Wrapper) |
 | Python | [`invocation/run_xquery.py`](invocation/run_xquery.py) | needs `pip install saxonche` |
 | BaseX | see below | needs BaseX install |
 
+The Java runner is standalone & cross-platform via the committed Maven Wrapper
+(`./mvnw`, or `mvnw.cmd` on Windows), from the repo root. It serializes the
+result to stdout (redirect to capture):
+
 ```bash
-tools/fetch-tools.sh
+M="./mvnw -q -pl XQuery_Examples/invocation compile exec:java"
 SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
 
-# CLI — to stdout
-XQuery_Examples/invocation/run-xquery.sh XQuery_Examples/fund-summary.xq "$SRC"
+# to stdout
+$M -Dexec.args="XQuery_Examples/fund-summary.xq $SRC"
 
-# CLI — external variable + output file (Saxon Query: bare name=value)
-XQuery_Examples/invocation/run-xquery.sh XQuery_Examples/top-holdings.xq "$SRC" top.xml n=5
+# external variable; redirect stdout to a file
+$M -Dexec.args="XQuery_Examples/top-holdings.xq $SRC n=5" > top.xml
 
-# Java s9api
-SCP=.lib/Saxon-HE-12.5.jar:.lib/xmlresolver-5.2.2.jar:.lib/xmlresolver-5.2.2-data.jar
-javac -cp "$SCP" -d /tmp/xq XQuery_Examples/invocation/RunXQuery.java
-java  -cp "$SCP:/tmp/xq" RunXQuery XQuery_Examples/aggregate-by-assettype.xq "$SRC"
+$M -Dexec.args="XQuery_Examples/aggregate-by-assettype.xq $SRC"
 
 # BaseX (in-memory, binds the document and the external variable)
 basex -i "$SRC" -bn=5 XQuery_Examples/top-holdings.xq
