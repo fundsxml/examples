@@ -37,7 +37,7 @@ locations. Items marked _(planned)_ are on the roadmap (see
 | CI (validate all samples) | GitHub Actions | [.github/workflows/ci.yml](./.github/workflows/) | ✅ |
 | XQuery analytics (aggregation, top-holdings, look-through) | Saxon CLI/Java, Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) | ✅ |
 | XML signature sign/verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) | ✅ |
-| Database load ↔ generate | Oracle/SQL Server/Postgres (code only) | `Database_Integration/` | _(planned)_ |
+| Database load ↔ generate | SQLite (verified) + Oracle/SQL Server/Postgres (code) | [Database_Integration/](./Database_Integration/) | ✅ |
 | Large-file/stream processing | StAX/SAX/lxml iterparse | `Large_File_Processing/` | _(planned)_ |
 
 ## Repository Structure
