@@ -44,5 +44,14 @@ fetch "${M2}/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0.jar" "${LIB}/common
 fetch "${M2}/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar"     "${LIB}/slf4j-api-1.7.32.jar"
 fetch "${M2}/org/slf4j/slf4j-nop/1.7.32/slf4j-nop-1.7.32.jar"     "${LIB}/slf4j-nop-1.7.32.jar"
 
+# --- Apache Santuario (XML Signature, Phase 3) ------------------------------
+# xmlsec 4.0.4 runtime needs commons-codec; slf4j-api for logging (+ a no-op
+# binding to silence "no SLF4J providers" on the console).
+fetch "${M2}/org/apache/santuario/xmlsec/4.0.4/xmlsec-4.0.4.jar"   "${LIB}/xmlsec-4.0.4.jar"
+fetch "${M2}/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar" "${LIB}/commons-codec-1.18.0.jar"
+fetch "${M2}/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar"      "${LIB}/slf4j-api-2.0.17.jar"
+fetch "${M2}/org/slf4j/slf4j-nop/2.0.17/slf4j-nop-2.0.17.jar"      "${LIB}/slf4j-nop-2.0.17.jar"
+
 echo "SAXON_CP=${LIB}/Saxon-HE-12.5.jar:${LIB}/xmlresolver-5.2.2.jar:${LIB}/xmlresolver-5.2.2-data.jar"
 echo "SCHXSLT_CP=${LIB}/schxslt-cli-1.10.1.jar:${LIB}/commons-cli-1.5.0.jar:${LIB}/slf4j-api-1.7.32.jar:${LIB}/slf4j-nop-1.7.32.jar"
+echo "SANTUARIO_CP=${LIB}/xmlsec-4.0.4.jar:${LIB}/commons-codec-1.18.0.jar:${LIB}/slf4j-api-2.0.17.jar:${LIB}/slf4j-nop-2.0.17.jar"
