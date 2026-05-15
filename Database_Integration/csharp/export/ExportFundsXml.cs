@@ -1,37 +1,29 @@
 // =============================================================================
-// FundsXML <-> relational database — runnable reference (C# / .NET, SQLite).
+// EXPORT  —  relational database  ->  FundsXML file  (C# / .NET, SQLite).
 //
-// PURPOSE
-//   Standalone, copy-me example of BOTH directions (import a FundsXML file into
-//   the relational schema, export it back). Over-commented on purpose so it
-//   doubles as documentation for your own implementation.
+// Standalone, copy-me example of ONE direction (DB -> FundsXML). The reverse
+// is a separate project, ../import/. Over-commented as documentation.
 //
-// DB SCHEMA  ../ddl/schema.sql  (document -> fund -> portfolio -> position;
-//   share_class per fund; asset document-scoped).
+// DB SCHEMA  ../../ddl/schema.sql  (already populated by ../import/).
 //
 // RUN
-//   dotnet run --project Database_Integration/csharp -- \
-//     roundtrip FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml out.xml
-//   commands: init <db> | import <db> <xml> | export <db> <docId> <out> |
-//             roundtrip <xml> <out>
+//   dotnet run --project Database_Integration/csharp/import -- fx.db some.xml
+//   dotnet run --project Database_Integration/csharp/export -- \
+//     fx.db FUNDSXML_MULTI_1 out.xml
 //
-// DEPENDENCIES
-//   Microsoft.Data.Sqlite (bundles native SQLite) + System.Xml in the BCL.
-//   No XSD data-binding: System.Xml DOM/XPath keeps it small and
-//   version-tolerant (FundsXML 4.x is backward compatible).
+// DEPENDENCIES  Microsoft.Data.Sqlite + System.Xml (BCL).
 //
-// FUNDSXML ASSUMPTIONS
-//   * No XML namespace -> bare element names in XPath.
-//   * Many <Fund>/<Portfolio>/<Position>: all iterated; 1-based *_seq columns
-//     preserve order so the round-trip compares equal (../tools/xml_equiv.py).
-//   * Positions link to AssetMasterData by shared <UniqueID> -> `asset` is
-//     document-scoped.
-//   * Export normalized to the 4.2.9 schema URL; constants the model does not
-//     store (TotalAssetNature=OFFICIAL, Price ActionCode=C / PriceNature=
-//     OFFICIAL) are reproduced verbatim.
-//
-// SECURITY
-//   XmlReaderSettings: DtdProcessing.Prohibit + XmlResolver=null  (no XXE).
+// FUNDSXML NOTES
+//   * No XML namespace -> plain element names.
+//   * xsi:noNamespaceSchemaLocation MUST be created in the XMLSchema-instance
+//     namespace (a plain SetAttribute drops the prefix and a validator then
+//     rejects it) -> CreateAttribute("xsi", ..., XsiNs).
+//   * Constants the model does not store (TotalAssetNature=OFFICIAL, Price
+//     ActionCode=C / PriceNature=OFFICIAL) reproduced verbatim so the
+//     round-trip compares equal (../../tools/xml_equiv.py, always paired with
+//     XSD validation).
+//   * ORDER BY the 1-based *_seq columns reproduces the original order of
+//     multiple funds / portfolios / positions.
 // =============================================================================
 using System;
 using System.Globalization;
@@ -39,12 +31,12 @@ using System.IO;
 using System.Xml;
 using Microsoft.Data.Sqlite;
 
-internal static class FundsXmlDb
+internal static class ExportFundsXml
 {
     const string SchemaUrl =
         "https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd";
+    const string XsiNs = "http://www.w3.org/2001/XMLSchema-instance";
 
-    // Position instrument-class element + its mandatory quantity child.
     static readonly System.Collections.Generic.HashSet<string> PositionKinds =
         new() { "Equity", "Bond", "ShareClass", "Warrant", "Certificate",
                 "Option", "Future", "FXForward", "Swap", "Repo", "RealEstate",
@@ -57,17 +49,6 @@ internal static class FundsXmlDb
 
     static string Inv(double v) => v.ToString("0.00", CultureInfo.InvariantCulture);
 
-    // ---- helpers -----------------------------------------------------------
-    static string? T(XmlNode ctx, string xpath)
-    {
-        var n = ctx.SelectSingleNode(xpath);
-        return string.IsNullOrEmpty(n?.InnerText) ? null : n!.InnerText;
-    }
-
-    static object DbNum(string? s) =>
-        string.IsNullOrWhiteSpace(s) ? DBNull.Value
-            : double.Parse(s, CultureInfo.InvariantCulture);
-
     static XmlElement El(XmlDocument doc, XmlNode parent, string tag,
                          string? text = null)
     {
@@ -77,157 +58,6 @@ internal static class FundsXmlDb
         return e;
     }
 
-    static SqliteConnection Open(string db)
-    {
-        var c = new SqliteConnection($"Data Source={db}");
-        c.Open();
-        using var pragma = c.CreateCommand();
-        pragma.CommandText = "PRAGMA foreign_keys = ON";
-        pragma.ExecuteNonQuery();
-        return c;
-    }
-
-    static void Exec(SqliteConnection c, string sql)
-    {
-        using var cmd = c.CreateCommand();
-        cmd.CommandText = sql;
-        cmd.ExecuteNonQuery();
-    }
-
-    // Bind helper: positional @p0,@p1,... mirrors the other languages' "?".
-    static void Run(SqliteConnection c, string sql, params object?[] ps)
-    {
-        using var cmd = c.CreateCommand();
-        cmd.CommandText = sql;
-        for (int i = 0; i < ps.Length; i++)
-            cmd.Parameters.AddWithValue($"@p{i}", ps[i] ?? DBNull.Value);
-        cmd.ExecuteNonQuery();
-    }
-
-    static XmlDocument ParseSecure(string xml)
-    {
-        var settings = new XmlReaderSettings
-        {
-            DtdProcessing = DtdProcessing.Prohibit, // reject DOCTYPE (XXE)
-            XmlResolver = null                      // no external entities
-        };
-        var doc = new XmlDocument();
-        using var r = XmlReader.Create(xml, settings);
-        doc.Load(r);
-        return doc;
-    }
-
-    static string DdlPath()
-    {
-        // Works whether run from repo root or the csharp/ project dir.
-        foreach (var p in new[] { Path.Combine("Database_Integration", "ddl",
-                     "schema.sql"), Path.Combine("..", "ddl", "schema.sql") })
-            if (File.Exists(p)) return p;
-        throw new FileNotFoundException("ddl/schema.sql not found");
-    }
-
-    static void Init(string db)
-    {
-        // Strip "--" line comments (no string literals in the DDL) then run
-        // each ";"-separated statement.
-        var lines = File.ReadAllLines(DdlPath());
-        var sb = new System.Text.StringBuilder();
-        foreach (var line in lines)
-        {
-            int cut = line.IndexOf("--", StringComparison.Ordinal);
-            sb.AppendLine(cut >= 0 ? line[..cut] : line);
-        }
-        using var c = Open(db);
-        foreach (var stmt in sb.ToString().Split(';'))
-            if (stmt.Trim().Length > 0) Exec(c, stmt);
-    }
-
-    // ---- import : FundsXML -> rows -----------------------------------------
-    static string DoImport(string db, string xml)
-    {
-        var doc = ParseSecure(xml);
-        var cd = doc.SelectSingleNode("/FundsXML4/ControlData")!;
-        var docId = T(cd, "UniqueDocumentID")!;
-
-        using var c = Open(db);
-        using var tx = c.BeginTransaction();
-
-        Run(c, "INSERT INTO document VALUES (@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)",
-            docId, T(cd, "DocumentGenerated"), T(cd, "Version"),
-            T(cd, "ContentDate"), T(cd, "DataOperation"),
-            T(cd, "DataSupplier/SystemCountry"), T(cd, "DataSupplier/Short"),
-            T(cd, "DataSupplier/Name"), T(cd, "DataSupplier/Type"));
-
-        var funds = doc.SelectNodes("/FundsXML4/Funds/Fund")!;
-        for (int fi = 0; fi < funds.Count; fi++)
-        {
-            var fund = funds[fi]!;
-            int fundSeq = fi + 1;                       // 1-based doc order
-            var ccy = T(fund, "Currency")!;
-            var tav = fund.SelectSingleNode(
-                "FundDynamicData/TotalAssetValues/TotalAssetValue")!;
-            Run(c, "INSERT INTO fund VALUES (@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7)",
-                docId, fundSeq, T(fund, "Identifiers/LEI"),
-                T(fund, "Names/OfficialName"), ccy,
-                T(fund, "SingleFundFlag"), T(tav, "NavDate"),
-                double.Parse(T(tav,
-                    $"TotalNetAssetValue/Amount[@ccy='{ccy}']")!,
-                    CultureInfo.InvariantCulture));
-
-            var scs = fund.SelectNodes("SingleFund/ShareClasses/ShareClass")!;
-            foreach (XmlNode sc in scs)
-                Run(c, "INSERT INTO share_class VALUES (@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7)",
-                    docId, fundSeq, T(sc, "Identifiers/ISIN"),
-                    T(sc, "Names/OfficialName"), T(sc, "Currency"),
-                    DbNum(T(sc, "Prices/Price/NavPrice")),
-                    DbNum(T(sc, $"TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy='{ccy}']")),
-                    DbNum(T(sc, "TotalAssetValues/TotalAssetValue/SharesOutstanding")));
-
-            var ports = fund.SelectNodes(
-                "FundDynamicData/Portfolios/Portfolio")!;
-            for (int pi = 0; pi < ports.Count; pi++)
-            {
-                var port = ports[pi]!;
-                int portSeq = pi + 1;
-                Run(c, "INSERT INTO portfolio VALUES (@p0,@p1,@p2,@p3)",
-                    docId, fundSeq, portSeq, T(port, "NavDate"));
-                var poss = port.SelectNodes("Positions/Position")!;
-                for (int qi = 0; qi < poss.Count; qi++)
-                {
-                    var pos = poss[qi]!;
-                    string? kind = null;
-                    foreach (XmlNode ch in pos.ChildNodes)
-                        if (ch.NodeType == XmlNodeType.Element
-                            && PositionKinds.Contains(ch.Name))
-                        { kind = ch.Name; break; }
-                    object qty = (kind != null && QtyElem.ContainsKey(kind))
-                        ? DbNum(T(pos, $"{kind}/{QtyElem[kind]}"))
-                        : DBNull.Value;
-                    Run(c, "INSERT INTO position VALUES (@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10)",
-                        docId, fundSeq, portSeq, qi + 1,
-                        T(pos, "UniqueID"), T(pos, "Identifiers/ISIN"),
-                        T(pos, "Currency"),
-                        double.Parse(T(pos, $"TotalValue/Amount[@ccy='{ccy}']")!,
-                            CultureInfo.InvariantCulture),
-                        double.Parse(T(pos, "TotalPercentage")!,
-                            CultureInfo.InvariantCulture),
-                        kind, qty);
-                }
-            }
-        }
-
-        var assets = doc.SelectNodes("/FundsXML4/AssetMasterData/Asset")!;
-        foreach (XmlNode a in assets)
-            Run(c, "INSERT INTO asset VALUES (@p0,@p1,@p2,@p3,@p4,@p5,@p6)",
-                docId, T(a, "UniqueID"), T(a, "Identifiers/ISIN"),
-                T(a, "Name"), T(a, "AssetType"), T(a, "Currency"),
-                T(a, "Country"));
-
-        tx.Commit();
-        return docId;
-    }
-
-    // ---- export : rows -> FundsXML ----------------------------------------
     static SqliteDataReader Q(SqliteConnection c, string sql,
                               params object?[] ps)
     {
@@ -237,7 +67,6 @@ internal static class FundsXmlDb
             cmd.Parameters.AddWithValue($"@p{i}", ps[i] ?? DBNull.Value);
         return cmd.ExecuteReader();
     }
-
     static string? S(SqliteDataReader r, string col) =>
         r.IsDBNull(r.GetOrdinal(col)) ? null : r.GetString(r.GetOrdinal(col));
     static double D(SqliteDataReader r, string col) =>
@@ -246,16 +75,22 @@ internal static class FundsXmlDb
     static bool Null(SqliteDataReader r, string col) =>
         r.IsDBNull(r.GetOrdinal(col));
 
-    static void Export(string db, string docId, string outPath)
+    static int Main(string[] args)
     {
-        using var c = Open(db);
+        if (args.Length != 3)
+        {
+            Console.Error.WriteLine(
+                "usage: ExportFundsXml <db> <document_id> <out.xml>");
+            return 2;
+        }
+        string db = args[0], docId = args[1], outPath = args[2];
+
+        using var c = new SqliteConnection($"Data Source={db}");
+        c.Open();
+
         var doc = new XmlDocument();
         var root = doc.CreateElement("FundsXML4");
-        // xsi:noNamespaceSchemaLocation must really live in the
-        // XMLSchema-instance namespace, otherwise a validator rejects it
-        // ("attribute 'noNamespaceSchemaLocation' is not allowed"). Create it
-        // as a properly namespaced attribute (this also emits xmlns:xsi).
-        const string XsiNs = "http://www.w3.org/2001/XMLSchema-instance";
+        // Must really be in the xsi namespace, else a validator rejects it.
         var sl = doc.CreateAttribute("xsi", "noNamespaceSchemaLocation", XsiNs);
         sl.Value = SchemaUrl;
         root.Attributes.Append(sl);
@@ -459,48 +294,11 @@ internal static class FundsXmlDb
             }
         }
 
-        var settings = new XmlWriterSettings
+        var ws = new XmlWriterSettings
             { Indent = true, Encoding = new System.Text.UTF8Encoding(false) };
-        using var w = XmlWriter.Create(outPath, settings);
+        using var w = XmlWriter.Create(outPath, ws);
         doc.Save(w);
-    }
-
-    static int Main(string[] args)
-    {
-        if (args.Length == 0)
-        {
-            Console.Error.WriteLine("usage: init|import|export|roundtrip ...");
-            return 2;
-        }
-        switch (args[0])
-        {
-            case "init":
-                Init(args[1]);
-                break;
-            case "import":
-                Console.WriteLine("imported " + DoImport(args[1], args[2]));
-                break;
-            case "export":
-                Export(args[1], args[2], args[3]);
-                Console.WriteLine("wrote " + args[3]);
-                break;
-            case "roundtrip":
-            {
-                // import then export THROUGH the DB (the required test).
-                var tmp = Path.GetTempFileName();
-                File.Delete(tmp);
-                Init(tmp);
-                var id = DoImport(tmp, args[1]);
-                Export(tmp, id, args[2]);
-                File.Delete(tmp);
-                Console.WriteLine($"round-trip ok: {args[1]} -> DB -> "
-                    + $"{args[2]} (doc {id})");
-                break;
-            }
-            default:
-                Console.Error.WriteLine("unknown: " + args[0]);
-                return 2;
-        }
+        Console.WriteLine("wrote " + outPath);
         return 0;
     }
 }
