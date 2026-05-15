@@ -139,6 +139,24 @@ jobs:
           print("round-trip figures preserved:", nav(r), npos(r), spct(r))
           PY
 
+      - name: Large-file - streaming aggregate / split / delta (constant memory)
+        run: |
+          set -e
+          python3 -m pip install --quiet lxml
+          P=Large_File_Processing/python
+          python3 $P/make_large_sample.py big.xml 30000
+          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd big.xml
+          python3 $P/stream_aggregate.py big.xml | tee agg.txt
+          grep -q '^positions      : 30000$' agg.txt
+          grep -q '^sum value (EUR): 30000000.00$' agg.txt
+          javac -d /tmp/lf Large_File_Processing/java/StreamAggregate.java
+          java -Xmx64m -cp /tmp/lf StreamAggregate big.xml | tee aggj.txt
+          grep -q '^positions      : 30000$' aggj.txt
+          python3 $P/split.py big.xml chunks/ 10000
+          test "$(ls chunks/chunk-*.xml | wc -l)" = "3"
+          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd chunks/chunk-0001.xml
+          python3 $P/delta_diff.py big.xml big.xml   # identical -> exit 0
+
       - name: Regression - legacy XSLT 1.0 report still runs
         run: |
           xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
