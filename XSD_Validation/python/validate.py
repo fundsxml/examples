@@ -1,34 +1,27 @@
 #!/usr/bin/env python3
 """XSD validation in Python via lxml.
 
-Usage:  python XSD_Validation/python/validate.py <version> <xml-file>
+Standalone & cross-platform — no bash, no prior tool step (works on Windows).
+After `pip install -e .` (see pyproject.toml):
+
+  python XSD_Validation/python/validate.py <version> <xml-file>
 Exit:   0 = valid, 1 = invalid, 2 = usage/setup error
 
-Validates against the official released schema, materialized locally by
-tools/fetch-schema.sh (handles the GitHub 302 redirect and the relative
-xmldsig-core-schema.xsd import that FundsXML 4.2.9+ requires).
+The official released schema is obtained by this program itself via the shared
+`fundsxml_schema` resolver: $FUNDSXML_SCHEMA_DIR (offline/corporate escape
+hatch) -> .schema-cache/ -> download from the official GitHub release
+(following the 302; fetching the relative xmldsig-core-schema.xsd sibling that
+FundsXML 4.2.9+ imports). The official release stays the source of truth.
 
 Security: the XML parser is hardened against XXE / entity-expansion
 (no_network=True, resolve_entities=False, no DTD load). FundsXML needs none
 of those features.
 """
-import subprocess
 import sys
-from pathlib import Path
 
 from lxml import etree
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-
-
-def ensure_schema(version: str) -> Path:
-    schema = REPO_ROOT / ".schema-cache" / version / "FundsXML.xsd"
-    if not schema.is_file():
-        print(f"schema not cached; fetching official release {version}...",
-              file=sys.stderr)
-        subprocess.run([str(REPO_ROOT / "tools" / "fetch-schema.sh"), version],
-                       check=True, stdout=subprocess.DEVNULL)
-    return schema
+from fundsxml_schema import resolve_schema
 
 
 def main() -> int:
@@ -37,7 +30,7 @@ def main() -> int:
         return 2
     version, xml_path = sys.argv[1], sys.argv[2]
 
-    schema_path = ensure_schema(version)
+    schema_path = resolve_schema(version)
 
     # Hardened parser: no network, no entity resolution, no huge-tree blowups.
     safe = etree.XMLParser(no_network=True, resolve_entities=False,

@@ -133,9 +133,10 @@ xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.x
 ### Option 3: Python
 
 ```bash
-# Install dependencies
-pip install lxml        # XSLT 1.0
-pip install saxonche    # XSLT 2.0/3.0
+# Install all Python deps once (lxml + saxonche), cross-platform:
+python -m venv .venv
+. .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -e .              # see pyproject.toml
 
 # Run transformation
 python -c "
