@@ -19,7 +19,7 @@ Company-internal DQ rules live next door in
 | Stack | Entry point | Status |
 |-------|-------------|--------|
 | Java (s9api, no JAXB) | [`invocation/RunTransform.java`](invocation/RunTransform.java) | ✅ verified (via Maven Wrapper) |
-| Python | [`invocation/run_transform.py`](invocation/run_transform.py) | needs `pip install saxonche` |
+| Python | [`invocation/run_transform.py`](invocation/run_transform.py) | standalone via repo venv (`pip install -e .`) |
 | Node.js | see below | needs `npm i xslt3` (saxon-js) |
 
 The Java runner is standalone & cross-platform via the committed Maven Wrapper

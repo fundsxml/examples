@@ -1,0 +1,49 @@
+# Python build / dependency manifest for the FundsXML reference examples.
+#
+# WHY THIS EXISTS
+# ===============
+# The Python examples used to rely on ad-hoc `pip install lxml` / `pip install
+# saxonche` and on tools/fetch-schema.sh (bash) to materialise the XSD. That is
+# neither standalone nor cross-platform. This manifest makes the Python stack
+# install with one idiomatic, OS-agnostic command and ships the in-language
+# schema resolver as an importable module.
+#
+# STANDALONE BOOTSTRAP (any OS; venv works on Windows too)
+# =======================================================
+#   python -m venv .venv
+#   # Linux/macOS:  . .venv/bin/activate      Windows:  .venv\Scripts\activate
+#   pip install -e .
+# Then run any example with the venv's Python, e.g.:
+#   python XSD_Validation/python/validate.py 4.2.9 \
+#       FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+#
+# `pip install -e .` exposes the top-level module `fundsxml_schema`
+# (tools/fundsxml_schema.py): $FUNDSXML_SCHEMA_DIR -> .schema-cache -> official
+# release download. No bash, no prior step, official release stays the source
+# of truth (no committed catalog).
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fundsxml-examples"
+version = "1.0.0"
+description = "Standalone, cross-platform Python deps + schema resolver for the FundsXML reference examples"
+requires-python = ">=3.9"
+dependencies = [
+    # XSD validation, iterparse streaming, DOM round-trips, the xml_equiv
+    # comparator, JSON data binding, large-file split/delta.
+    "lxml>=4.9",
+    # Saxon's Python API — the XSLT 2.0 / XQuery 3.1 / Schematron(xslt2)
+    # examples need a Saxon-class engine (lxml is XSLT 1.0 only).
+    "saxonche>=12.4",
+]
+
+[tool.setuptools]
+# Single-module distribution: expose tools/fundsxml_schema.py as the top-level
+# importable `fundsxml_schema`. Nothing else in the repo is packaged.
+py-modules = ["fundsxml_schema"]
+
+[tool.setuptools.package-dir]
+"" = "tools"

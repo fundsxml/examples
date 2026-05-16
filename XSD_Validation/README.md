@@ -21,12 +21,20 @@ Two realities every example must deal with:
 2. **Relative import.** From release 4.2.9 on, `FundsXML.xsd` imports
    `xmldsig-core-schema.xsd` via a *relative* path; both files must sit together.
 
-`tools/fetch-schema.sh <version>` resolves both (proxy-aware via curl) and
-materializes the released schema into `.schema-cache/<version>/`. The examples
-validate against that materialized release. Run it once up front:
+**Schema resolution (same convention in every stack):**
+`$FUNDSXML_SCHEMA_DIR` (a hand-placed copy — offline / corporate-network
+escape hatch) → `.schema-cache/<version>/` → download from the official
+GitHub release (302-aware; also pulls the imported `xmldsig-core-schema.xsd`),
+caching into `.schema-cache/`. The official release stays the source of truth
+— no committed catalog.
+
+The **Java** (`XsdValidate`) and **Python** (`validate.py`) examples do this
+themselves — standalone, cross-platform, no prior step. `tools/fetch-schema.sh`
+still seeds the cache for the CLI/xmllint and (until their phases land)
+.NET/PowerShell stacks:
 
 ```bash
-tools/fetch-schema.sh 4.2.9
+tools/fetch-schema.sh 4.2.9          # only needed for the CLI/.NET/PS stacks
 ```
 
 ## Security
@@ -40,8 +48,8 @@ Every example disables external entity resolution / DTD loading
 | Stack | Script | API | Runnable on this box |
 |-------|--------|-----|----------------------|
 | CLI | [`cli/validate.sh`](cli/validate.sh) | `xmllint` (+ Saxon note) | ✅ |
-| Python | [`python/validate.py`](python/validate.py) | `lxml.etree.XMLSchema` | ✅ |
-| Java | [`java/XsdValidate.java`](java/XsdValidate.java) | `javax.xml.validation` | ✅ (single-file, JDK 11+) |
+| Python | [`python/validate.py`](python/validate.py) | `lxml.etree.XMLSchema` | ✅ standalone (`pip install -e .`) |
+| Java | [`java/XsdValidate.java`](java/XsdValidate.java) | `javax.xml.validation` | ✅ standalone (`./mvnw`) |
 | .NET/C# | [`dotnet/XsdValidate.cs`](dotnet/XsdValidate.cs) | `XmlSchemaSet` | needs .NET SDK |
 | PowerShell | [`powershell/Validate-FundsXml.ps1`](powershell/Validate-FundsXml.ps1) | `System.Xml.Schema` | needs PowerShell |
 
@@ -50,8 +58,15 @@ invalid, prints errors to stderr.
 
 ## Quick check (positive + negative)
 
+Python (standalone — resolves the schema itself; `pip install -e .` once, see
+the repo `pyproject.toml`):
+
 ```bash
-tools/fetch-schema.sh 4.2.9
-XSD_Validation/cli/validate.sh 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml   # exit 0
-XSD_Validation/cli/validate.sh 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml          # exit 1
+python -m venv .venv && . .venv/bin/activate && pip install -e .   # Windows: .venv\Scripts\activate
+python XSD_Validation/python/validate.py 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml  # exit 0
+python XSD_Validation/python/validate.py 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml         # exit 1
 ```
+
+Java (standalone): `./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="4.2.9 <file>"`
+(`mvnw.cmd` on Windows). The CLI/`xmllint` stack still uses
+`tools/fetch-schema.sh 4.2.9` until its phase lands.

@@ -55,15 +55,18 @@ Please read this before opening a pull request.
 
 Run what you changed and confirm it actually works — no "should pass" claims.
 
-The Java examples build standalone via the committed Maven Wrapper (`./mvnw`,
-or `mvnw.cmd` on Windows) — dependencies come from Maven Central, there is no
-`fetch-tools.sh` and no `.lib/`.
+Java examples build standalone via the committed Maven Wrapper (`./mvnw`, or
+`mvnw.cmd` on Windows). Python examples install once into a venv from
+`pyproject.toml` and resolve the XSD themselves. Neither needs `fetch-tools.sh`
+(gone) and Python no longer needs `fetch-schema.sh`.
 
 ```bash
-tools/fetch-schema.sh 4.2.9            # XSD cache for the xmllint/Python steps
-                                       #   (the Java examples also resolve the
-                                       #   XSD themselves; see XsdValidate)
+# Python stack (cross-platform; Windows: .venv\Scripts\activate)
+python -m venv .venv && . .venv/bin/activate && pip install -e .
+python XSD_Validation/python/validate.py 4.2.9 <your-sample>.xml   # self-resolves the XSD
 
+# xmllint still uses the cached schema (CLI stack, removed in a later phase)
+tools/fetch-schema.sh 4.2.9
 xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd <your-sample>.xml
 
 # Schematron via the Maven Wrapper (positive sample -> exit 0)
@@ -71,10 +74,10 @@ xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd <your-sample>.xml
   compile exec:java \
   -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch <sample>.xml"
 
-# DB round-trip example:
-python3 Database_Integration/python/import_fundsxml.py fx.db <sample>.xml
-python3 Database_Integration/python/export_fundsxml.py fx.db <docId> out.xml
-python3 Database_Integration/tools/xml_equiv.py <sample>.xml out.xml
+# DB round-trip example (venv python):
+python Database_Integration/python/import_fundsxml.py fx.db <sample>.xml
+python Database_Integration/python/export_fundsxml.py fx.db <docId> out.xml
+python Database_Integration/tools/xml_equiv.py <sample>.xml out.xml
 ```
 
 Toolchain notes: the SchXslt CLI jar bundles its own Saxon — do **not** add the
