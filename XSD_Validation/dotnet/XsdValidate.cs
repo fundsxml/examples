@@ -1,13 +1,16 @@
 // XSD validation in .NET / C# via System.Xml.Schema.
 //
-// Run as a single-file program (no project needed) with the .NET SDK:
+// Standalone & cross-platform (no bash, no prior tool step) with the .NET SDK,
+// run from the repo root:
 //   dotnet run --project XSD_Validation/dotnet -- <version> <xml-file>
-// or compile XsdValidate.cs into any console app. Exit: 0 valid, 1 invalid,
-// 2 usage/setup error.
+// Exit: 0 valid, 1 invalid, 2 usage/setup error.
 //
-// Validates against the official released schema, materialized locally by
-// tools/fetch-schema.sh (handles the GitHub 302 redirect and the relative
-// xmldsig-core-schema.xsd import that FundsXML 4.2.9+ requires).
+// The official released schema is obtained by this example itself via the
+// sibling SchemaResolver (see SchemaResolver.cs): $FUNDSXML_SCHEMA_DIR
+// (offline/corporate escape hatch) -> .schema-cache/ -> download from the
+// official GitHub release (following the 302; fetching the relative
+// xmldsig-core-schema.xsd sibling FundsXML 4.2.9+ imports). The official
+// release stays the source of truth — no committed catalog.
 //
 // Security: XmlResolver = null on the reader closes XXE / external-entity
 // vectors. An XmlUrlResolver is used ONLY to resolve the schema set's local
@@ -31,15 +34,14 @@ internal static class XsdValidate
         string version = args[0];
         string xmlFile = args[1];
 
-        string repoRoot = Path.GetFullPath(
-            Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
-        string schemaPath = Path.Combine(
-            repoRoot, ".schema-cache", version, "FundsXML.xsd");
-
-        if (!File.Exists(schemaPath))
+        string schemaPath;
+        try
         {
-            Console.Error.WriteLine(
-                $"schema not cached; run: tools/fetch-schema.sh {version}");
+            schemaPath = SchemaResolver.Resolve(version);
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"schema resolution failed: {ex.Message}");
             return 2;
         }
 
