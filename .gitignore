@@ -41,9 +41,12 @@ fund.json
 *.db
 *.svrl
 
-# Python bytecode cache
+# Python virtualenv (created by `python -m venv .venv`) + bytecode cache +
+# editable-install metadata. Deps come from pyproject.toml via pip.
+.venv/
 __pycache__/
 *.pyc
+*.egg-info/
 
 # Node example deps (Database_Integration/javascript) — restored via npm install
 node_modules/
@@ -52,3 +55,6 @@ package-lock.json
 # .NET build output (Database_Integration/csharp) — restored via dotnet build
 bin/
 obj/
+
+# Claude Code local session state
+.claude/

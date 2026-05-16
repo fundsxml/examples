@@ -19,7 +19,7 @@ no XML namespace — queries use bare element names, so they work unchanged on t
 | Stack | Entry point | Status |
 |-------|-------------|--------|
 | Java (s9api, no JAXB) | [`invocation/RunXQuery.java`](invocation/RunXQuery.java) | ✅ verified (via Maven Wrapper) |
-| Python | [`invocation/run_xquery.py`](invocation/run_xquery.py) | needs `pip install saxonche` |
+| Python | [`invocation/run_xquery.py`](invocation/run_xquery.py) | standalone via repo venv (`pip install -e .`) |
 | BaseX | see below | needs BaseX install |
 
 The Java runner is standalone & cross-platform via the committed Maven Wrapper
