@@ -1,19 +1,20 @@
 // Schematron validation in .NET / C# via Saxon for .NET (Saxonica SaxonHE).
 //
-//   dotnet add package SaxonHE        # Saxon 12.x for .NET
+//   # add the Saxon-HE-for-.NET package matching your TFM (see .csproj note)
 //   dotnet run --project Schematron_DataQuality_Checks/Basic_Checks/invocation \
-//       -- ../basic_checks.sch document.xml
+//       -- Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch document.xml
 // Exit: 0 = no error-role failed-assert, 1 = at least one, 2 = setup error.
 //
-// basic_checks.sch uses queryBinding="xslt2"; Saxon supplies the XSLT 3.0
-// engine. The SchXslt pipeline stylesheets are reused from the SchXslt CLI jar
-// (this .NET stack resolves it via NuGet once migrated; the Java example
-// already runs standalone via the Maven Wrapper): the whole xslt/ tree is extracted so
-// the pipeline's relative imports resolve, then compile .sch -> SVRL stylesheet
+// basic_checks.sch uses queryBinding="xslt2"; the SaxonHE NuGet package
+// supplies the XSLT 3.0 engine (resolved by `dotnet build`, standalone). The
+// SchXslt pipeline stylesheets have no NuGet/.NET distribution, so they are
+// reused from the SchXslt CLI jar, located via $FUNDSXML_SCHXSLT_JAR or the
+// Maven local repo (see below); the whole xslt/ tree is extracted so the
+// pipeline's relative imports resolve, then compile .sch -> SVRL stylesheet
 // -> apply to instance -> SVRL, then classify (same logic as svrl-summary.py).
 //
-// NOTE: reference implementation — not executed in this environment (no .NET
-// SDK). The flow mirrors the verified Python/CLI paths exactly.
+// NOTE: reference variant. The Java Schematron example is the verified, fully
+// standalone path (Maven Wrapper). The flow here mirrors it exactly.
 
 using System;
 using System.IO;
@@ -38,15 +39,29 @@ internal static class SchematronValidate
         string failOn = args.SkipWhile(a => a != "--fail-on")
                             .Skip(1).FirstOrDefault() ?? "error";
 
-        string repoRoot = Path.GetFullPath(Path.Combine(
-            AppContext.BaseDirectory, "..", "..", "..", "..", "..", ".."));
-        string cliJar = Path.Combine(repoRoot, ".lib", "schxslt-cli-1.10.1.jar");
+        // SchXslt has no NuGet/.NET distribution, so this (reference) .NET
+        // stack locates the SchXslt CLI jar standalone, in order:
+        //   1. $FUNDSXML_SCHXSLT_JAR (explicit path)
+        //   2. the Maven local repo — the Java Schematron module declares
+        //      name.dmaus.schxslt:cli:1.10.1, so `./mvnw -pl Schematron_
+        //      DataQuality_Checks/Basic_Checks/invocation compile` populates it.
+        const string schxsltVersion = "1.10.1";
+        string m2 = Environment.GetEnvironmentVariable("MAVEN_REPO_LOCAL")
+            ?? Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                ".m2", "repository");
+        string cliJar = Environment.GetEnvironmentVariable("FUNDSXML_SCHXSLT_JAR")
+            ?? Path.Combine(m2, "name", "dmaus", "schxslt", "cli",
+                schxsltVersion, $"cli-{schxsltVersion}.jar");
         if (!File.Exists(cliJar))
         {
             Console.Error.WriteLine(
-                "SchXslt jar missing (this .NET stack is migrated to NuGet in "
-                + "a later phase; the Java example already runs standalone via "
-                + "the Maven Wrapper)");
+                $"SchXslt jar not found at {cliJar}.\n"
+                + "Set $FUNDSXML_SCHXSLT_JAR, or populate the Maven local repo "
+                + "once with:\n  ./mvnw -q -pl Schematron_DataQuality_Checks/"
+                + "Basic_Checks/invocation compile\n"
+                + "(the Java Schematron example runs fully standalone via the "
+                + "Maven Wrapper and is the verified path.)");
             return 2;
         }
 

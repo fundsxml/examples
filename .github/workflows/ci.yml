@@ -93,6 +93,20 @@ jobs:
           fi
           echo "Python validate.py: positive ok, negative correctly rejected"
 
+      - name: .NET - XSD validation (in-language schema resolve)
+        run: |
+          set -e
+          D="dotnet run --project XSD_Validation/dotnet --"
+          # Cache is warm from the xmllint step: exercises the resolver's
+          # cache-hit path and the $FUNDSXML_SCHEMA_DIR env override.
+          $D 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          FUNDSXML_SCHEMA_DIR="$PWD/.schema-cache/4.1.0" \
+            $D 4.1.0 FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
+          if $D 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml; then
+            echo "::error::xsd-invalid unexpectedly validated (.NET)"; exit 1
+          fi
+          echo ".NET XsdValidate: positive ok, negative correctly rejected"
+
       # ---------------------------------------------------------------------
       # Java examples — built & run via the committed Maven Wrapper. The first
       # ./mvnw bootstraps Maven itself, then resolves all deps from Central.
