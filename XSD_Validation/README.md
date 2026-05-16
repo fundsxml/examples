@@ -28,13 +28,13 @@ GitHub release (302-aware; also pulls the imported `xmldsig-core-schema.xsd`),
 caching into `.schema-cache/`. The official release stays the source of truth
 — no committed catalog.
 
-The **Java** (`XsdValidate`) and **Python** (`validate.py`) examples do this
-themselves — standalone, cross-platform, no prior step. `tools/fetch-schema.sh`
-still seeds the cache for the CLI/xmllint and (until their phases land)
-.NET/PowerShell stacks:
+The **Java** (`XsdValidate`), **Python** (`validate.py`) and **.NET**
+(`XsdValidate.cs` + `SchemaResolver.cs`) examples do this themselves —
+standalone, cross-platform, no prior step. `tools/fetch-schema.sh` still seeds
+the cache for the CLI/xmllint and (until its phase lands) PowerShell stacks:
 
 ```bash
-tools/fetch-schema.sh 4.2.9          # only needed for the CLI/.NET/PS stacks
+tools/fetch-schema.sh 4.2.9          # only needed for the CLI/PowerShell stacks
 ```
 
 ## Security
@@ -50,7 +50,7 @@ Every example disables external entity resolution / DTD loading
 | CLI | [`cli/validate.sh`](cli/validate.sh) | `xmllint` (+ Saxon note) | ✅ |
 | Python | [`python/validate.py`](python/validate.py) | `lxml.etree.XMLSchema` | ✅ standalone (`pip install -e .`) |
 | Java | [`java/XsdValidate.java`](java/XsdValidate.java) | `javax.xml.validation` | ✅ standalone (`./mvnw`) |
-| .NET/C# | [`dotnet/XsdValidate.cs`](dotnet/XsdValidate.cs) | `XmlSchemaSet` | needs .NET SDK |
+| .NET/C# | [`dotnet/XsdValidate.cs`](dotnet/XsdValidate.cs) | `XmlSchemaSet` | ✅ standalone (`dotnet run`) |
 | PowerShell | [`powershell/Validate-FundsXml.ps1`](powershell/Validate-FundsXml.ps1) | `System.Xml.Schema` | needs PowerShell |
 
 Convention: each takes `<version> <xml-file>`, exits `0` on valid, `1` on
@@ -68,5 +68,10 @@ python XSD_Validation/python/validate.py 4.2.9 tests/fixtures/invalid/xsd-invali
 ```
 
 Java (standalone): `./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="4.2.9 <file>"`
-(`mvnw.cmd` on Windows). The CLI/`xmllint` stack still uses
-`tools/fetch-schema.sh 4.2.9` until its phase lands.
+(`mvnw.cmd` on Windows).
+
+.NET (standalone): `dotnet run --project XSD_Validation/dotnet -- 4.2.9 <file>`
+(exit 0 valid / 1 invalid).
+
+The CLI/`xmllint` stack still uses `tools/fetch-schema.sh 4.2.9` until its
+phase lands.
