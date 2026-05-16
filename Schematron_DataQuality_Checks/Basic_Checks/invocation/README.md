@@ -38,7 +38,7 @@ exits 1 on any failed-assert (including warnings).
 | Stack | File | Runnable on this box |
 |-------|------|----------------------|
 | Java (native) | [`SchematronValidate.java`](SchematronValidate.java) | ✅ verified (SchXslt Java API, via Maven Wrapper) |
-| Python | [`validate_schematron.py`](validate_schematron.py) | needs `pip install saxonche` |
+| Python | [`validate_schematron.py`](validate_schematron.py) | saxonche via repo venv (`pip install -e .`); SchXslt jar via `$FUNDSXML_SCHXSLT_JAR` or Maven local repo — reference variant |
 | .NET/C# | [`SchematronValidate.cs`](SchematronValidate.cs) | needs .NET SDK + `SaxonHE` package |
 | shared | [`svrl-summary.py`](svrl-summary.py) | ✅ classifier used by all + CI |
 

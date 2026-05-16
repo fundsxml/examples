@@ -196,10 +196,12 @@ implementation 'net.sf.saxon:Saxon-HE:12.4'
 
 ### Python
 
-#### lxml (XSLT 1.0)
+Install both engines once via the repo venv (cross-platform):
 ```bash
-pip install lxml
+python -m venv .venv && . .venv/bin/activate && pip install -e .
 ```
+
+#### lxml (XSLT 1.0)
 
 ```python
 from lxml import etree
@@ -214,9 +216,7 @@ with open("output.html", "wb") as f:
 ```
 
 #### saxonche (XSLT 2.0/3.0)
-```bash
-pip install saxonche
-```
+(installed by the `pip install -e .` above — `lxml` + `saxonche`)
 
 ```python
 from saxonche import PySaxonProcessor

@@ -68,6 +68,32 @@ jobs:
           echo "xsd-invalid correctly rejected"
 
       # ---------------------------------------------------------------------
+      # Python examples — one idiomatic, OS-agnostic install (venv + editable
+      # pyproject) replaces the old ad-hoc `pip install lxml`. This also
+      # exposes the `fundsxml_schema` resolver module to every Python script.
+      # ---------------------------------------------------------------------
+      - name: Python - venv & install (pyproject)
+        run: |
+          python -m venv .venv
+          .venv/bin/pip install --quiet --upgrade pip
+          .venv/bin/pip install --quiet -e .
+          .venv/bin/python -c "import lxml, saxonche, fundsxml_schema; print('python deps OK')"
+
+      - name: Python - XSD validation (in-language schema resolve)
+        run: |
+          set -e
+          V=".venv/bin/python XSD_Validation/python/validate.py"
+          # Cache is warm from the xmllint step: exercises the resolver's
+          # cache-hit path and the $FUNDSXML_SCHEMA_DIR env override.
+          $V 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          FUNDSXML_SCHEMA_DIR="$PWD/.schema-cache/4.1.0" \
+            $V 4.1.0 FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
+          if $V 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml; then
+            echo "::error::xsd-invalid unexpectedly validated (Python)"; exit 1
+          fi
+          echo "Python validate.py: positive ok, negative correctly rejected"
+
+      # ---------------------------------------------------------------------
       # Java examples — built & run via the committed Maven Wrapper. The first
       # ./mvnw bootstraps Maven itself, then resolves all deps from Central.
       # A repo-wide `compile` builds every module once so later `exec:java`
@@ -155,11 +181,11 @@ jobs:
       - name: DB integration - multi-fund import+export in 4 languages
         run: |
           set -e
-          python3 -m pip install --quiet lxml
+          PY=.venv/bin/python
           FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
           MX=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
           DOC=FUNDSXML_MULTI_1
-          EQ="python3 Database_Integration/tools/xml_equiv.py"
+          EQ="$PY Database_Integration/tools/xml_equiv.py"
           XSD=".schema-cache/4.2.9/FundsXML.xsd"
 
           # The multi-fund fixture must itself be schema-valid.
@@ -169,8 +195,8 @@ jobs:
           # exported file == input file (and is schema-valid).
 
           # Python
-          python3 Database_Integration/python/import_fundsxml.py py.db "$FX"
-          python3 Database_Integration/python/export_fundsxml.py py.db "$DOC" py.xml
+          $PY Database_Integration/python/import_fundsxml.py py.db "$FX"
+          $PY Database_Integration/python/export_fundsxml.py py.db "$DOC" py.xml
           xmllint --noout --nonet --schema "$XSD" py.xml
           $EQ "$FX" py.xml
 
@@ -198,19 +224,19 @@ jobs:
           $EQ py.xml java.xml && $EQ py.xml js.xml && $EQ py.xml cs.xml
 
           # Single-fund sample still imports+exports (lossy -> XSD-valid only).
-          python3 Database_Integration/python/import_fundsxml.py mx.db "$MX"
-          python3 Database_Integration/python/export_fundsxml.py mx.db FUNDSXML_FILE_1 mx.xml
+          $PY Database_Integration/python/import_fundsxml.py mx.db "$MX"
+          $PY Database_Integration/python/export_fundsxml.py mx.db FUNDSXML_FILE_1 mx.xml
           xmllint --noout --nonet --schema "$XSD" mx.xml
           echo "multi-fund import+export equivalent in python/java/javascript/csharp"
 
       - name: Large-file - streaming aggregate / split / delta (constant memory)
         run: |
           set -e
-          python3 -m pip install --quiet lxml
+          PY=.venv/bin/python
           P=Large_File_Processing/python
-          python3 $P/make_large_sample.py big.xml 30000
+          $PY $P/make_large_sample.py big.xml 30000
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd big.xml
-          python3 $P/stream_aggregate.py big.xml | tee agg.txt
+          $PY $P/stream_aggregate.py big.xml | tee agg.txt
           grep -q '^positions      : 30000$' agg.txt
           grep -q '^sum value (EUR): 30000000.00$' agg.txt
           # Java StreamAggregate (pure JDK) under a small heap proves the
@@ -218,24 +244,24 @@ jobs:
           MAVEN_OPTS=-Xmx64m ./mvnw -q -B -pl Large_File_Processing/java exec:java \
             -Dexec.args="big.xml" | tee aggj.txt
           grep -q '^positions      : 30000$' aggj.txt
-          python3 $P/split.py big.xml chunks/ 10000
+          $PY $P/split.py big.xml chunks/ 10000
           test "$(ls chunks/chunk-*.xml | wc -l)" = "3"
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd chunks/chunk-0001.xml
-          python3 $P/delta_diff.py big.xml big.xml   # identical -> exit 0
+          $PY $P/delta_diff.py big.xml big.xml   # identical -> exit 0
 
       - name: Data binding / JSON - round-trip + native Java binding
         run: |
           set -e
-          python3 -m pip install --quiet lxml
+          PY=.venv/bin/python
           SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          python3 Data_Binding_JSON/python/fundsxml_json.py roundtrip "$SRC" rj.xml
+          $PY Data_Binding_JSON/python/fundsxml_json.py roundtrip "$SRC" rj.xml
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rj.xml
           # Multi-fund JSON round-trip is lossless -> must be xml_equiv-equal.
           MF=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
-          python3 Data_Binding_JSON/python/fundsxml_json.py roundtrip "$MF" rjm.xml
+          $PY Data_Binding_JSON/python/fundsxml_json.py roundtrip "$MF" rjm.xml
           xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rjm.xml
-          python3 Database_Integration/tools/xml_equiv.py "$MF" rjm.xml
-          python3 - "$SRC" rj.xml <<'PY'
+          $PY Database_Integration/tools/xml_equiv.py "$MF" rjm.xml
+          $PY - "$SRC" rj.xml <<'PY'
           import re, sys
           o, r = (open(p).read() for p in sys.argv[1:3])
           nav = lambda x: re.search(r'<TotalNetAssetValue>\s*<Amount ccy="EUR">([0-9.]+)', x).group(1)
