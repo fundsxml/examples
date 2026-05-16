@@ -41,9 +41,9 @@ so a full generated model is heavy and brittle to maintain.
 | Python | `xsdata` | `xsdata --package fundsxml.model .schema-cache/4.2.9/FundsXML.xsd` |
 | .NET | `xsd.exe` / `XmlSerializer` | `xsd.exe /classes /namespace:FundsXml.Model .schema-cache\4.2.9\FundsXML.xsd` |
 
-All three consume the **official released schema** fetched by
-`tools/fetch-schema.sh` (which also pulls the imported `xmldsig-core-schema.xsd`
-for 4.2.9). Trade-off: generated models are type-safe but regenerate on every
+All three consume the **official released schema**; materialise it with
+`python -m fundsxml_schema 4.2.9` (after `pip install -e .` — cross-platform;
+also pulls the imported `xmldsig-core-schema.xsd` for 4.2.9). Trade-off: generated models are type-safe but regenerate on every
 schema bump and produce thousands of classes; the native binding stays small
 and version-tolerant. Pick per use case.
 

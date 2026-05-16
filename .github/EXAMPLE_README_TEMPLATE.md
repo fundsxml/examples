@@ -20,8 +20,11 @@ Why this exists and when an enterprise integrator would use it.
 ## Prerequisites
 
 - Tooling/runtime versions
-- `tools/fetch-schema.sh <version>` if schema is needed
+- The example resolves the XSD itself (env `FUNDSXML_SCHEMA_DIR` →
+  `.schema-cache/` → official-release download); or
+  `python -m fundsxml_schema <version>` to pre-cache for a bare xmllint
 - Network/proxy note when the official schema URL must be reached
+  (`$FUNDSXML_SCHEMA_DIR` is the offline escape hatch)
 
 ## Run
 

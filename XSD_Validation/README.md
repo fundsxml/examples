@@ -28,13 +28,14 @@ GitHub release (302-aware; also pulls the imported `xmldsig-core-schema.xsd`),
 caching into `.schema-cache/`. The official release stays the source of truth
 — no committed catalog.
 
-The **Java** (`XsdValidate`), **Python** (`validate.py`) and **.NET**
-(`XsdValidate.cs` + `SchemaResolver.cs`) examples do this themselves —
-standalone, cross-platform, no prior step. `tools/fetch-schema.sh` still seeds
-the cache for the CLI/xmllint and (until its phase lands) PowerShell stacks:
+**Every** stack does this itself now — Java (`XsdValidate`), Python
+(`validate.py`), .NET (`XsdValidate.cs` + `SchemaResolver.cs`), the CLI
+`validate.sh`/`validate.ps1`, and PowerShell `Validate-FundsXml.ps1` —
+standalone, cross-platform, no prior step. To pre-populate the cache for a
+bare `xmllint` invocation:
 
 ```bash
-tools/fetch-schema.sh 4.2.9          # only needed for the CLI/PowerShell stacks
+python -m fundsxml_schema 4.2.9      # after `pip install -e .`; cross-platform
 ```
 
 ## Security
@@ -47,11 +48,12 @@ Every example disables external entity resolution / DTD loading
 
 | Stack | Script | API | Runnable on this box |
 |-------|--------|-----|----------------------|
-| CLI | [`cli/validate.sh`](cli/validate.sh) | `xmllint` (+ Saxon note) | ✅ |
+| CLI (Linux/macOS) | [`cli/validate.sh`](cli/validate.sh) | `xmllint` (POSIX sh) | ✅ standalone (self-resolving) |
+| CLI (Windows) | [`cli/validate.ps1`](cli/validate.ps1) | `xmllint` or .NET fallback | ✅ standalone (self-resolving) |
 | Python | [`python/validate.py`](python/validate.py) | `lxml.etree.XMLSchema` | ✅ standalone (`pip install -e .`) |
 | Java | [`java/XsdValidate.java`](java/XsdValidate.java) | `javax.xml.validation` | ✅ standalone (`./mvnw`) |
 | .NET/C# | [`dotnet/XsdValidate.cs`](dotnet/XsdValidate.cs) | `XmlSchemaSet` | ✅ standalone (`dotnet run`) |
-| PowerShell | [`powershell/Validate-FundsXml.ps1`](powershell/Validate-FundsXml.ps1) | `System.Xml.Schema` | needs PowerShell |
+| PowerShell | [`powershell/Validate-FundsXml.ps1`](powershell/Validate-FundsXml.ps1) | `System.Xml.Schema` | ✅ standalone (self-resolving) |
 
 Convention: each takes `<version> <xml-file>`, exits `0` on valid, `1` on
 invalid, prints errors to stderr.
@@ -73,5 +75,6 @@ Java (standalone): `./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.a
 .NET (standalone): `dotnet run --project XSD_Validation/dotnet -- 4.2.9 <file>`
 (exit 0 valid / 1 invalid).
 
-The CLI/`xmllint` stack still uses `tools/fetch-schema.sh 4.2.9` until its
-phase lands.
+CLI (standalone, self-resolving): `XSD_Validation/cli/validate.sh 4.2.9 <file>`
+(Linux/macOS) or `pwsh XSD_Validation/cli/validate.ps1 4.2.9 <file>`
+(Windows — uses `xmllint` if present, else the built-in .NET validator).

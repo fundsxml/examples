@@ -122,17 +122,21 @@ Validation always targets the **official release** of the schema:
 https://github.com/fundsxml/schema/releases/download/<version>/FundsXML.xsd
 ```
 
-Two enterprise-relevant caveats are handled by the helper `tools/fetch-schema.sh`:
+Two enterprise-relevant caveats are handled by every example's in-language
+schema resolver (and by the `fundsxml_schema` module shown below):
 
 1. That URL returns an HTTP 302 redirect; simple HTTP clients (libxml2 /
-   xmllint) do not follow it, so the schema must be fetched first (curl honours
-   `https_proxy`/`HTTPS_PROXY` for locked-down networks).
+   xmllint) do not follow it, so the schema must be materialised first.
 2. From release 4.2.9 on, `FundsXML.xsd` imports `xmldsig-core-schema.xsd` via a
    relative path — both files must sit in the same directory.
 
+The resolution order is the same everywhere: `$FUNDSXML_SCHEMA_DIR` (offline /
+corporate-network escape hatch) → `.schema-cache/` → download from the
+official release. No committed catalog.
+
 ```bash
 # Fetches FundsXML.xsd (+ xmldsig-core-schema.xsd when needed) into .schema-cache/<version>/
-tools/fetch-schema.sh 4.2.9
+python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
 ```
 
 ### Validate with xmllint (macOS/Linux)
