@@ -18,27 +18,26 @@ FundsXML is an industry-standard XML format for exchanging fund and investment d
 
 ## What This Repository Provides
 
-A comprehensive **enterprise FundsXML reference**. The table below maps use
-cases to technologies and example locations. Every row is implemented, has its
-own README, and is exercised by the CI workflow on each push.
+A comprehensive **enterprise FundsXML reference**. Every area below is
+implemented, has its own README, runs standalone & cross-platform (Windows +
+Linux/macOS) with no bash prerequisite, and is exercised by the CI workflow.
 
-| Use case | Technology | Location | Status |
-|----------|-----------|----------|--------|
-| Sample data (positions, transactions, documents, regulatory, signed) | XML, 3 versions | [FundsXML_Files/](./FundsXML_Files/) | ✅ |
-| XSD validation | CLI, Python, Java, .NET, PowerShell | [XSD_Validation/](./XSD_Validation/) | ✅ |
-| Schematron business rules | ISO Schematron + SchXslt | [Schematron_DataQuality_Checks/](./Schematron_DataQuality_Checks/) | ✅ |
-| Schematron invocation | CLI, Python, Java, .NET | [Schematron_DataQuality_Checks/Basic_Checks/invocation/](./Schematron_DataQuality_Checks/Basic_Checks/) | ✅ |
-| Data-quality reports | XSLT 1.0 / 2.0 | [XSLT_DataQuality_Checks/](./XSLT_DataQuality_Checks/) | ✅ |
-| Company-internal DQ rules | XSLT 2.0 | [XSLT_DataQuality_Checks/Custom_Internal_Checks/](./XSLT_DataQuality_Checks/) | ✅ |
-| Factsheet (HTML/PDF) & CSV export | XSLT, XSL-FO/FOP | [XSLT_Transformations/](./XSLT_Transformations/) | ✅ |
-| Transformation invocation | CLI, Python, Java, .NET, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) | ✅ |
-| Schema resolver (env / cache / official download) | Per-language, in-example + [tools/fundsxml_schema.py](./tools/fundsxml_schema.py) | every stack | ✅ |
-| CI (validate all samples) | GitHub Actions | [.github/workflows/ci.yml](./.github/workflows/) | ✅ |
-| XQuery analytics (aggregation, top-holdings, look-through) | Saxon CLI/Java, Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) | ✅ |
-| XML signature sign/verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) | ✅ |
-| Database import / export (multi-fund) | Separate standalone import + export programs in Python · Java · JavaScript · C# (SQLite), all verified; Oracle/SQL Server/Postgres SQL (code) | [Database_Integration/](./Database_Integration/) | ✅ |
-| Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) | ✅ |
-| Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) | ✅ |
+| Area | Technology | Location |
+|------|-----------|----------|
+| Sample data (positions, transactions, documents, regulatory, signed) | XML, 3 versions (4.2.9 / 4.1.0 / 4.0.0) | [FundsXML_Files/](./FundsXML_Files/) |
+| XSD validation | CLI (sh + ps1), Python, Java, .NET, PowerShell | [XSD_Validation/](./XSD_Validation/) |
+| Schematron business rules | ISO Schematron + SchXslt | [Schematron_DataQuality_Checks/](./Schematron_DataQuality_Checks/) |
+| Schematron invocation | Java, Python, .NET | [Schematron_DataQuality_Checks/Basic_Checks/invocation/](./Schematron_DataQuality_Checks/Basic_Checks/) |
+| Data-quality reports | XSLT 1.0 / 2.0 | [XSLT_DataQuality_Checks/](./XSLT_DataQuality_Checks/) |
+| Company-internal DQ rules | XSLT 2.0 | [XSLT_DataQuality_Checks/Custom_Internal_Checks/](./XSLT_DataQuality_Checks/) |
+| Factsheet (HTML/PDF) & CSV export | XSLT, XSL-FO/FOP | [XSLT_Transformations/](./XSLT_Transformations/) |
+| Transformation invocation | Java, Python, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) |
+| XQuery analytics (aggregation, top-holdings, look-through) | Saxon (Java), Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) |
+| XML signature sign / verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) |
+| Database import / export (multi-fund) | Separate import + export programs in Python · Java · JavaScript · C# (SQLite); Oracle/SQL Server/Postgres SQL (code refs) | [Database_Integration/](./Database_Integration/) |
+| Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) |
+| Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) |
+| Schema resolver (env → cache → official download) | In every example + [tools/fundsxml_schema.py](./tools/fundsxml_schema.py) | every stack |
 
 ## Repository Structure
 
@@ -102,79 +101,78 @@ fundsxml_examples/
 
 ## Quick Start
 
-### Option 1: Command Line (Saxon)
+Every example is **standalone and cross-platform** — no bash prerequisite, no
+manual dependency or schema fetching. Each language uses its own idiomatic
+build system; dependencies and the official XSD are resolved automatically on
+first run. **Run all commands from the repo root.** On Windows use `mvnw.cmd`
+instead of `./mvnw` and `.venv\Scripts\activate` instead of the `source` line.
+
+### One-time setup (only the toolchains you intend to use)
 
 ```bash
-# Install Saxon (XSLT 2.0/3.0 processor)
-# macOS:
-brew install saxon
+# Java   — nothing to install: the committed Maven Wrapper bootstraps Maven
+#          and pulls all deps from Maven Central on first ./mvnw call.
+# .NET   — .NET SDK 8+ ; `dotnet run` restores NuGet packages itself.
+# Node   — Node 20+    ; `npm install` in Database_Integration/javascript.
 
-# Ubuntu/Debian:
-sudo apt install libsaxonhe-java
-
-# Windows (Chocolatey):
-choco install saxonhe
-
-# Generate a data quality report
-saxon -s:FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml \
-      -xsl:XSLT_DataQuality_Checks/Basic_Checks/basic_checks.xslt \
-      -o:report.html
-```
-
-### Option 2: Command Line (xsltproc - XSLT 1.0 only)
-
-```bash
-# Pre-installed on macOS, install on Linux:
-sudo apt install xsltproc
-
-# Generate enhanced report (XSLT 1.0 compatible)
-xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
-         FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml > report.html
-```
-
-### Option 3: Python
-
-```bash
-# Install all Python deps once (lxml + saxonche), cross-platform:
+# Python — one venv from pyproject.toml (lxml + saxonche + the schema resolver)
 python -m venv .venv
-. .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -e .              # see pyproject.toml
-
-# Run transformation
-python -c "
-from lxml import etree
-xslt = etree.parse('XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl')
-transform = etree.XSLT(xslt)
-doc = etree.parse('FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml')
-result = transform(doc)
-with open('report.html', 'wb') as f:
-    f.write(etree.tostring(result, pretty_print=True))
-print('Report generated: report.html')
-"
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -e .
 ```
 
-### Option 4: Java
+The XSD is resolved by each example itself, in this order:
+`$FUNDSXML_SCHEMA_DIR` (a hand-placed copy — offline / locked-down-network
+escape hatch) → `.schema-cache/` → download from the official GitHub release.
+Nothing to run up front.
 
-```java
-// Add Saxon dependency to your project (Maven):
-// <dependency>
-//   <groupId>net.sf.saxon</groupId>
-//   <artifactId>Saxon-HE</artifactId>
-//   <version>12.4</version>
-// </dependency>
+### Try one example per area
 
-import net.sf.saxon.s9api.*;
-import java.io.File;
+```bash
+SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
 
-Processor processor = new Processor(false);
-XsltCompiler compiler = processor.newXsltCompiler();
-XsltExecutable executable = compiler.compile(new StreamSource(new File("basic_checks.xslt")));
-Xslt30Transformer transformer = executable.load30();
-transformer.transform(
-    new StreamSource(new File("Mixed-Fund_Positions.xml")),
-    processor.newSerializer(new File("report.html"))
-);
+# XSD validation — pick any stack (all self-resolve the schema):
+python XSD_Validation/python/validate.py 4.2.9 $SRC
+dotnet run --project XSD_Validation/dotnet -- 4.2.9 $SRC
+./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="4.2.9 $SRC"
+XSD_Validation/cli/validate.sh 4.2.9 $SRC          # Windows: pwsh .../validate.ps1
+
+# Schematron business rules (SVRL; exit 0 = no ERROR-role failures)
+./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation compile exec:java \
+  -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch $SRC"
+
+# XSLT 2.0 transform — CSV export (also: Factsheet HTML / XSL-FO)
+./mvnw -q -pl XSLT_Transformations/invocation compile exec:java \
+  -Dexec.args="XSLT_Transformations/CSV_Export/positions_csv.xslt $SRC out.csv"
+
+# XQuery analytics — top 5 holdings (serialized to stdout)
+./mvnw -q -pl XQuery_Examples/invocation compile exec:java \
+  -Dexec.args="XQuery_Examples/top-holdings.xq $SRC n=5"
+
+# XML signature — throwaway key, then sign + verify (RSA-SHA256, enveloped)
+./mvnw -q -pl XML_Signature/java compile exec:java -Dexec.mainClass=GenerateTestKey
+./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=SignFundsXml \
+  -Dexec.args="$SRC signed.xml XML_Signature/keys/test-signing.p12 changeit fundsxml"
+./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=VerifyFundsXml \
+  -Dexec.args="signed.xml XML_Signature/keys/test-signing-cert.pem"
+
+# Database round-trip — import → export → prove equivalence
+FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
+python Database_Integration/python/import_fundsxml.py fx.db $FX
+python Database_Integration/python/export_fundsxml.py fx.db FUNDSXML_MULTI_1 out.xml
+python Database_Integration/tools/xml_equiv.py $FX out.xml
+
+# Large-file streaming (constant memory) — synthesize, then aggregate
+python Large_File_Processing/python/make_large_sample.py big.xml 50000
+python Large_File_Processing/python/stream_aggregate.py big.xml
+
+# Legacy XSLT 1.0 report (xsltproc, no Saxon needed)
+xsltproc XSLT_DataQuality_Checks/Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl \
+         $SRC > report.html
 ```
+
+Each area's README has the full per-language matrix (Java / Python / .NET /
+Node / CLI), platform notes, and deeper walk-throughs — see the table below.
 
 ## Data Quality Checks Overview
 
@@ -220,22 +218,22 @@ Each folder contains detailed README files with:
 
 ## Requirements
 
-### Minimum Requirements
+You only need the toolchain for the stack you want to run. Third-party
+libraries (Saxon, SchXslt, Apache Santuario, SQLite drivers, lxml, saxonche,
+…) are **not installed manually** — each build system resolves them:
 
-| Component | XSLT 1.0 Reports | XSLT 2.0 Reports | Schematron |
-|-----------|-----------------|------------------|------------|
-| xsltproc | Yes | No | No |
-| Saxon-HE | Yes | Yes | Yes |
-| lxml (Python) | Yes | No | No |
-| saxonche (Python) | Yes | Yes | Yes |
-| System.Xml (.NET) | Yes | No | No |
-| Saxon.Api (.NET) | Yes | Yes | Yes |
+| Stack | Need installed | Dependencies come from |
+|-------|----------------|------------------------|
+| Java | JDK 17+ (the committed `./mvnw` wrapper handles Maven itself) | Maven Central |
+| Python | Python 3.9+ | `pip install -e .` (pyproject.toml) |
+| .NET | .NET SDK 8+ | NuGet (`dotnet run` restores) |
+| Node | Node 20+ | `npm install` (Database_Integration/javascript) |
+| CLI | a POSIX shell + `xmllint` (Linux/macOS) **or** PowerShell 5.1+/7+ (Windows) | n/a |
+| Legacy XSLT 1.0 | `xsltproc` | n/a |
 
-### Recommended Setup
-
-- **Java 11+** with Saxon-HE 12.x for full XSLT 2.0/3.0 support
-- **Python 3.8+** with saxonche for XSLT 2.0 support
-- **.NET 6+** with Saxon.Api NuGet package
+Network access to the official schema release (and Maven Central / PyPI /
+NuGet on first run) is expected; for locked-down environments point
+`FUNDSXML_SCHEMA_DIR` at a local copy of the XSD to skip the schema download.
 
 ## Asset Types in Examples
 
