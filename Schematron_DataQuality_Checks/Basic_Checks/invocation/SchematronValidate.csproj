@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!-- Reference project. Requires the Saxon-HE for .NET package:
-         dotnet add package SaxonHE
-       Run: dotnet run -- ../basic_checks.sch <xml-file> [--fail-on error|any] -->
+  <!-- Reference variant. SaxonHE comes from NuGet (restored by dotnet build);
+       the SchXslt jar is located via $FUNDSXML_SCHXSLT_JAR or the Maven local
+       repo (no NuGet SchXslt). Run from the repo root:
+       dotnet run  project <thisdir>   ../basic_checks.sch  <xml-file>  [fail-on error|any] -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,6 +11,14 @@
     <RootNamespace>FundsXml.Schematron</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="SaxonHE" Version="12.5.0" />
+    <!-- REFERENCE VARIANT — not verified, not in CI. Saxonica's Saxon-HE 12
+         for .NET (the `Saxon.Api` s9api this file uses) is published as a set
+         of `SaxonHE12Net*` packages whose exact id/version/target-framework
+         pairing is environment-specific (and unrelated to FundsXML). Pick the
+         one matching your TFM, e.g.:
+           dotnet add package SaxonHE12NetXslt
+         The Java Schematron example is the verified, fully standalone path
+         (Maven Wrapper); this .NET file mirrors its logic for reference. -->
+    <PackageReference Include="SaxonHE12NetXslt" Version="12.9.10" />
   </ItemGroup>
 </Project>
