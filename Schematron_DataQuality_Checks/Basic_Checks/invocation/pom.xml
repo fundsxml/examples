@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Native-Java Schematron validation via the SchXslt Java API.
+
+  basic_checks.sch uses queryBinding="xslt2": SchXslt compiles it to XSLT 2.0
+  and the Saxon that the SchXslt CLI jar BUNDLES executes it. The dependency is
+  therefore name.dmaus.schxslt:cli (self-contained, ships its own Saxon). Do
+  NOT add standalone Saxon-HE here — its org.xmlresolver API differs from the
+  one SchXslt bundles and the two conflict. That is why this is a separate
+  Maven module from the XSLT/XQuery (Saxon-HE) ones.
+
+  Run from the repo root:
+    ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation \
+        compile exec:java \
+        -Dexec.args="../basic_checks.sch FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fundsxml.examples</groupId>
+    <artifactId>fundsxml-examples</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>schematron-validate-java</artifactId>
+  <properties>
+    <exec.mainClass>SchematronValidate</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <!-- Self-contained SchXslt CLI: bundles its own Saxon + the
+         name.dmaus.schxslt.* API classes SchematronValidate.java imports. -->
+    <dependency>
+      <groupId>name.dmaus.schxslt</groupId>
+      <artifactId>cli</artifactId>
+      <version>${schxslt.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>${commons-cli.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j1.version}</version>
+    </dependency>
+    <!-- No-op binding silences "no SLF4J providers" noise on the console. -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>${slf4j1.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+  </build>
+</project>

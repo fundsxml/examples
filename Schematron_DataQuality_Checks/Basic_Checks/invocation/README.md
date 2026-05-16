@@ -10,8 +10,9 @@ SVRL semantics and pass/fail definition everywhere.
 **SVRL** report. That needs an XSLT 2.0 engine — Saxon. `xmllint`/`xsltproc`/
 `lxml` (XSLT 1.0 only) **cannot** run this ruleset.
 
-`tools/fetch-tools.sh` fetches the SchXslt CLI jar (a self-contained runner that
-bundles its own Saxon) into `.lib/`.
+The SchXslt CLI jar (a self-contained runner that bundles its own Saxon) is a
+Maven dependency of this module's `pom.xml`, resolved from Maven Central by the
+committed Maven Wrapper — no prior fetch step, no `.lib/`.
 
 ## SVRL semantics & pass/fail
 
@@ -36,27 +37,22 @@ exits 1 on any failed-assert (including warnings).
 
 | Stack | File | Runnable on this box |
 |-------|------|----------------------|
-| CLI | [`run-schematron.sh`](run-schematron.sh) | ✅ verified |
-| Java (native) | [`SchematronValidate.java`](SchematronValidate.java) | ✅ verified (SchXslt Java API) |
+| Java (native) | [`SchematronValidate.java`](SchematronValidate.java) | ✅ verified (SchXslt Java API, via Maven Wrapper) |
 | Python | [`validate_schematron.py`](validate_schematron.py) | needs `pip install saxonche` |
 | .NET/C# | [`SchematronValidate.cs`](SchematronValidate.cs) | needs .NET SDK + `SaxonHE` package |
 | shared | [`svrl-summary.py`](svrl-summary.py) | ✅ classifier used by all + CI |
 
-Java classpath (the CLI jar already bundles Saxon — do **not** add the
-standalone `Saxon-HE` jar, the two need different `org.xmlresolver` APIs):
-
-```bash
-tools/fetch-tools.sh
-CP=.lib/schxslt-cli-1.10.1.jar:.lib/commons-cli-1.5.0.jar:.lib/slf4j-api-1.7.32.jar:.lib/slf4j-nop-1.7.32.jar
-javac -cp "$CP" -d /tmp/scv Schematron_DataQuality_Checks/Basic_Checks/invocation/SchematronValidate.java
-java  -cp "$CP:/tmp/scv" SchematronValidate Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch \
-      FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-```
+The Java example runs standalone and cross-platform via the committed Maven
+Wrapper (`./mvnw`, or `mvnw.cmd` on Windows) from the repo root. The SchXslt
+CLI dependency already bundles Saxon — this module deliberately does **not**
+depend on the standalone `Saxon-HE` jar (the two need different
+`org.xmlresolver` APIs), which is why it is its own Maven module.
 
 ## Quick check (positive + negative)
 
 ```bash
-RS=Schematron_DataQuality_Checks/Basic_Checks/invocation/run-schematron.sh
-$RS FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml          # exit 0 (0 errors)
-$RS tests/fixtures/invalid/schematron-invalid_Positions.xml          # exit 1 (percentage 120%)
+SCH=Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch
+M="./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation compile exec:java"
+$M -Dexec.args="$SCH FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"   # exit 0 (0 errors)
+$M -Dexec.args="$SCH tests/fixtures/invalid/schematron-invalid_Positions.xml"   # exit 1 (percentage 120%)
 ```

@@ -1,13 +1,12 @@
 // Run an XSLT 2.0 stylesheet via the Saxon s9api (native Java, no JAXB).
 //
-//   tools/fetch-tools.sh
-//   SCP=.lib/Saxon-HE-12.5.jar:.lib/xmlresolver-5.2.2.jar:.lib/xmlresolver-5.2.2-data.jar
-//   javac -cp "$SCP" -d /tmp/rt XSLT_Transformations/invocation/RunTransform.java
-//   java  -cp "$SCP:/tmp/rt" RunTransform <stylesheet.xslt> <input.xml> <output> [k=v ...]
+// Standalone & cross-platform — run from the repo root with the Maven Wrapper:
+//   ./mvnw -q -pl XSLT_Transformations/invocation compile exec:java \
+//       -Dexec.args="<stylesheet.xslt> <input.xml> <output> [k=v ...]"
 // Exit: 0 success, 2 setup error.
 //
-// Dependencies: Saxon-HE + xmlresolver jars only (fetched by
-//   tools/fetch-tools.sh into .lib/); no other libraries.
+// Dependencies (from Maven Central, see pom.xml): Saxon-HE + xmlresolver
+// (+ its -data artifact); no other libraries.
 //
 // This is a generic, FundsXML-agnostic invocation wrapper: it applies any
 // stylesheet to any XML and passes through string parameters (k=v) — the

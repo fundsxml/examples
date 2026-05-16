@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Constant-memory StAX aggregation over a huge FundsXML file. Pure JDK, no
+  third-party dependencies. (The example is memory-bounded; run it with a
+  small heap to prove that, e.g. -Xmx64m via MAVEN_OPTS or exec:exec.)
+
+  Run from the repo root:
+    ./mvnw -q -pl Large_File_Processing/java compile exec:java \
+        -Dexec.args="big.xml"
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fundsxml.examples</groupId>
+    <artifactId>fundsxml-examples</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>large-file-java</artifactId>
+  <properties>
+    <exec.mainClass>StreamAggregate</exec.mainClass>
+  </properties>
+
+  <build>
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+  </build>
+</project>

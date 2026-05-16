@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Generic XQuery runner via the Saxon-HE s9api (no JAXB). Same Saxon-HE +
+  xmlresolver(+data) stack as the XSLT module; kept separate from the
+  Schematron (SchXslt-bundled-Saxon) module on purpose.
+
+  Run from the repo root:
+    ./mvnw -q -pl XQuery_Examples/invocation compile exec:java \
+        -Dexec.args="XQuery_Examples/top-holdings.xq \
+                     FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml n=5"
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fundsxml.examples</groupId>
+    <artifactId>fundsxml-examples</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>xquery-run-java</artifactId>
+  <properties>
+    <exec.mainClass>RunXQuery</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>net.sf.saxon</groupId>
+      <artifactId>Saxon-HE</artifactId>
+      <version>${saxon.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xmlresolver</groupId>
+      <artifactId>xmlresolver</artifactId>
+      <version>${xmlresolver.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xmlresolver</groupId>
+      <artifactId>xmlresolver</artifactId>
+      <version>${xmlresolver.version}</version>
+      <classifier>data</classifier>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+  </build>
+</project>

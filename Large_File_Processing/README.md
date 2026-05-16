@@ -26,8 +26,10 @@ python3 Large_File_Processing/python/make_large_sample.py big.xml 50000
 
 # 2. aggregate — Python and Java give identical totals at flat memory
 python3 Large_File_Processing/python/stream_aggregate.py big.xml
-javac -d /tmp/lf Large_File_Processing/java/StreamAggregate.java
-java -Xmx64m -cp /tmp/lf StreamAggregate big.xml
+# Java via the committed Maven Wrapper (mvnw.cmd on Windows); a small heap
+# proves the constant-memory claim.
+MAVEN_OPTS=-Xmx64m ./mvnw -q -pl Large_File_Processing/java compile exec:java \
+  -Dexec.args="big.xml"
 
 # 3. split into XSD-valid chunks of 10k positions
 python3 Large_File_Processing/python/split.py big.xml chunks/ 10000

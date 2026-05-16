@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Enveloped XML-DSig sign / verify with Apache Santuario (xmlsec 4.x), plus a
+  pure-JDK throwaway-key generator (GenerateTestKey, uses the JDK's keytool —
+  no openssl, so it works on Windows too).
+
+  Three entry points -> pass -Dexec.mainClass explicitly. From the repo root:
+
+    # 1. one-off: create XML_Signature/keys/test-signing.p12 (+ cert.pem)
+    ./mvnw -q -pl XML_Signature/java compile exec:java \
+        -Dexec.mainClass=GenerateTestKey
+
+    # 2. sign
+    ./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=SignFundsXml \
+        -Dexec.args="FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml \
+                     signed.xml XML_Signature/keys/test-signing.p12 changeit fundsxml"
+
+    # 3. verify
+    ./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=VerifyFundsXml \
+        -Dexec.args="signed.xml XML_Signature/keys/test-signing-cert.pem"
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fundsxml.examples</groupId>
+    <artifactId>fundsxml-examples</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>xml-signature-java</artifactId>
+  <!-- No default exec.mainClass: this module has three entry points; the
+       command line must pass -Dexec.mainClass=<GenerateTestKey|SignFundsXml|
+       VerifyFundsXml>. The placeholder keeps the parent config valid. -->
+  <properties>
+    <exec.mainClass>GenerateTestKey</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.santuario</groupId>
+      <artifactId>xmlsec</artifactId>
+      <version>${xmlsec.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>${commons-codec.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>${slf4j2.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+  </build>
+</project>

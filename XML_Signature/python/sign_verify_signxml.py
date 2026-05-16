@@ -9,8 +9,11 @@ Exit: 0 ok, 1 invalid signature, 2 setup error.
 
 Reference implementation (signxml not installed in the dev environment):
   pip install signxml
-Keys come from XML_Signature/generate-test-key.sh (key/cert PEM in
-XML_Signature/keys/). RSA-SHA256, exclusive C14N, enveloped — same profile as
+Keys: the Java GenerateTestKey (./mvnw -pl XML_Signature/java compile
+exec:java -Dexec.mainClass=GenerateTestKey) writes test-signing.p12 +
+test-signing-cert.pem to XML_Signature/keys/; the PEM *private* key this
+signxml path also needs is produced when the Python signature stack is
+migrated to its build system. RSA-SHA256, exclusive C14N, enveloped — same profile as
 the Apache Santuario (Java) example, so files cross-verify between stacks.
 """
 import sys
