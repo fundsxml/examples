@@ -59,7 +59,7 @@ Each example is run as **import, then export** (the round-trip = both, then
 compare). `DOC` is the document id the import prints.
 
 ```bash
-tools/fetch-schema.sh 4.2.9          # XSD for validation
+python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
 FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
 DOC=FUNDSXML_MULTI_1
 

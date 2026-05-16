@@ -22,9 +22,12 @@ Please read this before opening a pull request.
   the schema itself requires them). `xsi:noNamespaceSchemaLocation` must be in
   the XMLSchema-instance namespace or validators reject it.
 - **Validate against the official released schema**, never a hand-made
-  catalog: fetch with `tools/fetch-schema.sh <version>` (it handles GitHub's
-  302 redirect and the relative `xmldsig-core-schema.xsd` import that 4.2.9+
-  needs). Set sample `xsi:noNamespaceSchemaLocation` to that release URL.
+  catalog. Every example resolves it itself (`$FUNDSXML_SCHEMA_DIR` →
+  `.schema-cache/` → official-release download, 302-aware, pulls the
+  `xmldsig-core-schema.xsd` sibling for 4.2.9+). For an xmllint check,
+  materialise the cache with `python -m fundsxml_schema <version>`
+  (after `pip install -e .`). Set sample `xsi:noNamespaceSchemaLocation`
+  to that release URL.
 - **4.0.0 `ControlData` has no `<Version>` element** (added in 4.1.0) — never
   add one to a 4.0.0 sample.
 - Positions ↔ Assets link by a shared `UniqueID`; `AssetMasterData` is
@@ -57,17 +60,18 @@ Run what you changed and confirm it actually works — no "should pass" claims.
 
 Java examples build standalone via the committed Maven Wrapper (`./mvnw`, or
 `mvnw.cmd` on Windows). Python examples install once into a venv from
-`pyproject.toml` and resolve the XSD themselves. Neither needs `fetch-tools.sh`
-(gone) and Python no longer needs `fetch-schema.sh`.
+`pyproject.toml` and resolve the XSD themselves. No `fetch-tools.sh` and no
+`fetch-schema.sh` — both are gone; every stack is standalone & cross-platform.
 
 ```bash
 # Python stack (cross-platform; Windows: .venv\Scripts\activate)
 python -m venv .venv && . .venv/bin/activate && pip install -e .
 python XSD_Validation/python/validate.py 4.2.9 <your-sample>.xml   # self-resolves the XSD
 
-# xmllint still uses the cached schema (CLI stack, removed in a later phase)
-tools/fetch-schema.sh 4.2.9
+# xmllint check: materialise the cache cross-platform, then validate
+python -m fundsxml_schema 4.2.9
 xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd <your-sample>.xml
+# (or just: XSD_Validation/cli/validate.sh 4.2.9 <your-sample>.xml — self-resolving)
 
 # Schematron via the Maven Wrapper (positive sample -> exit 0)
 ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation \

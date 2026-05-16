@@ -32,7 +32,7 @@ own README, and is exercised by the CI workflow on each push.
 | Company-internal DQ rules | XSLT 2.0 | [XSLT_DataQuality_Checks/Custom_Internal_Checks/](./XSLT_DataQuality_Checks/) | ✅ |
 | Factsheet (HTML/PDF) & CSV export | XSLT, XSL-FO/FOP | [XSLT_Transformations/](./XSLT_Transformations/) | ✅ |
 | Transformation invocation | CLI, Python, Java, .NET, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) | ✅ |
-| Schema fetch (proxy-aware) | Bash | [tools/fetch-schema.sh](./tools/fetch-schema.sh) | ✅ |
+| Schema resolver (env / cache / official download) | Per-language, in-example + [tools/fundsxml_schema.py](./tools/fundsxml_schema.py) | every stack | ✅ |
 | CI (validate all samples) | GitHub Actions | [.github/workflows/ci.yml](./.github/workflows/) | ✅ |
 | XQuery analytics (aggregation, top-holdings, look-through) | Saxon CLI/Java, Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) | ✅ |
 | XML signature sign/verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) | ✅ |
@@ -50,9 +50,11 @@ fundsxml_examples/
 │                                          #   wrapper: builds all Java
 │                                          #   examples standalone (deps from
 │                                          #   Maven Central), no preinstall
-├── tools/                                 # fetch-schema.sh (proxy-aware XSD
-│                                          #   fetcher; Java examples also
-│                                          #   resolve the XSD themselves)
+├── pyproject.toml                          # Python deps + the
+│                                          #   fundsxml_schema resolver module
+├── tools/fundsxml_schema.py                # shared in-language XSD resolver
+│                                          #   (env / cache / official URL);
+│                                          #   every stack resolves it itself
 │
 ├── FundsXML_Files/                        # Sample documents, per version & use-case
 │   ├── 4.2.9/{positions,transactions,documents,regulatory,signed}/

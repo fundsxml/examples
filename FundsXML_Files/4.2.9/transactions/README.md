@@ -26,7 +26,7 @@ records:
 ## Validation
 
 ```bash
-tools/fetch-schema.sh 4.2.9
+python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
 xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd \
         FundsXML_Files/4.2.9/transactions/Fund_Transactions.xml
 ```
