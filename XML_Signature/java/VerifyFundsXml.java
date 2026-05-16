@@ -1,6 +1,8 @@
 // VerifyFundsXml — verify an enveloped XML-DSig signature with Apache Santuario.
 //
-//   java -cp "$CP:/tmp/sig" VerifyFundsXml <signed.xml> [cert.pem]
+// Run from the repo root with the Maven Wrapper:
+//   ./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=VerifyFundsXml \
+//       -Dexec.args="<signed.xml> [cert.pem]"
 //
 // With no cert argument the certificate embedded in KeyInfo/X509Data is used
 // (self-verifiable file). Pass a PEM cert to pin verification to a known key

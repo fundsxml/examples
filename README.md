@@ -46,8 +46,13 @@ own README, and is exercised by the CI workflow on each push.
 fundsxml_examples/
 ├── README.md                              # This file (index above)
 ├── LICENSE                                # Apache 2.0
-├── tools/                                 # fetch-schema.sh, fetch-tools.sh
-│                                          #   (proxy-aware XSD / jar fetchers)
+├── pom.xml  mvnw  mvnw.cmd  .mvn/         # Maven aggregator + committed
+│                                          #   wrapper: builds all Java
+│                                          #   examples standalone (deps from
+│                                          #   Maven Central), no preinstall
+├── tools/                                 # fetch-schema.sh (proxy-aware XSD
+│                                          #   fetcher; Java examples also
+│                                          #   resolve the XSD themselves)
 │
 ├── FundsXML_Files/                        # Sample documents, per version & use-case
 │   ├── 4.2.9/{positions,transactions,documents,regulatory,signed}/
@@ -72,7 +77,7 @@ fundsxml_examples/
 │
 ├── XML_Signature/                         # enveloped XML-DSig sign/verify
 │   ├── java/  csharp/  python/  cli/      # Apache Santuario, SignedXml, …
-│   └── generate-test-key.sh
+│   │   └── java/GenerateTestKey.java      # throwaway keys via JDK keytool
 │
 ├── Database_Integration/                  # FundsXML ⇄ relational DB (multi-fund)
 │   ├── ddl/schema.sql

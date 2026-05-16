@@ -55,12 +55,22 @@ Please read this before opening a pull request.
 
 Run what you changed and confirm it actually works — no "should pass" claims.
 
+The Java examples build standalone via the committed Maven Wrapper (`./mvnw`,
+or `mvnw.cmd` on Windows) — dependencies come from Maven Central, there is no
+`fetch-tools.sh` and no `.lib/`.
+
 ```bash
-tools/fetch-schema.sh 4.2.9            # XSD cache (gitignored)
-tools/fetch-tools.sh                   # Saxon / SchXslt / sqlite-jdbc / Santuario
+tools/fetch-schema.sh 4.2.9            # XSD cache for the xmllint/Python steps
+                                       #   (the Java examples also resolve the
+                                       #   XSD themselves; see XsdValidate)
 
 xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd <your-sample>.xml
-Schematron_DataQuality_Checks/Basic_Checks/invocation/run-schematron.sh <sample>.xml
+
+# Schematron via the Maven Wrapper (positive sample -> exit 0)
+./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation \
+  compile exec:java \
+  -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch <sample>.xml"
+
 # DB round-trip example:
 python3 Database_Integration/python/import_fundsxml.py fx.db <sample>.xml
 python3 Database_Integration/python/export_fundsxml.py fx.db <docId> out.xml

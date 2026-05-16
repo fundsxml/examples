@@ -1,7 +1,8 @@
 // Native Java data binding for FundsXML — DOM + XPath into records, NO JAXB.
 //
-//   javac -d /tmp/nb Data_Binding_JSON/java/NativeBinding.java
-//   java  -cp /tmp/nb NativeBinding <fundsxml.xml>
+// Standalone & cross-platform — run from the repo root with the Maven Wrapper:
+//   ./mvnw -q -pl Data_Binding_JSON/java compile exec:java \
+//       -Dexec.args="<fundsxml.xml>"
 //
 // Why no JAXB: the FundsXML schema is huge; generating/maintaining a full JAXB
 // model is heavy and brittle across versions. For most integration work a thin

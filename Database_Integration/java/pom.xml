@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  FundsXML <-> relational DB round-trip in Java (SQLite via JDBC). Two separate
+  entry points (import / export) -> pass -Dexec.mainClass explicitly.
+  org.xerial:sqlite-jdbc is self-contained (bundles the native SQLite libs for
+  common platforms), so no system SQLite install is needed on any OS.
+
+  Run from the repo root (the working dir stays the repo root, so the
+  ../ddl/schema.sql lookup resolves):
+
+    ./mvnw -q -pl Database_Integration/java compile exec:java \
+        -Dexec.mainClass=ImportFundsXml \
+        -Dexec.args="fx.db FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml"
+
+    ./mvnw -q -pl Database_Integration/java exec:java \
+        -Dexec.mainClass=ExportFundsXml \
+        -Dexec.args="fx.db FUNDSXML_MULTI_1 out.xml"
+
+  Note: a benign "restricted method ... has been called" warning from
+  sqlite-jdbc's native load on JDK 24+ is expected and harmless. It would be
+  silenced by the enable-native-access=ALL-UNNAMED JVM option, which exec:java
+  cannot pass to its in-process JVM; functionality is unaffected.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.fundsxml.examples</groupId>
+    <artifactId>fundsxml-examples</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>database-integration-java</artifactId>
+  <properties>
+    <exec.mainClass>ImportFundsXml</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.xerial</groupId>
+      <artifactId>sqlite-jdbc</artifactId>
+      <version>${sqlite-jdbc.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+  </build>
+</project>

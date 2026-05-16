@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Root Maven build for the FundsXML Java reference examples.
+
+  WHY THIS EXISTS
+  ===============
+  Every Java example used to be compiled with raw `javac` against jars that a
+  bash script (tools/fetch-tools.sh) downloaded into a gitignored .lib/ dir,
+  with hand-built ":"-separated classpaths. None of that runs on Windows and it
+  required a prior tool invocation. This POM replaces both: dependencies come
+  from Maven Central via the standard build, and the committed Maven Wrapper
+  (./mvnw, mvnw.cmd) means no preinstalled Maven is needed either — the build
+  is standalone and cross-platform.
+
+  LAYOUT
+  ======
+  This is a packaging=pom aggregator. Each example is a module whose
+  <sourceDirectory> is left at the example's existing flat directory, so the
+  teaching sources stay exactly where the READMEs point ("copy-me, single-file
+  example") — Maven is added around them, the files do not move.
+
+  RUNNING AN EXAMPLE (from the repo root, any OS)
+  ===============================================
+    ./mvnw -q -pl XSD_Validation/java compile exec:java \
+        -Dexec.args="4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+  On Windows use  mvnw.cmd  instead of  ./mvnw .
+
+  Program exit codes propagate (blockSystemExit=false) so CI can assert that
+  negative fixtures fail. The working directory stays the repo root, so the
+  examples' relative paths (.schema-cache/, Database_Integration/ddl/…) resolve
+  unchanged.
+
+  The Schematron module deliberately depends on the SELF-CONTAINED SchXslt CLI
+  (it bundles its own Saxon); the XSLT/XQuery modules depend on standalone
+  Saxon-HE + xmlresolver. These two Saxons need different org.xmlresolver APIs,
+  so they are kept in SEPARATE modules and never share a classpath.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.fundsxml.examples</groupId>
+  <artifactId>fundsxml-examples</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>FundsXML Reference Examples (Java)</name>
+
+  <modules>
+    <module>XSD_Validation/java</module>
+    <module>Schematron_DataQuality_Checks/Basic_Checks/invocation</module>
+    <module>XSLT_Transformations/invocation</module>
+    <module>XQuery_Examples/invocation</module>
+    <module>XML_Signature/java</module>
+    <module>Large_File_Processing/java</module>
+    <module>Data_Binding_JSON/java</module>
+    <module>Database_Integration/java</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- JDK 17 (LTS) baseline: some examples use records / text blocks; all
+         use java.net.http. CI runs Temurin 21, local dev may be newer. -->
+    <maven.compiler.release>17</maven.compiler.release>
+
+    <!-- Dependency versions are pinned to exactly what tools/fetch-tools.sh
+         used, so behaviour is byte-for-byte unchanged after the migration. -->
+    <saxon.version>12.5</saxon.version>
+    <xmlresolver.version>5.2.2</xmlresolver.version>
+    <schxslt.version>1.10.1</schxslt.version>
+    <commons-cli.version>1.5.0</commons-cli.version>
+    <slf4j1.version>1.7.32</slf4j1.version>
+    <xmlsec.version>4.0.4</xmlsec.version>
+    <commons-codec.version>1.18.0</commons-codec.version>
+    <slf4j2.version>2.0.17</slf4j2.version>
+    <sqlite-jdbc.version>3.46.1.3</sqlite-jdbc.version>
+
+    <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.13.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>${exec-maven-plugin.version}</version>
+          <configuration>
+            <!-- Each module sets a default exec.mainClass; modules with more
+                 than one entry point (XML_Signature, Database_Integration)
+                 require -Dexec.mainClass=<Class> on the command line. -->
+            <mainClass>${exec.mainClass}</mainClass>
+            <!-- Let the example's System.exit(code) become the process exit
+                 code so CI can assert negative fixtures fail. -->
+            <blockSystemExit>false</blockSystemExit>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

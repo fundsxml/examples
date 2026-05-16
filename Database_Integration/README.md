@@ -67,14 +67,11 @@ DOC=FUNDSXML_MULTI_1
 python3 Database_Integration/python/import_fundsxml.py fx.db "$FX"
 python3 Database_Integration/python/export_fundsxml.py fx.db "$DOC" out.xml
 
-# Java  (sqlite-jdbc fetched into .lib/ by tools/fetch-tools.sh)
-tools/fetch-tools.sh
-CP=.lib/sqlite-jdbc-3.46.1.3.jar
-javac -cp "$CP" -d /tmp/db \
-  Database_Integration/java/ImportFundsXml.java \
-  Database_Integration/java/ExportFundsXml.java
-java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" ImportFundsXml fx.db "$FX"
-java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" ExportFundsXml fx.db "$DOC" out.xml
+# Java  (sqlite-jdbc from Maven Central via the committed Maven Wrapper;
+#        on Windows use mvnw.cmd)
+MJ="./mvnw -q -pl Database_Integration/java compile exec:java"
+$MJ -Dexec.mainClass=ImportFundsXml -Dexec.args="fx.db $FX"
+$MJ -Dexec.mainClass=ExportFundsXml -Dexec.args="fx.db $DOC out.xml"
 
 # JavaScript
 ( cd Database_Integration/javascript && npm install )

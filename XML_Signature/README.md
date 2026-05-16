@@ -22,10 +22,13 @@ placeholder.
 ## Keys
 
 ```bash
-XML_Signature/generate-test-key.sh   # -> XML_Signature/keys/ (gitignored)
+./mvnw -q -pl XML_Signature/java compile exec:java -Dexec.mainClass=GenerateTestKey
+# -> XML_Signature/keys/ (gitignored).  Windows: use mvnw.cmd
 ```
-Throwaway self-signed RSA-2048 (`test-signing.p12` alias `fundsxml`, pass
-`changeit`; plus PEM key/cert). **Demo only — never commit private keys.**
+`GenerateTestKey` uses the JDK's own `keytool` (no openssl, so it works on
+Windows too) to write a throwaway self-signed RSA-2048 keystore
+`test-signing.p12` (alias `fundsxml`, pass `changeit`) and the PEM certificate
+`test-signing-cert.pem`. **Demo only — never commit private keys.**
 
 ## Stacks
 
@@ -38,19 +41,23 @@ Throwaway self-signed RSA-2048 (`test-signing.p12` alias `fundsxml`, pass
 
 ## Run (Java / Apache Santuario — verified)
 
+Standalone & cross-platform via the committed Maven Wrapper (`./mvnw`, or
+`mvnw.cmd` on Windows), from the repo root — xmlsec comes from Maven Central:
+
 ```bash
-tools/fetch-tools.sh
-XML_Signature/generate-test-key.sh
-CP=.lib/xmlsec-4.0.4.jar:.lib/commons-codec-1.18.0.jar:.lib/slf4j-api-2.0.17.jar:.lib/slf4j-nop-2.0.17.jar
-javac -cp "$CP" -d /tmp/sig XML_Signature/java/SignFundsXml.java XML_Signature/java/VerifyFundsXml.java
+M="./mvnw -q -pl XML_Signature/java compile exec:java"
+
+# one-off: throwaway key (JDK keytool, no openssl)
+$M -Dexec.mainClass=GenerateTestKey
 
 # sign
-java -cp "$CP:/tmp/sig" SignFundsXml \
-  FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml signed.xml \
-  XML_Signature/keys/test-signing.p12 changeit fundsxml
+$M -Dexec.mainClass=SignFundsXml \
+   -Dexec.args="FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml signed.xml \
+                XML_Signature/keys/test-signing.p12 changeit fundsxml"
 
 # verify — pin the signer cert (don't trust only the embedded key)
-java -cp "$CP:/tmp/sig" VerifyFundsXml signed.xml XML_Signature/keys/test-signing-cert.pem
+$M -Dexec.mainClass=VerifyFundsXml \
+   -Dexec.args="signed.xml XML_Signature/keys/test-signing-cert.pem"
 ```
 
 `VerifyFundsXml` exits 0 on a valid signature, 1 on tamper/failure (verified:

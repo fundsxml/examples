@@ -6,13 +6,12 @@
 //
 // DB SCHEMA  ../ddl/schema.sql  (already populated by ImportFundsXml).
 //
-// RUN
-//   CP=.lib/sqlite-jdbc-3.46.1.3.jar
-//   javac -cp "$CP" -d /tmp/db Database_Integration/java/ExportFundsXml.java
-//   java --enable-native-access=ALL-UNNAMED -cp "$CP:/tmp/db" \
-//     ExportFundsXml fx.db FUNDSXML_MULTI_1 out.xml
+// RUN  Standalone & cross-platform, from the repo root via the Maven Wrapper:
+//   ./mvnw -q -pl Database_Integration/java compile exec:java \
+//     -Dexec.mainClass=ExportFundsXml -Dexec.args="fx.db FUNDSXML_MULTI_1 out.xml"
 //
-// DEPENDENCIES  org.xerial:sqlite-jdbc + the JDK (native javax.xml, no JAXB).
+// DEPENDENCIES  org.xerial:sqlite-jdbc (Maven Central, see pom.xml) + the JDK
+//   (native javax.xml, no JAXB).
 //
 // FUNDSXML NOTES
 //   * No XML namespace -> plain element names.

@@ -14,8 +14,8 @@ e.g. 4.2.9, `FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml`
 (or attach/inline a minimal FundsXML snippet — no real/PII data).
 
 **What I ran**
-The exact command(s), including any `tools/fetch-schema.sh` /
-`tools/fetch-tools.sh` step.
+The exact command(s), including the `./mvnw` (or `mvnw.cmd`) invocation for
+Java examples, or any `tools/fetch-schema.sh` step.
 
 **Expected vs. actual**
 What you expected and what happened (paste the full error / output).
