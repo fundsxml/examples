@@ -24,7 +24,7 @@ EUR 40m NAV. Deliberately small to make the version comparison easy.
 ## Validation
 
 ```bash
-tools/fetch-schema.sh 4.1.0
+python -m fundsxml_schema 4.1.0   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
 xmllint --noout --schema .schema-cache/4.1.0/FundsXML.xsd \
         FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
 ```
