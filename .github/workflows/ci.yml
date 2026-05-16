@@ -344,6 +344,7 @@ jobs:
           .venv\Scripts\python XSD_Validation/python/validate.py 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml
           if ($LASTEXITCODE -eq 0) { throw "negative unexpectedly validated (Python)" }
           Write-Host "Python OK on Windows"
+          exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
 
       - name: Java - XSD validate + one XSLT (Maven Wrapper, mvnw.cmd)
         run: |
@@ -355,6 +356,7 @@ jobs:
           .\mvnw.cmd -q -B -pl XSLT_Transformations/invocation compile exec:java "-Dexec.args=XSLT_Transformations/CSV_Export/positions_csv.xslt $src out_pos.csv"
           if (-not (Test-Path out_pos.csv)) { throw "XSLT produced no output" }
           Write-Host "Java OK on Windows"
+          exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
 
       - name: .NET - XSD validation (downloads schema itself on Windows)
         run: |
@@ -364,6 +366,7 @@ jobs:
           dotnet run --project XSD_Validation/dotnet -- 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml
           if ($LASTEXITCODE -eq 0) { throw ".NET negative unexpectedly validated" }
           Write-Host ".NET OK on Windows"
+          exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
 
       - name: CLI - validate.ps1 (PowerShell, .NET fallback when no xmllint)
         run: |
@@ -372,6 +375,7 @@ jobs:
           pwsh XSD_Validation/cli/validate.ps1 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml
           if ($LASTEXITCODE -eq 0) { throw "validate.ps1 negative unexpectedly validated" }
           Write-Host "PowerShell CLI OK on Windows"
+          exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
 
       - name: DB round-trip (Python) on Windows
         run: |
@@ -383,3 +387,4 @@ jobs:
           .venv\Scripts\python Database_Integration/tools/xml_equiv.py $fx out.xml
           if ($LASTEXITCODE -ne 0) { throw "round-trip not equivalent" }
           Write-Host "DB round-trip OK on Windows"
+          exit 0
