@@ -27,7 +27,7 @@ Content-identical to the 4.1.0 example (3 equity positions), but adapted to the
 ## Validation
 
 ```bash
-tools/fetch-schema.sh 4.0.0
+python -m fundsxml_schema 4.0.0   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
 xmllint --noout --schema .schema-cache/4.0.0/FundsXML.xsd \
         FundsXML_Files/4.0.0/positions/Equity-Fund_Positions.xml
 ```

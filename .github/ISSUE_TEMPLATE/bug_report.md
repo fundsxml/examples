@@ -14,8 +14,8 @@ e.g. 4.2.9, `FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml`
 (or attach/inline a minimal FundsXML snippet — no real/PII data).
 
 **What I ran**
-The exact command(s), including the `./mvnw` (or `mvnw.cmd`) invocation for
-Java examples, or any `tools/fetch-schema.sh` step.
+The exact command(s) — e.g. the `./mvnw`/`mvnw.cmd` invocation (Java), the
+venv `pip install -e .` + `python ...` (Python), or `dotnet run` (.NET).
 
 **Expected vs. actual**
 What you expected and what happened (paste the full error / output).
