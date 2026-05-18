@@ -46,8 +46,15 @@ function Get-File($url, $dest) {
     Invoke-WebRequest -Uri $url -OutFile $dest -MaximumRedirection 5 -UseBasicParsing
 }
 
-if ($env:FUNDSXML_SCHEMA_DIR) {
-    $schemaPath = Join-Path $env:FUNDSXML_SCHEMA_DIR 'FundsXML.xsd'
+# cmd's `set VAR="x"` keeps the quotes in the value; a stray " is an
+# illegal path char and crashes Test-Path. Trim quotes/whitespace so the
+# escape hatch tolerates that common mistake.
+$schemaDirEnv = if ($env:FUNDSXML_SCHEMA_DIR) {
+    $env:FUNDSXML_SCHEMA_DIR.Trim().Trim('"', "'")
+} else { '' }
+
+if ($schemaDirEnv) {
+    $schemaPath = Join-Path $schemaDirEnv 'FundsXML.xsd'
     if (-not (Test-Path $schemaPath)) {
         Write-Error "FUNDSXML_SCHEMA_DIR set but $schemaPath not found"; exit 2
     }
