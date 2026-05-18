@@ -36,7 +36,9 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..' '..')).Path
+# Nested Join-Path: the 3-arg form (-AdditionalChildPath) is PS 7+ only;
+# Windows PowerShell 5.1 accepts just -Path/-ChildPath.
+$repoRoot = (Resolve-Path (Join-Path (Join-Path $PSScriptRoot '..') '..')).Path
 $base = "https://github.com/fundsxml/schema/releases/download/$Version"
 
 function Get-File($url, $dest) {
