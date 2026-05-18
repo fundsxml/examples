@@ -33,7 +33,9 @@ MAVEN_OPTS=-Xmx64m ./mvnw -q -pl Large_File_Processing/java compile exec:java \
 
 # 3. split into XSD-valid chunks of 10k positions
 python3 Large_File_Processing/python/split.py big.xml chunks/ 10000
-xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd chunks/chunk-0001.xml
+XSD_Validation/cli/validate.sh \
+  https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
+  chunks/chunk-0001.xml   # or a local FundsXML.xsd path
 
 # 4. day-over-day position delta (exit 1 if anything changed)
 python3 Large_File_Processing/python/delta_diff.py yesterday.xml today.xml

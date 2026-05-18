@@ -114,36 +114,36 @@ FundsXML uses standardized codes for asset classification:
 
 FundsXML documents should be validated against the official XSD schema:
 
-### Download Schema
+### The schema
 
-Validation always targets the **official release** of the schema:
+The canonical schema is the **official release**:
 
 ```
 https://github.com/fundsxml/schema/releases/download/<version>/FundsXML.xsd
 ```
 
-Two enterprise-relevant caveats are handled by every example's in-language
-schema resolver (and by the `fundsxml_schema` module shown below):
+You hand that URL (or a local `FundsXML.xsd` path) straight to a validator —
+nothing is resolved by version. Two enterprise-relevant caveats the validators
+handle for you:
 
-1. That URL returns an HTTP 302 redirect; simple HTTP clients (libxml2 /
-   xmllint) do not follow it, so the schema must be materialised first.
-2. From release 4.2.9 on, `FundsXML.xsd` imports `xmldsig-core-schema.xsd` via a
-   relative path — both files must sit in the same directory.
+1. That URL returns an HTTP 302 redirect; the validators that rely on a simple
+   HTTP client (Python, the xmllint CLI, Java) fetch the schema into a temp
+   dir first, then validate locally.
+2. From release 4.2.9 on, `FundsXML.xsd` imports `xmldsig-core-schema.xsd` via
+   a relative path — the URL stacks fetch that sibling alongside it; for a
+   local schema path it must sit in the same directory (it does in any
+   complete copy of a release).
 
-The resolution order is the same everywhere: `$FUNDSXML_SCHEMA_DIR` (offline /
-corporate-network escape hatch) → `.schema-cache/` → download from the
-official release. No committed catalog.
-
-```bash
-# Fetches FundsXML.xsd (+ xmldsig-core-schema.xsd when needed) into .schema-cache/<version>/
-python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
-```
-
-### Validate with xmllint (macOS/Linux)
+### Validate (any stack — schema + xml)
 
 ```bash
-xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd \
+XSD_Validation/cli/validate.sh \
+        https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
         FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+# offline: pass a local FundsXML.xsd path instead of the URL. Bare xmllint
+# needs the schema on disk (it can't follow the GitHub 302 itself):
+#   curl -sSL -o /tmp/FundsXML.xsd "<release-url>"   # + xmldsig sibling for 4.2.9+
+#   xmllint --noout --schema /tmp/FundsXML.xsd <file>
 ```
 
 ### Validate with Saxon

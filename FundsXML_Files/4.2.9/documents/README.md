@@ -24,7 +24,9 @@ via `Document/Fund/Identifiers/LEI`.
 ## Validation
 
 ```bash
-python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
-xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd \
+# Give the validator the schema (the official 4.2.9 release URL — or a local
+# FundsXML.xsd path) + the XML file; the xmldsig sibling is handled for you:
+XSD_Validation/cli/validate.sh \
+        https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
         FundsXML_Files/4.2.9/documents/Fund_Documents.xml
 ```
