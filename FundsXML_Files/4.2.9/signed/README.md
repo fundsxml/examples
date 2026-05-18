@@ -13,8 +13,9 @@
 
 `ds:Signature` (namespace `http://www.w3.org/2000/09/xmldsig#`) is the **last
 optional child** of `<FundsXML4>`. From release 4.2.9 on, `FundsXML.xsd` imports
-`xmldsig-core-schema.xsd` for this — the schema resolvers fetch that sibling
-automatically when it is imported (e.g. `python -m fundsxml_schema 4.2.9`).
+`xmldsig-core-schema.xsd` for this — the validators fetch that sibling
+alongside `FundsXML.xsd` when you pass the release URL (and it sits next to a
+local `FundsXML.xsd` in any complete copy of the release).
 
 > ⚠️ **Placeholder:** `DigestValue` and `SignatureValue` are schema-valid base64
 > strings but **not cryptographically verifiable**. Real signing and
@@ -26,7 +27,9 @@ Algorithms used (enveloped signature): C14N 2001-03-15, RSA-SHA256, SHA-256.
 ## Validation
 
 ```bash
-python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
-xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd \
+# Give the validator the schema (the official 4.2.9 release URL — or a local
+# FundsXML.xsd path) + the XML file; the xmldsig sibling is handled for you:
+XSD_Validation/cli/validate.sh \
+        https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
         FundsXML_Files/4.2.9/signed/Signed_Fund_Skeleton.xml
 ```

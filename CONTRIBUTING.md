@@ -22,12 +22,11 @@ Please read this before opening a pull request.
   the schema itself requires them). `xsi:noNamespaceSchemaLocation` must be in
   the XMLSchema-instance namespace or validators reject it.
 - **Validate against the official released schema**, never a hand-made
-  catalog. Every example resolves it itself (`$FUNDSXML_SCHEMA_DIR` →
-  `.schema-cache/` → official-release download, 302-aware, pulls the
-  `xmldsig-core-schema.xsd` sibling for 4.2.9+). For an xmllint check,
-  materialise the cache with `python -m fundsxml_schema <version>`
-  (after `pip install -e .`). Set sample `xsi:noNamespaceSchemaLocation`
-  to that release URL.
+  catalog. The validators take `<schema> <xml-file>` — pass the official
+  release URL (the URL stacks fetch it + the `xmldsig-core-schema.xsd`
+  sibling for 4.2.9+) or a local `FundsXML.xsd` path. No version arg, no
+  cache, no env var. Set sample `xsi:noNamespaceSchemaLocation` to that
+  release URL.
 - **4.0.0 `ControlData` has no `<Version>` element** (added in 4.1.0) — never
   add one to a 4.0.0 sample.
 - Positions ↔ Assets link by a shared `UniqueID`; `AssetMasterData` is
@@ -60,18 +59,19 @@ Run what you changed and confirm it actually works — no "should pass" claims.
 
 Java examples build standalone via the committed Maven Wrapper (`./mvnw`, or
 `mvnw.cmd` on Windows). Python examples install once into a venv from
-`pyproject.toml` and resolve the XSD themselves. No `fetch-tools.sh` and no
-`fetch-schema.sh` — both are gone; every stack is standalone & cross-platform.
+`pyproject.toml`. No `fetch-tools.sh`, no `fetch-schema.sh`, no
+`fundsxml_schema` resolver — all gone; every stack is standalone &
+cross-platform and takes the schema as an argument.
 
 ```bash
+REL=https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd
+
 # Python stack (cross-platform; Windows: .venv\Scripts\activate)
 python -m venv .venv && . .venv/bin/activate && pip install -e .
-python XSD_Validation/python/validate.py 4.2.9 <your-sample>.xml   # self-resolves the XSD
+python XSD_Validation/python/validate.py "$REL" <your-sample>.xml
 
-# xmllint check: materialise the cache cross-platform, then validate
-python -m fundsxml_schema 4.2.9
-xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd <your-sample>.xml
-# (or just: XSD_Validation/cli/validate.sh 4.2.9 <your-sample>.xml — self-resolving)
+# or the CLI (same args); a local FundsXML.xsd path works in place of $REL:
+XSD_Validation/cli/validate.sh "$REL" <your-sample>.xml
 
 # Schematron via the Maven Wrapper (positive sample -> exit 0)
 ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation \

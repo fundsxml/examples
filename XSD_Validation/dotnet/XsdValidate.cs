@@ -2,22 +2,23 @@
 //
 // Standalone & cross-platform (no bash, no prior tool step) with the .NET SDK,
 // run from the repo root:
-//   dotnet run --project XSD_Validation/dotnet -- <version> <xml-file>
+//   dotnet run --project XSD_Validation/dotnet -- <schema> <xml-file>
 // Exit: 0 valid, 1 invalid, 2 usage/setup error.
 //
-// The official released schema is obtained by this example itself via the
-// sibling SchemaResolver (see SchemaResolver.cs): $FUNDSXML_SCHEMA_DIR
-// (offline/corporate escape hatch) -> .schema-cache/ -> download from the
-// official GitHub release (following the 302; fetching the relative
-// xmldsig-core-schema.xsd sibling FundsXML 4.2.9+ imports). The official
-// release stays the source of truth — no committed catalog.
+// You give it exactly two things: the schema and the instance. <schema> is a
+// path to an XSD file OR a remote URL, e.g. the official release:
+//   https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd
+// No version, no env var, no cache, no resolver — whatever you point at is
+// used as-is. For FundsXML 4.2.9+ the schema imports xmldsig-core-schema.xsd
+// via a relative path, so that sibling must be reachable next to <schema>
+// (it is, in the official release directory and in any complete local copy).
 //
-// Security: XmlResolver = null on the reader closes XXE / external-entity
-// vectors. An XmlUrlResolver is used ONLY to resolve the schema set's local
-// relative xmldsig import, never for instance documents.
+// Security: XmlResolver = null on the instance reader closes XXE / external-
+// entity vectors. An XmlUrlResolver is used ONLY for the schema set, so a
+// remote schema and the schema's relative xmldsig import resolve — never for
+// instance documents.
 
 using System;
-using System.IO;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -27,31 +28,28 @@ internal static class XsdValidate
     {
         if (args.Length != 2)
         {
-            Console.Error.WriteLine("usage: XsdValidate <version> <xml-file>");
+            Console.Error.WriteLine("usage: XsdValidate <schema> <xml-file>");
             return 2;
         }
 
-        string version = args[0];
+        string schemaArg = args[0];
         string xmlFile = args[1];
-
-        string schemaPath;
-        try
-        {
-            schemaPath = SchemaResolver.Resolve(version);
-        }
-        catch (Exception ex)
-        {
-            Console.Error.WriteLine($"schema resolution failed: {ex.Message}");
-            return 2;
-        }
 
         var schemas = new XmlSchemaSet
         {
-            // Needed only so the schema's relative xmldsig-core-schema.xsd
-            // import (4.2.9+) resolves from the same directory.
+            // Resolves a remote schema URL and the schema's relative
+            // xmldsig-core-schema.xsd import (4.2.9+) from the same location.
             XmlResolver = new XmlUrlResolver()
         };
-        schemas.Add(null, schemaPath);
+        try
+        {
+            schemas.Add(null, schemaArg);
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"schema load failed: {ex.Message}");
+            return 2;
+        }
 
         bool failed = false;
         var settings = new XmlReaderSettings
@@ -86,11 +84,11 @@ internal static class XsdValidate
         if (failed)
         {
             Console.Error.WriteLine(
-                $"INVALID: {xmlFile} (FundsXML {version})");
+                $"INVALID: {xmlFile} (schema {schemaArg})");
             return 1;
         }
 
-        Console.WriteLine($"VALID: {xmlFile} (FundsXML {version})");
+        Console.WriteLine($"VALID: {xmlFile} (schema {schemaArg})");
         return 0;
     }
 }

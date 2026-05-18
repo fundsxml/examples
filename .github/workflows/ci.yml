@@ -39,21 +39,32 @@ jobs:
         with:
           dotnet-version: "8.0"
 
-      # One idiomatic, OS-agnostic Python install (venv + editable pyproject);
-      # also exposes the `fundsxml_schema` resolver to every Python script.
+      # One idiomatic, OS-agnostic Python install (venv + editable pyproject).
+      # Dependency-only manifest — nothing is packaged/importable.
       - name: Python - venv & install (pyproject)
         run: |
           python -m venv .venv
           .venv/bin/pip install --quiet --upgrade pip
           .venv/bin/pip install --quiet -e .
-          .venv/bin/python -c "import lxml, saxonche, fundsxml_schema; print('python deps OK')"
+          .venv/bin/python -c "import lxml, saxonche; print('python deps OK')"
 
-      # Materialise the official schemas into .schema-cache/ for the
-      # xmllint-based steps below — via the in-language resolver module
-      # (cross-platform), replacing the deleted tools/fetch-schema.sh.
-      - name: Materialise official schemas (4.2.9, 4.1.0, 4.0.0)
+      # The examples no longer resolve any schema: each validator takes a
+      # schema path (or URL) + the XML file. This step is CI plumbing only —
+      # a plain curl of the official releases into ci-schemas/ so the many
+      # raw-xmllint steps below have a local schema path to point at. (The
+      # validators' own remote-URL handling is exercised separately.)
+      - name: Fetch official schemas for CI (plain curl, no resolver)
         run: |
-          for v in 4.2.9 4.1.0 4.0.0; do .venv/bin/python -m fundsxml_schema "$v"; done
+          set -e
+          for v in 4.2.9 4.1.0 4.0.0; do
+            mkdir -p "ci-schemas/$v"
+            curl -sSL --fail -o "ci-schemas/$v/FundsXML.xsd" \
+              "https://github.com/fundsxml/schema/releases/download/$v/FundsXML.xsd"
+            if grep -q 'xmldsig-core-schema\.xsd' "ci-schemas/$v/FundsXML.xsd"; then
+              curl -sSL --fail -o "ci-schemas/$v/xmldsig-core-schema.xsd" \
+                "https://github.com/fundsxml/schema/releases/download/$v/xmldsig-core-schema.xsd"
+            fi
+          done
 
       - name: XSD - all positive samples must validate
         run: |
@@ -66,57 +77,66 @@ jobs:
           for v in "${!S[@]}"; do
             for f in ${S[$v]}; do
               echo "XSD $v/$f"
-              xmllint --noout --nonet --schema ".schema-cache/$v/FundsXML.xsd" \
+              xmllint --noout --nonet --schema "ci-schemas/$v/FundsXML.xsd" \
                       "FundsXML_Files/$v/$f.xml"
             done
           done
 
       - name: XSD - negative fixture must FAIL
         run: |
-          if xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd \
+          if xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd \
                      tests/fixtures/invalid/xsd-invalid_Positions.xml 2>/dev/null; then
             echo "::error::xsd-invalid fixture unexpectedly validated"; exit 1
           fi
           echo "xsd-invalid correctly rejected"
 
-      - name: Python - XSD validation (in-language schema resolve)
+      - name: Python - XSD validation (schema path + remote URL)
         run: |
           set -e
           V=".venv/bin/python XSD_Validation/python/validate.py"
-          # Cache is warm from the xmllint step: exercises the resolver's
-          # cache-hit path and the $FUNDSXML_SCHEMA_DIR env override.
-          $V 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          FUNDSXML_SCHEMA_DIR="$PWD/.schema-cache/4.1.0" \
-            $V 4.1.0 FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
-          if $V 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml; then
+          # Local schema path (two versions) ...
+          $V ci-schemas/4.2.9/FundsXML.xsd FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          $V ci-schemas/4.1.0/FundsXML.xsd FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
+          # ... and a remote schema URL (the official release, fetched by the
+          # validator itself — exercises the URL path + the relative xmldsig
+          # sibling fetch).
+          $V https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
+             FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          if $V ci-schemas/4.2.9/FundsXML.xsd tests/fixtures/invalid/xsd-invalid_Positions.xml; then
             echo "::error::xsd-invalid unexpectedly validated (Python)"; exit 1
           fi
-          echo "Python validate.py: positive ok, negative correctly rejected"
+          echo "Python validate.py: path + URL ok, negative correctly rejected"
 
-      - name: .NET - XSD validation (in-language schema resolve)
+      - name: .NET - XSD validation (schema path + remote URL)
         run: |
           set -e
           D="dotnet run --project XSD_Validation/dotnet --"
-          # Cache is warm from the xmllint step: exercises the resolver's
-          # cache-hit path and the $FUNDSXML_SCHEMA_DIR env override.
-          $D 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          FUNDSXML_SCHEMA_DIR="$PWD/.schema-cache/4.1.0" \
-            $D 4.1.0 FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
-          if $D 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml; then
+          $D ci-schemas/4.2.9/FundsXML.xsd FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          $D ci-schemas/4.1.0/FundsXML.xsd FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml
+          # Remote schema URL: .NET resolves it (and the relative xmldsig
+          # import) natively via the schema-set URL resolver.
+          $D https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
+             FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          if $D ci-schemas/4.2.9/FundsXML.xsd tests/fixtures/invalid/xsd-invalid_Positions.xml; then
             echo "::error::xsd-invalid unexpectedly validated (.NET)"; exit 1
           fi
-          echo ".NET XsdValidate: positive ok, negative correctly rejected"
+          echo ".NET XsdValidate: path + URL ok, negative correctly rejected"
 
-      - name: CLI - validate.sh (standalone POSIX sh)
+      - name: CLI - validate.sh (schema path + remote URL)
         run: |
           set -e
-          XSD_Validation/cli/validate.sh 4.2.9 \
+          XSD_Validation/cli/validate.sh ci-schemas/4.2.9/FundsXML.xsd \
             FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-          if XSD_Validation/cli/validate.sh 4.2.9 \
+          # Remote schema URL: validate.sh fetches it (and the xmldsig
+          # sibling) into a temp dir, then validates offline with --nonet.
+          XSD_Validation/cli/validate.sh \
+            https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
+            FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          if XSD_Validation/cli/validate.sh ci-schemas/4.2.9/FundsXML.xsd \
                tests/fixtures/invalid/xsd-invalid_Positions.xml; then
             echo "::error::xsd-invalid unexpectedly validated (CLI)"; exit 1
           fi
-          echo "CLI validate.sh: positive ok, negative correctly rejected"
+          echo "CLI validate.sh: path + URL ok, negative correctly rejected"
 
       # ---------------------------------------------------------------------
       # Java examples — built & run via the committed Maven Wrapper. The first
@@ -128,19 +148,19 @@ jobs:
       - name: Java - build all modules (Maven Wrapper)
         run: ./mvnw -q -B compile
 
-      - name: Java - XSD validation (in-language schema resolve)
+      - name: Java - XSD validation (schema path + remote URL)
         run: |
           set -e
           M="./mvnw -q -B -pl XSD_Validation/java exec:java"
-          # Cache is warm from the xmllint step: exercises the resolver's
-          # cache-hit path and the $FUNDSXML_SCHEMA_DIR env override.
-          $M -Dexec.args="4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
-          FUNDSXML_SCHEMA_DIR="$PWD/.schema-cache/4.1.0" \
-            $M -Dexec.args="4.1.0 FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml"
-          if $M -Dexec.args="4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml"; then
+          $M -Dexec.args="ci-schemas/4.2.9/FundsXML.xsd FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+          $M -Dexec.args="ci-schemas/4.1.0/FundsXML.xsd FundsXML_Files/4.1.0/positions/Equity-Fund_Positions.xml"
+          # Remote schema URL: the validator fetches it (and the xmldsig
+          # sibling) into a temp dir, then validates locally.
+          $M -Dexec.args="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+          if $M -Dexec.args="ci-schemas/4.2.9/FundsXML.xsd tests/fixtures/invalid/xsd-invalid_Positions.xml"; then
             echo "::error::xsd-invalid unexpectedly validated (Java)"; exit 1
           fi
-          echo "Java XsdValidate: positive ok, negative correctly rejected"
+          echo "Java XsdValidate: path + URL ok, negative correctly rejected"
 
       - name: Schematron - canonical sample passes, fixture fails
         run: |
@@ -195,7 +215,7 @@ jobs:
              -Dexec.args="$SRC signed.xml XML_Signature/keys/test-signing.p12 changeit fundsxml"
           $M -Dexec.mainClass=VerifyFundsXml \
              -Dexec.args="signed.xml XML_Signature/keys/test-signing-cert.pem"
-          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd signed.xml
+          xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd signed.xml
           sed 's/<TotalPercentage>8.33</<TotalPercentage>9.33</' signed.xml > tampered.xml
           if $M -Dexec.mainClass=VerifyFundsXml \
                -Dexec.args="tampered.xml XML_Signature/keys/test-signing-cert.pem"; then
@@ -211,7 +231,7 @@ jobs:
           MX=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
           DOC=FUNDSXML_MULTI_1
           EQ="$PY Database_Integration/tools/xml_equiv.py"
-          XSD=".schema-cache/4.2.9/FundsXML.xsd"
+          XSD="ci-schemas/4.2.9/FundsXML.xsd"
 
           # The multi-fund fixture must itself be schema-valid.
           xmllint --noout --nonet --schema "$XSD" "$FX"
@@ -260,7 +280,7 @@ jobs:
           PY=.venv/bin/python
           P=Large_File_Processing/python
           $PY $P/make_large_sample.py big.xml 30000
-          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd big.xml
+          xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd big.xml
           $PY $P/stream_aggregate.py big.xml | tee agg.txt
           grep -q '^positions      : 30000$' agg.txt
           grep -q '^sum value (EUR): 30000000.00$' agg.txt
@@ -271,7 +291,7 @@ jobs:
           grep -q '^positions      : 30000$' aggj.txt
           $PY $P/split.py big.xml chunks/ 10000
           test "$(ls chunks/chunk-*.xml | wc -l)" = "3"
-          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd chunks/chunk-0001.xml
+          xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd chunks/chunk-0001.xml
           $PY $P/delta_diff.py big.xml big.xml   # identical -> exit 0
 
       - name: Data binding / JSON - round-trip + native Java binding
@@ -280,11 +300,11 @@ jobs:
           PY=.venv/bin/python
           SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
           $PY Data_Binding_JSON/python/fundsxml_json.py roundtrip "$SRC" rj.xml
-          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rj.xml
+          xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd rj.xml
           # Multi-fund JSON round-trip is lossless -> must be xml_equiv-equal.
           MF=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
           $PY Data_Binding_JSON/python/fundsxml_json.py roundtrip "$MF" rjm.xml
-          xmllint --noout --nonet --schema .schema-cache/4.2.9/FundsXML.xsd rjm.xml
+          xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd rjm.xml
           $PY Database_Integration/tools/xml_equiv.py "$MF" rjm.xml
           $PY - "$SRC" rj.xml <<'PY'
           import re, sys
@@ -306,10 +326,10 @@ jobs:
 
   # =======================================================================
   # Windows smoke — proves the examples are genuinely cross-platform and
-  # standalone (the whole point of this work): every stack resolves the XSD
-  # itself and runs with no bash, no prior tool step, on a clean Windows box.
-  # A focused subset (Python / Java / .NET XSD + one XSLT + a DB round-trip +
-  # the PowerShell CLI), not the full bash-heavy matrix.
+  # standalone (the whole point of this work): every stack runs with no bash,
+  # no prior tool step, on a clean Windows box, taking a schema URL + the XML
+  # file directly. A focused subset (Python / Java / .NET XSD + one XSLT + a
+  # DB round-trip + the PowerShell CLI), not the full bash-heavy matrix.
   # =======================================================================
   windows-smoke:
     runs-on: windows-latest
@@ -334,14 +354,15 @@ jobs:
           python -m venv .venv
           .venv\Scripts\python -m pip install --quiet --upgrade pip
           .venv\Scripts\pip install --quiet -e .
-          .venv\Scripts\python -c "import lxml, saxonche, fundsxml_schema; print('python deps OK')"
+          .venv\Scripts\python -c "import lxml, saxonche; print('python deps OK')"
 
-      - name: Python - XSD validation (downloads schema itself on Windows)
+      - name: Python - XSD validation (remote schema URL on Windows)
         run: |
           $src = "FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
-          .venv\Scripts\python XSD_Validation/python/validate.py 4.2.9 $src
+          $xsd = "https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd"
+          .venv\Scripts\python XSD_Validation/python/validate.py $xsd $src
           if ($LASTEXITCODE -ne 0) { throw "positive failed" }
-          .venv\Scripts\python XSD_Validation/python/validate.py 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml
+          .venv\Scripts\python XSD_Validation/python/validate.py $xsd tests/fixtures/invalid/xsd-invalid_Positions.xml
           if ($LASTEXITCODE -eq 0) { throw "negative unexpectedly validated (Python)" }
           Write-Host "Python OK on Windows"
           exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
@@ -349,30 +370,33 @@ jobs:
       - name: Java - XSD validate + one XSLT (Maven Wrapper, mvnw.cmd)
         run: |
           $src = "FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
-          .\mvnw.cmd -q -B -pl XSD_Validation/java compile exec:java "-Dexec.args=4.2.9 $src"
+          $xsd = "https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd"
+          .\mvnw.cmd -q -B -pl XSD_Validation/java compile exec:java "-Dexec.args=$xsd $src"
           if ($LASTEXITCODE -ne 0) { throw "Java XSD positive failed" }
-          .\mvnw.cmd -q -B -pl XSD_Validation/java exec:java "-Dexec.args=4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml"
+          .\mvnw.cmd -q -B -pl XSD_Validation/java exec:java "-Dexec.args=$xsd tests/fixtures/invalid/xsd-invalid_Positions.xml"
           if ($LASTEXITCODE -eq 0) { throw "Java negative unexpectedly validated" }
           .\mvnw.cmd -q -B -pl XSLT_Transformations/invocation compile exec:java "-Dexec.args=XSLT_Transformations/CSV_Export/positions_csv.xslt $src out_pos.csv"
           if (-not (Test-Path out_pos.csv)) { throw "XSLT produced no output" }
           Write-Host "Java OK on Windows"
           exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
 
-      - name: .NET - XSD validation (downloads schema itself on Windows)
+      - name: .NET - XSD validation (remote schema URL on Windows)
         run: |
           $src = "FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
-          dotnet run --project XSD_Validation/dotnet -- 4.2.9 $src
+          $xsd = "https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd"
+          dotnet run --project XSD_Validation/dotnet -- $xsd $src
           if ($LASTEXITCODE -ne 0) { throw ".NET XSD positive failed" }
-          dotnet run --project XSD_Validation/dotnet -- 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml
+          dotnet run --project XSD_Validation/dotnet -- $xsd tests/fixtures/invalid/xsd-invalid_Positions.xml
           if ($LASTEXITCODE -eq 0) { throw ".NET negative unexpectedly validated" }
           Write-Host ".NET OK on Windows"
           exit 0   # reset $LASTEXITCODE (the negative case left it at 1)
 
-      - name: CLI - validate.ps1 (PowerShell, .NET fallback when no xmllint)
+      - name: CLI - validate.ps1 (remote URL, .NET fallback when no xmllint)
         run: |
-          pwsh XSD_Validation/cli/validate.ps1 4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          $xsd = "https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd"
+          pwsh XSD_Validation/cli/validate.ps1 $xsd FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
           if ($LASTEXITCODE -ne 0) { throw "validate.ps1 positive failed" }
-          pwsh XSD_Validation/cli/validate.ps1 4.2.9 tests/fixtures/invalid/xsd-invalid_Positions.xml
+          pwsh XSD_Validation/cli/validate.ps1 $xsd tests/fixtures/invalid/xsd-invalid_Positions.xml
           if ($LASTEXITCODE -eq 0) { throw "validate.ps1 negative unexpectedly validated" }
           Write-Host "PowerShell CLI OK on Windows"
           exit 0   # reset $LASTEXITCODE (the negative case left it at 1)

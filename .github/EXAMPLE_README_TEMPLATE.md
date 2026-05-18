@@ -20,11 +20,10 @@ Why this exists and when an enterprise integrator would use it.
 ## Prerequisites
 
 - Tooling/runtime versions
-- The example resolves the XSD itself (env `FUNDSXML_SCHEMA_DIR` →
-  `.schema-cache/` → official-release download); or
-  `python -m fundsxml_schema <version>` to pre-cache for a bare xmllint
-- Network/proxy note when the official schema URL must be reached
-  (`$FUNDSXML_SCHEMA_DIR` is the offline escape hatch)
+- XSD validation takes `<schema> <xml-file>`: pass the official release URL
+  or a local `FundsXML.xsd` path (no version arg, no cache, no env var)
+- Network note: only needed when a schema **URL** is passed; a local
+  `FundsXML.xsd` path validates fully offline
 
 ## Run
 
