@@ -15,8 +15,8 @@
 - [ ] English only; example is **self-contained** and **heavily commented**
       (file-header: purpose / run / deps / FundsXML assumptions + what & why).
 - [ ] FundsXML conventions: no XML namespace; XSD-validated against the
-      **official released schema** (each example resolves it itself; or
-      `python -m fundsxml_schema <ver>`); 4.0.0 has no `ControlData/Version`;
+      **official released schema** (validators take `<schema> <xml-file>` —
+      release URL or local path); 4.0.0 has no `ControlData/Version`;
       secure XML parsing (DTD/external entities off).
 - [ ] New/changed samples are **XSD-valid**; negative fixtures still fail.
 - [ ] Round-trip examples: proven with `Database_Integration/tools/xml_equiv.py`

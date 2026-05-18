@@ -14,7 +14,7 @@
 #
 # Prove the round-trip (import file vs exported file):
 #   python3 ../tools/xml_equiv.py some.xml out.xml
-#   xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd out.xml
+#   XSD_Validation/cli/validate.sh <FundsXML.xsd path or release URL> out.xml
 #
 # DEPENDENCIES  Python stdlib `sqlite3` + `lxml`.
 #

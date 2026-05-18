@@ -37,7 +37,6 @@ Linux/macOS) with no bash prerequisite, and is exercised by the CI workflow.
 | Database import / export (multi-fund) | Separate import + export programs in Python · Java · JavaScript · C# (SQLite); Oracle/SQL Server/Postgres SQL (code refs) | [Database_Integration/](./Database_Integration/) |
 | Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) |
 | Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) |
-| Schema resolver (env → cache → official download) | In every example + [tools/fundsxml_schema.py](./tools/fundsxml_schema.py) | every stack |
 
 ## Repository Structure
 
@@ -49,11 +48,8 @@ fundsxml_examples/
 │                                          #   wrapper: builds all Java
 │                                          #   examples standalone (deps from
 │                                          #   Maven Central), no preinstall
-├── pyproject.toml                          # Python deps + the
-│                                          #   fundsxml_schema resolver module
-├── tools/fundsxml_schema.py                # shared in-language XSD resolver
-│                                          #   (env / cache / official URL);
-│                                          #   every stack resolves it itself
+├── pyproject.toml                          # Python deps (lxml + saxonche);
+│                                          #   dependency-only, nothing packaged
 │
 ├── FundsXML_Files/                        # Sample documents, per version & use-case
 │   ├── 4.2.9/{positions,transactions,documents,regulatory,signed}/
@@ -102,10 +98,12 @@ fundsxml_examples/
 ## Quick Start
 
 Every example is **standalone and cross-platform** — no bash prerequisite, no
-manual dependency or schema fetching. Each language uses its own idiomatic
-build system; dependencies and the official XSD are resolved automatically on
-first run. **Run all commands from the repo root.** On Windows use `mvnw.cmd`
-instead of `./mvnw` and `.venv\Scripts\activate` instead of the `source` line.
+manual dependency fetching. Each language uses its own idiomatic build system;
+dependencies are resolved automatically on first run. The XSD validators take
+a schema (local path or remote URL) plus the XML file — you supply the schema,
+nothing is auto-resolved. **Run all commands from the repo root.** On Windows
+use `mvnw.cmd` instead of `./mvnw` and `.venv\Scripts\activate` instead of the
+`source` line.
 
 ### One-time setup (only the toolchains you intend to use)
 
@@ -115,27 +113,29 @@ instead of `./mvnw` and `.venv\Scripts\activate` instead of the `source` line.
 # .NET   — .NET SDK 8+ ; `dotnet run` restores NuGet packages itself.
 # Node   — Node 20+    ; `npm install` in Database_Integration/javascript.
 
-# Python — one venv from pyproject.toml (lxml + saxonche + the schema resolver)
+# Python — one venv from pyproject.toml (lxml + saxonche; deps only)
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -e .
 ```
 
-The XSD is resolved by each example itself, in this order:
-`$FUNDSXML_SCHEMA_DIR` (a hand-placed copy — offline / locked-down-network
-escape hatch) → `.schema-cache/` → download from the official GitHub release.
-Nothing to run up front.
+The XSD is whatever you hand the validator — a local `FundsXML.xsd` path or a
+remote URL (e.g. the official release
+`https://github.com/fundsxml/schema/releases/download/<ver>/FundsXML.xsd`).
+No version arg, no cache, no env var. Nothing to run up front.
 
 ### Try one example per area
 
 ```bash
 SRC=FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+XSD=https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd
+# ($XSD can equally be a local FundsXML.xsd path — same result, fully offline)
 
-# XSD validation — pick any stack (all self-resolve the schema):
-python XSD_Validation/python/validate.py 4.2.9 $SRC
-dotnet run --project XSD_Validation/dotnet -- 4.2.9 $SRC
-./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="4.2.9 $SRC"
-XSD_Validation/cli/validate.sh 4.2.9 $SRC          # Windows: pwsh .../validate.ps1
+# XSD validation — pick any stack (schema + xml, schema-first):
+python XSD_Validation/python/validate.py "$XSD" $SRC
+dotnet run --project XSD_Validation/dotnet -- "$XSD" $SRC
+./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="$XSD $SRC"
+XSD_Validation/cli/validate.sh "$XSD" $SRC          # Windows: pwsh .../validate.ps1
 
 # Schematron business rules (SVRL; exit 0 = no ERROR-role failures)
 ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation compile exec:java \
@@ -231,9 +231,10 @@ libraries (Saxon, SchXslt, Apache Santuario, SQLite drivers, lxml, saxonche,
 | CLI | a POSIX shell + `xmllint` (Linux/macOS) **or** PowerShell 5.1+/7+ (Windows) | n/a |
 | Legacy XSLT 1.0 | `xsltproc` | n/a |
 
-Network access to the official schema release (and Maven Central / PyPI /
-NuGet on first run) is expected; for locked-down environments point
-`FUNDSXML_SCHEMA_DIR` at a local copy of the XSD to skip the schema download.
+Network access to Maven Central / PyPI / NuGet on first run is expected. For
+the XSD validators, network is only needed if you pass a schema **URL**; pass
+a local `FundsXML.xsd` path (keep its `xmldsig-core-schema.xsd` sibling beside
+it for 4.2.9+) to validate fully offline.
 
 ## Asset Types in Examples
 
