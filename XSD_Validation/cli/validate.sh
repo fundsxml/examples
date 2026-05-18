@@ -1,69 +1,61 @@
 #!/bin/sh
 # XSD validation from the command line with xmllint (Linux/macOS).
 #
-# Usage: XSD_Validation/cli/validate.sh <version> <xml-file>
+# Usage: XSD_Validation/cli/validate.sh <schema> <xml-file>
 # Exit:  0 = valid, 1 = invalid, 2 = usage/setup error
 #
-# Standalone: this script resolves the official schema itself — no prior tool
-# step. Same 3-step convention as every other stack:
-#   1. $FUNDSXML_SCHEMA_DIR  — a dir with FundsXML.xsd (+ xmldsig sibling for
-#      4.2.9+). Used as-is, NO network (offline / corporate-network escape).
-#   2. .schema-cache/<version>/FundsXML.xsd  — reused if present.
-#   3. download from the official GitHub release (curl -L follows the 302),
-#      caching into .schema-cache/; the relative xmldsig-core-schema.xsd
-#      sibling is fetched only when FundsXML.xsd imports it (4.2.9+).
+# You give it exactly two things: the schema and the instance document.
+# <schema> is a path to an XSD file OR a remote URL, e.g. the official
+# release: https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd
+# No version, no env var, no cache — whatever you point at is used as-is.
+#
+# xmllint validates the instance with --nonet (XXE / external-entity
+# hardening). To keep that hardening while still accepting a *remote* schema,
+# a URL schema (and, when it imports it, the relative xmldsig-core-schema.xsd
+# sibling that FundsXML 4.2.9+ needs) is fetched into a temp dir first, then
+# validation runs offline against that local copy. A local schema path is
+# passed straight through (its xmldsig sibling, if imported, must sit next
+# to it — as it does in any complete copy of an official release).
 #
 # POSIX sh (no bash-isms) so it runs under dash/ash too. The Windows
 # counterpart is validate.ps1 in this directory.
 
 set -eu
 
-VERSION="${1:-}"
+SCHEMA="${1:-}"
 XML="${2:-}"
-if [ -z "$VERSION" ] || [ -z "$XML" ]; then
-  echo "usage: validate.sh <version> <xml-file>" >&2
+if [ -z "$SCHEMA" ] || [ -z "$XML" ]; then
+  echo "usage: validate.sh <schema> <xml-file>" >&2
   exit 2
 fi
 
-REPO_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
-BASE="https://github.com/fundsxml/schema/releases/download/${VERSION}"
+TMP=
+trap 'rm -f "${ERR:-}"; [ -n "$TMP" ] && rm -rf "$TMP"' EXIT
 
-fetch() {  # url dest
-  echo "schema: fetch $1" >&2
-  curl -sSL --fail -m 60 "$1" -o "$2"
-}
-
-if [ -n "${FUNDSXML_SCHEMA_DIR:-}" ]; then
-  SCHEMA="${FUNDSXML_SCHEMA_DIR}/FundsXML.xsd"
-  if [ ! -f "$SCHEMA" ]; then
-    echo "FUNDSXML_SCHEMA_DIR set but $SCHEMA not found" >&2
-    exit 2
-  fi
-  echo "schema: using \$FUNDSXML_SCHEMA_DIR -> $SCHEMA" >&2
-else
-  CACHE_DIR="${REPO_ROOT}/.schema-cache/${VERSION}"
-  SCHEMA="${CACHE_DIR}/FundsXML.xsd"
-  if [ -f "$SCHEMA" ]; then
-    echo "schema: cached -> $SCHEMA" >&2
-  else
-    mkdir -p "$CACHE_DIR"
-    fetch "${BASE}/FundsXML.xsd" "$SCHEMA"
-    if grep -q 'xmldsig-core-schema\.xsd' "$SCHEMA"; then
-      fetch "${BASE}/xmldsig-core-schema.xsd" \
-            "${CACHE_DIR}/xmldsig-core-schema.xsd"
+case "$SCHEMA" in
+  http://*|https://*)
+    # Remote schema: materialise it (and the xmldsig sibling it may import)
+    # into a temp dir so the instance can still be validated with --nonet.
+    TMP=$(mktemp -d)
+    LOCAL="$TMP/FundsXML.xsd"
+    echo "schema: fetch $SCHEMA" >&2
+    curl -sSL --fail -m 60 "$SCHEMA" -o "$LOCAL"
+    if grep -q 'xmldsig-core-schema\.xsd' "$LOCAL"; then
+      SIB_URL="${SCHEMA%/*}/xmldsig-core-schema.xsd"
+      echo "schema: fetch $SIB_URL" >&2
+      curl -sSL --fail -m 60 "$SIB_URL" -o "$TMP/xmldsig-core-schema.xsd"
     fi
-  fi
-fi
+    SCHEMA="$LOCAL"
+    ;;
+esac
 
-# --nonet: never hit the network during validation (XXE / entity hardening);
-# the schema was already materialised above.
+# --nonet: never hit the network during validation (XXE / entity hardening).
 ERR=$(mktemp)
-trap 'rm -f "$ERR"' EXIT
 if xmllint --noout --nonet --schema "$SCHEMA" "$XML" 2>"$ERR"; then
-  echo "VALID: $XML (FundsXML $VERSION)"
+  echo "VALID: $XML (schema $1)"
   exit 0
 else
-  echo "INVALID: $XML (FundsXML $VERSION)" >&2
+  echo "INVALID: $XML (schema $1)" >&2
   cat "$ERR" >&2
   exit 1
 fi

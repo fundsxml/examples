@@ -4,11 +4,6 @@ CLAUDE.md
 .DS_Store
 ._*
 
-# Locally cached XSD releases — not committed, the source of truth is the
-# official GitHub release. Each example downloads + caches it here itself
-# (honouring $FUNDSXML_SCHEMA_DIR); see XSD_Validation/java/XsdValidate.java.
-.schema-cache/
-
 # Maven build output. Dependencies come from Maven Central via ./mvnw; the
 # committed Maven Wrapper bootstraps Maven itself — nothing is vendored.
 target/

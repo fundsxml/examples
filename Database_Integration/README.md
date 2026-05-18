@@ -59,7 +59,6 @@ Each example is run as **import, then export** (the round-trip = both, then
 compare). `DOC` is the document id the import prints.
 
 ```bash
-python -m fundsxml_schema 4.2.9   # caches the XSD into .schema-cache/ (run `pip install -e .` once; cross-platform)
 FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
 DOC=FUNDSXML_MULTI_1
 
@@ -84,7 +83,9 @@ dotnet run --project Database_Integration/csharp/export -- fx.db "$DOC" out.xml
 
 # prove it: exported file == input file, and schema-valid
 python3 Database_Integration/tools/xml_equiv.py "$FX" out.xml
-xmllint --noout --schema .schema-cache/4.2.9/FundsXML.xsd out.xml
+XSD_Validation/cli/validate.sh \
+  https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
+  out.xml   # or a local FundsXML.xsd path
 ```
 
 (`--enable-native-access=ALL-UNNAMED` only silences a JDK 24+ warning when

@@ -3,24 +3,21 @@
 # WHY THIS EXISTS
 # ===============
 # The Python examples used to rely on ad-hoc `pip install lxml` / `pip install
-# saxonche` and on tools/fetch-schema.sh (bash) to materialise the XSD. That is
-# neither standalone nor cross-platform. This manifest makes the Python stack
-# install with one idiomatic, OS-agnostic command and ships the in-language
-# schema resolver as an importable module.
+# saxonche`. That is neither standalone nor cross-platform. This manifest makes
+# the Python stack install with one idiomatic, OS-agnostic command. It is a
+# dependency-only manifest — no module is packaged; the examples are plain
+# scripts run from the repo root.
 #
 # STANDALONE BOOTSTRAP (any OS; venv works on Windows too)
 # =======================================================
 #   python -m venv .venv
 #   # Linux/macOS:  . .venv/bin/activate      Windows:  .venv\Scripts\activate
 #   pip install -e .
-# Then run any example with the venv's Python, e.g.:
-#   python XSD_Validation/python/validate.py 4.2.9 \
+# Then run any example with the venv's Python, e.g. (the XSD validator takes a
+# schema path or URL + the XML file — no version, no resolver):
+#   python XSD_Validation/python/validate.py \
+#       https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
 #       FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
-#
-# `pip install -e .` exposes the top-level module `fundsxml_schema`
-# (tools/fundsxml_schema.py): $FUNDSXML_SCHEMA_DIR -> .schema-cache -> official
-# release download. No bash, no prior step, official release stays the source
-# of truth (no committed catalog).
 
 [build-system]
 requires = ["setuptools>=64"]
@@ -41,9 +38,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-# Single-module distribution: expose tools/fundsxml_schema.py as the top-level
-# importable `fundsxml_schema`. Nothing else in the repo is packaged.
-py-modules = ["fundsxml_schema"]
-
-[tool.setuptools.package-dir]
-"" = "tools"
+# Dependency-only install: nothing in the repo is packaged or importable, so
+# declare an empty module list (this also disables setuptools auto-discovery,
+# which would otherwise choke on the repo's flat multi-directory layout).
+py-modules = []
