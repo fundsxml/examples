@@ -134,7 +134,7 @@ XSD=https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd
 # XSD validation — pick any stack (schema + xml, schema-first):
 python XSD_Validation/python/validate.py "$XSD" $SRC
 dotnet run --project XSD_Validation/dotnet -- "$XSD" $SRC
-./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="$XSD $SRC"
+java XSD_Validation/java/XsdValidate.java "$XSD" $SRC   # JDK 11+ only, no Maven needed
 XSD_Validation/cli/validate.sh "$XSD" $SRC          # Windows: pwsh .../validate.ps1
 
 # Schematron business rules (SVRL; exit 0 = no ERROR-role failures)
