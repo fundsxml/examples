@@ -78,7 +78,17 @@ python XSD_Validation/python/validate.py "$REL" FundsXML_Files/4.2.9/positions/M
 python XSD_Validation/python/validate.py "$REL" tests/fixtures/invalid/xsd-invalid_Positions.xml         # exit 1
 ```
 
-Java (standalone): `./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="$REL <file>"`
+Java (standalone, JDK 11+ only — no Maven needed, the example has no
+dependencies beyond the JDK):
+
+```bash
+java XSD_Validation/java/XsdValidate.java "$REL" FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml  # exit 0
+java XSD_Validation/java/XsdValidate.java "$REL" tests/fixtures/invalid/xsd-invalid_Positions.xml         # exit 1
+```
+
+(Windows: `java XSD_Validation\java\XsdValidate.java <schema> <xml-file>`.)
+The same class also runs through the Maven aggregator, which is what CI uses:
+`./mvnw -q -pl XSD_Validation/java compile exec:java -Dexec.args="$REL <file>"`
 (`mvnw.cmd` on Windows).
 
 .NET (standalone): `dotnet run --project XSD_Validation/dotnet -- "$REL" <file>`
