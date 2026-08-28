@@ -1,10 +1,19 @@
 // XSD validation in native Java (no JAXB) via javax.xml.validation.
 //
 // Standalone & cross-platform — no prior tool, no bash, works on Windows.
-// Run from the repo root with the committed Maven Wrapper:
+// The only dependency is the JDK itself (javax.xml.validation + java.net.http),
+// so no build tool is needed: JDK 11+ compiles and runs a single source file
+// directly (JEP 330). Run from the repo root:
+//   java XSD_Validation/java/XsdValidate.java \
+//       https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
+//       FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+// (Windows: java XSD_Validation\java\XsdValidate.java <schema> <xml-file>)
+//
+// Alternatively via the committed Maven Wrapper (the module is part of the
+// root aggregator so `./mvnw compile` builds it together with the other
+// examples; it has no dependencies of its own):
 //   ./mvnw -q -pl XSD_Validation/java compile exec:java \
-//       -Dexec.args="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd \
-//                     FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+//       -Dexec.args="<schema> <xml-file>"
 // Exit: 0 = valid, 1 = invalid, 2 = usage/setup error
 //
 // You give it exactly two things: the schema and the instance. <schema> is a
@@ -79,13 +88,26 @@ public class XsdValidate {
             factory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "file");
             factory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
 
-            Schema fundsXmlSchema = factory.newSchema(schemaFile);
+            // A missing, unreadable or malformed *schema* is a setup error
+            // (exit 2), not an invalid instance (exit 1) — report it in one
+            // line instead of letting the SAXParseException stack-trace out.
+            Schema fundsXmlSchema;
+            try {
+                fundsXmlSchema = factory.newSchema(schemaFile);
+            } catch (SAXParseException e) {
+                System.err.println("cannot load schema " + schemaArg + ": "
+                                   + e.getMessage());
+                System.exit(2);
+                return;
+            }
             Validator validator = fundsXmlSchema.newValidator();
             validator.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
             validator.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "file");
 
             final boolean[] failed = {false};
             validator.setErrorHandler(new ErrorHandler() {
+                // Schema warnings (e.g. unused imports) never affect
+                // validity — deliberately ignored to keep the output clean.
                 public void warning(SAXParseException e) { }
                 public void error(SAXParseException e) { report(e); }
                 public void fatalError(SAXParseException e) { report(e); }

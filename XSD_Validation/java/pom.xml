@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   XSD validation in native Java (javax.xml.validation, no JAXB). No third-party
-  dependencies — the JDK is the whole runtime. The schema is obtained by the
-  example itself (env var / local cache / official download), see XsdValidate.java.
+  dependencies at all: the JDK is the whole runtime. Because of that, Maven is
+  NOT required to run this example. The JDK's source launcher (JDK 11+) does it
+  in one call from the repo root:
+    java XSD_Validation/java/XsdValidate.java <schema> <xml-file>
+  where <schema> is a local FundsXML.xsd path or a remote URL, see
+  XsdValidate.java.
 
-  Run from the repo root:
+  This module exists only so the root aggregator (./mvnw compile, CI) builds
+  every Java example uniformly. The equivalent Maven invocation is:
     ./mvnw -q -pl XSD_Validation/java compile exec:java \
-        -Dexec.args="4.2.9 FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+        -Dexec.args="<schema> <xml-file>"
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
