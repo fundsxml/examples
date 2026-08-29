@@ -216,6 +216,18 @@
             </assert>
         </rule>
         
+    </pattern>
+
+    <!-- ============================================
+         PATTERN 4b: DERIVATIVE UNDERLYINGS
+         Split out of asset-validations on purpose: ISO Schematron fires only
+         the FIRST rule whose context matches a node within a pattern. The
+         derivative-exposure rule above (OP or FU or FX or SW) already claims
+         every Option and Future, so these two ERROR rules were dead code
+         while they lived in the same pattern (SVRL showed them as
+         svrl:suppressed-rule). Same fix as percentage-validations.
+         ============================================ -->
+    <pattern id="asset-underlying-validations">
         <!-- Rule: Options must have underlying -->
         <rule context="AssetMasterData/Asset[AssetType = 'OP']">
             <assert test="AssetDetails/Option/Underlyings/Underlying" role="error">
