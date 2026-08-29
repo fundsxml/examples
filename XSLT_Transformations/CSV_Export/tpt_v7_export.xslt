@@ -13,9 +13,9 @@
   instrument the fund holds, described by a fixed list of 152 data columns.
 
   The authoritative column list (and the FundsXML mapping for almost every
-  field) comes from the spreadsheet shipped next to this file:
-      TPT_V7  20241125_updated.xlsx   (sheet "TPT V7.0", column 2
-      "Fundxml data name and path").
+  field) comes from the FinDatEx TPT V7.0 template spreadsheet (sheet
+  "TPT V7.0", column "Fundxml data name and path"), published at
+  https://findatex.eu/ ; the spreadsheet itself is not part of this repo.
   See README.md for the full column-by-column mapping table.
 
   OUTPUT SHAPE
@@ -103,7 +103,7 @@
       else if ($t='EQ' or $t='WA') then '3'
       else if ($t='SC') then '4'
       else if ($t='CE') then '5'
-      else if ($t='AC' or $t='FT' or $t='RP') then '7'
+      else if ($t='AC' or $t='CM' or $t='FT' or $t='RP') then '7'
       else if ($t='RE') then '9'
       else if ($t='FU') then 'A'
       else if ($t='OP') then 'B'
@@ -127,7 +127,7 @@
       else if ($t='EQ' or $t='WA') then '3L'
       else if ($t='SC') then '4'
       else if ($t='CE') then '5'
-      else if ($t='AC' or $t='FT' or $t='RP') then '7'
+      else if ($t='AC' or $t='CM' or $t='FT' or $t='RP') then '7'
       else if ($t='RE') then '9'
       else if ($t='FU') then 'A'
       else if ($t='OP') then 'B'
@@ -143,8 +143,11 @@
     <xsl:variable name="nl" select="'&#10;'"/>
     <xsl:variable name="root" select="FundsXML4"/>
 
-    <!-- Header: the 152 TPT column names, in TPT order -->
-    <xsl:text>1_Portfolio_identifying_data,2_Type_of_identification_code_for_the_fund_share_or_portfolio,3_Portfolio_name,4_Portfolio_currency_(B),5_Net_asset_valuation_of_the_portfolio_or_the_share_class_in_portfolio_currency,6_Valuation_date,7_Reporting_date,8_Share_price,8b_Total_number_of_shares,9_Cash_ratio,10_Portfolio_modified_duration,11_Complete_SCR_delivery,12_CIC_code_of_the_instrument,13_Economic_zone_of_the_quotation_place,14_Identification_code_of_the_instrument,15_Type_of_identification_code_for_the_instrument,16_Grouping_code_for_multiple_leg_instruments,17_Instrument_name,17b_Asset_liability,18_Quantity,19_Nominal_amount,20_Contract_size_for_derivatives,21_Quotation_currency_(A),22_Market_valuation_in_quotation_currency_(A),23_Clean_market_valuation_in_quotation_currency_(A),24_Market_valuation_in_portfolio_currency_(B),25_Clean_market_valuation_in_portfolio_currency_(B),26_Valuation_weight,27_Market_exposure_amount_in_quotation_currency_(A),28_Market_exposure_amount_in_portfolio_currency_(B),29_Market_exposure_amount_for_the_3rd_quotation_currency_(C),30_Market_exposure_in_weight,31_Market_exposure_for_the_3rd_currency_in_weight_over_NAV,32_Interest_rate_type,33_Coupon_rate,34_Interest_rate_reference_identification,35_Identification_type_for_interest_rate_index,36_Interest_rate_index_name,37_Interest_rate_margin,38_Coupon_payment_frequency,39_Maturity_date,40_Redemption_type,41_Redemption_rate,42_Callable_putable,43_Call_put_date,44_Issuer_bearer_option_exercise,45_Strike_price_for_embedded_(call_put)_options,46_Issuer_name,47_Issuer_identification_code,48_Type_of_identification_code_for_issuer,49_Name_of_the_group_of_the_issuer,50_Identification_of_the_group,51_Type_of_identification_code_for_issuer_group,52_Issuer_country,53_Issuer_economic_area,54_Economic_sector,55_Covered_not_covered,56_Securitisation,57_Explicit_guarantee_by_the_country_of_issue,58_Subordinated_debt,58b_Nature_of_the_tranche,59_Credit_quality_step,60_Call_Put_Cap_Floor,61_Strike_price,62_Conversion_factor_(convertibles)_concordance_factor_parity_(options),63_Effective_date_of_instrument,64_Exercise_type,65_Hedging_rolling,67_CIC_of_the_underlying_asset,68_Identification_code_of_the_underlying_asset,69_Type_of_identification_code_for_the_underlying_asset,70_Name_of_the_underlying_asset,71_Quotation_currency_of_the_underlying_asset_(C),72_Last_valuation_price_of_the_underlying_asset,73_Country_of_quotation_of_the_underlying_asset,74_Economic_area_of_quotation_of_the_underlying_asset,75_Coupon_rate_of_the_underlying_asset,76_Coupon_payment_frequency_of_the_underlying_asset,77_Maturity_date_of_the_underlying_asset,78_Redemption_profile_of_the_underlying_asset,79_Redemption_rate_of_the_underlying_asset,80_Issuer_name_of_the_underlying_asset,81_Issuer_identification_code_of_the_underlying_asset,82_Type_of_issuer_identification_code_of_the_underlying_asset,83_Name_of_the_group_of_the_issuer_of_the_underlying_asset,84_Identification_of_the_group_of_the_underlying_asset,85_Type_of_the_group_identification_code_of_the_underlying_asset,86_Issuer_country_of_the_underlying_asset,87_Issuer_economic_area_of_the_underlying_asset,88_Explicit_guarantee_by_the_country_of_issue_of_the_underlying_asset,89_Credit_quality_step_of_the_underlying_asset,90_Modified_duration_to_maturity_date,91_Modified_duration_to_next_option_exercise_date,92_Credit_sensitivity,93_Sensitivity_to_underlying_asset_price_(delta),94_Convexity_gamma_for_derivatives,94b_Vega,95_Identification_of_the_original_portfolio_for_positions_embedded_in_a_fund,97_SCR_mrkt_IR_up_weight_over_NAV,98_SCR_mrkt_IR_down_weight_over_NAV,99_SCR_mrkt_eq_type1_weight_over_NAV,100_SCR_mrkt_eq_type2_weight_over_NAV,101_SCR_mrkt_prop_weight_over_NAV,102_SCR_mrkt_spread_bonds_weight_over_NAV,103_SCR_mrkt_spread_structured_weight_over_NAV,104_SCR_mrkt_spread_derivatives_up_weight_over_NAV,105_SCR_mrkt_spread_derivatives_down_weight_over_NAV,105a_SCR_mrkt_FX_up_weight_over_NAV,105b_SCR_mrkt_FX_down_weight_over_NAV,106_Asset_pledged_as_collateral,107_Place_of_deposit,108_Participation,110_Valorisation_method,111_Value_of_acquisition,112_Credit_rating,113_Rating_agency,114_Issuer_economic_area,115_Fund_issuer_code,116_Fund_issuer_code_type,117_Fund_issuer_name,118_Fund_issuer_sector,119_Fund_issuer_group_code,120_Fund_issuer_group_code_type,121_Fund_issuer_group_name,122_Fund_issuer_country,123_Fund_CIC,123a_Fund_custodian_country,124_Duration,125_Accrued_income_(Security Denominated Currency),126_Accrued_income_(Portfolio Denominated Currency),127_Bond_floor_(convertible_instrument_only),128_Option_premium_(convertible_instrument_only),129_Valuation_yield,130_Valuation_z_spread,131_Underlying_asset_category,132_Infrastructure_investment,133_custodian_name,134_type1_private_equity_portfolio_eligibility,135_type1_private_equity_issuer_beta,137_Counterparty_sector,138_Collateral_eligibility,139_Collateral_Market_valuation_in_portfolio_currency,140_Custodian_identification_code,141_Type_of_custodian_identification_code,142_Bail-in_Rule,143_Maturity_date_expected,144_Modified_duration_to_maturity_date_expected,145_Credit_sensitivity_expected,146_PIK,147_Infrastructure_investment_additional_QRT,148_Economic_sector_NACE2.1,1000_TPT_Version</xsl:text>
+    <!-- Header: the 152 TPT column names, in TPT order. Kept as one literal
+         (no column name contains a comma) and re-joined with the requested
+         delimiter so the header always matches the data rows. -->
+    <xsl:variable name="header" select="'1_Portfolio_identifying_data,2_Type_of_identification_code_for_the_fund_share_or_portfolio,3_Portfolio_name,4_Portfolio_currency_(B),5_Net_asset_valuation_of_the_portfolio_or_the_share_class_in_portfolio_currency,6_Valuation_date,7_Reporting_date,8_Share_price,8b_Total_number_of_shares,9_Cash_ratio,10_Portfolio_modified_duration,11_Complete_SCR_delivery,12_CIC_code_of_the_instrument,13_Economic_zone_of_the_quotation_place,14_Identification_code_of_the_instrument,15_Type_of_identification_code_for_the_instrument,16_Grouping_code_for_multiple_leg_instruments,17_Instrument_name,17b_Asset_liability,18_Quantity,19_Nominal_amount,20_Contract_size_for_derivatives,21_Quotation_currency_(A),22_Market_valuation_in_quotation_currency_(A),23_Clean_market_valuation_in_quotation_currency_(A),24_Market_valuation_in_portfolio_currency_(B),25_Clean_market_valuation_in_portfolio_currency_(B),26_Valuation_weight,27_Market_exposure_amount_in_quotation_currency_(A),28_Market_exposure_amount_in_portfolio_currency_(B),29_Market_exposure_amount_for_the_3rd_quotation_currency_(C),30_Market_exposure_in_weight,31_Market_exposure_for_the_3rd_currency_in_weight_over_NAV,32_Interest_rate_type,33_Coupon_rate,34_Interest_rate_reference_identification,35_Identification_type_for_interest_rate_index,36_Interest_rate_index_name,37_Interest_rate_margin,38_Coupon_payment_frequency,39_Maturity_date,40_Redemption_type,41_Redemption_rate,42_Callable_putable,43_Call_put_date,44_Issuer_bearer_option_exercise,45_Strike_price_for_embedded_(call_put)_options,46_Issuer_name,47_Issuer_identification_code,48_Type_of_identification_code_for_issuer,49_Name_of_the_group_of_the_issuer,50_Identification_of_the_group,51_Type_of_identification_code_for_issuer_group,52_Issuer_country,53_Issuer_economic_area,54_Economic_sector,55_Covered_not_covered,56_Securitisation,57_Explicit_guarantee_by_the_country_of_issue,58_Subordinated_debt,58b_Nature_of_the_tranche,59_Credit_quality_step,60_Call_Put_Cap_Floor,61_Strike_price,62_Conversion_factor_(convertibles)_concordance_factor_parity_(options),63_Effective_date_of_instrument,64_Exercise_type,65_Hedging_rolling,67_CIC_of_the_underlying_asset,68_Identification_code_of_the_underlying_asset,69_Type_of_identification_code_for_the_underlying_asset,70_Name_of_the_underlying_asset,71_Quotation_currency_of_the_underlying_asset_(C),72_Last_valuation_price_of_the_underlying_asset,73_Country_of_quotation_of_the_underlying_asset,74_Economic_area_of_quotation_of_the_underlying_asset,75_Coupon_rate_of_the_underlying_asset,76_Coupon_payment_frequency_of_the_underlying_asset,77_Maturity_date_of_the_underlying_asset,78_Redemption_profile_of_the_underlying_asset,79_Redemption_rate_of_the_underlying_asset,80_Issuer_name_of_the_underlying_asset,81_Issuer_identification_code_of_the_underlying_asset,82_Type_of_issuer_identification_code_of_the_underlying_asset,83_Name_of_the_group_of_the_issuer_of_the_underlying_asset,84_Identification_of_the_group_of_the_underlying_asset,85_Type_of_the_group_identification_code_of_the_underlying_asset,86_Issuer_country_of_the_underlying_asset,87_Issuer_economic_area_of_the_underlying_asset,88_Explicit_guarantee_by_the_country_of_issue_of_the_underlying_asset,89_Credit_quality_step_of_the_underlying_asset,90_Modified_duration_to_maturity_date,91_Modified_duration_to_next_option_exercise_date,92_Credit_sensitivity,93_Sensitivity_to_underlying_asset_price_(delta),94_Convexity_gamma_for_derivatives,94b_Vega,95_Identification_of_the_original_portfolio_for_positions_embedded_in_a_fund,97_SCR_mrkt_IR_up_weight_over_NAV,98_SCR_mrkt_IR_down_weight_over_NAV,99_SCR_mrkt_eq_type1_weight_over_NAV,100_SCR_mrkt_eq_type2_weight_over_NAV,101_SCR_mrkt_prop_weight_over_NAV,102_SCR_mrkt_spread_bonds_weight_over_NAV,103_SCR_mrkt_spread_structured_weight_over_NAV,104_SCR_mrkt_spread_derivatives_up_weight_over_NAV,105_SCR_mrkt_spread_derivatives_down_weight_over_NAV,105a_SCR_mrkt_FX_up_weight_over_NAV,105b_SCR_mrkt_FX_down_weight_over_NAV,106_Asset_pledged_as_collateral,107_Place_of_deposit,108_Participation,110_Valorisation_method,111_Value_of_acquisition,112_Credit_rating,113_Rating_agency,114_Issuer_economic_area,115_Fund_issuer_code,116_Fund_issuer_code_type,117_Fund_issuer_name,118_Fund_issuer_sector,119_Fund_issuer_group_code,120_Fund_issuer_group_code_type,121_Fund_issuer_group_name,122_Fund_issuer_country,123_Fund_CIC,123a_Fund_custodian_country,124_Duration,125_Accrued_income_(Security Denominated Currency),126_Accrued_income_(Portfolio Denominated Currency),127_Bond_floor_(convertible_instrument_only),128_Option_premium_(convertible_instrument_only),129_Valuation_yield,130_Valuation_z_spread,131_Underlying_asset_category,132_Infrastructure_investment,133_custodian_name,134_type1_private_equity_portfolio_eligibility,135_type1_private_equity_issuer_beta,137_Counterparty_sector,138_Collateral_eligibility,139_Collateral_Market_valuation_in_portfolio_currency,140_Custodian_identification_code,141_Type_of_custodian_identification_code,142_Bail-in_Rule,143_Maturity_date_expected,144_Modified_duration_to_maturity_date_expected,145_Credit_sensitivity_expected,146_PIK,147_Infrastructure_investment_additional_QRT,148_Economic_sector_NACE2.1,1000_TPT_Version'"/>
+    <xsl:value-of select="string-join(tokenize($header, ','), $d)"/>
     <xsl:value-of select="$nl"/>
 
     <!-- One block of rows per fund. -->
@@ -162,10 +165,11 @@
                              $fund/FundDynamicData/TotalAssetValues/TotalAssetValue/NavDate)[1]"/>
       <xsl:variable name="repDate" select="$root/ControlData/ContentDate"/>
 
-      <!-- Cash ratio (col 9): sum of the position weights of every cash account
-           (assets of AssetType "AC"), expressed as a fraction of NAV (1 = 100%).
-           TotalPercentage is a percent, hence the division by 100. -->
-      <xsl:variable name="acUids" select="$root/AssetMasterData/Asset[AssetType='AC']/UniqueID"/>
+      <!-- Cash ratio (col 9): sum of the position weights of every cash-like
+           position (AssetType AC account, CM call money, FT fixed-term deposit),
+           expressed as a fraction of NAV (1 = 100%). TotalPercentage is a
+           percent, hence the division by 100. -->
+      <xsl:variable name="acUids" select="$root/AssetMasterData/Asset[AssetType=('AC','CM','FT')]/UniqueID"/>
       <xsl:variable name="cashRatio"
                     select="sum($fund/FundDynamicData/Portfolios/Portfolio/Positions/Position[UniqueID = $acUids]/TotalPercentage) div 100"/>
 
@@ -303,12 +307,13 @@
           f:csv(''),                                       (: 31 3rd-ccy exposure weight :)
           (: 32-45 Interest-rate instrument characteristics :)
           f:csv(''),                                       (: 32 interest rate type :)
-          f:csv(f:num($bond/InterestRate,'0.000000')),
+          (: 4.2.9 keeps the coupon under Bond/Coupon; flat InterestRate is legacy :)
+          f:csv(f:num(($bond/Coupon/InterestRate, $bond/InterestRate)[1],'0.000000')),
           f:csv(''),                                       (: 34 IR reference id :)
           f:csv(''),                                       (: 35 IR index id type :)
           f:csv(''),                                       (: 36 IR index name :)
           f:csv(''),                                       (: 37 IR margin :)
-          f:csv($bond/CouponFrequency),
+          f:csv($bond/Coupon/PaymentFrequency),
           f:csv($bond/MaturityDate),
           f:csv(''),                                       (: 40 redemption type :)
           f:csv(''),                                       (: 41 redemption rate :)
