@@ -4,8 +4,12 @@
 
 Enterprise FundsXML feeds can be hundreds of MB. Loading them into a DOM blows
 memory; these examples process them **streaming, at constant memory** —
-verified: ~16 MiB RSS (Python) / ~2 MiB heap (Java, `-Xmx64m`) for a 20 000-
-position file, independent of file size.
+verified: ~16 MiB RSS (Python) at 30 000 **and** 200 000 positions, and the
+Java StAX aggregator completes a 200 000-position file under `-Xmx16m`. (The
+heap figure the Java program prints when run through `./mvnw … exec:java`
+includes Maven's own in-process JVM; run the compiled class directly with
+`java -Xmx16m -cp Large_File_Processing/java/target/classes StreamAggregate`
+to see the parser alone.)
 
 | Tool | What | Status |
 |------|------|--------|

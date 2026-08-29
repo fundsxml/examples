@@ -9,7 +9,8 @@ Two recurring enterprise needs: exposing FundsXML to **JSON** APIs, and
 
 [`python/fundsxml_json.py`](python/fundsxml_json.py) — `to-json` / `from-json`
 / `roundtrip` (stdlib + lxml). Stable JSON shape
-(`document` / `fund` / `shareClasses` / `positions` / `assets`); `from-json`
+(`document` / `funds[]` / per fund `shareClasses[]` + `portfolios[]/positions[]` /
+`assets[]`); `from-json`
 produces **XSD-valid** FundsXML 4.2.9. Lossless for the positions core,
 intentionally lossy for issuer / derivative / regulatory detail (same scope
 boundary as `Database_Integration/`).

@@ -12,7 +12,7 @@
   Run from the repo root:
     ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation \
         compile exec:java \
-        -Dexec.args="../basic_checks.sch FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
+        -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

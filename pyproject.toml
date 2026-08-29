@@ -37,6 +37,11 @@ dependencies = [
     "saxonche>=12.4",
 ]
 
+[project.optional-dependencies]
+# XML_Signature/python/sign_verify_signxml.py only (the Java Santuario
+# example is the verified path). Install with: pip install -e ".[signature]"
+signature = ["signxml>=3.2"]
+
 [tool.setuptools]
 # Dependency-only install: nothing in the repo is packaged or importable, so
 # declare an empty module list (this also disables setuptools auto-discovery,

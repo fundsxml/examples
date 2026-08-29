@@ -46,7 +46,7 @@ This directory contains a comprehensive FundsXML sample document demonstrating a
 ### Portfolio Summary
 
 - **Total Positions**: 21
-- **Asset Types**: 13 different types
+- **Asset Types**: 12 different types
 - **Currencies**: EUR, USD
 
 ## Asset Types Demonstrated
@@ -72,7 +72,7 @@ This sample file includes examples of all major FundsXML asset types:
 
 | ID | ISIN | Name | Type | Value (EUR) | % |
 |----|------|------|------|-------------|---|
-| ID_001 | US0378331005 | Apple Inc. | EQ | 9,375,000 | 7.50% |
+| ID_001 | US0378331005 | Apple Inc. | EQ | 9,375,000 | 8.33% |
 | ID_002 | NL0010273215 | ASML Holding N.V. | EQ | 8,125,000 | 6.50% |
 | ID_003 | DE0001102424 | Germany 1.70% 2032 | BO | 6,250,000 | 5.00% |
 | ID_004 | XS2444622110 | Siemens 0.75% 2030 | BO | 6,250,000 | 5.00% |
@@ -145,7 +145,7 @@ illustrative; the XML file is authoritative (see Reconciliation note).
     <TotalValue>
         <Amount ccy="EUR">9375000</Amount>
     </TotalValue>
-    <TotalPercentage>7.50</TotalPercentage>
+    <TotalPercentage>8.33</TotalPercentage>
     <Equity>
         <Units>50000.00</Units>
         <Price>
