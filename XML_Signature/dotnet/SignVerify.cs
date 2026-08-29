@@ -4,7 +4,8 @@
 //   dotnet run --project XML_Signature/dotnet -- verify signed.xml [cert.pem]
 // Exit: 0 ok, 1 invalid, 2 setup error.
 //
-// Reference implementation — not executed in the dev environment (no .NET SDK).
+// Verified with .NET SDK 8: signs, verifies, detects tampering, and
+// cross-verifies with the Java (Santuario) output in both directions.
 // Same profile as the Apache Santuario (Java) example: RSA-SHA256, exclusive
 // C14N, enveloped, signer cert embedded in KeyInfo, so files cross-verify.
 // Keys: the Java GenerateTestKey (./mvnw -pl XML_Signature/java compile

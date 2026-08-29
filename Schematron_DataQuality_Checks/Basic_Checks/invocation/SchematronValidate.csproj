@@ -1,8 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!-- Reference variant. SaxonHE comes from NuGet (restored by dotnet build);
        the SchXslt jar is located via $FUNDSXML_SCHXSLT_JAR or the Maven local
-       repo (no NuGet SchXslt). Run from the repo root:
-       dotnet run  project <thisdir>   ../basic_checks.sch  <xml-file>  [fail-on error|any] -->
+       repo (no NuGet SchXslt). Run from the repo root with "dotnet run", the
+       project switch pointing at this directory, then
+       Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch <xml-file>
+       [fail-on error|any]; see the SchematronValidate.cs header for the exact
+       command line (XML comments cannot contain a double dash). -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>

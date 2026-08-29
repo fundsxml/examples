@@ -78,8 +78,12 @@ public class ExportFundsXml {
         doc.appendChild(root);
 
         try (Connection c = DriverManager.getConnection("jdbc:sqlite:" + db)) {
-            ResultSet d = c.createStatement().executeQuery(
-                "SELECT * FROM document WHERE document_id='" + docId + "'");
+            // Bind the id (never concatenate user input into SQL) — the same
+            // rule every other query in this file follows.
+            PreparedStatement dq = c.prepareStatement(
+                "SELECT * FROM document WHERE document_id = ?");
+            dq.setString(1, docId);
+            ResultSet d = dq.executeQuery();
             if (!d.next()) throw new RuntimeException("no document " + docId);
 
             Element cd = el(doc, root, "ControlData", null);

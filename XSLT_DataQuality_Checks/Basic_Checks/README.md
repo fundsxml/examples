@@ -9,7 +9,7 @@ This directory contains an XSLT 2.0 stylesheet that transforms FundsXML document
 | **File** | `basic_checks.xslt` |
 | **XSLT Version** | 2.0 |
 | **Output Format** | HTML |
-| **Check Sections** | 5 main validation areas |
+| **Check Sections** | 6 main validation areas |
 | **Purpose** | Generate readable data quality reports |
 
 ## Requirements
@@ -158,7 +158,7 @@ saxon -s:input.xml -xsl:basic_checks.xslt -o:report.html
 
 # Full path example
 java -jar /opt/saxon/saxon-he.jar \
-    -s:../../FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml \
+    -s:../../FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml \
     -xsl:basic_checks.xslt \
     -o:dq_report.html
 
@@ -188,7 +188,7 @@ Start-Process $OUTPUT
 
 ```bash
 #!/bin/bash
-INPUT="${1:-../../FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml}"
+INPUT="${1:-../../FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml}"
 OUTPUT="${2:-dq_report.html}"
 
 saxon -s:"$INPUT" -xsl:basic_checks.xslt -o:"$OUTPUT"
@@ -199,7 +199,7 @@ open "$OUTPUT"
 
 ```bash
 #!/bin/bash
-INPUT="${1:-../../FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml}"
+INPUT="${1:-../../FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml}"
 OUTPUT="${2:-dq_report.html}"
 SAXON_JAR="${SAXON_JAR:-/opt/saxon/saxon-he.jar}"
 

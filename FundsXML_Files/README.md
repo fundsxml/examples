@@ -146,7 +146,10 @@ XSD_Validation/cli/validate.sh \
 #   xmllint --noout --schema /tmp/FundsXML.xsd <file>
 ```
 
-### Validate with Saxon
+### Validate with Saxon (EE only)
+
+Schema validation is a Saxon-**EE** feature (Saxon-HE, the edition used by the
+examples in this repository, does not validate against XSD):
 
 ```bash
 saxon -s:Mixed-Fund_Positions.xml -xsd:FundsXML.xsd -o:validation-report.xml
@@ -219,11 +222,12 @@ schema URL it was validated against.
 
 | Version | Use case | File | Description |
 |---------|----------|------|-------------|
-| [4.2.9](./4.2.9/positions/) | positions | `Mixed-Fund_Positions.xml` | Comprehensive, 21 diverse positions, 13 asset types |
+| [4.2.9](./4.2.9/positions/) | positions | `Mixed-Fund_Positions.xml` | Comprehensive, 21 diverse positions, 12 asset types |
+| [4.2.9](./4.2.9/positions/) | positions | `Multi-Fund_Positions.xml` | 3 funds, 6 positions; lossless round-trip fixture for `Database_Integration/` |
 | [4.2.9](./4.2.9/transactions/) | transactions | `Fund_Transactions.xml` | BUY/SELL/CASH, `AssetUniqueID` IDREF linking |
 | [4.2.9](./4.2.9/documents/) | documents | `Fund_Documents.xml` | Factsheet (URL) + PRIIPS-KID (embedded base64) |
 | [4.2.9](./4.2.9/regulatory/) | regulatory | `EFT_Regulatory.xml` | `RegulatoryReportings/DirectReporting/EFTs` |
-| [4.2.9](./4.2.9/signed/) | signed | `Signed_Fund_Skeleton.xml` | Enveloped `ds:Signature` (placeholder, Phase 3) |
+| [4.2.9](./4.2.9/signed/) | signed | `Signed_Fund_Skeleton.xml` | Enveloped `ds:Signature` skeleton (schema-valid, not verifiable — real signing in `XML_Signature/`) |
 | [4.1.0](./4.1.0/positions/) | positions | `Equity-Fund_Positions.xml` | Compact equity fund, older valid version |
 | [4.0.0](./4.0.0/positions/) | positions | `Equity-Fund_Positions.xml` | Oldest release — **no `ControlData/Version`** |
 

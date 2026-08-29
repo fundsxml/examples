@@ -20,6 +20,18 @@ XSLT (Extensible Stylesheet Language Transformations) is a W3C standard for tran
 |------|--------------|-------------|
 | `Basic_Checks/basic_checks.xslt` | 2.0 | Core validation checks, HTML output |
 | `Enhanced_Check/FundsXML_CompleteDQReport_HTML.xsl` | 1.0 | Comprehensive dashboard report |
+| `Custom_Internal_Checks/custom_internal_checks.xslt` | 2.0 | Parameterised house rules (asset-type whitelist, ID convention, concentration limit, OTC counterparty LEI) |
+
+**Running the XSLT 2.0 stylesheets without installing anything:** the Saxon-HE
+runner in `XSLT_Transformations/invocation/` (Maven Wrapper, deps from Maven
+Central) and its Python twin (`run_transform.py`, `saxonche`) take
+`<xslt> <xml> <out> [name=value…]`, e.g. from the repo root:
+
+```bash
+./mvnw -q -pl XSLT_Transformations/invocation compile exec:java \
+  -Dexec.args="XSLT_DataQuality_Checks/Basic_Checks/basic_checks.xslt \
+               FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml report.html"
+```
 
 **Compatibility Notes:**
 - XSLT 1.0 files work with any processor (maximum compatibility)

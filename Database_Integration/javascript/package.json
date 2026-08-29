@@ -4,9 +4,10 @@
   "private": true,
   "type": "module",
   "description": "Standalone FundsXML <-> SQLite round-trip example (Node.js).",
-  "//": "Pure-JS deps so it runs anywhere with no native build: sql.js is SQLite compiled to WebAssembly; @xmldom/xmldom + xpath give a namespace-free DOM. Run: npm install && node fundsxml_db.mjs roundtrip <in.xml> <out.xml>",
+  "//": "Pure-JS deps so it runs anywhere with no native build: sql.js is SQLite compiled to WebAssembly; @xmldom/xmldom + xpath give a namespace-free DOM. Run: npm install && node import_fundsxml.mjs fx.db <in.xml> && node export_fundsxml.mjs fx.db <document-id> <out.xml>",
   "scripts": {
-    "roundtrip": "node fundsxml_db.mjs roundtrip"
+    "import": "node import_fundsxml.mjs",
+    "export": "node export_fundsxml.mjs"
   },
   "dependencies": {
     "@xmldom/xmldom": "^0.9.8",

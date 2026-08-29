@@ -240,7 +240,8 @@ def from_json(data: dict, out_path: str) -> None:
 def main() -> int:
     a = sys.argv[1:]
     if len(a) != 3:
-        print(__doc__, file=sys.stderr)
+        print("usage: fundsxml_json.py to-json|from-json|roundtrip <src> <dst>",
+              file=sys.stderr)
         return 2
     mode, src, dst = a
     if mode == "to-json":

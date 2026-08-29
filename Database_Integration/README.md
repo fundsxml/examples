@@ -8,9 +8,9 @@ FundsXML — so you can lift exactly the direction you need:
 
 | Language | Import (FundsXML → DB) | Export (DB → FundsXML) | DB driver | Verified |
 |----------|------------------------|------------------------|-----------|----------|
-| Python | [`python/import_fundsxml.py`](python/import_fundsxml.py) | [`python/export_fundsxml.py`](python/export_fundsxml.py) | stdlib `sqlite3` | ✅ locally |
-| Java | [`java/ImportFundsXml.java`](java/ImportFundsXml.java) | [`java/ExportFundsXml.java`](java/ExportFundsXml.java) | `sqlite-jdbc` (native `javax.xml`, no JAXB) | ✅ locally |
-| JavaScript | [`javascript/import_fundsxml.mjs`](javascript/import_fundsxml.mjs) | [`javascript/export_fundsxml.mjs`](javascript/export_fundsxml.mjs) | `sql.js` (pure-WASM) | ✅ locally |
+| Python | [`python/import_fundsxml.py`](python/import_fundsxml.py) | [`python/export_fundsxml.py`](python/export_fundsxml.py) | stdlib `sqlite3` | ✅ locally + CI |
+| Java | [`java/ImportFundsXml.java`](java/ImportFundsXml.java) | [`java/ExportFundsXml.java`](java/ExportFundsXml.java) | `sqlite-jdbc` (native `javax.xml`, no JAXB) | ✅ locally + CI |
+| JavaScript | [`javascript/import_fundsxml.mjs`](javascript/import_fundsxml.mjs) | [`javascript/export_fundsxml.mjs`](javascript/export_fundsxml.mjs) | `sql.js` (pure-WASM) | ✅ locally + CI |
 | C# / .NET | [`csharp/import/`](csharp/import/) | [`csharp/export/`](csharp/export/) | `Microsoft.Data.Sqlite` | ✅ locally + CI |
 
 Every program is **self-contained** (one file / one project, its own copy of
@@ -63,6 +63,8 @@ FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
 DOC=FUNDSXML_MULTI_1
 
 # Python
+# Python needs lxml: create the venv from the repo's pyproject.toml once
+# (python -m venv .venv && . .venv/bin/activate && pip install -e .)
 python3 Database_Integration/python/import_fundsxml.py fx.db "$FX"
 python3 Database_Integration/python/export_fundsxml.py fx.db "$DOC" out.xml
 
