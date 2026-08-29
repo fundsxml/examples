@@ -5,7 +5,7 @@
    resolved from AssetMasterData (Position<->Asset joined by UniqueID).
 
    External parameter:  $n  (number of holdings, default 10)
-     Saxon CLI:  n=5   (XQuery takes bare name=value, not -param:)
+     Saxon CLI:  n=5   (XQuery takes bare name=value; the -param form is XSLT-only)
      s9api:      qe.setExternalVariable(new QName("n"), new XdmAtomicValue(5))
 
    FundsXML 4.x has no XML namespace — query bare element names.
