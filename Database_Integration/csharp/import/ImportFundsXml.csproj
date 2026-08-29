@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!-- Standalone console app: imports a FundsXML file into SQLite.
        Microsoft.Data.Sqlite bundles native SQLite (no system install).
-       Run (see ImportFundsXml.cs header for arguments):
-         dotnet run project Database_Integration/csharp/import  fx.db file.xml -->
+       Run with "dotnet run" and the project switch pointing at this
+       directory, then the arguments fx.db file.xml; the exact command line is
+       in the ImportFundsXml.cs header (XML comments cannot contain a double dash). -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>

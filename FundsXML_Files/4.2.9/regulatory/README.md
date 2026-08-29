@@ -11,7 +11,7 @@
 
 ## Contents
 
-`RegulatoryReportings/DirectReporting/EFTs/EFT` (European Feeder/Flow Template).
+`RegulatoryReportings/DirectReporting/EFTs/EFT` (European Feedback Template, FinDatEx EFT V1.0).
 Deliberately chosen because it is the **most compact** of the regulatory
 FundsXML structures (EMT/EET/PRIIPS/TPT are considerably larger and will follow
 as their own examples in later phases).
