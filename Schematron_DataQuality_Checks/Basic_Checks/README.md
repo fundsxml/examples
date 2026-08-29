@@ -8,7 +8,7 @@ This directory contains comprehensive Schematron validation rules for FundsXML d
 |----------|-------|
 | **File** | `basic_checks.sch` |
 | **Query Binding** | XSLT 2.0 (`queryBinding="xslt2"`) |
-| **Patterns** | 9 validation patterns |
+| **Patterns** | 11 validation patterns |
 | **Total Rules** | 40+ assertions and reports |
 | **Purpose** | Comprehensive FundsXML data quality validation |
 
@@ -24,6 +24,14 @@ direction rule). These were split into their own patterns —
 `position-direction-validations` — so each rule actually executes. Verified: a
 document with percentages summing to 120 % now produces an ERROR; the canonical
 sample (summing to 100 %) does not.
+
+The same bug hid in `asset-validations`: the *Derivative Exposure* warning
+rule (`OP or FU or FX or SW`) claimed every Option and Future first, so the
+*Option Underlying* / *Future Underlying* ERROR rules never fired (SVRL listed
+them as `svrl:suppressed-rule`). They now live in their own pattern,
+`asset-underlying-validations`, and the canonical sample carries an
+`Underlyings/Underlying` on each of its four options/futures so it still
+passes with 0 errors.
 
 Run it across stacks via [`invocation/`](invocation/) (CLI, native Java,
 Python/saxonche, .NET). The canonical sample yields **0 errors + 12 advisory
@@ -84,6 +92,14 @@ Asset type-specific requirements based on the AssetType code.
 | ISIN Required | EQ, BO, SC | ERROR | Equity, Bond, ShareClass assets must have ISIN |
 | Counterparty ID | AC | WARNING | Account assets should have counterparty LEI or BIC |
 | Derivative Exposure | OP, FU, FX, SW | WARNING | Derivatives should have exposure information |
+
+### Pattern 4b: Derivative Underlyings (`asset-underlying-validations`)
+
+Own pattern so these rules are not shadowed by the Derivative Exposure rule
+above (see *Known ruleset fix*).
+
+| Rule | Asset Types | Severity | Description |
+|------|-------------|----------|-------------|
 | Option Underlying | OP | ERROR | Options must have at least one underlying |
 | Future Underlying | FU | ERROR | Futures must have at least one underlying |
 
