@@ -639,6 +639,15 @@
                <StrikePrice>
                   <Amount ccy="EUR">280</Amount>
                </StrikePrice>
+               <Underlyings>
+                  <Underlying>
+                     <Type>Security</Type>
+                     <Name>Allianz SE</Name>
+                     <Identifiers>
+                        <ISIN>DE0008404005</ISIN>
+                     </Identifiers>
+                  </Underlying>
+               </Underlyings>
             </Option>
          </AssetDetails>
       </Asset>
@@ -661,6 +670,15 @@
                <StrikePrice>
                   <Amount ccy="EUR">85</Amount>
                </StrikePrice>
+               <Underlyings>
+                  <Underlying>
+                     <Type>Security</Type>
+                     <Name>Volkswagen AG (Vz)</Name>
+                     <Identifiers>
+                        <ISIN>DE0007664039</ISIN>
+                     </Identifiers>
+                  </Underlying>
+               </Underlyings>
             </Option>
          </AssetDetails>
       </Asset>
@@ -679,6 +697,15 @@
                <ContractSize>10</ContractSize>
                <MaturityDate>2025-12-19</MaturityDate>
                <StockMarket>XEUR</StockMarket>
+               <Underlyings>
+                  <Underlying>
+                     <Type>Index</Type>
+                     <Name>EURO STOXX 50 Index</Name>
+                     <Identifiers>
+                        <ISIN>EU0009658145</ISIN>
+                     </Identifiers>
+                  </Underlying>
+               </Underlyings>
             </Future>
          </AssetDetails>
       </Asset>
@@ -696,6 +723,15 @@
                <ContractSize>125000</ContractSize>
                <MaturityDate>2026-03-16</MaturityDate>
                <StockMarket>XCME</StockMarket>
+               <Underlyings>
+                  <Underlying>
+                     <Type>Currency</Type>
+                     <Name>EUR/USD</Name>
+                     <Identifiers>
+                        <OtherID>EURUSD</OtherID>
+                     </Identifiers>
+                  </Underlying>
+               </Underlyings>
             </Future>
          </AssetDetails>
       </Asset>
