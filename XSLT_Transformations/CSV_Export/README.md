@@ -18,10 +18,9 @@ Per fund/share-class it lists every instrument the fund holds, described by a
 fixed set of **152 data columns** (`1_…` … `1000_TPT_Version`).
 
 The authoritative column list — and the FundsXML mapping for almost every field
-— is taken directly from the spreadsheet shipped alongside these files:
-
-> `TPT_V7  20241125_updated.xlsx` — sheet **"TPT V7.0"**, column 2
-> *"Fundxml data name and path"*.
+— is taken from the FinDatEx **TPT V7.0** template spreadsheet (sheet
+*"TPT V7.0"*, column *"Fundxml data name and path"*), published at
+<https://findatex.eu/>. The spreadsheet is not part of this repository.
 
 `tpt_v7_export.xslt` emits the TPT column names verbatim as the header row, then
 **one full position block per share class (ISIN)** of every `<Fund>` — a single
@@ -52,11 +51,12 @@ work — run from the repo root:
 #   ... run_transform.py <xslt> <xml> <out> "delimiter=;"
 ```
 
-The stylesheet has been exercised against both the canonical
-`FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml` (all 13 asset types)
-and the richer regulatory samples in this directory
-(`UTF-8_*.xml` — real bonds, issuers, maturities, exposures). Every output row
-has exactly 152 columns and parses cleanly as RFC-4180 CSV.
+The stylesheet has been exercised against the canonical
+`FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml` (12 asset types,
+21 positions × 2 share classes = 42 rows) and the multi-fund
+`Multi-Fund_Positions.xml`. Every output row has exactly 152 columns and
+parses cleanly as RFC-4180 CSV; the header is joined with the same
+`delimiter` as the data rows.
 
 ## How FundsXML maps onto TPT
 
@@ -83,9 +83,9 @@ quantity / price / market value / accrued interest read uniformly across types.
 | `5` Net asset value | `Fund/FundDynamicData/TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy=fund-ccy]` | |
 | `6` Valuation date | `Portfolio/NavDate` (→ `TotalAssetValue/NavDate`) | |
 | `7` Reporting date | `ControlData/ContentDate` | |
-| `8` Share price | `ShareClass/Prices/Price/NavPrice` | First share class |
+| `8` Share price | `ShareClass/Prices/Price/NavPrice` | per share class (one block each) |
 | `8b` Number of shares | `ShareClass/TotalAssetValues/TotalAssetValue/SharesOutstanding` | |
-| `9` Cash ratio | **derived** = Σ `TotalPercentage` of all `AssetType=AC` positions ÷ 100 | fund-level; `1 = 100%` |
+| `9` Cash ratio | **derived** = Σ `TotalPercentage` of all `AssetType` `AC`/`CM`/`FT` positions ÷ 100 | fund-level; `1 = 100%` |
 | `12` CIC code | **derived** = 2-char country + 1-char category | see *CIC heuristic* below |
 | `14` Instrument id | `Position/Identifiers/ISIN` → `Asset/Identifiers/ISIN` → **`Asset/UniqueID`** | always populated |
 | `15` Instrument id type | derived | `1` (ISIN), else `99` (undertaking code, for the UniqueID fallback) |
@@ -100,8 +100,8 @@ quantity / price / market value / accrued interest read uniformly across types.
 | `26` Valuation weight | `Position/TotalPercentage ÷ 100` | percent → fraction of NAV |
 | `27`/`28` Market exposure QC/PC | `Position/Exposures/Exposure/Value/Amount[@ccy …]` | commitment approach |
 | `30` Exposure weight | `28 ÷ NAV` (→ falls back to `26`) | |
-| `33` Coupon rate | `Asset/AssetDetails/Bond/InterestRate` | |
-| `38` Coupon frequency | `Asset/AssetDetails/Bond/CouponFrequency` | |
+| `33` Coupon rate | `Asset/AssetDetails/Bond/Coupon/InterestRate` (→ legacy `Bond/InterestRate`) | |
+| `38` Coupon frequency | `Asset/AssetDetails/Bond/Coupon/PaymentFrequency` | |
 | `39` Maturity date | `Asset/AssetDetails/Bond/MaturityDate` | |
 | `46` Issuer name | `Asset/AssetDetails/*/Issuer/Name` | any family child (`Bond`/`Equity`/`ShareClass`/…) |
 | `47` Issuer id code | `…/Issuer/Identifiers/LEI` | |
@@ -124,7 +124,7 @@ block (`67`–`89`), risk analytics (`90`–`94b`, `124`), look-through control
 specifics (`129`, `130`), and the V4–V7 add-on fields (`132`–`148`).
 
 **Why empty?** `FundsXML.xsd` *does* define matching nodes for most of these
-(e.g. `ModifiedDuration`, `CreditQualityStep`, `CouponFrequency`,
+(e.g. `ModifiedDuration`, `CreditQualityStep`, `Coupon/PaymentFrequency`,
 `Subordinated`, `Securitisation`, issuer-group elements) — they are simply
 **not populated** in the sample files. Point this stylesheet at a FundsXML file
 that carries those elements and the corresponding columns will fill in; extend
@@ -139,7 +139,7 @@ FundsXML has no single CIC element, so the CIC code is **derived**:
   characters of the ISIN (which carry the ISO country code). When neither is
   available (typical for OTC derivatives with no ISIN), the CIC is left empty.
 - **Category** (char 3) is mapped from `Asset/AssetType`:
-  `BO→2`, `EQ`/`WA→3`, `SC→4`, `CE→5`, `AC`/`FT`/`RP→7`, `RE→9`, `FU→A`,
+  `BO→2`, `EQ`/`WA→3`, `SC→4`, `CE→5`, `AC`/`CM`/`FT`/`RP→7`, `RE→9`, `FU→A`,
   `OP→B`, `SW→D`, `FX→E`, otherwise `0` (Other).
 
 This is best-effort: FundsXML cannot distinguish government vs corporate bonds
