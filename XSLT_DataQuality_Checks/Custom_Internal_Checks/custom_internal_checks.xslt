@@ -26,7 +26,11 @@
   <!-- Configurable house parameters -->
   <xsl:param name="allowedAssetTypes" as="xs:string"
              select="'EQ BO SC OP FU FX SW WA CE AC RP RE CM'"/>
-  <xsl:param name="concentrationLimitPct" as="xs:decimal" select="20"/>
+  <!-- Untyped on purpose: command-line runners (RunTransform, run_transform.py,
+       Saxon CLI) hand parameters over as strings, and a typed xs:decimal param
+       rejects a string with a type error. Cast where it is used. -->
+  <xsl:param name="concentrationLimitPct" select="20"/>
+  <xsl:variable name="limitPct" as="xs:decimal" select="xs:decimal($concentrationLimitPct)"/>
 
   <xsl:variable name="allowed" select="tokenize(normalize-space($allowedAssetTypes),'\s+')"/>
 
@@ -93,7 +97,7 @@
         <!-- R3: Concentration limit -->
         <h2>R3 — Concentration limit (max <xsl:value-of select="$concentrationLimitPct"/>% per position)</h2>
         <xsl:variable name="over"
-          select="//Position[number(TotalPercentage) gt $concentrationLimitPct]"/>
+          select="//Position[number(TotalPercentage) gt $limitPct]"/>
         <xsl:choose>
           <xsl:when test="empty($over)">
             <p class="ok">PASS — no position exceeds the concentration limit.</p>

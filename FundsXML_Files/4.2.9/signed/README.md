@@ -20,7 +20,9 @@ local `FundsXML.xsd` in any complete copy of the release).
 > ⚠️ **Placeholder:** `DigestValue` and `SignatureValue` are schema-valid base64
 > strings but **not cryptographically verifiable**. Real signing and
 > verification (Apache Santuario / .NET `SignedXml` / `xmlsec1` / Python
-> `signxml`) follows in **Phase 3** under `XML_Signature/`.
+> `signxml`) lives in [`XML_Signature/`](../../../XML_Signature/README.md);
+> note that this template uses inclusive C14N and a `ds:KeyName`, whereas the
+> Java/.NET examples sign with exclusive C14N and embed the X.509 certificate.
 
 Algorithms used (enveloped signature): C14N 2001-03-15, RSA-SHA256, SHA-256.
 

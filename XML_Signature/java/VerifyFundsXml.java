@@ -65,6 +65,16 @@ public class VerifyFundsXml {
                 signature.getKeyInfo().getX509Certificate();
             PublicKey pk = embedded != null ? embedded.getPublicKey()
                 : signature.getKeyInfo().getPublicKey();
+            // A KeyInfo without X509Data/KeyValue (e.g. the committed skeleton,
+            // which only carries ds:KeyName) yields no key at all; Santuario
+            // would throw "Didn't get a key". Report it as INVALID (exit 1)
+            // rather than crashing with a stack trace.
+            if (pk == null) {
+                System.out.println("INVALID: KeyInfo carries no usable key "
+                    + "(no X509Data / KeyValue); pass a certificate to verify "
+                    + "against");
+                System.exit(1);
+            }
             ok = signature.checkSignatureValue(pk);
             System.out.println("verifying against KeyInfo-embedded key"
                 + (embedded != null ? " (cert: "

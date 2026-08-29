@@ -47,19 +47,23 @@ public class NativeBinding {
         }
         XPath xp = XPathFactory.newInstance().newXPath();
 
-        String ccy = xp.evaluate("/FundsXML4/Funds/Fund/Currency", doc);
+        // Single-fund binding on purpose: this example binds the FIRST Fund
+        // (metadata and positions alike). For a multi-fund document use the
+        // Python fundsxml_json.py, which projects funds[] as a list.
+        String f = "/FundsXML4/Funds/Fund[1]";
+        String ccy = xp.evaluate(f + "/Currency", doc);
         Fund fund = new Fund(
-            xp.evaluate("/FundsXML4/Funds/Fund/Identifiers/LEI", doc),
-            xp.evaluate("/FundsXML4/Funds/Fund/Names/OfficialName", doc),
+            xp.evaluate(f + "/Identifiers/LEI", doc),
+            xp.evaluate(f + "/Names/OfficialName", doc),
             ccy,
             Double.parseDouble(xp.evaluate(
-                "/FundsXML4/Funds/Fund/FundDynamicData/TotalAssetValues/"
+                f + "/FundDynamicData/TotalAssetValues/"
                 + "TotalAssetValue/TotalNetAssetValue/Amount[@ccy='" + ccy
                 + "']", doc)),
             ((Number) xp.evaluate(
-                "count(//Position)", doc, XPathConstants.NUMBER)).intValue());
+                "count(" + f + "//Position)", doc, XPathConstants.NUMBER)).intValue());
 
-        NodeList pn = (NodeList) xp.evaluate("//Positions/Position", doc,
+        NodeList pn = (NodeList) xp.evaluate(f + "//Positions/Position", doc,
                                              XPathConstants.NODESET);
         List<Position> positions = new ArrayList<>();
         double sumPct = 0;

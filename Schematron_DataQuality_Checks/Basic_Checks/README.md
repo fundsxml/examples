@@ -145,14 +145,29 @@ Validates currency codes and Amount elements.
 
 ## Running the Validation
 
-### Prerequisites
+### Quick Start (recommended: repo runners, nothing to install)
 
-1. Install Saxon-HE (see [parent README](../README.md) for installation)
-2. Download SchXslt for Schematron compilation
+The runners in [`invocation/`](invocation/) pull SchXslt (which bundles its
+own Saxon) from Maven Central via the committed Maven Wrapper; from the repo
+root:
 
-### Quick Start
+```bash
+./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation compile exec:java \
+  -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch \
+               FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml"   # exit 0 = no ERROR
+```
 
-#### Using Saxon + SchXslt (Recommended)
+See [`invocation/README.md`](invocation/README.md) for the Python
+(`saxonche`), .NET and `svrl-summary.py` variants and the exit-code contract.
+
+### Manual pipeline (hand-installed Saxon + SchXslt)
+
+#### Prerequisites
+
+1. Saxon-HE jar (download from <https://www.saxonica.com/download/java.xml>)
+2. SchXslt for Schematron compilation
+
+#### Using Saxon + SchXslt
 
 ```bash
 # Download SchXslt
@@ -161,7 +176,7 @@ git clone https://github.com/schxslt/schxslt.git
 # Validate
 java -jar saxon-he.jar \
     -xsl:schxslt/2.0/pipeline-for-svrl.xsl \
-    -s:../../FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml \
+    -s:../../FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml \
     sch.file=basic_checks.sch \
     -o:validation_report.xml
 ```
@@ -177,7 +192,7 @@ java -jar saxon-he.jar \
 
 # Step 2: Run validation
 java -jar saxon-he.jar \
-    -s:../../FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml \
+    -s:../../FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml \
     -xsl:basic_checks_compiled.xsl \
     -o:validation_report.xml
 ```
@@ -212,7 +227,7 @@ Write-Host "Errors: $errors, Warnings: $warnings"
 #!/bin/bash
 SAXON_JAR="${SAXON_JAR:-/opt/saxon/saxon-he.jar}"
 SCHXSLT="${SCHXSLT:-/opt/schxslt/2.0/pipeline-for-svrl.xsl}"
-INPUT="${1:-../../FundsXML_Files/4.2.9/Mixed-Fund_Positions.xml}"
+INPUT="${1:-../../FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml}"
 OUTPUT="${2:-validation_report.xml}"
 
 java -jar "$SAXON_JAR" \
@@ -436,4 +451,4 @@ Percentage Sum = 100%
 - [ISO Schematron Specification](http://schematron.com)
 - [SchXslt Documentation](https://github.com/schxslt/schxslt)
 - [FundsXML Schema](https://github.com/fundsxml/schema)
-- [Parent Schematron README](../README.md)
+- [Invocation README (runners per stack)](invocation/README.md)

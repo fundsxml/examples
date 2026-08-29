@@ -9,7 +9,7 @@
 // RUN
 //   node import_fundsxml.mjs fx.db some.xml
 //   node export_fundsxml.mjs fx.db FUNDSXML_MULTI_1 out.xml
-//   node ../tools/xml_equiv.py  # (python) prove some.xml == out.xml
+//   python3 ../tools/xml_equiv.py some.xml out.xml  # (needs lxml, see pyproject.toml) prove some.xml == out.xml
 //
 // DEPENDENCIES  sql.js (WASM SQLite) + @xmldom/xmldom (DOM serialization).
 //
