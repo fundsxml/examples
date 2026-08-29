@@ -1,0 +1,13 @@
+ich möchte aus einem FundsXML File ein TPT file im csv format erstellen können. 
+dazu gibt es schon das tpt_v7_export.xslt. 
+es gibt hier example fundsxml files und example tpt files (als zip - entpacke sie)
+
+Anforderung: 
+1.) welche daten müssen in den FundsXML File erweitert werden, damit gültige TPT Files mit der XSTL Transformation erstellt werden können?
+erstelle hierfür einen ausführlichen html bericht. 
+reichere 5 fundsxml files mit den fehlenden daten selber an. überprüfe dabei ob das file noch schema valide ist (FundsXML4.xsd). erstelle anschließend das tpt file und überprüfe ob es korrekt ist. 
+2.) erstelle eine transformation, welche die Daten nicht aus dem FondsDynamicData / Portfolio Knoten extrahieren - sondern aus dem ShareClass / Portfolio Knoten.
+führe anschließend die tasks von punkt 1 mit der neuen transformation aus. 
+3.) erstelle ein fundsxml file, welches den TPT7 Knoten im Regulatory Reporting befüllt hat. nimm dafür beispieldaten aus den tpt csv files. 
+überprüfe ob das fundsxml file schema valide ist. 
+erstelle anschließend eine xslt transformation, welche die daten aus dem fundsxml in ein csv konvertiert. 

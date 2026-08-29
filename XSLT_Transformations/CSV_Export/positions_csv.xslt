@@ -27,8 +27,14 @@
 
   <xsl:template match="/">
     <xsl:variable name="d" select="$delimiter"/>
-    <!-- Header -->
-    <xsl:text>FundLEI,FundName,DocumentID,NavDate,UniqueID,ISIN,AssetName,AssetType,Country,Currency,Quantity,Price,ValueQuotationCcy,FundCurrency,ValueFundCcy,Percentage,MaturityDate,CouponRate,IssuerName&#10;</xsl:text>
+    <!-- Header: joined with the same delimiter as the data rows, so that
+         delimiter=; yields a consistent 19-column file. -->
+    <xsl:value-of select="string-join((
+        'FundLEI','FundName','DocumentID','NavDate','UniqueID','ISIN','AssetName',
+        'AssetType','Country','Currency','Quantity','Price','ValueQuotationCcy',
+        'FundCurrency','ValueFundCcy','Percentage','MaturityDate','CouponRate',
+        'IssuerName'), $d)"/>
+    <xsl:text>&#10;</xsl:text>
     <!-- One row per position, across every fund (the FundLEI column keeps the
          funds apart in a multi-fund file). -->
     <xsl:for-each select="FundsXML4/Funds/Fund">
@@ -62,12 +68,18 @@
         concat('&quot;',(Currency,'')[1],'&quot;'),
         concat('&quot;',($qty,'')[1],'&quot;'),
         concat('&quot;',($hold/Price/Amount,'')[1],'&quot;'),
-        concat('&quot;',format-number(number((TotalValue/Amount[@ccy=$qccy])[1]),'0.00'),'&quot;'),
+        concat('&quot;',
+               if (TotalValue/Amount[@ccy=$qccy])
+               then format-number(number((TotalValue/Amount[@ccy=$qccy])[1]),'0.00')
+               else '',                     (: no amount in quotation ccy -> empty, not NaN :)
+               '&quot;'),
         concat('&quot;',$ccy,'&quot;'),
         concat('&quot;',format-number(number(TotalValue/Amount[@ccy=$ccy]),'0.00'),'&quot;'),
         concat('&quot;',format-number(number(TotalPercentage),'0.00'),'&quot;'),
         concat('&quot;',($bond/MaturityDate,'')[1],'&quot;'),
-        concat('&quot;',($bond/InterestRate,'')[1],'&quot;'),
+        (: FundsXML 4.2.9 carries the coupon under Bond/Coupon/InterestRate;
+           the flat Bond/InterestRate element is the legacy fallback. :)
+        concat('&quot;',($bond/Coupon/InterestRate,$bond/InterestRate,'')[1],'&quot;'),
         concat('&quot;',replace(string(($asset/AssetDetails/*/Issuer/Name)[1]),'&quot;','&quot;&quot;'),'&quot;')
       ), $d)"/>
       <xsl:text>&#10;</xsl:text>

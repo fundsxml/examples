@@ -1,0 +1,3385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+  <ControlData>
+    <UniqueDocumentID>AMSLSP_097900BIKR0000175514_20260610</UniqueDocumentID>
+    <DocumentGenerated>2026-06-11T10:39:19</DocumentGenerated>
+    <ContentDate>2026-06-10</ContentDate>
+    <DataSupplier>
+      <SystemCountry>SK</SystemCountry>
+      <Short>AMSLSP</Short>
+      <Name>Asset Management Slovenskej sporiteľne, správ. spol., a.s.</Name>
+      <Type>ASSET MANAGER</Type>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+    <Language>SK</Language>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>097900BIKR0000175514</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>Erste Asset Management GmbH, Global Renta, o.p.f.</OfficialName>
+      </Names>
+      <Currency>EUR</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <FundStaticData>
+        <InceptionDate>2018-09-17</InceptionDate>
+      </FundStaticData>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2026-06-10</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">182004267.54</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2026-06-10</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>SK2709000000005143532090</UniqueID>
+                <Identifiers/>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">14006.7</Amount>
+                </TotalValue>
+                <TotalPercentage>0.007696</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">14006.7</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="EUR">14006.7</Amount>
+                  </MarketValue>
+                  <Interests>
+                    <Amount ccy="EUR">0.0</Amount>
+                  </Interests>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>SK1909000000005183623595</UniqueID>
+                <Identifiers/>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">20100.08</Amount>
+                  <Amount ccy="EUR">17419.26</Amount>
+                </TotalValue>
+                <TotalPercentage>0.009571</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">20100.08</Amount>
+                      <Amount ccy="EUR">17419.26</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="USD">20100.08</Amount>
+                    <Amount ccy="EUR">17419.26</Amount>
+                  </MarketValue>
+                  <Interests>
+                    <Amount ccy="USD">0.0</Amount>
+                    <Amount ccy="EUR">0.0</Amount>
+                  </Interests>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_EAMSK_105958903</UniqueID>
+                <Identifiers/>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2390112.86</Amount>
+                </TotalValue>
+                <TotalPercentage>1.313218</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2390112.86</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <FixedTimeDeposit>
+                  <MarketValue>
+                    <Amount ccy="EUR">2390000.0</Amount>
+                  </MarketValue>
+                  <Interests>
+                    <Amount ccy="EUR">112.86</Amount>
+                  </Interests>
+                </FixedTimeDeposit>
+              </Position>
+              <Position>
+                <UniqueID>ID_EAMSK_105957903</UniqueID>
+                <Identifiers/>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">810069.75</Amount>
+                  <Amount ccy="EUR">702027.69</Amount>
+                </TotalValue>
+                <TotalPercentage>0.385720</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">810069.75</Amount>
+                      <Amount ccy="EUR">702027.69</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <FixedTimeDeposit>
+                  <MarketValue>
+                    <Amount ccy="USD">810000.0</Amount>
+                    <Amount ccy="EUR">701967.24</Amount>
+                  </MarketValue>
+                  <Interests>
+                    <Amount ccy="USD">69.75</Amount>
+                    <Amount ccy="EUR">60.45</Amount>
+                  </Interests>
+                </FixedTimeDeposit>
+              </Position>
+              <Position>
+                <UniqueID>SK3110000310EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>SK3110000310</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2035117.38</Amount>
+                </TotalValue>
+                <TotalPercentage>1.118170</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2035117.38</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>41555906.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">0.048973</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>SK3110000377EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>SK3110000377</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">12106028.49</Amount>
+                </TotalValue>
+                <TotalPercentage>6.651508</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">12106028.49</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>138288233.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">0.087542</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0201576070USD</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0201576070</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">24885.03</Amount>
+                  <Amount ccy="EUR">21566.02</Amount>
+                </TotalValue>
+                <TotalPercentage>0.011849</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">24885.03</Amount>
+                      <Amount ccy="EUR">21566.02</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>3.0</Shares>
+                  <Price>
+                    <Amount ccy="USD">8295.01</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00B643RZ01EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00B643RZ01</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2349960.23</Amount>
+                </TotalValue>
+                <TotalPercentage>1.291157</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2349960.23</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>13860.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">169.5498</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A0K2D2EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A0K2D2</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">4688982.91</Amount>
+                </TotalValue>
+                <TotalPercentage>2.576304</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">4688982.91</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>40643.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">115.37</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A1YRJ3EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A1YRJ3</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">24130617.3</Amount>
+                </TotalValue>
+                <TotalPercentage>13.258270</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">24130617.3</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>265026.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">91.05</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A1XWS6EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A1XWS6</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3888417.24</Amount>
+                </TotalValue>
+                <TotalPercentage>2.136443</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3888417.24</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>42316.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">91.89</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A1Y3G6EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A1Y3G6</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">16799024.94</Amount>
+                </TotalValue>
+                <TotalPercentage>9.230017</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">16799024.94</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>158646.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">105.89</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A1Y2Q7EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A1Y2Q7</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">4686210.48</Amount>
+                </TotalValue>
+                <TotalPercentage>2.574781</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">4686210.48</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>49848.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">94.01</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0113258742EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0113258742</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">8914049.58</Amount>
+                </TotalValue>
+                <TotalPercentage>4.897715</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">8914049.58</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>322656.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">27.6271</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU1188199936USD</UniqueID>
+                <Identifiers>
+                  <ISIN>LU1188199936</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">652141.71</Amount>
+                  <Amount ccy="EUR">565163.11</Amount>
+                </TotalValue>
+                <TotalPercentage>0.310522</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">652141.71</Amount>
+                      <Amount ccy="EUR">565163.11</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>5984.0</Shares>
+                  <Price>
+                    <Amount ccy="USD">108.9809</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A0K282EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A0K282</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">10070274.76</Amount>
+                </TotalValue>
+                <TotalPercentage>5.532988</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">10070274.76</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>86723.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">116.12</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>SK3000001055EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>SK3000001055</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">8524214.11</Amount>
+                </TotalValue>
+                <TotalPercentage>4.683524</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">8524214.11</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>8169158.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">1.043463</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A1YF41EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A1YF41</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3516878.4</Amount>
+                </TotalValue>
+                <TotalPercentage>1.932305</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3516878.4</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>31960.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">110.04</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0248060658USD</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0248060658</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">1311199.6</Amount>
+                  <Amount ccy="EUR">1136319.96</Amount>
+                </TotalValue>
+                <TotalPercentage>0.624337</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">1311199.6</Amount>
+                      <Amount ccy="EUR">1136319.96</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>2840.0</Shares>
+                  <Price>
+                    <Amount ccy="USD">461.69</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>DE000A2T5DZ1EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>DE000A2T5DZ1</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3897502.2</Amount>
+                </TotalValue>
+                <TotalPercentage>2.141435</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3897502.2</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>78900.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">49.398</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU1382551585EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU1382551585</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">4695116.1</Amount>
+                </TotalValue>
+                <TotalPercentage>2.579674</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">4695116.1</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>57630.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">81.47</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU1057468578EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU1057468578</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1380145.8</Amount>
+                </TotalValue>
+                <TotalPercentage>0.758304</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1380145.8</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>8690.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">158.82</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU2076840235EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2076840235</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">591173.7</Amount>
+                </TotalValue>
+                <TotalPercentage>0.324813</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">591173.7</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>3770.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">156.81</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A2VY99EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A2VY99</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">5993694.38</Amount>
+                </TotalValue>
+                <TotalPercentage>3.293161</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">5993694.38</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>58566.488</Shares>
+                  <Price>
+                    <Amount ccy="EUR">102.34</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>FR0013291879EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>FR0013291879</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">597606.77</Amount>
+                </TotalValue>
+                <TotalPercentage>0.328348</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">597606.77</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>3103.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">192.59</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU1734444273EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU1734444273</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3667012.2</Amount>
+                </TotalValue>
+                <TotalPercentage>2.014795</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3667012.2</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>13185.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">278.12</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A38GJ3EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A38GJ3</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">0.0</Amount>
+                </TotalValue>
+                <TotalPercentage>0.000000</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">0.0</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>78840.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">0.0</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A306Q9EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A306Q9</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3834570.4</Amount>
+                </TotalValue>
+                <TotalPercentage>2.106857</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3834570.4</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>30320.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">126.47</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU1919971157EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU1919971157</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">930651.08</Amount>
+                </TotalValue>
+                <TotalPercentage>0.511335</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">930651.08</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>60377.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">15.414</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0966156712EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0966156712</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2010273.6</Amount>
+                </TotalValue>
+                <TotalPercentage>1.104520</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2010273.6</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>5240.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">383.64</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00BNG8NB00EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BNG8NB00</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2437088.94</Amount>
+                </TotalValue>
+                <TotalPercentage>1.339028</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2437088.94</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>15564.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">156.585</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0428380124EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0428380124</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2481460.48</Amount>
+                </TotalValue>
+                <TotalPercentage>1.363408</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2481460.48</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>14884.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">166.72</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00BF4G7076EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BF4G7076</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3699282.15</Amount>
+                </TotalValue>
+                <TotalPercentage>2.032525</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3699282.15</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>58635.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">63.09</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0414047281EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0414047281</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">520404.13</Amount>
+                </TotalValue>
+                <TotalPercentage>0.285930</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">520404.13</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>107.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">4863.59</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU1019963526EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU1019963526</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1713932.0</Amount>
+                </TotalValue>
+                <TotalPercentage>0.941699</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1713932.0</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>880.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">1947.65</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0757433437EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0757433437</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">3717963.66</Amount>
+                </TotalValue>
+                <TotalPercentage>2.042789</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">3717963.66</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>31520.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">117.9557</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00B3YQ1K12EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00B3YQ1K12</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1708559.51</Amount>
+                </TotalValue>
+                <TotalPercentage>0.938747</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1708559.51</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>4700.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">363.5233</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0234682044EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0234682044</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1689866.0</Amount>
+                </TotalValue>
+                <TotalPercentage>0.928476</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1689866.0</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>42890.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">39.4</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00BFXZM884EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BFXZM884</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1438109.33</Amount>
+                </TotalValue>
+                <TotalPercentage>0.790151</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1438109.33</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>490.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">2934.917</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU2392538224EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2392538224</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1633038.0</Amount>
+                </TotalValue>
+                <TotalPercentage>0.897253</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1633038.0</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>11350.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">143.88</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU2191352629EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2191352629</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">1548135.01</Amount>
+                </TotalValue>
+                <TotalPercentage>0.850604</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">1548135.01</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>119360.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">12.9703</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00BJRHVH04EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BJRHVH04</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">11139487.5</Amount>
+                </TotalValue>
+                <TotalPercentage>6.120454</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">11139487.5</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>793750.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">14.034</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU0939496179USD</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0939496179</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">1085321.17</Amount>
+                  <Amount ccy="EUR">940567.79</Amount>
+                </TotalValue>
+                <TotalPercentage>0.516783</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">1085321.17</Amount>
+                      <Amount ccy="EUR">940567.79</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>7420.0</Shares>
+                  <Price>
+                    <Amount ccy="USD">146.2697</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU2306623633EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2306623633</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">524214.5</Amount>
+                </TotalValue>
+                <TotalPercentage>0.288023</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">524214.5</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>2350.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">223.07</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>LU2400955485EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2400955485</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">4726022.4</Amount>
+                </TotalValue>
+                <TotalPercentage>2.596655</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">4726022.4</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>5280.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">895.08</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>DE000A1W1MH5EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>DE000A1W1MH5</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2410065.0</Amount>
+                </TotalValue>
+                <TotalPercentage>1.324180</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2410065.0</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>12250.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">196.74</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00BDVPNV63EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BDVPNV63</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2256406.94</Amount>
+                </TotalValue>
+                <TotalPercentage>1.239755</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2256406.94</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>138890.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">16.246</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>AT0000A3F8J0EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A3F8J0</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">670462.0</Amount>
+                </TotalValue>
+                <TotalPercentage>0.368377</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">670462.0</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>4280.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">156.65</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>IE00BYXVGX24EUR</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BYXVGX24</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">596380.64</Amount>
+                </TotalValue>
+                <TotalPercentage>0.327674</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">596380.64</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>52880.0</Shares>
+                  <Price>
+                    <Amount ccy="EUR">11.278</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>SK2709000000005143532090_1</UniqueID>
+                <Identifiers/>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">2157347.95</Amount>
+                </TotalValue>
+                <TotalPercentage>1.185328</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">2157347.95</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="EUR">2157342.15</Amount>
+                  </MarketValue>
+                  <Interests>
+                    <Amount ccy="EUR">5.8</Amount>
+                  </Interests>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>SK1909000000005183623595_1</UniqueID>
+                <Identifiers/>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD">-162806.14</Amount>
+                  <Amount ccy="EUR">-141092.07</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.077521</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="USD">-162806.14</Amount>
+                      <Amount ccy="EUR">-141092.07</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="USD">-162810.77</Amount>
+                    <Amount ccy="EUR">-141096.08</Amount>
+                  </MarketValue>
+                  <Interests>
+                    <Amount ccy="USD">4.63</Amount>
+                    <Amount ccy="EUR">4.01</Amount>
+                  </Interests>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_29_MNG</UniqueID>
+                <Identifiers/>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">-3989.13</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.002192</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">-3989.13</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <Fee/>
+              </Position>
+              <Position>
+                <UniqueID>ID_29_DEP</UniqueID>
+                <Identifiers/>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="EUR">-13582.84</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.007463</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="EUR">-13582.84</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="D" toCcy="EUR">1.0</FXRate>
+                </FXRates>
+                <Fee/>
+              </Position>
+            </Positions>
+            <Transactions>
+              <Transaction>
+                <TransactionID>20260609999095463262581642</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>IE00B3YQ1K12EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>IE00B3YQ1K12</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-08</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-08</ClosingDate>
+                <OrderTimestamp>2026-06-08T04:00:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">371.5533</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>260.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">371.5533</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">96603.86</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">96603.86</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">96633.56</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260609999095863262581643</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>LU1734444273EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>LU1734444273</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-08</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-08</ClosingDate>
+                <OrderTimestamp>2026-06-08T04:00:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">280.69</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>880.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">280.69</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">247007.2</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">247007.2</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">247036.9</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260609999095663262581647</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>LU2076840235EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>LU2076840235</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-08</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-08</ClosingDate>
+                <OrderTimestamp>2026-06-08T04:00:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">156.75</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>630.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">156.75</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">98752.5</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">98752.5</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">98782.2</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260609999095763262581649</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>LU0234682044EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>LU0234682044</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-08</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-08</ClosingDate>
+                <OrderTimestamp>2026-06-08T04:00:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">39.48</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>5050.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">39.48</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">199374.0</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">199374.0</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">199403.7</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260609999095563262581711</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>LU0757433437EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>LU0757433437</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-08</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-08</ClosingDate>
+                <OrderTimestamp>2026-06-08T09:42:30+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">120.4516</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>2860.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">120.4516</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">344491.58</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">344491.58</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">344521.28</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260610999095363262582228</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>LU0939496179USD</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>LU0939496179</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>USD</SettlementCurrency>
+                <EntryDate>2026-06-08</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-08</ClosingDate>
+                <OrderTimestamp>2026-06-08T01:00:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="USD">144.05</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>1130.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="USD">144.05</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="USD">162776.5</Amount>
+                  <Amount ccy="EUR">141066.38</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="USD">162776.5</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">141096.08</Amount>
+                  <Amount ccy="USD">162810.77</Amount>
+                </SettlementAmount>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="EUR">1.1539</FXRate>
+                </FXRates>
+                <Expenses>
+                  <Amount ccy="USD">34.27</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260610999098863262582229</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>LU1019963526EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>LU1019963526</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-09</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-09</ClosingDate>
+                <OrderTimestamp>2026-06-09T04:00:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">1970.72</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>80.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">1970.72</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">157657.6</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">157657.6</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">157687.3</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">29.7</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>PQOH26KWDF7CG10L6792</LEI>
+                    <SwiftBIC>GIBAATWGXXX</SwiftBIC>
+                    <OtherID FreeType="MIC">EGSI</OtherID>
+                  </Identifiers>
+                  <Name>Erste Group Bank AG</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260610999099063262582241</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>IE00BF4G7076EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>IE00BF4G7076</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-09</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-09</ClosingDate>
+                <OrderTimestamp>2026-06-09T09:54:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">63.98</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>3000.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">63.98</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">191940.0</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">191940.0</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">191995.0</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">55.0</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>549300AE0DWETJDYFB29</LEI>
+                    <SwiftBIC>BARCGB33XXX</SwiftBIC>
+                    <OtherID FreeType="LEI">549300AE0DWETJDYFB29</OtherID>
+                  </Identifiers>
+                  <Name>Jane Street Netherlands B.V.</Name>
+                </Counterparty>
+                <Exchange>BLTD</Exchange>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260610999098963262582242</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>IE00BYXVGX24EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>IE00BYXVGX24</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-09</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-09</ClosingDate>
+                <OrderTimestamp>2026-06-09T09:59:00+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">11.352</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>8530.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">11.352</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">96832.56</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">96832.56</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">96887.56</Amount>
+                </SettlementAmount>
+                <Expenses>
+                  <Amount ccy="EUR" isFundCcy="true">55.0</Amount>
+                </Expenses>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>549300AE0DWETJDYFB29</LEI>
+                    <SwiftBIC>BARCGB33XXX</SwiftBIC>
+                    <OtherID FreeType="LEI">549300AE0DWETJDYFB29</OtherID>
+                  </Identifiers>
+                  <Name>Jane Street Netherlands B.V.</Name>
+                </Counterparty>
+                <Exchange>BLTD</Exchange>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260611999098763262582766</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>AT0000A2VY99EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A2VY99</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>SELL</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-10</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-10</ClosingDate>
+                <OrderTimestamp>2026-06-10T14:25:27+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">102.34</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>13600.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">102.34</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">1391824.0</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">1391824.0</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">1391824.0</Amount>
+                </SettlementAmount>
+              </Transaction>
+              <Transaction>
+                <TransactionID>20260611999098663262582768</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>AT0000A0K282EUR</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A0K282</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TransactionKind>SELL</TransactionKind>
+                <SettlementCurrency>EUR</SettlementCurrency>
+                <EntryDate>2026-06-10</EntryDate>
+                <ValutaDate>2026-06-11</ValutaDate>
+                <ClosingDate>2026-06-10</ClosingDate>
+                <OrderTimestamp>2026-06-10T14:12:52+02:00</OrderTimestamp>
+                <OrderPrice>
+                  <Amount ccy="EUR">116.12</Amount>
+                </OrderPrice>
+                <NominalOrUnitsOrContracts>18840.0</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="EUR">116.12</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="EUR">2187700.8</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="EUR">2187700.8</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="EUR">2187700.8</Amount>
+                </SettlementAmount>
+              </Transaction>
+            </Transactions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>SK3110000609</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Global Renta</OfficialName>
+            </Names>
+            <Currency>EUR</Currency>
+            <ShareClassType>
+              <Code>D</Code>
+              <EarningUse>D</EarningUse>
+            </ShareClassType>
+            <InceptionDate>2018-09-17</InceptionDate>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2026-06-10</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>0.010877</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2026-06-10</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR" isFundCcy="true" isShareClassCcy="true">182004267.54</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>16733343178.0</SharesOutstanding>
+                <Ratio>100.000000</Ratio>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>IE00B3YQ1K12EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00B3YQ1K12</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>NOMURA FDS IR-JPN STR V-IEUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300PEL817FAJZZS61</LEI>
+            </Identifiers>
+            <Name>NOMURA FDS IR-JPN STR V-IEUR</Name>
+            <Address>
+              <Country>IE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU1734444273EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU1734444273</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>JPMORGAN F-AMER EQTY-I EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300XWGTGPPNVKZY94</LEI>
+            </Identifiers>
+            <Name>JPMorgan Asset Management Europe Sarl</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU2076840235EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU2076840235</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>JPMORGAN EUR SU S E-IEURA</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300XWGTGPPNVKZY94</LEI>
+            </Identifiers>
+            <Name>JPMorgan Asset Management Europe Sarl</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0234682044EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU0234682044</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>FI</Country>
+      <Name>GS EUROP COR E IA</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>529900T8BM49AURSDO55</LEI>
+            </Identifiers>
+            <Name>UBISECURE OY</Name>
+            <Address>
+              <Country>FI</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0757433437EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU0757433437</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>CTLX US CON CORE EQS IU EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>5299000J2N45DDNE4Y28</LEI>
+            </Identifiers>
+            <Name>Herausgebergemeinschaft Wertpa</Name>
+            <Address>
+              <Country>DE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0939496179USD</UniqueID>
+      <Identifiers>
+        <ISIN>LU0939496179</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>CL</Country>
+      <Name>Larrainvial Asset Management S</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>2549003YW25MXGZRGR36</LEI>
+            </Identifiers>
+            <Name>LARRAIN VIAL SPA</Name>
+            <Address>
+              <Country>CL</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU1019963526EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU1019963526</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>ALLIANZ BST STL ERP EQUITY-I</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>5299000J2N45DDNE4Y28</LEI>
+            </Identifiers>
+            <Name>Herausgebergemeinschaft Wertpa</Name>
+            <Address>
+              <Country>DE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00BF4G7076EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BF4G7076</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>US</Country>
+      <Name>JPM US REI ESG UCITS ETF</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>8I5DZWZKVSZI1NUHU748</LEI>
+            </Identifiers>
+            <Name>JP MORGAN CHASE &amp; CO</Name>
+            <Address>
+              <Country>US</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00BYXVGX24EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BYXVGX24</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>FIDELITY US QUAL INCOME-INC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>54930020FVXYT8E0QU87</LEI>
+            </Identifiers>
+            <Name>FIL Investment Management Luxembourg S.A.</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A2VY99EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A2VY99</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE BOND COMBIRENT-EUR I0</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A0K282EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A0K282</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>XT Bond EUR passiv</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_EAMSK_105958903</UniqueID>
+      <Identifiers/>
+      <Currency>EUR</Currency>
+      <Country>SK</Country>
+      <Name>Termínovaný vklad</Name>
+      <AssetType>FT</AssetType>
+      <AssetDetails>
+        <FixedTimeDeposit>
+          <StartDate>2026-06-10</StartDate>
+          <MaturityDate>2026-06-11</MaturityDate>
+          <InterestRate>1.7</InterestRate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </FixedTimeDeposit>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_EAMSK_105957903</UniqueID>
+      <Identifiers/>
+      <Currency>USD</Currency>
+      <Country>SK</Country>
+      <Name>Termínovaný vklad</Name>
+      <AssetType>FT</AssetType>
+      <AssetDetails>
+        <FixedTimeDeposit>
+          <StartDate>2026-06-10</StartDate>
+          <MaturityDate>2026-06-11</MaturityDate>
+          <InterestRate>3.1</InterestRate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </FixedTimeDeposit>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>SK3110000310EUR</UniqueID>
+      <Identifiers>
+        <ISIN>SK3110000310</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>Euro Plus Fond</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>SK3110000377EUR</UniqueID>
+      <Identifiers>
+        <ISIN>SK3110000377</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>Fond maximalizovaných výnosov</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0201576070USD</UniqueID>
+      <Identifiers>
+        <ISIN>LU0201576070</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>LU</Country>
+      <Name>AMUNDI-LATIN AMER EQ-IUSDC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>529900S2PKB89W9KIR25</LEI>
+            </Identifiers>
+            <Name>AMUNDI-LATIN AMER EQ-IUSDC</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00B643RZ01EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00B643RZ01</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>FR</Country>
+      <Name>Lyxor Epsilon Global Trend</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300MHYT1NIWI0IB04</LEI>
+            </Identifiers>
+            <Name>Lyxor Asset Management SAS</Name>
+            <Address>
+              <Country>FR</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A0K2D2EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A0K2D2</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>T 1851</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A1YRJ3EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A1YRJ3</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE BOND EURO CORPORATE</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A1XWS6EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A1XWS6</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE BOND EM GOVERNMENT</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A1Y3G6EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A1Y3G6</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE BOND EUROPE HIGH YIELD</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A1Y2Q7EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A1Y2Q7</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE BOND EM GOVERNMENT LOCAL</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0113258742EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU0113258742</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>SCHRODER INTL EURO CORP-CAC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>8AFAYMK90I2QVGLMLS34</LEI>
+            </Identifiers>
+            <Name>Schroder Investment Management Europe S.A.</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU1188199936USD</UniqueID>
+      <Identifiers>
+        <ISIN>LU1188199936</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>LU</Country>
+      <Name>SCIEAIZ Emerging Asia IZ Acc USD</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>8AFAYMK90I2QVGLMLS34</LEI>
+            </Identifiers>
+            <Name>Schroder Investment Management Europe S.A.</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>SK3000001055EUR</UniqueID>
+      <Identifiers>
+        <ISIN>SK3000001055</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE Realitná Renta, o.p.f., R02</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A1YF41EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A1YF41</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE RESERVE EURO</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0248060658USD</UniqueID>
+      <Identifiers>
+        <ISIN>LU0248060658</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>LU</Country>
+      <Name>JPMORGAN F-JPM US VALUE-I AC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300XWGTGPPNVKZY94</LEI>
+            </Identifiers>
+            <Name>JPMorgan Asset Management Europe Sarl</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>DE000A2T5DZ1EUR</UniqueID>
+      <Identifiers>
+        <ISIN>DE000A2T5DZ1</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>X IE PHYSICAL GOLD ETC EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300L70BS183Y6ML67</LEI>
+            </Identifiers>
+            <Name>DWS Investment S.A.</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU1382551585EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU1382551585</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>GB</Country>
+      <Name>ASHMORE-EM LOC CUR BD-IEURU</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300C43L0TF7UALB02</LEI>
+            </Identifiers>
+            <Name>ASHMORE INVESTMENT MANAGEMENT</Name>
+            <Address>
+              <Country>GB</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU1057468578EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU1057468578</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>GB</Country>
+      <Name>LUMY-B MLCX C ALPHA U-B5EURA</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300O2NNE4X00RNP42</LEI>
+            </Identifiers>
+            <Name>Lumyna Investments Ltd</Name>
+            <Address>
+              <Country>GB</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>FR0013291879EUR</UniqueID>
+      <Identifiers>
+        <ISIN>FR0013291879</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>FR</Country>
+      <Name>GEMASIA-I EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>969500XXU748HQF07540</LEI>
+            </Identifiers>
+            <Name>GEMWAY ASSETS SAS</Name>
+            <Address>
+              <Country>FR</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A38GJ3EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A38GJ3</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERST BN LOC EMERG I01 AUSS SOFF</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A306Q9EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A306Q9</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ESPA B CORPOR PLUS- EUR D02</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU1919971157EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU1919971157</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>GB</Country>
+      <Name>ABR SV I-FNTR MKT B-IAHEUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>0TMBS544NMO7GLCE7H90</LEI>
+            </Identifiers>
+            <Name>ABRDN PLC</Name>
+            <Address>
+              <Country>GB</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0966156712EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU0966156712</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>FIDELITY ACT STR-GLOB FD-YEA</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>54930020FVXYT8E0QU87</LEI>
+            </Identifiers>
+            <Name>FIL Investment Management Luxembourg S.A.</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00BNG8NB00EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BNG8NB00</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>GLB UNCONST EQT FD-D EURH A</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>5493004330BCAPB3GT42</LEI>
+            </Identifiers>
+            <Name>BlackRock Asset Management Ireland Ltd</Name>
+            <Address>
+              <Country>IE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0428380124EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU0428380124</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>MAN AHL TRD ALT-IN H EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>529900S3BWN6CYL81492</LEI>
+            </Identifiers>
+            <Name>WAYSTONE MANAGEMENT CO LUX S</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU0414047281EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU0414047281</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>ALLIANZ EUR EQY DIV-IT</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>5299000J2N45DDNE4Y28</LEI>
+            </Identifiers>
+            <Name>Herausgebergemeinschaft Wertpa</Name>
+            <Address>
+              <Country>DE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00BFXZM884EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BFXZM884</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>DALTON ASIA PACIFIC UC-B2EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>635400XKS4TFYYAQ1K41</LEI>
+            </Identifiers>
+            <Name>WAYSTONE MANAGEMENT CO IE LT</Name>
+            <Address>
+              <Country>IE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU2392538224EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU2392538224</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>AQR ALT TRENDS F-IAE1EURACC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300EH9HM8MUILFJ92</LEI>
+            </Identifiers>
+            <Name>AQR ALT TRENDS F-IAE1EURACC</Name>
+            <Address>
+              <Country>LU</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU2191352629EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU2191352629</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>GB</Country>
+      <Name>M&amp;G LX EPISODE MACRO-EUR SIH</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>254900TWUJUQ44TQJY84</LEI>
+            </Identifiers>
+            <Name>M&amp;G PLC</Name>
+            <Address>
+              <Country>GB</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00BJRHVH04EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BJRHVH04</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>US</Country>
+      <Name>Wellington Euro High Yield Bon</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>5493002CYKEKC8C01T66</LEI>
+            </Identifiers>
+            <Name>WELLINGTON MANAGEMENT GROUP</Name>
+            <Address>
+              <Country>US</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU2306623633EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU2306623633</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>MUL SICAV-KON TRAN MET FDIN</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>635400CFK4T1LTOQKB10</LEI>
+            </Identifiers>
+            <Name>CARNE GLOBAL FUND MANAGERS I</Name>
+            <Address>
+              <Country>IE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>LU2400955485EUR</UniqueID>
+      <Identifiers>
+        <ISIN>LU2400955485</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>ALLIANZ DYN ASIA HY B-WTH2EU</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>529900K9B0N5BT694847</LEI>
+            </Identifiers>
+            <Name>Allianz SE</Name>
+            <Address>
+              <Country>DE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>DE000A1W1MH5EUR</UniqueID>
+      <Identifiers>
+        <ISIN>DE000A1W1MH5</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>Tresides Commodity One</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>529900F2F9VZ5FRROH89</LEI>
+            </Identifiers>
+            <Name>HDI HAFTPLICHTVERBAND DER DE</Name>
+            <Address>
+              <Country>DE</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>IE00BDVPNV63EUR</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BDVPNV63</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>US</Country>
+      <Name>Wisdomtree Enhanced Commodity</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>549300WIU8IS7UFO7871</LEI>
+            </Identifiers>
+            <Name>WISDOMTREE INC</Name>
+            <Address>
+              <Country>US</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>AT0000A3F8J0EUR</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A3F8J0</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE STOCK TECHNO-EUR P01</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <LEI>52990086YE3BU6UKPL70</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH</Name>
+            <Address>
+              <Country>AT</Country>
+            </Address>
+          </Issuer>
+          <ListingUnit>U</ListingUnit>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>SK2709000000005143532090</UniqueID>
+      <Identifiers>
+        <SwiftBIC>GIBASKBX</SwiftBIC>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>SK</Country>
+      <Name>SK2709000000005143532090</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <AccountNumber>2709000000005143532090</AccountNumber>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>SK2709000000005143532090_1</UniqueID>
+      <Identifiers>
+        <SwiftBIC>GIBASKBX</SwiftBIC>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>SK</Country>
+      <Name>SK2709000000005143532090</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <AccountNumber>2709000000005143532090</AccountNumber>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+      <CustomAttributes>
+        <Attribute>
+          <Name>ACCOUNT_TYPE</Name>
+          <Type>T</Type>
+          <ValueText>Receivables</ValueText>
+        </Attribute>
+      </CustomAttributes>
+    </Asset>
+    <Asset>
+      <UniqueID>SK2709000000005143532090_2</UniqueID>
+      <Identifiers>
+        <SwiftBIC>GIBASKBX</SwiftBIC>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>SK</Country>
+      <Name>SK2709000000005143532090</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <AccountNumber>2709000000005143532090</AccountNumber>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+      <CustomAttributes>
+        <Attribute>
+          <Name>ACCOUNT_TYPE</Name>
+          <Type>T</Type>
+          <ValueText>Liabilities</ValueText>
+        </Attribute>
+      </CustomAttributes>
+    </Asset>
+    <Asset>
+      <UniqueID>SK1909000000005183623595</UniqueID>
+      <Identifiers>
+        <SwiftBIC>GIBASKBX</SwiftBIC>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>SK</Country>
+      <Name>SK1909000000005183623595</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <AccountNumber>1909000000005183623595</AccountNumber>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>SK1909000000005183623595_1</UniqueID>
+      <Identifiers>
+        <SwiftBIC>GIBASKBX</SwiftBIC>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>SK</Country>
+      <Name>SK1909000000005183623595</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <AccountNumber>1909000000005183623595</AccountNumber>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+      <CustomAttributes>
+        <Attribute>
+          <Name>ACCOUNT_TYPE</Name>
+          <Type>T</Type>
+          <ValueText>Receivables</ValueText>
+        </Attribute>
+      </CustomAttributes>
+    </Asset>
+    <Asset>
+      <UniqueID>SK1909000000005183623595_2</UniqueID>
+      <Identifiers>
+        <SwiftBIC>GIBASKBX</SwiftBIC>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>SK</Country>
+      <Name>SK1909000000005183623595</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <AccountNumber>1909000000005183623595</AccountNumber>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+              <SwiftBIC>GIBASKBX</SwiftBIC>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+      <CustomAttributes>
+        <Attribute>
+          <Name>ACCOUNT_TYPE</Name>
+          <Type>T</Type>
+          <ValueText>Liabilities</ValueText>
+        </Attribute>
+      </CustomAttributes>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_29_MNG</UniqueID>
+      <Identifiers/>
+      <Currency>EUR</Currency>
+      <Country>SK</Country>
+      <Name>Management Fee</Name>
+      <AssetType>FE</AssetType>
+      <AssetDetails>
+        <Fee>
+          <Type>MNG</Type>
+          <Counterparty>
+            <Identifiers>
+              <LEI>097900CAKA0000121904</LEI>
+            </Identifiers>
+            <Name>Erste Asset Management GmbH, pobočka Slovenská republika</Name>
+            <Address>
+              <StreetName>Tomášikova 48</StreetName>
+              <StreetNumber>48</StreetNumber>
+              <CityName>Bratislava</CityName>
+              <CityCode>832 65</CityCode>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Fee>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_29_DEP</UniqueID>
+      <Identifiers/>
+      <Currency>EUR</Currency>
+      <Country>SK</Country>
+      <Name>Depository Fee</Name>
+      <AssetType>FE</AssetType>
+      <AssetDetails>
+        <Fee>
+          <Type>DEP</Type>
+          <Counterparty>
+            <Identifiers>
+              <LEI>549300S2T3FWVVXWJI89</LEI>
+            </Identifiers>
+            <Name>Slovenská sporiteľňa</Name>
+            <Address>
+              <Country>SK</Country>
+            </Address>
+          </Counterparty>
+        </Fee>
+      </AssetDetails>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>
