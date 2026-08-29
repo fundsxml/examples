@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.6/FundsXML.xsd">
+  <ControlData>
+    <UniqueDocumentID>260604_25_BR</UniqueDocumentID>
+    <DocumentGenerated>2026-06-05T13:06:07</DocumentGenerated>
+    <Version>4.2.6</Version>
+    <ContentDate>2026-06-04</ContentDate>
+    <DataSupplier>
+      <SystemCountry>CZ</SystemCountry>
+      <Short>EAM_CZ</Short>
+      <Name>Erste Asset Management GmbH, pobocka Ceska republika</Name>
+      <Type>Asset Manager</Type>
+      <Contact>
+        <Email>reporting@erste-am.cz</Email>
+      </Contact>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <ISIN>CZ1005204113</ISIN>
+        <LEI>3157001YNX1DH26ADK07</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>Podfond dostupneho bydleni Ceske republiky</OfficialName>
+      </Names>
+      <Currency>CZK</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2026-06-04</NavDate>
+            <TotalAssetNature>TECHNICAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="CZK">1900913204.42</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2026-06-04</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>ID_2527161</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131701</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">20026652.35</Amount>
+                </TotalValue>
+                <TotalPercentage>1.053528</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="CZK">20026652.35</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_2527162</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131705</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">656.19</Amount>
+                </TotalValue>
+                <TotalPercentage>0.000035</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="CZK">656.19</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_383162</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">TV383162</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">650477100</Amount>
+                </TotalValue>
+                <TotalPercentage>34.21919</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <FixedTimeDeposit>
+                  <MarketValue>
+                    <Amount ccy="CZK">650477100</Amount>
+                  </MarketValue>
+                </FixedTimeDeposit>
+              </Position>
+              <Position>
+                <UniqueID>ID_383165</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">TV383165</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">580477050</Amount>
+                </TotalValue>
+                <TotalPercentage>30.536747</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <FixedTimeDeposit>
+                  <MarketValue>
+                    <Amount ccy="CZK">580477050</Amount>
+                  </MarketValue>
+                </FixedTimeDeposit>
+              </Position>
+              <Position>
+                <UniqueID>ID_383167</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">RRE_383167</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">650503388.89</Amount>
+                </TotalValue>
+                <TotalPercentage>34.220573</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Repo/>
+              </Position>
+              <Position>
+                <UniqueID>ID_FEE_25</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FEE_25</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">235110.17</Amount>
+                </TotalValue>
+                <TotalPercentage>0.0124</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Fee/>
+              </Position>
+              <Position>
+                <UniqueID>ID_LiabRec_25</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">LiabRec_25</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-806753.18</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.0424</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="CZK">-806753.18</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+            </Positions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>CZ1005204113</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Podfond dostupneho bydleni Ceske republiky</OfficialName>
+            </Names>
+            <Currency>CZK</Currency>
+            <ShareClassType>
+              <Code>D</Code>
+              <EarningUse>R</EarningUse>
+            </ShareClassType>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2026-06-04</NavDate>
+                <PriceCurrency>CZK</PriceCurrency>
+                <PriceNature>TECHNICAL</PriceNature>
+                <NavPrice>1.0005</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2026-06-04</NavDate>
+                <TotalAssetNature>TECHNICAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CZK">1900913204.42</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1900000000</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>ID_2527161</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131701</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>DBP-CZK 500167982/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_2527162</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131705</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>DBP-CZK IU 131-4193500287/0100</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>KOMERCNI BANKA AS</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383162</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">TV383162</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>Term deposit</Name>
+      <AssetType>FT</AssetType>
+      <AssetDetails>
+        <FixedTimeDeposit>
+          <MaturityDate>2026-06-26</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>KOMBCZPPXXX</SwiftBIC>
+            </Identifiers>
+            <Name>KOMERCNI BANKA AS</Name>
+          </Counterparty>
+        </FixedTimeDeposit>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383165</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">TV383165</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>Term deposit</Name>
+      <AssetType>FT</AssetType>
+      <AssetDetails>
+        <FixedTimeDeposit>
+          <MaturityDate>2026-06-26</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>CEKOCZPPXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CSOB A.S.</Name>
+          </Counterparty>
+        </FixedTimeDeposit>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383167</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">RRE_383167</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>Reverse Repo</Name>
+      <AssetType>FT</AssetType>
+      <AssetDetails>
+        <Repo>
+          <RepoType>BSB</RepoType>
+          <IssueDate>2026-05-26</IssueDate>
+          <BaseValueQuotationCurrency>650000000</BaseValueQuotationCurrency>
+          <MaturityDate>2026-06-10</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+          <UnderlyingType>Bond</UnderlyingType>
+          <AccruedInterestCalculation>1</AccruedInterestCalculation>
+          <MarginCallFrequency>Daily</MarginCallFrequency>
+          <MarginHaircut>
+            <MinimumPercent>98</MinimumPercent>
+          </MarginHaircut>
+          <InitialMargin>
+            <MinimumPercent>98</MinimumPercent>
+          </InitialMargin>
+          <MarginCallType>None</MarginCallType>
+          <PledgeType>None</PledgeType>
+        </Repo>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_FEE_25</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FEE_25</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Name>Fee</Name>
+      <AssetType>FE</AssetType>
+      <AssetDetails>
+        <Fee>
+          <Type>Fund</Type>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Fee>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_LiabRec_25</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FEE_25</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Name>Receivables / Liabilities</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>

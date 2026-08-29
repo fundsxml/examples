@@ -1,0 +1,488 @@
+<FundsXML4 xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ControlData>
+    <UniqueDocumentID>PL_1790</UniqueDocumentID>
+    <DocumentGenerated>2026-06-17T09:52:26.520</DocumentGenerated>
+    <Version>4.2.9</Version>
+    <ContentDate>2026-04-30</ContentDate>
+    <DataSupplier>
+      <SystemCountry>PL</SystemCountry>
+      <Short>TFIPL</Short>
+      <Name>Santander TFI</Name>
+      <Type>Asset Manager</Type>
+      <Contact>
+        <Name>Jacek Sygulski</Name>
+        <Email>jacek.sygulski@erste.pl</Email>
+      </Contact>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+    <Language>PL</Language>
+    <CustomAttributes>
+      <Attribute>
+        <Name>Server</Name>
+        <Type>T</Type>
+        <ValueText>st240</ValueText>
+      </Attribute>
+      <Attribute>
+        <Name>ChangeLog</Name>
+        <Type>T</Type>
+        <ValueText>Changed Total Value for USD fund</ValueText>
+      </Attribute>
+    </CustomAttributes>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>259400GZCOT80CCJ6006</LEI>
+        <OtherID FreeType="AMSIFundID">6679</OtherID>
+      </Identifiers>
+      <Names>
+        <OfficialName>Erste Prestiz Fixed Income Dollar</OfficialName>
+        <FullName>Erste Prestiż Dłużny Dolarowy</FullName>
+        <ShortName>PRDD</ShortName>
+      </Names>
+      <Currency>USD</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <DataSupplier>
+        <SystemCountry>PL</SystemCountry>
+        <Short>TFIPL</Short>
+        <Name>Santander TFI</Name>
+        <Type>Asset Manager</Type>
+        <Contact>
+          <Name>Jacek Sygulski</Name>
+          <Email>jacek.sygulski@erste.pl</Email>
+        </Contact>
+      </DataSupplier>
+      <FundStaticData>
+        <ListedLegalStructure>UCITS</ListedLegalStructure>
+        <InceptionDate>2025-04-17</InceptionDate>
+      </FundStaticData>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2026-04-30</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">79612176.810</Amount>
+            </TotalNetAssetValue>
+            <TotalGrossAssetValue>
+              <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">80435257.920</Amount>
+            </TotalGrossAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2026-04-30</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>INS_33021</UniqueID>
+                <Identifiers>
+                  <ISIN>LU3224388937</ISIN>
+                  <Bloomberg>
+                    <Ticker>LU3224388937</Ticker>
+                    <Exchange>LX</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">74132161.020</Amount>
+                </TotalValue>
+                <TotalPercentage>93.116611</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>7291.240000</Shares>
+                  <Price>
+                    <Amount ccy="USD">10167.291</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>INS_34917</UniqueID>
+                <Identifiers>
+                  <ISIN>US912797QX89</ISIN>
+                  <Bloomberg>
+                    <Ticker>US912797QX89</Ticker>
+                    <Exchange>BGN</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">2474820.560</Amount>
+                </TotalValue>
+                <TotalPercentage>3.108596</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <Bond>
+                  <Nominal>2485000.00</Nominal>
+                  <Price>
+                    <Amount ccy="USD">99.590</Amount>
+                  </Price>
+                  <MarketValue>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">2474818.960</Amount>
+                  </MarketValue>
+                  <InterestClaimGross>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">0.000</Amount>
+                  </InterestClaimGross>
+                  <Indexfactor>1.000000</Indexfactor>
+                </Bond>
+              </Position>
+              <Position>
+                <UniqueID>INS_35673</UniqueID>
+                <Identifiers>
+                  <ISIN>US912797UK13</ISIN>
+                  <Bloomberg>
+                    <Ticker>US912797UK13</Ticker>
+                    <Exchange>BGN</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">2163447.780</Amount>
+                </TotalValue>
+                <TotalPercentage>2.717484</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <Bond>
+                  <Nominal>2200000.00</Nominal>
+                  <Price>
+                    <Amount ccy="USD">98.339</Amount>
+                  </Price>
+                  <MarketValue>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">2163447.000</Amount>
+                  </MarketValue>
+                  <InterestClaimGross>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">0.000</Amount>
+                  </InterestClaimGross>
+                  <Indexfactor>1.000000</Indexfactor>
+                </Bond>
+              </Position>
+              <Position>
+                <UniqueID>INS_USD</UniqueID>
+                <Identifiers/>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">1524967.840</Amount>
+                </TotalValue>
+                <TotalPercentage>1.915496</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">1524967.840</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>INS_35656</UniqueID>
+                <Identifiers>
+                  <ISIN>US912797UU94</ISIN>
+                  <Bloomberg>
+                    <Ticker>US912797UU94</Ticker>
+                    <Exchange>BGN</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">128581.900</Amount>
+                </TotalValue>
+                <TotalPercentage>0.161510</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <Bond>
+                  <Nominal>130000.00</Nominal>
+                  <Price>
+                    <Amount ccy="USD">98.909</Amount>
+                  </Price>
+                  <MarketValue>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">128581.830</Amount>
+                  </MarketValue>
+                  <InterestClaimGross>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">0.000</Amount>
+                  </InterestClaimGross>
+                  <Indexfactor>1.000000</Indexfactor>
+                </Bond>
+              </Position>
+              <Position>
+                <UniqueID>INS_PLN</UniqueID>
+                <Identifiers/>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">11278.820</Amount>
+                  <Amount ccy="PLN" isFundCcy="false" isShareClassCcy="false">41122.580</Amount>
+                </TotalValue>
+                <TotalPercentage>0.014167</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="PLN">0.27427</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="false" isShareClassCcy="false">41122.580</Amount>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">11278.820</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>INS_PLN_OCASH</UniqueID>
+                <Identifiers/>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">-9635.660</Amount>
+                  <Amount ccy="PLN" isFundCcy="false" isShareClassCcy="false">-35131.620</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.012103</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="PLN">0.27427</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="false" isShareClassCcy="false">-35131.620</Amount>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">-9635.660</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>INS_USD_OCASH</UniqueID>
+                <Identifiers/>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">-813445.450</Amount>
+                </TotalValue>
+                <TotalPercentage>-1.021760</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">-813445.450</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+            </Positions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>PLARBZW00423</ISIN>
+              <OtherID FreeType="AMSIFundUnitInstrumentID">29741</OtherID>
+            </Identifiers>
+            <Names>
+              <OfficialName>Erste Prestiz Fixed Income Dollar B</OfficialName>
+              <FullName>Erste Prestiż Dłużny Dolarowy B</FullName>
+              <ShortName>PRDDB</ShortName>
+            </Names>
+            <Currency>USD</Currency>
+            <ShareClassType>
+              <Code>B</Code>
+              <EarningUse>D</EarningUse>
+              <Name>FundUnitCode B</Name>
+            </ShareClassType>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2026-04-30</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>1034.61</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2026-04-30</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isFundCcy="true" isShareClassCcy="true">79612176.810</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>INS_USD</UniqueID>
+      <Identifiers/>
+      <Currency>USD</Currency>
+      <Name>Cash USD</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_PLN</UniqueID>
+      <Identifiers/>
+      <Currency>PLN</Currency>
+      <Name>Cash PLN</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_USD_OCASH</UniqueID>
+      <Identifiers/>
+      <Currency>USD</Currency>
+      <Name>Adjustment Cash</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_PLN_OCASH</UniqueID>
+      <Identifiers/>
+      <Currency>PLN</Currency>
+      <Name>Adjustment Cash</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_34917</UniqueID>
+      <Identifiers>
+        <ISIN>US912797QX89</ISIN>
+        <Bloomberg>
+          <Ticker>US912797QX89</Ticker>
+          <Exchange>BGN</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Name>T-BILL 0 06/11/26</Name>
+      <AssetType>BO</AssetType>
+      <AssetDetails>
+        <Bond>
+          <ConvertibleFlag>false</ConvertibleFlag>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">196</OtherID>
+              <OtherID FreeType="IssuerShortName">Stany Zjed</OtherID>
+            </Identifiers>
+            <Name>STANY ZJEDNOCZONE</Name>
+            <BusinessCountry>US</BusinessCountry>
+          </Issuer>
+          <IssueDate>2025-06-12</IssueDate>
+          <MaturityDate>2026-06-11</MaturityDate>
+        </Bond>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35656</UniqueID>
+      <Identifiers>
+        <ISIN>US912797UU94</ISIN>
+        <Bloomberg>
+          <Ticker>US912797UU94</Ticker>
+          <Exchange>BGN</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Name>T-BILL 0 08/18/26</Name>
+      <AssetType>BO</AssetType>
+      <AssetDetails>
+        <Bond>
+          <ConvertibleFlag>false</ConvertibleFlag>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">196</OtherID>
+              <OtherID FreeType="IssuerShortName">Stany Zjed</OtherID>
+            </Identifiers>
+            <Name>STANY ZJEDNOCZONE</Name>
+            <BusinessCountry>US</BusinessCountry>
+          </Issuer>
+          <IssueDate>2026-04-21</IssueDate>
+          <MaturityDate>2026-08-18</MaturityDate>
+        </Bond>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35673</UniqueID>
+      <Identifiers>
+        <ISIN>US912797UK13</ISIN>
+        <Bloomberg>
+          <Ticker>US912797UK13</Ticker>
+          <Exchange>BGN</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Name>T-BILL 0 10/15/26</Name>
+      <AssetType>BO</AssetType>
+      <AssetDetails>
+        <Bond>
+          <ConvertibleFlag>false</ConvertibleFlag>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">196</OtherID>
+              <OtherID FreeType="IssuerShortName">Stany Zjed</OtherID>
+            </Identifiers>
+            <Name>STANY ZJEDNOCZONE</Name>
+            <BusinessCountry>US</BusinessCountry>
+          </Issuer>
+          <IssueDate>2026-04-16</IssueDate>
+          <MaturityDate>2026-10-15</MaturityDate>
+        </Bond>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_33021</UniqueID>
+      <Identifiers>
+        <ISIN>LU3224388937</ISIN>
+        <Bloomberg>
+          <Ticker>LU3224388937</Ticker>
+          <Exchange>LX</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Name>SANTANDER SICAV SUB-FUND SANTANDER GO SHORT DURATION DOLLAR L</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass/>
+      </AssetDetails>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>

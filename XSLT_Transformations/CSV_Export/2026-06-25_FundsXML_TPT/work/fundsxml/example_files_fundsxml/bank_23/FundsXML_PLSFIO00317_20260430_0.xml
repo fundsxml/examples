@@ -1,0 +1,1111 @@
+<FundsXML4 xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ControlData>
+    <UniqueDocumentID>PL_1776</UniqueDocumentID>
+    <DocumentGenerated>2026-06-17T09:52:24.817</DocumentGenerated>
+    <Version>4.2.9</Version>
+    <ContentDate>2026-04-30</ContentDate>
+    <DataSupplier>
+      <SystemCountry>PL</SystemCountry>
+      <Short>TFIPL</Short>
+      <Name>Santander TFI</Name>
+      <Type>Asset Manager</Type>
+      <Contact>
+        <Name>Jacek Sygulski</Name>
+        <Email>jacek.sygulski@erste.pl</Email>
+      </Contact>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+    <Language>PL</Language>
+    <CustomAttributes>
+      <Attribute>
+        <Name>Server</Name>
+        <Type>T</Type>
+        <ValueText>st240</ValueText>
+      </Attribute>
+      <Attribute>
+        <Name>ChangeLog</Name>
+        <Type>T</Type>
+        <ValueText>Changed Total Value for USD fund</ValueText>
+      </Attribute>
+    </CustomAttributes>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>259400S26MT8KBY9JU53</LEI>
+        <OtherID FreeType="AMSIFundID">4368</OtherID>
+      </Identifiers>
+      <Names>
+        <OfficialName>Erste Prestiż US Equity</OfficialName>
+        <FullName>Erste Prestiż Akcji Amerykańskich</FullName>
+        <ShortName>PRAA</ShortName>
+      </Names>
+      <Currency>PLN</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <DataSupplier>
+        <SystemCountry>PL</SystemCountry>
+        <Short>TFIPL</Short>
+        <Name>Santander TFI</Name>
+        <Type>Asset Manager</Type>
+        <Contact>
+          <Name>Jacek Sygulski</Name>
+          <Email>jacek.sygulski@erste.pl</Email>
+        </Contact>
+      </DataSupplier>
+      <FundStaticData>
+        <ListedLegalStructure>UCITS</ListedLegalStructure>
+        <InceptionDate>2018-01-30</InceptionDate>
+      </FundStaticData>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2026-04-30</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">143930708.070</Amount>
+            </TotalNetAssetValue>
+            <TotalGrossAssetValue>
+              <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">145561838.060</Amount>
+            </TotalGrossAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2026-04-30</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>INS_33287</UniqueID>
+                <Identifiers>
+                  <ISIN>LU3238267499</ISIN>
+                  <Bloomberg>
+                    <Ticker>LU3238267499</Ticker>
+                    <Exchange>LX</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">130516887.790</Amount>
+                  <Amount ccy="EUR" isFundCcy="false" isShareClassCcy="false">30645680.290</Amount>
+                </TotalValue>
+                <TotalPercentage>90.680362</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">4.25890</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>2911.760000</Shares>
+                  <Price>
+                    <Amount ccy="EUR">10524.796</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>INS_4704</UniqueID>
+                <Identifiers>
+                  <ISIN>IE0031442068</ISIN>
+                  <Bloomberg>
+                    <Ticker>IDUS</Ticker>
+                    <Exchange>LN</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">6643005.620</Amount>
+                  <Amount ccy="USD" isFundCcy="false" isShareClassCcy="false">1821998.250</Amount>
+                </TotalValue>
+                <TotalPercentage>4.615419</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="USD">3.64600</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>25625.000000</Shares>
+                  <Price>
+                    <Amount ccy="USD">71.102</Amount>
+                  </Price>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>INS_5897</UniqueID>
+                <Identifiers>
+                  <ISIN>PL0000111928</ISIN>
+                  <Bloomberg>
+                    <Ticker>PL0000111928</Ticker>
+                    <Exchange>MTSP</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">5141914.500</Amount>
+                </TotalValue>
+                <TotalPercentage>3.572493</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Bond>
+                  <Nominal>5150000.00</Nominal>
+                  <Price>
+                    <Amount ccy="PLN">98.050</Amount>
+                  </Price>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">5049575.000</Amount>
+                  </MarketValue>
+                  <InterestClaimGross>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">92339.500</Amount>
+                  </InterestClaimGross>
+                  <Indexfactor>1.000000</Indexfactor>
+                </Bond>
+              </Position>
+              <Position>
+                <UniqueID>INS_PLN</UniqueID>
+                <Identifiers/>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1699316.270</Amount>
+                </TotalValue>
+                <TotalPercentage>1.180649</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1699316.270</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>REP_4368_PL0000115291_1375419</UniqueID>
+                <Identifiers>
+                  <ISIN>PL0000115291</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1493470.800</Amount>
+                </TotalValue>
+                <TotalPercentage>1.037632</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Repo/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35699</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI419076</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3404.570</Amount>
+                </TotalValue>
+                <TotalPercentage>0.002365</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3404.570</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35642</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI418594</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1758.820</Amount>
+                </TotalValue>
+                <TotalPercentage>0.001222</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1758.820</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35719</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI419525</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-122.060</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.000085</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-122.060</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35505</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI417693</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-4122.470</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.002864</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-4122.470</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35458</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI416715</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-4124.550</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.002866</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-4124.550</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35399</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI416450</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-4361.360</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.003030</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-4361.360</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35661</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI418776</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-5887.200</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.004090</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-5887.200</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35480</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI417006</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-6103.880</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.004241</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-6103.880</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35566</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI417946</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-8266.680</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.005744</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-8266.680</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35398</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI416447</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-169353.960</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.117664</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-169353.960</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_35504</UniqueID>
+                <Identifiers>
+                  <ISIN>AVSIDI417692</ISIN>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-331935.880</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.230622</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-331935.880</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_PLN_OCASH</UniqueID>
+                <Identifiers/>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-1034772.260</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.718938</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-1034772.260</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+            </Positions>
+            <Transactions>
+              <Transaction>
+                <TransactionID>1375419</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>REP_4368_PL0000115291_1375419</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>PL0000115291</ISIN>
+                  <OtherID FreeType="MicCode">BTFE</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-04-30</EntryDate>
+                <ValutaDate>2026-04-30</ValutaDate>
+                <ClosingDate>2026-04-30</ClosingDate>
+                <NominalOrUnitsOrContracts>1420000.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1051.740</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1493470.800</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1493470.800</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1493470.800</Amount>
+                </SettlementAmount>
+                <PostingText>Buy</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>259400QHG4C6452WLF35</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">IPOP</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">2240</OtherID>
+                  </Identifiers>
+                  <Name>IPOPEMA SECURITIES S.A.</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>1375088</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>RRP_4368_PL0000111928_1375088</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>PL0000111928</ISIN>
+                  <OtherID FreeType="MicCode">BTFE</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>SELL</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-04-29</EntryDate>
+                <ValutaDate>2026-04-30</ValutaDate>
+                <ClosingDate>2026-04-29</ClosingDate>
+                <NominalOrUnitsOrContracts>2000000.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">999.910</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1999810.200</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1999810.200</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1999810.200</Amount>
+                </SettlementAmount>
+                <PostingText>Sell</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>259400LGXW3K0GDAG361</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">284</OtherID>
+                  </Identifiers>
+                  <Name>ERSTE BANK POLSKA S.A.</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>1375466</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>INS_3308</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>EURFWD000000</ISIN>
+                  <OtherID FreeType="MicCode">BTFE</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-04-30</EntryDate>
+                <ValutaDate>2026-05-14</ValutaDate>
+                <ClosingDate>2026-04-30</ClosingDate>
+                <NominalOrUnitsOrContracts>184999.440000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">4.260</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">788356.610</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">788356.610</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">788356.610</Amount>
+                </SettlementAmount>
+                <PostingText>Buy</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>259400LGXW3K0GDAG361</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">284</OtherID>
+                  </Identifiers>
+                  <Name>ERSTE BANK POLSKA S.A.</Name>
+                </Counterparty>
+              </Transaction>
+            </Transactions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>PLARBZW00159</ISIN>
+              <OtherID FreeType="AMSIFundUnitInstrumentID">5407</OtherID>
+            </Identifiers>
+            <Names>
+              <OfficialName>Erste Prestiż US Equity B</OfficialName>
+              <FullName>Erste Prestiż Akcji Amerykańskich B</FullName>
+              <ShortName>PRAAB</ShortName>
+            </Names>
+            <Currency>PLN</Currency>
+            <ShareClassType>
+              <Code>B</Code>
+              <EarningUse>D</EarningUse>
+              <Name>FundUnitCode B</Name>
+            </ShareClassType>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2026-04-30</NavDate>
+                <PriceCurrency>PLN</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>1232.02</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2026-04-30</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">143930708.070</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>INS_35566</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI417946</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>3EU052026SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>1421761.27</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>335534.72</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-21</StartDate>
+          <MaturityDate>2026-05-20</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35398</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI416447</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>1EU051426SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>58888122.42</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>13860888.27</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-14</StartDate>
+          <MaturityDate>2026-05-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35505</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI417693</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>1EU052026SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>797359.51</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>188055.60</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-20</StartDate>
+          <MaturityDate>2026-05-20</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35699</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI419076</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>6EU052026SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>EUR</CurrencyBuy>
+          <AmountBuy>316442.58</AmountBuy>
+          <CurrencySell>PLN</CurrencySell>
+          <AmountSell>1345260.70</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-28</StartDate>
+          <MaturityDate>2026-05-20</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35504</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI417692</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>2EU052026SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>65399905.47</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>15422978.26</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-20</StartDate>
+          <MaturityDate>2026-05-20</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35399</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI416450</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>2EU051426SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>1595008.09</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>375374.63</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-14</StartDate>
+          <MaturityDate>2026-05-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35719</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI419525</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>5EU051426SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>EUR</CurrencyBuy>
+          <AmountBuy>184999.44</AmountBuy>
+          <CurrencySell>PLN</CurrencySell>
+          <AmountSell>788356.61</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-30</StartDate>
+          <MaturityDate>2026-05-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35480</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI417006</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>4EU051426SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>1748080.98</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>411710.35</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-16</StartDate>
+          <MaturityDate>2026-05-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35458</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI416715</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>3EU051426SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>955005.77</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>225109.79</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-15</StartDate>
+          <MaturityDate>2026-05-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35642</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI418594</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>4EU052026SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>EUR</CurrencyBuy>
+          <AmountBuy>240466.31</AmountBuy>
+          <CurrencySell>PLN</CurrencySell>
+          <AmountSell>1023099.99</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-23</StartDate>
+          <MaturityDate>2026-05-20</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35661</UniqueID>
+      <Identifiers>
+        <ISIN>AVSIDI418776</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>5EU052026SN19</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>1689151.48</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>397714.11</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-24</StartDate>
+          <MaturityDate>2026-05-20</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>REP_4368_PL0000115291_1375419</UniqueID>
+      <Identifiers>
+        <ISIN>PL0000115291</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>DS1033</Name>
+      <AssetType>RP</AssetType>
+      <AssetDetails>
+        <Repo>
+          <RepoType>BSB</RepoType>
+          <IssueDate>2026-04-30</IssueDate>
+          <BaseValueQuotationCurrency>1</BaseValueQuotationCurrency>
+          <MaturityDate>2026-05-04</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400QHG4C6452WLF35</LEI>
+              <OtherID FreeType="AladdinBrokerCode">IPOP</OtherID>
+              <OtherID FreeType="AMSIBrokerID">2240</OtherID>
+            </Identifiers>
+            <Name>IPOPEMA SECURITIES S.A.</Name>
+          </Counterparty>
+          <UnderlyingType>Bond</UnderlyingType>
+          <InitialMargin/>
+          <MarginCallType>None</MarginCallType>
+          <PledgeType>None</PledgeType>
+        </Repo>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_PLN</UniqueID>
+      <Identifiers/>
+      <Currency>PLN</Currency>
+      <Name>Cash PLN</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_PLN_OCASH</UniqueID>
+      <Identifiers/>
+      <Currency>PLN</Currency>
+      <Name>Adjustment Cash</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5897</UniqueID>
+      <Identifiers>
+        <ISIN>PL0000111928</ISIN>
+        <Bloomberg>
+          <Ticker>PL0000111928</Ticker>
+          <Exchange>MTSP</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WZ1129</Name>
+      <AssetType>BO</AssetType>
+      <AssetDetails>
+        <Bond>
+          <ConvertibleFlag>false</ConvertibleFlag>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">164</OtherID>
+              <OtherID FreeType="IssuerShortName">POLAND</OtherID>
+            </Identifiers>
+            <Name>POLSKA</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+          <IssueDate>2019-07-15</IssueDate>
+          <MaturityDate>2029-11-25</MaturityDate>
+        </Bond>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4704</UniqueID>
+      <Identifiers>
+        <ISIN>IE0031442068</ISIN>
+        <Bloomberg>
+          <Ticker>IDUS</Ticker>
+          <Exchange>LN</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Name>ISHARES PLC SUB-FUND ISHARES CORE S&amp;P 500 UCITS ETF</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass/>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_33287</UniqueID>
+      <Identifiers>
+        <ISIN>LU3238267499</ISIN>
+        <Bloomberg>
+          <Ticker>LU3238267499</Ticker>
+          <Exchange>LX</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Name>SANTANDER SICAV SUB-FUND SANTANDER US EQUITY LEH</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass/>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3308</UniqueID>
+      <Identifiers>
+        <ISIN>EURFWD000000</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>EURFWD</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>EUR</CurrencyBuy>
+          <AmountBuy>184999.44</AmountBuy>
+          <CurrencySell>PLN</CurrencySell>
+          <AmountSell>788356.61</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-04-30</StartDate>
+          <MaturityDate>2026-05-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>RRP_4368_PL0000111928_1375088</UniqueID>
+      <Identifiers>
+        <ISIN>PL0000111928</ISIN>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WZ1129</Name>
+      <AssetType>RP</AssetType>
+      <AssetDetails>
+        <Repo>
+          <RepoType>SBB</RepoType>
+          <IssueDate>2026-04-29</IssueDate>
+          <BaseValueQuotationCurrency>1</BaseValueQuotationCurrency>
+          <MaturityDate>2026-04-30</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+          <UnderlyingType>Bond</UnderlyingType>
+          <InitialMargin/>
+          <MarginCallType>None</MarginCallType>
+          <PledgeType>None</PledgeType>
+        </Repo>
+      </AssetDetails>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>

@@ -1,0 +1,2372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.6/FundsXML.xsd">
+  <ControlData>
+    <UniqueDocumentID>260611_66_SF</UniqueDocumentID>
+    <DocumentGenerated>2026-06-12T13:06:33</DocumentGenerated>
+    <Version>4.2.6</Version>
+    <ContentDate>2026-06-11</ContentDate>
+    <DataSupplier>
+      <SystemCountry>CZ</SystemCountry>
+      <Short>EAM_CZ</Short>
+      <Name>Erste Asset Management GmbH, pobocka Ceska republika</Name>
+      <Type>Asset Manager</Type>
+      <Contact>
+        <Email>reporting@erste-am.cz</Email>
+      </Contact>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>31570010000000020077</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>SMISENY FOND</OfficialName>
+      </Names>
+      <Currency>CZK</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2026-06-11</NavDate>
+            <TotalAssetNature>TECHNICAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="CZK">2990466308.76</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2026-06-11</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>ID_21591</UniqueID>
+                <Identifiers>
+                  <ISIN>AT0000A2STA8</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">46564729.2</Amount>
+                  <Amount ccy="EUR">1924560</Amount>
+                </TotalValue>
+                <TotalPercentage>1.557106</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>13200</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_24095</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">COLCOLINGEUR</OtherID>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">9919950</Amount>
+                  <Amount ccy="EUR">410000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.331719</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="EUR">410000</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_16094</UniqueID>
+                <Identifiers>
+                  <ISIN>CZ0008475191</ISIN>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">16690971.31</Amount>
+                </TotalValue>
+                <TotalPercentage>0.558139</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>8902801</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_10885</UniqueID>
+                <Identifiers>
+                  <ISIN>DE000A0D8Q07</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">30437068.05</Amount>
+                  <Amount ccy="EUR">1257990</Amount>
+                </TotalValue>
+                <TotalPercentage>1.017803</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>19000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_27217</UniqueID>
+                <Identifiers>
+                  <Bloomberg>
+                    <Ticker>ESM6</Ticker>
+                    <Market>Index</Market>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">1848510</Amount>
+                  <Amount ccy="USD">88125</Amount>
+                </TotalValue>
+                <TotalPercentage>0.061813</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">116353872</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <Future>
+                  <Contracts>15</Contracts>
+                  <Price>
+                    <Amount ccy="USD">7396</Amount>
+                  </Price>
+                </Future>
+              </Position>
+              <Position>
+                <UniqueID>ID_27409</UniqueID>
+                <Identifiers>
+                  <Bloomberg>
+                    <Ticker>ESU6</Ticker>
+                    <Market>Index</Market>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">125593.8</Amount>
+                  <Amount ccy="USD">5987.5</Amount>
+                </TotalValue>
+                <TotalPercentage>0.0042</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">7822474.8</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <Future>
+                  <Contracts>1</Contracts>
+                  <Price>
+                    <Amount ccy="USD">7458.5</Amount>
+                  </Price>
+                </Future>
+              </Position>
+              <Position>
+                <UniqueID>ID_19454</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BFY0GT14</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">139890139.52</Amount>
+                  <Amount ccy="EUR">5781778.86</Amount>
+                </TotalValue>
+                <TotalPercentage>4.67787</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>131100</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_15384</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BJ0KDQ92</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">382330391.04</Amount>
+                  <Amount ccy="USD">18227040</Amount>
+                </TotalValue>
+                <TotalPercentage>12.784976</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>119600</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_15521</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BJ38QD84</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">65080871.76</Amount>
+                  <Amount ccy="USD">3102635</Amount>
+                </TotalValue>
+                <TotalPercentage>2.176278</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>37000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_26791</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00BP3QZJ36</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">35781985.5</Amount>
+                  <Amount ccy="EUR">1478900</Amount>
+                </TotalValue>
+                <TotalPercentage>1.196535</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>23000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_13294</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00B4L5Y983</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">384336283.97</Amount>
+                  <Amount ccy="USD">18322668</Amount>
+                </TotalValue>
+                <TotalPercentage>12.852052</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>131600</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_12833</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00B5BMR087</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">447390593.05</Amount>
+                  <Amount ccy="USD">21328689.6</Amount>
+                </TotalValue>
+                <TotalPercentage>14.960563</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>27180</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_21209</UniqueID>
+                <Identifiers>
+                  <ISIN>IE00B52SF786</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">63328473.79</Amount>
+                  <Amount ccy="USD">3019092</Amount>
+                </TotalValue>
+                <TotalPercentage>2.117679</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>10100</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_10971</UniqueID>
+                <Identifiers>
+                  <ISIN>IE0002639775</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">100207159.7</Amount>
+                  <Amount ccy="USD">4777229.2</Amount>
+                </TotalValue>
+                <TotalPercentage>3.350887</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>53000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_7331</UniqueID>
+                <Identifiers>
+                  <ISIN>IE0005042456</ISIN>
+                </Identifiers>
+                <Currency>GBP</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">32713904.64</Amount>
+                  <Amount ccy="GBP">1167020</Amount>
+                </TotalValue>
+                <TotalPercentage>1.09394</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="GBP" mulDiv="M" toCcy="CZK">28.032</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>115000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_10998</UniqueID>
+                <Identifiers>
+                  <ISIN>IE0007292083</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">40762898.88</Amount>
+                  <Amount ccy="USD">1943311.35</Amount>
+                </TotalValue>
+                <TotalPercentage>1.363095</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>4700</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_26935</UniqueID>
+                <Identifiers>
+                  <ISIN>IE0033862917</ISIN>
+                </Identifiers>
+                <Currency>JPY</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">55923563.29</Amount>
+                  <Amount ccy="JPY">427975536</Amount>
+                </TotalValue>
+                <TotalPercentage>1.870062</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="JPY" mulDiv="M" toCcy="CZK">0.13067</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>13800</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_16890</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0322252338</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">44062191.96</Amount>
+                  <Amount ccy="EUR">1821128</Amount>
+                </TotalValue>
+                <TotalPercentage>1.473422</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>23300</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_14757</UniqueID>
+                <Identifiers>
+                  <ISIN>LU0328475792</ISIN>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">261767350.26</Amount>
+                  <Amount ccy="EUR">10819068</Amount>
+                </TotalValue>
+                <TotalPercentage>8.753396</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>66900</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_27422</UniqueID>
+                <Identifiers>
+                  <Bloomberg>
+                    <Ticker>NXU6</Ticker>
+                    <Market>Index</Market>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">914029.2</Amount>
+                  <Amount ccy="USD">43575</Amount>
+                </TotalValue>
+                <TotalPercentage>0.030565</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">20906254.8</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <Future>
+                  <Contracts>3</Contracts>
+                  <Price>
+                    <Amount ccy="USD">66445</Amount>
+                  </Price>
+                </Future>
+              </Position>
+              <Position>
+                <UniqueID>ID_16806</UniqueID>
+                <Identifiers>
+                  <ISIN>US46137V3574</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">69075541.2</Amount>
+                  <Amount ccy="USD">3293075</Amount>
+                </TotalValue>
+                <TotalPercentage>2.309859</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>15700</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_9488</UniqueID>
+                <Identifiers>
+                  <ISIN>US4642872349</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">69519708</Amount>
+                  <Amount ccy="USD">3314250</Amount>
+                </TotalValue>
+                <TotalPercentage>2.324711</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>49100</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_10173</UniqueID>
+                <Identifiers>
+                  <ISIN>US4642874998</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">61007437.44</Amount>
+                  <Amount ccy="USD">2908440</Amount>
+                </TotalValue>
+                <TotalPercentage>2.040064</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>27000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_9592</UniqueID>
+                <Identifiers>
+                  <ISIN>US4642875987</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">65385128.64</Amount>
+                  <Amount ccy="USD">3117140</Amount>
+                </TotalValue>
+                <TotalPercentage>2.186453</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>13000</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_7360</UniqueID>
+                <Identifiers>
+                  <ISIN>US78462F1030</ISIN>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">465805138.18</Amount>
+                  <Amount ccy="USD">22206576</Amount>
+                </TotalValue>
+                <TotalPercentage>15.576338</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <ShareClass>
+                  <Shares>30100</Shares>
+                </ShareClass>
+              </Position>
+              <Position>
+                <UniqueID>ID_663514</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131701</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">34439692.53</Amount>
+                </TotalValue>
+                <TotalPercentage>1.15165</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="CZK">34439692.53</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_6600624829</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131756</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">14068.49</Amount>
+                </TotalValue>
+                <TotalPercentage>0.00047</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="CZK">14068.49</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_663647</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131801</OtherID>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">45616887.66</Amount>
+                  <Amount ccy="EUR">1885384.9</Amount>
+                </TotalValue>
+                <TotalPercentage>1.525411</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="EUR">1885384.9</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_663697</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131802</OtherID>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">18591586.13</Amount>
+                  <Amount ccy="USD">886326.57</Amount>
+                </TotalValue>
+                <TotalPercentage>0.621695</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="USD">886326.57</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_663883</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131803</OtherID>
+                </Identifiers>
+                <Currency>GBP</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">87823.7</Amount>
+                  <Amount ccy="GBP">3132.98</Amount>
+                </TotalValue>
+                <TotalPercentage>0.002937</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="GBP" mulDiv="M" toCcy="CZK">28.032</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="GBP">3132.98</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_663721</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131805</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">110309.01</Amount>
+                  <Amount ccy="PLN">19386.47</Amount>
+                </TotalValue>
+                <TotalPercentage>0.003689</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="M" toCcy="CZK">5.69</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN">19386.47</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_6611325</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131807</OtherID>
+                </Identifiers>
+                <Currency>JPY</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">412925.95</Amount>
+                  <Amount ccy="JPY">3160067</Amount>
+                </TotalValue>
+                <TotalPercentage>0.013808</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="JPY" mulDiv="M" toCcy="CZK">0.13067</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="JPY">3160067</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_663747</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC131814</OtherID>
+                </Identifiers>
+                <Currency>HUF</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">227752.87</Amount>
+                  <Amount ccy="HUF">3344388.75</Amount>
+                </TotalValue>
+                <TotalPercentage>0.007616</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="HUF" mulDiv="M" toCcy="CZK">0.0681</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="HUF">3344388.75</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_6610962</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC135301</OtherID>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">4600536.02</Amount>
+                  <Amount ccy="EUR">190144.08</Amount>
+                </TotalValue>
+                <TotalPercentage>0.15384</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="EUR">190144.08</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_6610961</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">ACC135302</OtherID>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">30049730.33</Amount>
+                  <Amount ccy="USD">1432576.77</Amount>
+                </TotalValue>
+                <TotalPercentage>1.004851</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="USD">1432576.77</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>ID_380565</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS380565</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-162338.57</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.005429</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">100908000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="GBP" mulDiv="M" toCcy="CZK">28.032</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_380567</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS380567</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-89.23</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.000003</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">139100</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="JPY" mulDiv="M" toCcy="CZK">0.13067</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_380845</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS380845</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">338218.82</Amount>
+                </TotalValue>
+                <TotalPercentage>0.01131</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">41140000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_380847</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS380847</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-23699.39</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.000792</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">143000000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="JPY" mulDiv="M" toCcy="CZK">0.13067</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_380849</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS380849</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-4433503.79</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.148255</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">377640000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_381858</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS381858</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-5800130.14</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.193954</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">398620000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_382084</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXF382084</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-228930.76</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.007655</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">25176000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_382627</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXF382627</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-67925.51</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.002271</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">20980000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_383314</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS383314</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-1319308.24</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.044117</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">251760000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_383575</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXF383575</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-142089.99</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.004751</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">31470000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_383661</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS383661</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">1632757.59</Amount>
+                </TotalValue>
+                <TotalPercentage>0.054599</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">399300000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="EUR" mulDiv="M" toCcy="CZK">24.195</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_383663</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS383663</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">22083.22</Amount>
+                </TotalValue>
+                <TotalPercentage>0.000738</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">14015000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="GBP" mulDiv="M" toCcy="CZK">28.032</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_383665</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS383665</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-5693828.19</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.190399</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">923120000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_384502</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FXS384502</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-3614.82</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.000121</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>commitment approach</Type>
+                    <Value>
+                      <Amount ccy="CZK">52450000</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="USD" mulDiv="M" toCcy="CZK">20.976</FXRate>
+                </FXRates>
+                <FXForward>
+                  <HedgeRatio>1</HedgeRatio>
+                </FXForward>
+              </Position>
+              <Position>
+                <UniqueID>ID_FEE_66</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">FEE_66</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">15689.55</Amount>
+                </TotalValue>
+                <TotalPercentage>0.0005</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Fee/>
+              </Position>
+              <Position>
+                <UniqueID>ID_LiabRec_66</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="InternalISIN">LiabRec_66</OtherID>
+                </Identifiers>
+                <Currency>CZK</Currency>
+                <TotalValue>
+                  <Amount ccy="CZK">-18687906.86</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.6249</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="CZK" mulDiv="M" toCcy="CZK">1</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="CZK">-18687906.86</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+            </Positions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>CZ0008473261</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>SMISENY FOND CPD</OfficialName>
+            </Names>
+            <Currency>CZK</Currency>
+            <ShareClassType>
+              <Code>D</Code>
+              <EarningUse>R</EarningUse>
+            </ShareClassType>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2026-06-11</NavDate>
+                <PriceCurrency>CZK</PriceCurrency>
+                <PriceNature>TECHNICAL</PriceNature>
+                <NavPrice>1082.5315</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2026-06-11</NavDate>
+                <TotalAssetNature>TECHNICAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CZK">2990466308.75</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>2762475</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>ID_21591</UniqueID>
+      <Identifiers>
+        <ISIN>AT0000A2STA8</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>AT</Country>
+      <Name>ERSTE STOCK VALUE -D02EUR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>AT0000A2STA8</ISIN>
+            </Identifiers>
+            <Name>ERSTE ASSET MANAGEMENT GMBH</Name>
+          </Issuer>
+          <StockMarket>XLUX</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_24095</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">COLCOLINGEUR</OtherID>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>NL</Country>
+      <Name>Collateral</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_16094</UniqueID>
+      <Identifiers>
+        <ISIN>CZ0008475191</ISIN>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>TOP STOCKS CZK PLUS C</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>CZ0008475191</ISIN>
+            </Identifiers>
+            <Name>ERSTE ASSET MANAGM CR</Name>
+          </Issuer>
+          <StockMarket>XPRA</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_10885</UniqueID>
+      <Identifiers>
+        <ISIN>DE000A0D8Q07</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>DE</Country>
+      <Name>ISHARES EURO STOXX UCITS ETF DE</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>DE000A0D8Q07</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK ASSET MNGMT DE</Name>
+          </Issuer>
+          <StockMarket>XFRA</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_27217</UniqueID>
+      <Identifiers>
+        <Bloomberg>
+          <Ticker>ESM6</Ticker>
+          <Market>Index</Market>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>S &amp; P 500 E-MINI CMEJUN26</Name>
+      <AssetType>FU</AssetType>
+      <AssetDetails>
+        <Future>
+          <Type>IF</Type>
+          <ContractSize>50</ContractSize>
+          <MaturityDate>2026-06-18</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <MexID>XCME</MexID>
+            </Identifiers>
+            <Name>CHICAGO MERCANTILE EXCHANGE</Name>
+          </Counterparty>
+          <Tick>
+            <TickSize>0.25</TickSize>
+            <TickValue>
+              <Amount ccy="USD">12.5</Amount>
+            </TickValue>
+          </Tick>
+          <Underlyings>
+            <Underlying>
+              <Type>Index</Type>
+              <UniqueID>ID_27217</UniqueID>
+              <Identifiers>
+                <Bloomberg>
+                  <Ticker>SPX INDEX</Ticker>
+                  <Market>Index</Market>
+                </Bloomberg>
+              </Identifiers>
+            </Underlying>
+          </Underlyings>
+        </Future>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_27409</UniqueID>
+      <Identifiers>
+        <Bloomberg>
+          <Ticker>ESU6</Ticker>
+          <Market>Index</Market>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>S &amp; P 500 E-MINI CMESEP26</Name>
+      <AssetType>FU</AssetType>
+      <AssetDetails>
+        <Future>
+          <Type>IF</Type>
+          <ContractSize>50</ContractSize>
+          <MaturityDate>2026-09-18</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <MexID>XCME</MexID>
+            </Identifiers>
+            <Name>CHICAGO MERCANTILE EXCHANGE</Name>
+          </Counterparty>
+          <Tick>
+            <TickSize>0.25</TickSize>
+            <TickValue>
+              <Amount ccy="USD">12.5</Amount>
+            </TickValue>
+          </Tick>
+          <Underlyings>
+            <Underlying>
+              <Type>Index</Type>
+              <UniqueID>ID_27409</UniqueID>
+              <Identifiers>
+                <Bloomberg>
+                  <Ticker>SPX INDEX</Ticker>
+                  <Market>Index</Market>
+                </Bloomberg>
+              </Identifiers>
+            </Underlying>
+          </Underlyings>
+        </Future>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_19454</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BFY0GT14</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>SPDR MSCI WORLD ACC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00BFY0GT14</ISIN>
+            </Identifiers>
+            <Name>STATE STREET GLOB ADV EUROPE LTD</Name>
+          </Issuer>
+          <StockMarket>XETR</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_15384</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BJ0KDQ92</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>LU</Country>
+      <Name>DBX MSCI WORLD (DR) 1C</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00BJ0KDQ92</ISIN>
+            </Identifiers>
+            <Name>DWS INVESTMENT SA</Name>
+          </Issuer>
+          <StockMarket>XLON</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_15521</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BJ38QD84</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>IE</Country>
+      <Name>SPDR RUSSELL 2000 US S/C</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00BJ38QD84</ISIN>
+            </Identifiers>
+            <Name>SSGA SPDR ETFS EUROPE II PLC</Name>
+          </Issuer>
+          <StockMarket>XLON</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_26791</UniqueID>
+      <Identifiers>
+        <ISIN>IE00BP3QZJ36</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>IE</Country>
+      <Name>ISHARES MSCI FRANCE</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00BP3QZJ36</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK ASSET MNGMNT IRELAND</Name>
+          </Issuer>
+          <StockMarket>XAMS</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_13294</UniqueID>
+      <Identifiers>
+        <ISIN>IE00B4L5Y983</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>IE</Country>
+      <Name>ISHARES CORE MSCI WORLD UCIT</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00B4L5Y983</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK ASSET MNGMNT IRELAND</Name>
+          </Issuer>
+          <StockMarket>XLON</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_12833</UniqueID>
+      <Identifiers>
+        <ISIN>IE00B5BMR087</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>IE</Country>
+      <Name>ISHARES CORE S&amp;P 500 UCITS E</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00B5BMR087</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK ASSET MNGMNT IRELAND</Name>
+          </Issuer>
+          <StockMarket>XLON</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_21209</UniqueID>
+      <Identifiers>
+        <ISIN>IE00B52SF786</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>IE</Country>
+      <Name>ISHARES MSCI CANADA ACC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE00B52SF786</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK ASSET MNGMNT IRELAND</Name>
+          </Issuer>
+          <StockMarket>XLON</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_10971</UniqueID>
+      <Identifiers>
+        <ISIN>IE0002639775</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>IE</Country>
+      <Name>VANGUARD-US 500 STK IDX- USD INS</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE0002639775</ISIN>
+            </Identifiers>
+            <Name>VANGUARD GROUP (IRELAND) LTD</Name>
+          </Issuer>
+          <StockMarket>XDUB</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_7331</UniqueID>
+      <Identifiers>
+        <ISIN>IE0005042456</ISIN>
+      </Identifiers>
+      <Currency>GBP</Currency>
+      <Country>IE</Country>
+      <Name>ISHARES CORE FTSE 100</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE0005042456</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK ASSET MNGMNT IRELAND</Name>
+          </Issuer>
+          <StockMarket>XLON</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_10998</UniqueID>
+      <Identifiers>
+        <ISIN>IE0007292083</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>IE</Country>
+      <Name>VANGUARD-JAPAN STK IND-USD INV</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE0007292083</ISIN>
+            </Identifiers>
+            <Name>VANGUARD GROUP (IRELAND) LTD</Name>
+          </Issuer>
+          <StockMarket>XOTC</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_26935</UniqueID>
+      <Identifiers>
+        <ISIN>IE0033862917</ISIN>
+      </Identifiers>
+      <Currency>JPY</Currency>
+      <Country>IE</Country>
+      <Name>VANGUARD-JPN STK IND-JPY ACC</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>IE0033862917</ISIN>
+            </Identifiers>
+            <Name>VANGUARD GROUP (IRELAND) LTD</Name>
+          </Issuer>
+          <StockMarket>XLUX</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_16890</UniqueID>
+      <Identifiers>
+        <ISIN>LU0322252338</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>X MSCI PACIFIC EX JAPAN 1C</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>LU0322252338</ISIN>
+            </Identifiers>
+            <Name>XTRACKERS</Name>
+          </Issuer>
+          <StockMarket>XETR</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_14757</UniqueID>
+      <Identifiers>
+        <ISIN>LU0328475792</ISIN>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>LU</Country>
+      <Name>DBX STX EUROPE 600 DR</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>LU0328475792</ISIN>
+            </Identifiers>
+            <Name>DB X-TRACKERS</Name>
+          </Issuer>
+          <StockMarket>XETR</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_27422</UniqueID>
+      <Identifiers>
+        <Bloomberg>
+          <Ticker>NXU6</Ticker>
+          <Market>Index</Market>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>NIKKEI 225 FUTSEP26</Name>
+      <AssetType>FU</AssetType>
+      <AssetDetails>
+        <Future>
+          <Type>IF</Type>
+          <ContractSize>5</ContractSize>
+          <MaturityDate>2026-09-11</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <MexID>XCME</MexID>
+            </Identifiers>
+            <Name>CHICAGO MERCANTILE EXCHANGE</Name>
+          </Counterparty>
+          <Tick>
+            <TickSize>5</TickSize>
+            <TickValue>
+              <Amount ccy="USD">25</Amount>
+            </TickValue>
+          </Tick>
+          <Underlyings>
+            <Underlying>
+              <Type>Index</Type>
+              <UniqueID>ID_27422</UniqueID>
+              <Identifiers>
+                <Bloomberg>
+                  <Ticker>NKY INDEX</Ticker>
+                  <Market>Index</Market>
+                </Bloomberg>
+              </Identifiers>
+            </Underlying>
+          </Underlyings>
+        </Future>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_16806</UniqueID>
+      <Identifiers>
+        <ISIN>US46137V3574</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>INVESCO S&amp;P 500 EQUAL WEIGHT B</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>US46137V3574</ISIN>
+            </Identifiers>
+            <Name>INVESCO CAPITAL MANAGEMENT LLC</Name>
+          </Issuer>
+          <StockMarket>XOTC</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_9488</UniqueID>
+      <Identifiers>
+        <ISIN>US4642872349</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>ISHARE MSCI EMERGIN MARKETS IN</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>US4642872349</ISIN>
+            </Identifiers>
+            <Name>BLACKROCK FUND ADVISORS</Name>
+          </Issuer>
+          <StockMarket>XOTC</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_10173</UniqueID>
+      <Identifiers>
+        <ISIN>US4642874998</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>ISHARES RUSSEL MIDCAP INDEX</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>US4642874998</ISIN>
+            </Identifiers>
+            <Name>ISHARES TRUST</Name>
+          </Issuer>
+          <StockMarket>XNYS</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_9592</UniqueID>
+      <Identifiers>
+        <ISIN>US4642875987</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>ISHARES RUSSELL 1000 VALUE</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>US4642875987</ISIN>
+            </Identifiers>
+            <Name>ISHARES TRUST</Name>
+          </Issuer>
+          <StockMarket>XNYS</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_7360</UniqueID>
+      <Identifiers>
+        <ISIN>US78462F1030</ISIN>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>US</Country>
+      <Name>SPDR SP 500 ETF TRUST</Name>
+      <AssetType>SC</AssetType>
+      <AssetDetails>
+        <ShareClass>
+          <Issuer>
+            <Identifiers>
+              <ISIN>US78462F1030</ISIN>
+            </Identifiers>
+            <Name>SPDR S&amp;amp;P 500 ETF TRUST</Name>
+          </Issuer>
+          <StockMarket>XNYS</StockMarket>
+        </ShareClass>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_663514</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131701</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-CZK 4091982/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_6600624829</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131756</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Country>CZ</Country>
+      <Name>SMFCPD-CZK OU 4092192/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_663647</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131801</OtherID>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-EUR 4092272/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_663697</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131802</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-USD 4092352/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_663883</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131803</OtherID>
+      </Identifiers>
+      <Currency>GBP</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-GBP 4154752/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_663721</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131805</OtherID>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-PLN 4154912/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_6611325</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131807</OtherID>
+      </Identifiers>
+      <Currency>JPY</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-JPY OU 5176822/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_663747</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC131814</OtherID>
+      </Identifiers>
+      <Currency>HUF</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-HUF 4154832/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_6610962</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC135301</OtherID>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-EUR MU 4817392/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_6610961</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">ACC135302</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>CZ</Country>
+      <Name>SMF-USD MU 4817712/0800</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_380565</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS380565</OtherID>
+      </Identifiers>
+      <Currency>GBP</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>100743933.6</AmountBuy>
+          <CurrencySell>GBP</CurrencySell>
+          <AmountSell>3600000</AmountSell>
+          <AgreedFxRate>27.984426</AgreedFxRate>
+          <StartDate>2026-04-22</StartDate>
+          <MaturityDate>2026-06-19</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_380567</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS380567</OtherID>
+      </Identifiers>
+      <Currency>JPY</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>139809.52</AmountBuy>
+          <CurrencySell>JPY</CurrencySell>
+          <AmountSell>1070000</AmountSell>
+          <AgreedFxRate>0.130663</AgreedFxRate>
+          <StartDate>2026-04-22</StartDate>
+          <MaturityDate>2026-06-19</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_380845</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS380845</OtherID>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>41488724.4</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>1700000</AmountSell>
+          <AgreedFxRate>24.405132</AgreedFxRate>
+          <StartDate>2026-04-27</StartDate>
+          <MaturityDate>2026-06-24</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_380847</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS380847</OtherID>
+      </Identifiers>
+      <Currency>JPY</Currency>
+      <Country>CZ</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>143797500</AmountBuy>
+          <CurrencySell>JPY</CurrencySell>
+          <AmountSell>1100000000</AmountSell>
+          <AgreedFxRate>0.130725</AgreedFxRate>
+          <StartDate>2026-04-27</StartDate>
+          <MaturityDate>2026-06-19</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>KOMBCZPPXXX</SwiftBIC>
+            </Identifiers>
+            <Name>KOMERCNI BANKA AS</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_380849</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS380849</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>373089222</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>18000000</AmountSell>
+          <AgreedFxRate>20.727179</AgreedFxRate>
+          <StartDate>2026-04-27</StartDate>
+          <MaturityDate>2026-06-24</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_381858</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS381858</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>392628027</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>19000000</AmountSell>
+          <AgreedFxRate>20.664633</AgreedFxRate>
+          <StartDate>2026-05-11</StartDate>
+          <MaturityDate>2026-07-08</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_382084</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXF382084</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>24939331.2</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>1200000</AmountSell>
+          <AgreedFxRate>0.048117</AgreedFxRate>
+          <StartDate>2026-05-13</StartDate>
+          <MaturityDate>2026-06-24</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_382627</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXF382627</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>20905774</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>1000000</AmountSell>
+          <AgreedFxRate>0.047834</AgreedFxRate>
+          <StartDate>2026-05-19</StartDate>
+          <MaturityDate>2026-06-24</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383314</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS383314</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>250283136</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>12000000</AmountSell>
+          <AgreedFxRate>20.856928</AgreedFxRate>
+          <StartDate>2026-05-27</StartDate>
+          <MaturityDate>2026-07-24</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383575</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXF383575</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>CZ</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>31321650</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>1500000</AmountSell>
+          <AgreedFxRate>0.04789</AgreedFxRate>
+          <StartDate>2026-06-01</StartDate>
+          <MaturityDate>2026-06-12</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>KOMBCZPPXXX</SwiftBIC>
+            </Identifiers>
+            <Name>KOMERCNI BANKA AS</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383661</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS383661</OtherID>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Country>CZ</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>401462325</AmountBuy>
+          <CurrencySell>EUR</CurrencySell>
+          <AmountSell>16500000</AmountSell>
+          <AgreedFxRate>24.33105</AgreedFxRate>
+          <StartDate>2026-06-01</StartDate>
+          <MaturityDate>2026-07-29</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>KOMBCZPPXXX</SwiftBIC>
+            </Identifiers>
+            <Name>KOMERCNI BANKA AS</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383663</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS383663</OtherID>
+      </Identifiers>
+      <Currency>GBP</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>14030347.5</AmountBuy>
+          <CurrencySell>GBP</CurrencySell>
+          <AmountSell>500000</AmountSell>
+          <AgreedFxRate>28.060695</AgreedFxRate>
+          <StartDate>2026-06-01</StartDate>
+          <MaturityDate>2026-07-29</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_383665</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS383665</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>NL</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>917085576</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>44000000</AmountSell>
+          <AgreedFxRate>20.842854</AgreedFxRate>
+          <StartDate>2026-06-01</StartDate>
+          <MaturityDate>2026-07-01</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>INGBNL2AXXX</SwiftBIC>
+            </Identifiers>
+            <Name>ING BANK NV AMSTERDAM</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_384502</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FXS384502</OtherID>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Country>CZ</Country>
+      <Name>FX Forward</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>CZK</CurrencyBuy>
+          <AmountBuy>52383500</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>2500000</AmountSell>
+          <AgreedFxRate>20.9534</AgreedFxRate>
+          <StartDate>2026-06-10</StartDate>
+          <MaturityDate>2026-08-14</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>KOMBCZPPXXX</SwiftBIC>
+            </Identifiers>
+            <Name>KOMERCNI BANKA AS</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_FEE_66</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FEE_66</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Name>Fee</Name>
+      <AssetType>FE</AssetType>
+      <AssetDetails>
+        <Fee>
+          <Type>Fund</Type>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Fee>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>ID_LiabRec_66</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="InternalISIN">FEE_66</OtherID>
+      </Identifiers>
+      <Currency>CZK</Currency>
+      <Name>Receivables / Liabilities</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <SwiftBIC>GIBACZPXXXX</SwiftBIC>
+            </Identifiers>
+            <Name>CESKA SPORITELNA</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>

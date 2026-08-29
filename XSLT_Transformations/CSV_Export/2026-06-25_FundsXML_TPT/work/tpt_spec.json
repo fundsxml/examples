@@ -1,0 +1,1066 @@
+[
+ {
+  "num": "1_Portfolio_identifying_data",
+  "fx": "Portfolio / PortfolioID / Code",
+  "defn": "Identification of the fund or share class",
+  "cod": "Use the following priority:\n  - ISO 6166 code of ISIN when a",
+  "man": "M"
+ },
+ {
+  "num": "2_Type_of_identification_code_for_the_fund_share_or_portfolio",
+  "fx": "Portfolio / PortfolioID / CodificationSystem",
+  "defn": "Codification chosen to identify the share of the CIS",
+  "cod": "One of the options in the following closed list to be used:\n",
+  "man": "M"
+ },
+ {
+  "num": "3_Portfolio_name",
+  "fx": "Portfolio / PorfolioName",
+  "defn": "Name of the Portfolio or name of the CIS",
+  "cod": "Alphanum (max 255)",
+  "man": "M"
+ },
+ {
+  "num": "4_Portfolio_currency_(B)",
+  "fx": "Portfolio / PortfolioCurrency",
+  "defn": "Valuation currency of the portfolio",
+  "cod": "Code ISO 4217\nCNH : 2 Chinese yuan (when traded offshore) - ",
+  "man": "M"
+ },
+ {
+  "num": "5_Net_asset_valuation_of_the_portfolio_or_the_share_class_in_portfolio_currency",
+  "fx": "Portfolio / TotalNetAssets",
+  "defn": "Portfolio valuation",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "6_Valuation_date",
+  "fx": "Portfolio / ValuationDate",
+  "defn": "Date of valuation (date positions valid for)",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "M"
+ },
+ {
+  "num": "7_Reporting_date",
+  "fx": "Portfolio / ReportingDate",
+  "defn": "Date of reference for the reporting",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "M"
+ },
+ {
+  "num": "8_Share_price",
+  "fx": "Portfolio / ShareClass / SharePrice",
+  "defn": "Share price of the fund/share class",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "8b_Total_number_of_shares",
+  "fx": "Portfolio / ShareClass / TotalNumberOfShares",
+  "defn": "Total number of shares (per share class, if applicable)",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "9_Cash_ratio",
+  "fx": "Portfolio / CashPercentage",
+  "defn": "Amount of cash of the fund / total net asset value of the fund, in %",
+  "cod": "number with floating decimal: 1 = 100%",
+  "man": "O"
+ },
+ {
+  "num": "10_Portfolio_modified_duration",
+  "fx": "Portfolio / PortfolioModifiedDuration",
+  "defn": "Weighted average modified duration of portfolio positions",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "11_Complete_SCR_delivery",
+  "fx": "Portfolio / CompleteSCRDelivery",
+  "defn": "Y/N",
+  "cod": "alpha(1)",
+  "man": "M"
+ },
+ {
+  "num": "12_CIC_code_of_the_instrument",
+  "fx": "Position / InstrumentCIC",
+  "defn": "CIC Code (Complementary Identification Code).",
+  "cod": "CIC code - Alphanumeric (4)",
+  "man": "M"
+ },
+ {
+  "num": "13_Economic_zone_of_the_quotation_place",
+  "fx": "Position / EconomicArea",
+  "defn": "Indication of the economic zone of the quotation place",
+  "cod": "Integer return corresponding to the following closed list:\n0",
+  "man": "C"
+ },
+ {
+  "num": "14_Identification_code_of_the_instrument",
+  "fx": "Position / InstrumentCode / Code",
+  "defn": "Identification code of the financial instrument - including identifier for leg of instrument if required",
+  "cod": "Code must be unique and kept consistent over time.\n\nExample ",
+  "man": "M"
+ },
+ {
+  "num": "15_Type_of_identification_code_for_the_instrument",
+  "fx": "Position / InstrumentCode / CodificationSystem",
+  "defn": "Codification chosen to identify the instrument",
+  "cod": "One of the options in the following closed list to be used:\n",
+  "man": "M"
+ },
+ {
+  "num": "16_Grouping_code_for_multiple_leg_instruments",
+  "fx": "Position / GroupID",
+  "defn": "grouping code for operations on multi leg instruments",
+  "cod": "Alphanum (max 255)  \n\nExample: 123456",
+  "man": "C"
+ },
+ {
+  "num": "17_Instrument_name",
+  "fx": "Position / InstrumentName",
+  "defn": "instrument name",
+  "cod": "Alphanum (max 255)",
+  "man": "M"
+ },
+ {
+  "num": "17b_Asset_liability",
+  "fx": "Position / Valuation / AssetOrLiability",
+  "defn": "Asset/Liability identification if needed",
+  "cod": "\"A\" for asset or \"L\" for liabilities",
+  "man": "N/A"
+ },
+ {
+  "num": "18_Quantity",
+  "fx": "Position / Valuation / Quantity",
+  "defn": "Number of instruments on position",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "19_Nominal_amount",
+  "fx": "Position / Valuation / TotalNominalValueQC",
+  "defn": "Quantity * nominal unit amount",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "20_Contract_size_for_derivatives",
+  "fx": "Position / Valuation / ContractSize",
+  "defn": "Contract size",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "21_Quotation_currency_(A)",
+  "fx": "Position / Valuation / QuotationCurrency",
+  "defn": "Currency of quotation for the instrument or denomination",
+  "cod": "Code ISO 4217\nCNH : 2 Chinese yuan (when traded offshore) - ",
+  "man": "M"
+ },
+ {
+  "num": "22_Market_valuation_in_quotation_currency_(A)",
+  "fx": "Position / Valuation / MarketValueQC",
+  "defn": "Market valuation of the position accrued interest included in quotation currency",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "23_Clean_market_valuation_in_quotation_currency_(A)",
+  "fx": "Position / Valuation / CleanValueQC",
+  "defn": "Market valuation of the position accrued interest excluded in quotation currency",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "24_Market_valuation_in_portfolio_currency_(B)",
+  "fx": "Position / Valuation / MarketValuePC",
+  "defn": "Market valuation of the position accrued interest included in portfolio currency",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "25_Clean_market_valuation_in_portfolio_currency_(B)",
+  "fx": "Position / Valuation / CleanValuePC",
+  "defn": "Market valuation of the position accrued interest excluded in portfolio currency",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "26_Valuation_weight",
+  "fx": "Position / Valuation / PositionWeight",
+  "defn": "Market valuation in portfolio currency / portfolio net asset value in %",
+  "cod": "number with floating decimal: 1 = 100%",
+  "man": "M"
+ },
+ {
+  "num": "27_Market_exposure_amount_in_quotation_currency_(A)",
+  "fx": "Position / Valuation / MarketExposureQC",
+  "defn": "Market exposure amount different from market valuation for derivatives (valuation of the equivalent position on the underlying asset)",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "28_Market_exposure_amount_in_portfolio_currency_(B)",
+  "fx": "Position / Valuation / MarketExposurePC",
+  "defn": "Market exposure amount different from market valuation for derivatives (valuation of the equivalent position on the underlying asset) in the quotation currency of the portfolio",
+  "cod": "number with floating decimal",
+  "man": "M"
+ },
+ {
+  "num": "29_Market_exposure_amount_for_the_3rd_quotation_currency_(C)",
+  "fx": "Position / Valuation / MarketExposureLeg2",
+  "defn": "Market exposure amount different from market valuation for derivatives (valuation of the equivalent position on the underlying asset) in the quotation currency of the underlying asset",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "30_Market_exposure_in_weight",
+  "fx": "Position / Valuation / MarketExposureWeight",
+  "defn": "Exposure valuation in portfolio currency / total net asset value of the fund, in %",
+  "cod": "number with floating decimal: 1 = 100%",
+  "man": "M"
+ },
+ {
+  "num": "31_Market_exposure_for_the_3rd_currency_in_weight_over_NAV",
+  "fx": "Position / Valuation / MarketExposureWeightLeg2",
+  "defn": "Exposure valuation for leg 2 in portfolio currency / total net asset value of the fund, in %",
+  "cod": "number with floating decimal: 1 = 100%",
+  "man": "C"
+ },
+ {
+  "num": "32_Interest_rate_type",
+  "fx": "Position / BondCharacteristics / RateType",
+  "defn": "* Fixed - plain vanilla fixed coupon rate\n* Floating - plain vanilla floating coupon rates (for all interest rates, which refer to a reference interest rate like EONIA or EURIBOR + margin in BP)\n* Variable - all other variable interest rates like step-up or step-down or fixed-to-float bonds. The variable feature is the (credit) margin or the change between fixed and float.\n* Infation_linked for inflation linked bonds in order to identify them.",
+  "cod": "\"Fixed\" or \"Floating\" or \"Variable\" or \"Inflation_linked\"",
+  "man": "C"
+ },
+ {
+  "num": "33_Coupon_rate",
+  "fx": "Position / BondCharacteristics / CouponRate",
+  "defn": "Fixed rate: coupon rate as a percentage of nominal amount\nFloating rate: last fixing rate + margin as a percentage of nominal amount\nVariable rate: estimation of current rate over the period + margin as a percentage of nominal amount\nall rates are expressed on an annual basis",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "34_Interest_rate_reference_identification",
+  "fx": "Position / BondCharacteristics / VariableRate / IndexID / Code",
+  "defn": "identification code for interest rate index",
+  "cod": "Example : EUR006M",
+  "man": "C"
+ },
+ {
+  "num": "35_Identification_type_for_interest_rate_index",
+  "fx": "Position / BondCharacteristics / VariableRate / IndexID / CodificationSystem",
+  "defn": "Type of codification used for interest rate index",
+  "cod": "e.g. \"BLOOMBERG\" or empty (if internal codification)",
+  "man": "C"
+ },
+ {
+  "num": "36_Interest_rate_index_name",
+  "fx": "Position / BondCharacteristics / VariableRate / IndexName",
+  "defn": "name of interest rate index",
+  "cod": "Euribor 6month",
+  "man": "C"
+ },
+ {
+  "num": "37_Interest_rate_margin",
+  "fx": "Position / BondCharacteristics / VariableRate / Margin",
+  "defn": "Facial margin as a percentage of nominal amount on an annual basis",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "38_Coupon_payment_frequency",
+  "fx": "Position / BondCharacteristics / CouponFrequency",
+  "defn": "number of coupon payment per year\n0 = other than below options:\n1= annual\n2= biannual\n4= quarterly\n12= monthly\n52= weekly",
+  "cod": "Frequency (\"0\" = other than /\"1\"= Annual  / \"2\"= biannual / ",
+  "man": "C"
+ },
+ {
+  "num": "39_Maturity_date",
+  "fx": "Position / BondCharacteristics / Redemption / MaturityDate",
+  "defn": "Last redemption date",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "C"
+ },
+ {
+  "num": "40_Redemption_type",
+  "fx": "Position / BondCharacteristics / Redemption /Type",
+  "defn": "Type of redemption payment schedule : bullet, constant annuity…",
+  "cod": "\"Bullet\", \"Sinkable\", \"defaulted\" empty if non applicable",
+  "man": "C"
+ },
+ {
+  "num": "41_Redemption_rate",
+  "fx": "Position / BondCharacteristics / Redemption / Rate",
+  "defn": "Redemption amount in % of nominal amount",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "42_Callable_putable",
+  "fx": "Position / BondCharacteristics / OptionalCallPut / CallPutType",
+  "defn": "Cal = Call\nPut = Put\nCap = Cap\nFlr= Floor\nempty if none",
+  "cod": "Alpha(3)( \"Cal\" = Call / \"Put\" = Put / \"Cap\" = Cap / \"Flr\" =",
+  "man": "C"
+ },
+ {
+  "num": "43_Call_put_date",
+  "fx": "Position / BondCharacteristics / OptionalCallPut / CallPutDate",
+  "defn": "Next call/put date",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "C"
+ },
+ {
+  "num": "44_Issuer_bearer_option_exercise",
+  "fx": "Position / BondCharacteristics / OptionalCallPut / OptionDirection",
+  "defn": "I : issuer\nB : bearer\nO : Both",
+  "cod": "Alpha(1) (\"I \"= Issuer / \"B\" = bearer / \"O\"= both)",
+  "man": "C"
+ },
+ {
+  "num": "45_Strike_price_for_embedded_(call_put)_options",
+  "fx": "Position / BondCharacteristics / OptionalCallPut / StrikePrice",
+  "defn": "strike price, floor or cap rate for embedded options expressed as a percentage of the nominal amount.",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "46_Issuer_name",
+  "fx": "Position / CreditRiskData / InstrumentIssuer / Name",
+  "defn": "name of the issuer",
+  "cod": "Alpha (max 255)",
+  "man": "C"
+ },
+ {
+  "num": "47_Issuer_identification_code",
+  "fx": "Position / CreditRiskData / InstrumentIssuer / Code / Code",
+  "defn": "LEI",
+  "cod": "Alphanumeric (20)",
+  "man": "C"
+ },
+ {
+  "num": "48_Type_of_identification_code_for_issuer",
+  "fx": "Position / CreditRiskData / InstrumentIssuer / Code / CodificationSystem",
+  "defn": "C0220   1- LEI 9 - None",
+  "cod": "1 or 9",
+  "man": "C"
+ },
+ {
+  "num": "49_Name_of_the_group_of_the_issuer",
+  "fx": "Position / CreditRiskData / IssuerGroup / Name",
+  "defn": "Name of the highest parent company",
+  "cod": "Alpha (max 255)",
+  "man": "C"
+ },
+ {
+  "num": "50_Identification_of_the_group",
+  "fx": "Position / CreditRiskData / IssuerGroup / Code / Code",
+  "defn": "LEI",
+  "cod": "Alphanumeric (20)",
+  "man": "C"
+ },
+ {
+  "num": "51_Type_of_identification_code_for_issuer_group",
+  "fx": "Position / CreditRiskData / IssuerGroup / Code / CodificationSystem",
+  "defn": "C0260   1- LEI 9 - None",
+  "cod": "1 or 9",
+  "man": "C"
+ },
+ {
+  "num": "52_Issuer_country",
+  "fx": "Position / CreditRiskData / IssuerCountry",
+  "defn": "Country of the issuer company",
+  "cod": "Code ISO 3166-1 alpha 2",
+  "man": "M"
+ },
+ {
+  "num": "53_Issuer_economic_area",
+  "fx": "Position / CreditRiskData / EconomicArea",
+  "defn": "Economic area of the Issuer\n1=EEA / 2=NON EEA / 3=NON OECD",
+  "cod": "Integer return corresponding to the following closed list:\n1",
+  "man": "O"
+ },
+ {
+  "num": "54_Economic_sector",
+  "fx": "Position / CreditRiskData / EconomicSector",
+  "defn": "Economic sector",
+  "cod": "NACE Code (as per EIOPA documentation)",
+  "man": "O"
+ },
+ {
+  "num": "55_Covered_not_covered",
+  "fx": "Position / CreditRiskData / Covered",
+  "defn": "",
+  "cod": "Alpha(2) (\"C\" = Covered / \"NC\" = Non Covered)",
+  "man": "C"
+ },
+ {
+  "num": "56_Securitisation",
+  "fx": "Position / Securitisation / Securitised",
+  "defn": "Securitisation typology",
+  "cod": "alpha (1)\n\"a\" refers to the fact that the asset managers hav",
+  "man": "C"
+ },
+ {
+  "num": "57_Explicit_guarantee_by_the_country_of_issue",
+  "fx": "Position / CreditRiskData / StateGuarantee",
+  "defn": "Y = guaranteed\nN = without guarantee",
+  "cod": "Alpha (1) (\"Y\" = yes \"N\"= no)",
+  "man": "C"
+ },
+ {
+  "num": "58_Subordinated_debt",
+  "fx": "Position / SubordinatedDebt",
+  "defn": "Subordinated or not ?",
+  "cod": "Alpha (1) (\"Y\" = yes \"N\"= no)",
+  "man": "O"
+ },
+ {
+  "num": "58b_Nature_of_the_tranche",
+  "fx": "Position / Securitisation / TrancheLevel",
+  "defn": "Tranche level (seniority)",
+  "cod": "Alpha",
+  "man": "O"
+ },
+ {
+  "num": "59_Credit_quality_step",
+  "fx": "Position / CreditRiskData / CreditQualitStep",
+  "defn": "Credit quality step as defined by S2 regulation",
+  "cod": "num (1)",
+  "man": "I"
+ },
+ {
+  "num": "60_Call_Put_Cap_Floor",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / CallPutType",
+  "defn": "Cal = Call\nPut = Put\nCap = Cap\nFlr= Floor\nempty if none",
+  "cod": "Alpha(3)( \"Cal\" = Call / \"Put\" = Put / \"Cap\" = Cap / \"Flr\" =",
+  "man": "C"
+ },
+ {
+  "num": "61_Strike_price",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / StrikePrice",
+  "defn": "Strike price expressed as the quotation of the underlying asset",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "62_Conversion_factor_(convertibles)_concordance_factor_parity_(options)",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / ConversionRatio",
+  "defn": "Conversion factor for convertible",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "63_Effective_date_of_instrument",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / Effective Date",
+  "defn": "Effective Date",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "O"
+ },
+ {
+  "num": "64_Exercise_type",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / OptionStyle",
+  "defn": "AMerican, EUropean, ASiatic, BErmudian",
+  "cod": "Alpha (2)(\"AM\", \"EU\", \"AS\", \"BE\")",
+  "man": "C"
+ },
+ {
+  "num": "65_Hedging_rolling",
+  "fx": "Position / HedgingStrategy",
+  "defn": "Indication of existing Risk Mitigation program ( Y = used for Risk Mitigation purpose and the position is systematically rolled before maturity, N = used for hedging purpose but no systematic roll before maturity); EPM = Efficient Portfolio Management / not used for hedging purpose .",
+  "cod": "Alpha (3)  (\"Y\" ; \"N\"; \"EPM\" )",
+  "man": "C"
+ },
+ {
+  "num": "67_CIC_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / InstrumentCIC",
+  "defn": "CIC Code (Complementary Identification Code).",
+  "cod": "Alphanumeric (4)",
+  "man": "C"
+ },
+ {
+  "num": "68_Identification_code_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / InstrumentCode / Code",
+  "defn": "identification code of underlying asset",
+  "cod": "Depends on identification type",
+  "man": "C"
+ },
+ {
+  "num": "69_Type_of_identification_code_for_the_underlying_asset",
+  "fx": "Position / UnderlyingInstrument / InstrumentCode / CodificationSystem",
+  "defn": "name of the codification used for identification of the underlying asset",
+  "cod": "One of the options in the following closed list to be used:\n",
+  "man": "C"
+ },
+ {
+  "num": "70_Name_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / InstrumentName",
+  "defn": "Name",
+  "cod": "Alpha (max 255)",
+  "man": "C"
+ },
+ {
+  "num": "71_Quotation_currency_of_the_underlying_asset_(C)",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / Valuation / Currency",
+  "defn": "currency of quotation for the asset",
+  "cod": "Code ISO 4217",
+  "man": "C"
+ },
+ {
+  "num": "72_Last_valuation_price_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / Valuation / MarketPrice",
+  "defn": "Last valuation price of the underlying asset",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "73_Country_of_quotation_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / Valuation / Country",
+  "defn": "Country of quotation of the underlying asset",
+  "cod": "Code ISO 3166-1 alpha 2",
+  "man": "O"
+ },
+ {
+  "num": "74_Economic_area_of_quotation_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible /  UnderlyingInstrument / Valuation / EconomicArea",
+  "defn": "economic area of quotation\n0= non listed, listed 1=EEA / 2=NON EEA / 3=NON OECD",
+  "cod": "Integer return corresponding to the following closed list:\n0",
+  "man": "C"
+ },
+ {
+  "num": "75_Coupon_rate_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / BondCharacteristics / CouponRate",
+  "defn": "Fixed rate : coupon rate as a percentage of nominal amount\nall rates are expressed on an annual basis",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "76_Coupon_payment_frequency_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / BondCharacteristics / CouponFrequency",
+  "defn": "number of coupon payment per year\n0 = other than below options:\n1= annual\n2= biannual\n4= quarterly\n12= monthly\n52= weekly",
+  "cod": "Frequency (\"0\" = other than /\"1\"= Annual  / \"2\"= biannual / ",
+  "man": "O"
+ },
+ {
+  "num": "77_Maturity_date_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / BondCharacteristics / Redemption / MaturityDate",
+  "defn": "Last redemption date",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "O"
+ },
+ {
+  "num": "78_Redemption_profile_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / BondCharacteristics / Redemption / Type",
+  "defn": "Type of redemption payment schedule : bullet, constant annuity…",
+  "cod": "\"Bullet\", \"Sinkable\", empty if non applicable",
+  "man": "O"
+ },
+ {
+  "num": "79_Redemption_rate_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / BondCharacteristics / Redemption / Rate",
+  "defn": "Redemption amount in % of nominal amount",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "80_Issuer_name_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / InstrumentIssuer / Name",
+  "defn": "name of the issuer",
+  "cod": "Alpha (max 255)",
+  "man": "C"
+ },
+ {
+  "num": "81_Issuer_identification_code_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / InstrumentIssuer / Code / Code",
+  "defn": "identification code of the issuer",
+  "cod": "Depend on the nomenclature used",
+  "man": "C"
+ },
+ {
+  "num": "82_Type_of_issuer_identification_code_of_the_underlying_asset",
+  "fx": "Position / UnderlyingInstrument / Issuer / InstrumentIssuer / Identification / Code",
+  "defn": "C0220   1- LEI 9 - None",
+  "cod": "1 or 9",
+  "man": "C"
+ },
+ {
+  "num": "83_Name_of_the_group_of_the_issuer_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / IssuerGroup / Name",
+  "defn": "Name of the highest parent company",
+  "cod": "Alpha (max 255)",
+  "man": "C"
+ },
+ {
+  "num": "84_Identification_of_the_group_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / IssuerGroup / Code / Code",
+  "defn": "Identification code of the group",
+  "cod": "Depend on the nomenclature used",
+  "man": "C"
+ },
+ {
+  "num": "85_Type_of_the_group_identification_code_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / IssuerGroup / Code / CodificationSystem",
+  "defn": "C0260   1- LEI 9 - None",
+  "cod": "1 or 9",
+  "man": "C"
+ },
+ {
+  "num": "86_Issuer_country_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / Country",
+  "defn": "Country of the issuer company",
+  "cod": "Code ISO 3166-1 alpha 2",
+  "man": "C"
+ },
+ {
+  "num": "87_Issuer_economic_area_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / EconomicArea",
+  "defn": "economic area of the Issuer\n1=EEA / 2=NON EEA / 3=NON OECD",
+  "cod": "Integer return corresponding to the following closed list:\n1",
+  "man": "O"
+ },
+ {
+  "num": "88_Explicit_guarantee_by_the_country_of_issue_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData  / StateGuarantee",
+  "defn": "Y = Guaranteed\nN = without guarantee",
+  "cod": "Alpha (1) (\"Y\" = yes \"N\"= no)",
+  "man": "O"
+ },
+ {
+  "num": "89_Credit_quality_step_of_the_underlying_asset",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData  / CreditQualityStep",
+  "defn": "Credit quality step as defined by S2 regulation",
+  "cod": "num (1)",
+  "man": "I"
+ },
+ {
+  "num": "90_Modified_duration_to_maturity_date",
+  "fx": "Position / Analytics / ModifiedDurationToMaturity",
+  "defn": "",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "91_Modified_duration_to_next_option_exercise_date",
+  "fx": "Position / Analytics / ModifiedDurationToCall",
+  "defn": "",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "92_Credit_sensitivity",
+  "fx": "Position / Analytics / CreditSensitivity",
+  "defn": "",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "93_Sensitivity_to_underlying_asset_price_(delta)",
+  "fx": "Position / Analytics / Delta",
+  "defn": "Sensitivity to the underlying asset",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "94_Convexity_gamma_for_derivatives",
+  "fx": "Position / Analytics / Convexity",
+  "defn": "Convexity for interest rates instruments; or \ngamma for derivatives with optional components",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "94b_Vega",
+  "fx": "Position / Analytics / Vega",
+  "defn": "",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "95_Identification_of_the_original_portfolio_for_positions_embedded_in_a_fund",
+  "fx": "Position / LookThroughISIN",
+  "defn": "identification code of the investee funds",
+  "cod": "ISIN or CUSIP or any other identification",
+  "man": "C"
+ },
+ {
+  "num": "97_SCR_mrkt_IR_up_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktIntUp",
+  "defn": "Capital requirement for interest rate risk for the \"up\" shock    (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "98_SCR_mrkt_IR_down_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktintDown",
+  "defn": "Capital requirement for interest rate risk for the \"down\" shock  (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "99_SCR_mrkt_eq_type1_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktEqGlobal",
+  "defn": "Capital requirement for equity risk - Type 1 *)   (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "100_SCR_mrkt_eq_type2_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktEqOther",
+  "defn": "Capital requirement for equity risk - Type 2 *)  (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "101_SCR_mrkt_prop_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktProp",
+  "defn": "Capital requirement for property risk  (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "102_SCR_mrkt_spread_bonds_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktSpread / Bonds",
+  "defn": "Capital requirement for spread risk on bonds  (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "103_SCR_mrkt_spread_structured_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktSpread / Structured",
+  "defn": "Capital requirement for spread risk on structured products   (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "104_SCR_mrkt_spread_derivatives_up_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktSpread / DerivativesUp",
+  "defn": "Capital requirement for spread risk - credit derivatives (upward shock)   (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "105_SCR_mrkt_spread_derivatives_down_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktSpread / DerivativesDown",
+  "defn": "Capital requirement for spread risk - credit derivatives (downward shock)  (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "105a_SCR_mrkt_FX_up_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktFXUp",
+  "defn": "Capital requirement for FX (upward shock)   (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "105b_SCR_mrkt_FX_down_weight_over_NAV",
+  "fx": "Position / ContributionToSCR / MktFXDown",
+  "defn": "Capital requirement for FX (downward shock)  (Delta between Market value before and market value after stress)",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "106_Asset_pledged_as_collateral",
+  "fx": "Position / QRTPositionInformation / CollateralisedAsset",
+  "defn": "Indicator used to identify the under-written instruments (Assets D1)",
+  "cod": "One of the options in the following closed list shall be use",
+  "man": "O"
+ },
+ {
+  "num": "107_Place_of_deposit",
+  "fx": "Position / QRTPositionInformation / PlaceOfDeposit",
+  "defn": "Instruments' place of deposit (S.06.02 - old: Assets D1)",
+  "cod": "ISO code",
+  "man": "O"
+ },
+ {
+  "num": "108_Participation",
+  "fx": "Position / QRTPositionInformation / Participation",
+  "defn": "Indicator used to identify the guidelines of participation in accountancy terms",
+  "cod": "1 Participation / 2 non participation",
+  "man": "O"
+ },
+ {
+  "num": "110_Valorisation_method",
+  "fx": "Position / QRTPositionInformation / ValorisationMethod",
+  "defn": "valuation method (cf specifications QRT) (S.06.02 - old: Assets D1)",
+  "cod": "Identify the valuation method used when valuing assets. One ",
+  "man": "O"
+ },
+ {
+  "num": "111_Value_of_acquisition",
+  "fx": "Position / QRTPositionInformation / AverageBuyPrice",
+  "defn": "Value of acquisition (S.06.02 - old: Assets D1)",
+  "cod": "Total acquisition value for assets held, clean value without",
+  "man": "O"
+ },
+ {
+  "num": "112_Credit_rating",
+  "fx": "Position / QRTPositionInformation / CounterpartyRating / RatingValue",
+  "defn": "Rating of the counterparty / issuer (cf specifications QRT) (S.06.02 - old: Assets D1)",
+  "cod": "",
+  "man": "O"
+ },
+ {
+  "num": "113_Rating_agency",
+  "fx": "Position / QRTPositionInformation / CounterpartyRating / RatingAgency",
+  "defn": "Name of the rating agency (cf specification QRT) (S.06.02 - old: Assets D1)",
+  "cod": "",
+  "man": "O"
+ },
+ {
+  "num": "114_Issuer_economic_area",
+  "fx": "Position / QRTPositionInformation / IssuerEconomicArea",
+  "defn": "economic area of the Issuer\n1=EEA / 2=NON EEA / 3=NON OECD",
+  "cod": "Integer return corresponding to the following closed list:\n1",
+  "man": "N/A"
+ },
+ {
+  "num": "115_Fund_issuer_code",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuer / Code / Code",
+  "defn": "LEI when available, otherwise not reported",
+  "cod": "Alphanum",
+  "man": "M"
+ },
+ {
+  "num": "116_Fund_issuer_code_type",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuer / Code / CodificationSystem",
+  "defn": "C0220   1- LEI 9 - None",
+  "cod": "",
+  "man": "M"
+ },
+ {
+  "num": "117_Fund_issuer_name",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuer / Name",
+  "defn": "Name of Issuer of Fund  or Share Class",
+  "cod": "Alphanum",
+  "man": "M"
+ },
+ {
+  "num": "118_Fund_issuer_sector",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuer / EconomicSector",
+  "defn": "NACE code of Issuer of Fund  or Share Class",
+  "cod": "Alphanum",
+  "man": "M"
+ },
+ {
+  "num": "119_Fund_issuer_group_code",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuerGroup / Code / Code",
+  "defn": "LEI of ultimate parent when available, otherwise not reported",
+  "cod": "Alphanum",
+  "man": "M"
+ },
+ {
+  "num": "120_Fund_issuer_group_code_type",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuerGroup / Code / CodificationSystem",
+  "defn": "C0260   1- LEI 9 - None",
+  "cod": "",
+  "man": "M"
+ },
+ {
+  "num": "121_Fund_issuer_group_name",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuerGroup / Name",
+  "defn": "Name of Ultimate parent of issuer of Fund or Share Class",
+  "cod": "",
+  "man": "M"
+ },
+ {
+  "num": "122_Fund_issuer_country",
+  "fx": "Portfolio / QRTPortfolioInformation / FundIssuer / Country",
+  "defn": "Country ISO of Issuer of Fund  or Share Class",
+  "cod": "ISO 3166-1 alpha-2 code",
+  "man": "M"
+ },
+ {
+  "num": "123_Fund_CIC",
+  "fx": "Portfolio / QRTPortfolioInformation / PortfolioCIC",
+  "defn": "CIC code - Fund  or Share Class (4 digits)",
+  "cod": "",
+  "man": "M"
+ },
+ {
+  "num": "123a_Fund_custodian_country",
+  "fx": "Portfolio / QRTPortfolioInformation / FundCustodianCountry",
+  "defn": "First level of Custody - Fund or seggregated account Custodian",
+  "cod": "ISO 3166-1 alpha-2 code",
+  "man": "M"
+ },
+ {
+  "num": "124_Duration",
+  "fx": "Portfolio / QRTPortfolioInformation / PortfolioModifiedDuration",
+  "defn": "For funds or portfolios mainly invested in debt instruments (>50%) - Fund modified Duration (Residual modified duration)",
+  "cod": "",
+  "man": "O"
+ },
+ {
+  "num": "125_Accrued_income_(Security Denominated Currency)",
+  "fx": "Portfolio / QRTPortfolioInformation /  AccruedIncomeQC ????",
+  "defn": "Amount of accrued income in security denomination currency at report date",
+  "cod": "",
+  "man": "O"
+ },
+ {
+  "num": "126_Accrued_income_(Portfolio Denominated Currency)",
+  "fx": "Portfolio / QRTPortfolioInformation / AccruedIncomePC",
+  "defn": "Amount of accrued income in portfolio denomination currency at report date",
+  "cod": "",
+  "man": "O"
+ },
+ {
+  "num": "127_Bond_floor_(convertible_instrument_only)",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / Convertible / BondFloor",
+  "defn": "Lowest value of a convertible bond expressed in quotation currency, at current issuer spread",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "128_Option_premium_(convertible_instrument_only)",
+  "fx": "Position / DerivativeOrConvertible / OptionCharacteristics / Convertible / OptionPremium",
+  "defn": "Premium of the embedded option of a convertible bond in quotation currency",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "129_Valuation_yield",
+  "fx": "Position / BondCharacteristics / ValuationYieldCurve /  Yield",
+  "defn": "Valuation Yield of the interest rate instrument",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "130_Valuation_z_spread",
+  "fx": "Position / BondCharacteristics / ValuationYieldCurve /  Spread",
+  "defn": "Issuer spread calculated from Z coupon IRS curve of quotation currency",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "131_Underlying_asset_category",
+  "fx": "Position / Instrument/ UAC",
+  "defn": "SII definition as per QRT S.06.03",
+  "cod": "One of the options in the following closed list shall be use",
+  "man": "M"
+ },
+ {
+  "num": "132_Infrastructure_investment",
+  "fx": "To be defined with Fundxml",
+  "defn": "Type of infrastructure investment according to Type of infrastructure investment according to \nCOMMISSION DELEGATED REGULATION (EU) 2016/467 of 30 September 2015 amending Commission Delegated Regulation (EU) 2015/35 concerning the calculation of regulatory capital requirements for several categories of assets held by insurance and reinsurance undertakings and COMMISSION DELEGATED REGULATION (EU) 2017/1542 as of 8 June 2017 amending Delegated Regulation (EU) 2015/35 concerning the calculation of regulatory capital requirements for certain categories of assets held by insurance and reinsurance undertakings (infrastructure corporates).",
+  "cod": "0 - Not assessed\n1 - Debt on eligible Infrastructure project",
+  "man": "I"
+ },
+ {
+  "num": "133_custodian_name",
+  "fx": "To be defined with Fundxml",
+  "defn": "Name of the custodian of the seggregated account",
+  "cod": "text",
+  "man": "O"
+ },
+ {
+  "num": "134_type1_private_equity_portfolio_eligibility",
+  "fx": "",
+  "defn": "Eligibility of the investment to art 168a of the regulation UE DR 2019/981",
+  "cod": "Int (1)\n\"0\" = Not assessed\n\"1\" = elligible for re-classifica",
+  "man": "I"
+ },
+ {
+  "num": "135_type1_private_equity_issuer_beta",
+  "fx": "",
+  "defn": "Beta of the issuer of the private equity calculated according to art 168a of the regulation UE DR 2019/981",
+  "cod": "number with floating decimal",
+  "man": "I"
+ },
+ {
+  "num": "137_Counterparty_sector",
+  "fx": "",
+  "defn": "Classification of the issuer or counterparty according to IORP II regulation based on FINREP breakdown ( ESA 2010) and EIOPA specifications",
+  "cod": "Alphanumeric (2)\n1 – central bank (ESA 2010 sector S.121)\n2 ",
+  "man": "C"
+ },
+ {
+  "num": "138_Collateral_eligibility",
+  "fx": "",
+  "defn": "Eligibility of the collateral according to solvency regulation (RD UE 2015/35 art 176.5 and related art197, art214)",
+  "cod": "0 - Not assessed or no collateral\n1 - Compliant with art 214",
+  "man": "C"
+ },
+ {
+  "num": "139_Collateral_Market_valuation_in_portfolio_currency",
+  "fx": "",
+  "defn": "Market valuation of the collateral in portfolio currency",
+  "cod": "number with floating decimal",
+  "man": "C"
+ },
+ {
+  "num": "140_Custodian_identification_code",
+  "fx": "Position / DerivativeOrConvertible / UnderlyingInstrument / CreditRiskData / InstrumentIssuer / Code / Code",
+  "defn": "identification code of the custodian",
+  "cod": "Depend on the nomenclature used",
+  "man": "O"
+ },
+ {
+  "num": "141_Type_of_custodian_identification_code",
+  "fx": "Position / UnderlyingInstrument / Issuer / InstrumentIssuer / Identification / Code",
+  "defn": "C0220   1-LEI,  9-None or internal",
+  "cod": "\"1\" or \"9\"",
+  "man": "O"
+ },
+ {
+  "num": "142_Bail-in_Rule",
+  "fx": "",
+  "defn": "Indicate if there is a \"Bail-in\" Rule applicable for debt instrument",
+  "cod": "0 - Not assessed\n1 - Yes\n2 - No\n9 - Not Aplicable",
+  "man": "C"
+ },
+ {
+  "num": "143_Maturity_date_expected",
+  "fx": "Expected redemption date after considering an expected prepayment / extension of the contractual terms based on the options in the instrument",
+  "defn": "Expected redemption date after considering an expected prepayment / extension of the contractual terms based on the options in the instrument",
+  "cod": "YYYY-MM-DD         ISO 8601",
+  "man": "O"
+ },
+ {
+  "num": "144_Modified_duration_to_maturity_date_expected",
+  "fx": "",
+  "defn": "",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "145_Credit_sensitivity_expected",
+  "fx": "",
+  "defn": "",
+  "cod": "number with floating decimal",
+  "man": "O"
+ },
+ {
+  "num": "146_PIK",
+  "fx": "",
+  "defn": "",
+  "cod": "0 - No PIK\n1 - No cash coupon. Existing PIK is included in t",
+  "man": "O"
+ },
+ {
+  "num": "147_Infrastructure_investment_additional_QRT",
+  "fx": "To be defined with Fundxml",
+  "defn": "(for mandate or segregated account especially)\n\nIdentify if the asset is an infrastructure investment as defined in Article 1(55a) and (55b) of Delegated Regulation (EU) 2015/35. One of the options in the following closed list shall be used:",
+  "cod": "1 – Not an infrastructure investment; \n2 – Infrastructure no",
+  "man": "O"
+ },
+ {
+  "num": "148_Economic_sector_NACE2.1",
+  "fx": "Position / CreditRiskData / EconomicSector",
+  "defn": "Economic sector",
+  "cod": "NACE V2.1 Code",
+  "man": "C"
+ },
+ {
+  "num": "1000_TPT_Version",
+  "fx": "",
+  "defn": "TPT Published Version",
+  "cod": "V2.0 (official); dated 9 January 2015\nV3.0 (official) dated ",
+  "man": "M"
+ }
+]

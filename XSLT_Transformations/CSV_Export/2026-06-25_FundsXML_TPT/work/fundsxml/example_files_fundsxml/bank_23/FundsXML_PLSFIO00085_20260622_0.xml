@@ -1,0 +1,3412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+  <ControlData>
+    <UniqueDocumentID>PL_2162</UniqueDocumentID>
+    <DocumentGenerated>2026-06-24T10:00:06.450</DocumentGenerated>
+    <Version>4.2.9</Version>
+    <ContentDate>2026-06-22</ContentDate>
+    <DataSupplier>
+      <SystemCountry>PL</SystemCountry>
+      <Short>TFIPL</Short>
+      <Name>Santander TFI</Name>
+      <Type>Asset Manager</Type>
+      <Contact>
+        <Name>Jacek Sygulski</Name>
+        <Email>jacek.sygulski@erste.pl</Email>
+      </Contact>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+    <Language>PL</Language>
+    <CustomAttributes>
+      <Attribute>
+        <Name>Server</Name>
+        <Type>T</Type>
+        <ValueText>st240</ValueText>
+      </Attribute>
+      <Attribute>
+        <Name>ChangeLog</Name>
+        <Type>T</Type>
+        <ValueText>Changed Total Value for USD fund</ValueText>
+      </Attribute>
+    </CustomAttributes>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>213800J5XA8IBK1WGQ54</LEI>
+        <OtherID FreeType="AMSIFundID">277</OtherID>
+      </Identifiers>
+      <Names>
+        <OfficialName>Erste Prestiż Polish Equity</OfficialName>
+        <FullName>Erste Prestiż Akcji Polskich</FullName>
+        <ShortName>PRAP</ShortName>
+      </Names>
+      <Currency>PLN</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <DataSupplier>
+        <SystemCountry>PL</SystemCountry>
+        <Short>TFIPL</Short>
+        <Name>Santander TFI</Name>
+        <Type>Asset Manager</Type>
+        <Contact>
+          <Name>Jacek Sygulski</Name>
+          <Email>jacek.sygulski@erste.pl</Email>
+        </Contact>
+      </DataSupplier>
+      <FundStaticData>
+        <ListedLegalStructure>UCITS</ListedLegalStructure>
+        <InceptionDate>2010-11-16</InceptionDate>
+      </FundStaticData>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2026-06-22</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">764344421.580</Amount>
+            </TotalNetAssetValue>
+            <TotalGrossAssetValue>
+              <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">775744798.990</Amount>
+            </TotalGrossAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+        <Portfolios>
+          <Portfolio>
+            <NavDate>2026-06-22</NavDate>
+            <Positions>
+              <Position>
+                <UniqueID>INS_2206</UniqueID>
+                <Identifiers>
+                  <ISIN>PLPKO0000016</ISIN>
+                  <Bloomberg>
+                    <Ticker>PKO</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">73194206.400</Amount>
+                </TotalValue>
+                <TotalPercentage>9.576076</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>698418.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">104.800</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_2203</UniqueID>
+                <Identifiers>
+                  <ISIN>PLPKN0000018</ISIN>
+                  <Bloomberg>
+                    <Ticker>PKN</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">60094447.500</Amount>
+                </TotalValue>
+                <TotalPercentage>7.862221</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>471329.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">127.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_6278</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2237380790</ISIN>
+                  <Bloomberg>
+                    <Ticker>ALE</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">51069953.000</Amount>
+                </TotalValue>
+                <TotalPercentage>6.681537</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>1324600.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">38.555</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_2141</UniqueID>
+                <Identifiers>
+                  <ISIN>PLPEKAO00016</ISIN>
+                  <Bloomberg>
+                    <Ticker>PEO</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">46780362.500</Amount>
+                </TotalValue>
+                <TotalPercentage>6.120325</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>202075.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">231.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3620</UniqueID>
+                <Identifiers>
+                  <ISIN>PLPZU0000011</ISIN>
+                  <Bloomberg>
+                    <Ticker>PZU</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">36159582.260</Amount>
+                </TotalValue>
+                <TotalPercentage>4.730797</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>540179.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">66.940</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3785</UniqueID>
+                <Identifiers>
+                  <ISIN>PLBNFTS00018</ISIN>
+                  <Bloomberg>
+                    <Ticker>BFT</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">34735150.000</Amount>
+                </TotalValue>
+                <TotalPercentage>4.544437</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>7325.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">4742.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_1573</UniqueID>
+                <Identifiers>
+                  <ISIN>PLKGHM000017</ISIN>
+                  <Bloomberg>
+                    <Ticker>KGH</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">34512416.550</Amount>
+                </TotalValue>
+                <TotalPercentage>4.515296</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>93771.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">368.050</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>REP_277_PL0000118188_1388228</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="AMSIArtificialISIN">REP_277_PL0000118188_1388228</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">33693428.400</Amount>
+                </TotalValue>
+                <TotalPercentage>4.408147</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Repo/>
+              </Position>
+              <Position>
+                <UniqueID>INS_1666</UniqueID>
+                <Identifiers>
+                  <ISIN>PLLPP0000011</ISIN>
+                  <Bloomberg>
+                    <Ticker>LPP</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">32864850.000</Amount>
+                </TotalValue>
+                <TotalPercentage>4.299744</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>1791.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">18350.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_14636</UniqueID>
+                <Identifiers>
+                  <ISIN>PL0000114559</ISIN>
+                  <Bloomberg>
+                    <Ticker>PL0000114559</Ticker>
+                    <Exchange>MTSP</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">30060300.000</Amount>
+                </TotalValue>
+                <TotalPercentage>3.932821</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Bond>
+                  <Nominal>30000000.00</Nominal>
+                  <Price>
+                    <Amount ccy="PLN">99.900</Amount>
+                  </Price>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">29970000.000</Amount>
+                  </MarketValue>
+                  <InterestClaimGross>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">90300.000</Amount>
+                  </InterestClaimGross>
+                  <Indexfactor>1.000000</Indexfactor>
+                </Bond>
+              </Position>
+              <Position>
+                <UniqueID>INS_661</UniqueID>
+                <Identifiers>
+                  <ISIN>PLBZ00000044</ISIN>
+                  <Bloomberg>
+                    <Ticker>SPL</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">27181638.000</Amount>
+                </TotalValue>
+                <TotalPercentage>3.556203</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>42339.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">642.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_5897</UniqueID>
+                <Identifiers>
+                  <ISIN>PL0000111928</ISIN>
+                  <Bloomberg>
+                    <Ticker>PL0000111928</Ticker>
+                    <Exchange>MTSP</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">24662750.000</Amount>
+                </TotalValue>
+                <TotalPercentage>3.226654</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Bond>
+                  <Nominal>25000000.00</Nominal>
+                  <Price>
+                    <Amount ccy="PLN">98.350</Amount>
+                  </Price>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">24587500.000</Amount>
+                  </MarketValue>
+                  <InterestClaimGross>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">75250.000</Amount>
+                  </InterestClaimGross>
+                  <Indexfactor>1.000000</Indexfactor>
+                </Bond>
+              </Position>
+              <Position>
+                <UniqueID>INS_1803</UniqueID>
+                <Identifiers>
+                  <ISIN>US5949181045</ISIN>
+                  <Bloomberg>
+                    <Ticker>MSFT</Ticker>
+                    <Exchange>US</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>USD</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">17716071.760</Amount>
+                  <Amount ccy="USD" isFundCcy="false" isShareClassCcy="false">4751910.240</Amount>
+                </TotalValue>
+                <TotalPercentage>2.317813</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="USD">3.72820</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>12936.000000</Units>
+                  <Price>
+                    <Amount ccy="USD">367.340</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4340</UniqueID>
+                <Identifiers>
+                  <ISIN>PLALIOR00045</ISIN>
+                  <Bloomberg>
+                    <Ticker>ALR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">13615757.400</Amount>
+                </TotalValue>
+                <TotalPercentage>1.781364</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>101724.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">133.850</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_2025</UniqueID>
+                <Identifiers>
+                  <ISIN>PLOPTTC00011</ISIN>
+                  <Bloomberg>
+                    <Ticker>CDR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">13228609.500</Amount>
+                </TotalValue>
+                <TotalPercentage>1.730713</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>57641.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">229.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_1409</UniqueID>
+                <Identifiers>
+                  <ISIN>PLINTCS00010</ISIN>
+                  <Bloomberg>
+                    <Ticker>CAR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">13197305.000</Amount>
+                </TotalValue>
+                <TotalPercentage>1.726618</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>16435.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">803.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3338</UniqueID>
+                <Identifiers>
+                  <ISIN>PLPGER000010</ISIN>
+                  <Bloomberg>
+                    <Ticker>PGE</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">12896714.300</Amount>
+                </TotalValue>
+                <TotalPercentage>1.687291</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>1309577.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">9.848</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_33248</UniqueID>
+                <Identifiers>
+                  <ISIN>CA14071L1085</ISIN>
+                  <Bloomberg>
+                    <Ticker>CS</Ticker>
+                    <Exchange>CN</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>CAD</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">12704072.320</Amount>
+                  <Amount ccy="CAD" isFundCcy="false" isShareClassCcy="false">4831364.260</Amount>
+                </TotalValue>
+                <TotalPercentage>1.662087</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="CAD">2.62950</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>329561.000000</Units>
+                  <Price>
+                    <Amount ccy="CAD">14.660</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_481</UniqueID>
+                <Identifiers>
+                  <ISIN>PLBRE0000012</ISIN>
+                  <Bloomberg>
+                    <Ticker>MBK</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">12611040.000</Amount>
+                </TotalValue>
+                <TotalPercentage>1.649916</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>8944.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">1410.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_12530</UniqueID>
+                <Identifiers>
+                  <ISIN>PLMURPL00190</ISIN>
+                  <Bloomberg>
+                    <Ticker>MUR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">12057017.450</Amount>
+                </TotalValue>
+                <TotalPercentage>1.577433</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>290881.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">41.450</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_5247</UniqueID>
+                <Identifiers>
+                  <ISIN>PLDINPL00011</ISIN>
+                  <Bloomberg>
+                    <Ticker>DNP</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">11116486.950</Amount>
+                </TotalValue>
+                <TotalPercentage>1.454382</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>383195.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">29.010</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_5433</UniqueID>
+                <Identifiers>
+                  <ISIN>PLR220000018</ISIN>
+                  <Bloomberg>
+                    <Ticker>CBF</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">10954275.200</Amount>
+                </TotalValue>
+                <TotalPercentage>1.433160</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>56582.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">193.600</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_PLN</UniqueID>
+                <Identifiers/>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">9260478.720</Amount>
+                </TotalValue>
+                <TotalPercentage>1.211558</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">9260478.720</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>INS_2022</UniqueID>
+                <Identifiers>
+                  <ISIN>PLOPNPL00013</ISIN>
+                  <Bloomberg>
+                    <Ticker>OPN</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">9111401.600</Amount>
+                </TotalValue>
+                <TotalPercentage>1.192054</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>91664.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">99.400</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3863</UniqueID>
+                <Identifiers>
+                  <ISIN>PLBGZ0000010</ISIN>
+                  <Bloomberg>
+                    <Ticker>BNPPPL</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">8623308.000</Amount>
+                </TotalValue>
+                <TotalPercentage>1.128197</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>57108.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">151.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_961</UniqueID>
+                <Identifiers>
+                  <ISIN>PLECHPS00019</ISIN>
+                  <Bloomberg>
+                    <Ticker>ECH</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">7866049.600</Amount>
+                </TotalValue>
+                <TotalPercentage>1.029124</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>1445965.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">5.440</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_28497</UniqueID>
+                <Identifiers>
+                  <ISIN>LU2910446546</ISIN>
+                  <Bloomberg>
+                    <Ticker>ZAB</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">7800528.000</Amount>
+                </TotalValue>
+                <TotalPercentage>1.020551</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>299100.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">26.080</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_1690</UniqueID>
+                <Identifiers>
+                  <ISIN>HU0000073507</ISIN>
+                  <Bloomberg>
+                    <Ticker>MTELEKOM</Ticker>
+                    <Exchange>HB</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>HUF</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">7577970.050</Amount>
+                  <Amount ccy="HUF" isFundCcy="false" isShareClassCcy="false">624729600.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.991434</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="HUF">0.01213</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>224400.000000</Units>
+                  <Price>
+                    <Amount ccy="HUF">2784.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_423</UniqueID>
+                <Identifiers>
+                  <ISIN>PLBIG0000016</ISIN>
+                  <Bloomberg>
+                    <Ticker>MIL</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">7524535.500</Amount>
+                </TotalValue>
+                <TotalPercentage>0.984443</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>380700.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">19.765</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_316</UniqueID>
+                <Identifiers>
+                  <ISIN>PLSOFTB00016</ISIN>
+                  <Bloomberg>
+                    <Ticker>ACP</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">6385545.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.835428</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>36900.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">173.050</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_8649</UniqueID>
+                <Identifiers>
+                  <ISIN>PLVRCM000016</ISIN>
+                  <Bloomberg>
+                    <Ticker>VRC</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">5732994.200</Amount>
+                </TotalValue>
+                <TotalPercentage>0.750054</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>48833.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">117.400</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_701</UniqueID>
+                <Identifiers>
+                  <ISIN>PLCCC0000016</ISIN>
+                  <Bloomberg>
+                    <Ticker>MDV</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">4990650.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.652932</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>52500.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">95.060</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3330</UniqueID>
+                <Identifiers>
+                  <ISIN>PLASSEE00014</ISIN>
+                  <Bloomberg>
+                    <Ticker>ASE</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">4690312.500</Amount>
+                </TotalValue>
+                <TotalPercentage>0.613639</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>75045.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">62.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4922</UniqueID>
+                <Identifiers>
+                  <ISIN>PLLKMDW00049</ISIN>
+                  <Bloomberg>
+                    <Ticker>LKD</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">4270539.100</Amount>
+                </TotalValue>
+                <TotalPercentage>0.558719</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>170141.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">25.100</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3684</UniqueID>
+                <Identifiers>
+                  <ISIN>PLMOBRK00013</ISIN>
+                  <Bloomberg>
+                    <Ticker>MBR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3893691.500</Amount>
+                </TotalValue>
+                <TotalPercentage>0.509416</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>10481.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">371.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_35579</UniqueID>
+                <Identifiers>
+                  <ISIN>FR0014004L86</ISIN>
+                  <Bloomberg>
+                    <Ticker>FR0014004L86</Ticker>
+                    <Exchange>FP</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3877805.190</Amount>
+                  <Amount ccy="EUR" isFundCcy="false" isShareClassCcy="false">908300.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.507337</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">4.26930</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>3100.000000</Units>
+                  <Price>
+                    <Amount ccy="EUR">293.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_9014</UniqueID>
+                <Identifiers>
+                  <ISIN>NL0015000AU7</ISIN>
+                  <Bloomberg>
+                    <Ticker>PCO</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3814849.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.499101</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>108100.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">35.290</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_183</UniqueID>
+                <Identifiers>
+                  <ISIN>PLAB00000019</ISIN>
+                  <Bloomberg>
+                    <Ticker>ABE</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3688532.400</Amount>
+                </TotalValue>
+                <TotalPercentage>0.482575</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>27363.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">134.800</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3638</UniqueID>
+                <Identifiers>
+                  <ISIN>PLTAURN00011</ISIN>
+                  <Bloomberg>
+                    <Ticker>TPE</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3644745.600</Amount>
+                </TotalValue>
+                <TotalPercentage>0.476846</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>388400.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">9.384</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_5017</UniqueID>
+                <Identifiers>
+                  <ISIN>PLXTRDM00011</ISIN>
+                  <Bloomberg>
+                    <Ticker>XTB</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3638097.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.475976</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>33255.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">109.400</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4825</UniqueID>
+                <Identifiers>
+                  <ISIN>PLENTER00017</ISIN>
+                  <Bloomberg>
+                    <Ticker>ENT</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3561721.400</Amount>
+                </TotalValue>
+                <TotalPercentage>0.465984</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>66203.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">53.800</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_312</UniqueID>
+                <Identifiers>
+                  <ISIN>CY1000031710</ISIN>
+                  <Bloomberg>
+                    <Ticker>ASB</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3410070.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.446143</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>34620.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">98.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4869</UniqueID>
+                <Identifiers>
+                  <ISIN>PLGRODN00015</ISIN>
+                  <Bloomberg>
+                    <Ticker>GRN</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3390877.200</Amount>
+                </TotalValue>
+                <TotalPercentage>0.443632</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>194878.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">17.400</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_9859</UniqueID>
+                <Identifiers>
+                  <ISIN>PLSHPR000021</ISIN>
+                  <Bloomberg>
+                    <Ticker>SHO</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3311557.900</Amount>
+                </TotalValue>
+                <TotalPercentage>0.433255</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>80183.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">41.300</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_5019</UniqueID>
+                <Identifiers>
+                  <ISIN>PLATPRT00018</ISIN>
+                  <Bloomberg>
+                    <Ticker>APR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3158530.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.413234</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>122900.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">25.700</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4878</UniqueID>
+                <Identifiers>
+                  <ISIN>DE000ZAL1111</ISIN>
+                  <Bloomberg>
+                    <Ticker>ZAL</Ticker>
+                    <Exchange>GR</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3153081.440</Amount>
+                  <Amount ccy="EUR" isFundCcy="false" isShareClassCcy="false">738547.640</Amount>
+                </TotalValue>
+                <TotalPercentage>0.412521</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">4.26930</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>29261.000000</Units>
+                  <Price>
+                    <Amount ccy="EUR">25.240</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_29434</UniqueID>
+                <Identifiers>
+                  <ISIN>PLDGNST00012</ISIN>
+                  <Bloomberg>
+                    <Ticker>DIA</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">3061924.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.400595</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>17740.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">172.600</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_902</UniqueID>
+                <Identifiers>
+                  <ISIN>PLDMDVL00012</ISIN>
+                  <Bloomberg>
+                    <Ticker>DOM</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2994066.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.391717</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>12171.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">246.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_5201</UniqueID>
+                <Identifiers>
+                  <ISIN>PLPLAYW00015</ISIN>
+                  <Bloomberg>
+                    <Ticker>PLW</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2865200.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.374857</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>11600.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">247.000</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_2385</UniqueID>
+                <Identifiers>
+                  <ISIN>PLRNBWT00031</ISIN>
+                  <Bloomberg>
+                    <Ticker>RBW</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2782870.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.364086</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>19100.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">145.700</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_3635</UniqueID>
+                <Identifiers>
+                  <ISIN>PLFERRO00016</ISIN>
+                  <Bloomberg>
+                    <Ticker>FRO</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2669530.400</Amount>
+                </TotalValue>
+                <TotalPercentage>0.349258</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>82648.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">32.300</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_10058</UniqueID>
+                <Identifiers>
+                  <ISIN>PLCVTNH00040</ISIN>
+                  <Bloomberg>
+                    <Ticker>CAV</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2494800.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.326397</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>198000.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">12.600</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4547</UniqueID>
+                <Identifiers>
+                  <ISIN>PLMFO0000013</ISIN>
+                  <Bloomberg>
+                    <Ticker>MFO</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2461300.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.322015</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>81500.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">30.200</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_6350</UniqueID>
+                <Identifiers>
+                  <ISIN>PLANSWR00019</ISIN>
+                  <Bloomberg>
+                    <Ticker>ANR</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1739710.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.227608</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>101500.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">17.140</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_845</UniqueID>
+                <Identifiers>
+                  <ISIN>PLCFRPT00013</ISIN>
+                  <Bloomberg>
+                    <Ticker>CPS</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1602761.340</Amount>
+                </TotalValue>
+                <TotalPercentage>0.209691</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>102873.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">15.580</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4777</UniqueID>
+                <Identifiers>
+                  <ISIN>PLWRTPL00027</ISIN>
+                  <Bloomberg>
+                    <Ticker>WPL</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1111390.500</Amount>
+                </TotalValue>
+                <TotalPercentage>0.145404</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>19195.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">57.900</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_2632</UniqueID>
+                <Identifiers>
+                  <ISIN>PLSTLPF00012</ISIN>
+                  <Bloomberg>
+                    <Ticker>STF</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">732060.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.095776</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>83000.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">8.820</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4600</UniqueID>
+                <Identifiers>
+                  <ISIN>PLLVTSF00010</ISIN>
+                  <Bloomberg>
+                    <Ticker>TXT</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">655700.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.085786</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>15800.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">41.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4881</UniqueID>
+                <Identifiers>
+                  <ISIN>PLWTCHN00030</ISIN>
+                  <Bloomberg>
+                    <Ticker>WTN</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">344140.720</Amount>
+                </TotalValue>
+                <TotalPercentage>0.045024</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>24794.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">13.880</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_4836</UniqueID>
+                <Identifiers>
+                  <ISIN>PLESTHN00018</ISIN>
+                  <Bloomberg>
+                    <Ticker>EAH</Ticker>
+                    <Exchange>PW</Exchange>
+                  </Bloomberg>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">316346.000</Amount>
+                </TotalValue>
+                <TotalPercentage>0.041388</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Equity>
+                  <Units>10372.000000</Units>
+                  <Price>
+                    <Amount ccy="PLN">30.500</Amount>
+                  </Price>
+                </Equity>
+              </Position>
+              <Position>
+                <UniqueID>INS_EUR_OCASH</UniqueID>
+                <Identifiers/>
+                <Currency>EUR</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">15021.570</Amount>
+                  <Amount ccy="EUR" isFundCcy="false" isShareClassCcy="false">3518.510</Amount>
+                </TotalValue>
+                <TotalPercentage>0.001965</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="EUR">4.26930</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="EUR" isFundCcy="false" isShareClassCcy="false">3518.510</Amount>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">15021.570</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+              <Position>
+                <UniqueID>INS_36268</UniqueID>
+                <Identifiers>
+                  <OtherID FreeType="AMSIArtificialISIN">AVSIDI425867</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-199412.940</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.026089</TotalPercentage>
+                <Exposures>
+                  <Exposure>
+                    <Type>INTERN</Type>
+                    <Value>
+                      <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-199412.940</Amount>
+                    </Value>
+                  </Exposure>
+                </Exposures>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="USD">1.00000</FXRate>
+                </FXRates>
+                <FXForward/>
+              </Position>
+              <Position>
+                <UniqueID>INS_PLN_OCASH</UniqueID>
+                <Identifiers/>
+                <Currency>PLN</Currency>
+                <TotalValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-2787291.400</Amount>
+                </TotalValue>
+                <TotalPercentage>-0.364664</TotalPercentage>
+                <FXRates>
+                  <FXRate fromCcy="PLN" mulDiv="D" toCcy="PLN">1.00000</FXRate>
+                </FXRates>
+                <Account>
+                  <MarketValue>
+                    <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">-2787291.400</Amount>
+                  </MarketValue>
+                </Account>
+              </Position>
+            </Positions>
+            <Transactions>
+              <Transaction>
+                <TransactionID>1388228</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>REP_277_PL0000118188_1388228</AssetUniqueID>
+                <Identifiers>
+                  <OtherID FreeType="MicCode">BTFE</OtherID>
+                  <OtherID FreeType="AMSIArtificialISIN">REP_277_PL0000118188_1388228</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-06-22</EntryDate>
+                <ValutaDate>2026-06-22</ValutaDate>
+                <ClosingDate>2026-06-22</ClosingDate>
+                <NominalOrUnitsOrContracts>33430000.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">1007.880</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">33693428.400</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">33693428.400</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">33693428.400</Amount>
+                </SettlementAmount>
+                <PostingText>Buy</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>259400LGXW3K0GDAG361</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">284</OtherID>
+                  </Identifiers>
+                  <Name>ERSTE BANK POLSKA S.A.</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>1387853</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>RRP_277_PL0000111928_1387853</AssetUniqueID>
+                <Identifiers>
+                  <OtherID FreeType="MicCode">BTFE</OtherID>
+                  <OtherID FreeType="AMSIArtificialISIN">RRP_277_PL0000111928_1387853</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>SELL</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-06-19</EntryDate>
+                <ValutaDate>2026-06-22</ValutaDate>
+                <ClosingDate>2026-06-19</ClosingDate>
+                <NominalOrUnitsOrContracts>25360000.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">985.990</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">25004701.330</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">25004701.330</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">25004701.330</Amount>
+                </SettlementAmount>
+                <PostingText>Sell</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>259400QHDOZWMJ103294</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">ALIOR</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">3787</OtherID>
+                  </Identifiers>
+                  <Name>ALIOR BANK S.A.</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>1388308</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>INS_1666</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>PLLPP0000011</ISIN>
+                  <OtherID FreeType="MicCode">LNEQ</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-06-22</EntryDate>
+                <ValutaDate>2026-06-24</ValutaDate>
+                <ClosingDate>2026-06-22</ClosingDate>
+                <NominalOrUnitsOrContracts>51.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">18530.000</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">945030.000</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">945030.000</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">946164.040</Amount>
+                </SettlementAmount>
+                <PostingText>Buy</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>213800R54EFFINMY1P02</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">LIQUID_FR</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">6454</OtherID>
+                  </Identifiers>
+                  <Name>TP ICAP (EUROPE) SA (LIQUIDNET PARIS)</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>1388309</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>INS_4340</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>PLALIOR00045</ISIN>
+                  <OtherID FreeType="MicCode">XWAR</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>SELL</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-06-22</EntryDate>
+                <ValutaDate>2026-06-24</ValutaDate>
+                <ClosingDate>2026-06-22</ClosingDate>
+                <NominalOrUnitsOrContracts>533.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">136.000</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">72488.000</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">72488.000</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">72393.770</Amount>
+                </SettlementAmount>
+                <PostingText>Sell</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>5493000LKS7B3UTF7H35</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">PEKAO</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">1521</OtherID>
+                  </Identifiers>
+                  <Name>BANK POLSKA KASA OPIEKI S.A.</Name>
+                </Counterparty>
+              </Transaction>
+              <Transaction>
+                <TransactionID>1388307</TransactionID>
+                <CancellationFlag>0</CancellationFlag>
+                <AssetUniqueID>INS_1666</AssetUniqueID>
+                <Identifiers>
+                  <ISIN>PLLPP0000011</ISIN>
+                  <OtherID FreeType="MicCode">XWAR</OtherID>
+                </Identifiers>
+                <Currency>PLN</Currency>
+                <TransactionKind>BUY</TransactionKind>
+                <SettlementCurrency>PLN</SettlementCurrency>
+                <EntryDate>2026-06-22</EntryDate>
+                <ValutaDate>2026-06-24</ValutaDate>
+                <ClosingDate>2026-06-22</ClosingDate>
+                <NominalOrUnitsOrContracts>121.000000</NominalOrUnitsOrContracts>
+                <CleanPrice>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">18457.280</Amount>
+                </CleanPrice>
+                <MarketValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2233330.620</Amount>
+                </MarketValue>
+                <DirtyValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2233330.620</Amount>
+                </DirtyValue>
+                <SettlementAmount>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">2237127.280</Amount>
+                </SettlementAmount>
+                <PostingText>Buy</PostingText>
+                <Counterparty>
+                  <Identifiers>
+                    <LEI>P4GTT6GF1W40CVIMFR43</LEI>
+                    <OtherID FreeType="AladdinBrokerCode">PKOBP</OtherID>
+                    <OtherID FreeType="AMSIBrokerID">1603</OtherID>
+                  </Identifiers>
+                  <Name>POWSZECHNA KASA OSZCZĘDNOŚCI BANK POLSKI S.A.</Name>
+                </Counterparty>
+              </Transaction>
+            </Transactions>
+          </Portfolio>
+        </Portfolios>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>PLARBZW00050</ISIN>
+              <OtherID FreeType="AMSIFundUnitInstrumentID">3697</OtherID>
+            </Identifiers>
+            <Names>
+              <OfficialName>Erste Prestiż Polish Equity B</OfficialName>
+              <FullName>Erste Prestiż Akcji Polskich B</FullName>
+              <ShortName>PRAPB</ShortName>
+            </Names>
+            <Currency>PLN</Currency>
+            <ShareClassType>
+              <Code>B</Code>
+              <EarningUse>D</EarningUse>
+              <Name>FundUnitCode B</Name>
+            </ShareClassType>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2026-06-22</NavDate>
+                <PriceCurrency>PLN</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>3600.10</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2026-06-22</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="PLN" isFundCcy="true" isShareClassCcy="true">764344421.580</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <AssetMasterData>
+    <Asset>
+      <UniqueID>INS_PLN</UniqueID>
+      <Identifiers/>
+      <Currency>PLN</Currency>
+      <Name>Cash PLN</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_PLN_OCASH</UniqueID>
+      <Identifiers/>
+      <Currency>PLN</Currency>
+      <Name>Adjustment Cash</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_EUR_OCASH</UniqueID>
+      <Identifiers/>
+      <Currency>EUR</Currency>
+      <Name>Adjustment Cash</Name>
+      <AssetType>AC</AssetType>
+      <AssetDetails>
+        <Account>
+          <Counterparty>
+            <Identifiers>
+              <LEI>XLEZHWWOI4HFQDGL4793</LEI>
+              <OtherID FreeType="AladdinBrokerCode">CITI_PL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">283</OtherID>
+            </Identifiers>
+            <Name>BANK HANDLOWY W WARSZAWIE S.A.</Name>
+          </Counterparty>
+        </Account>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_36268</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="AMSIArtificialISIN">AVSIDI425867</OtherID>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>1US071026SN21</Name>
+      <AssetType>FX</AssetType>
+      <AssetDetails>
+        <FXForward>
+          <CurrencyBuy>PLN</CurrencyBuy>
+          <AmountBuy>13774081.32</AmountBuy>
+          <CurrencySell>USD</CurrencySell>
+          <AmountSell>3748049.34</AmountSell>
+          <AgreedFxRate>1</AgreedFxRate>
+          <StartDate>2026-06-10</StartDate>
+          <MaturityDate>2026-07-10</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+        </FXForward>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>REP_277_PL0000118188_1388228</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="AMSIArtificialISIN">REP_277_PL0000118188_1388228</OtherID>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>DS1035</Name>
+      <AssetType>RP</AssetType>
+      <AssetDetails>
+        <Repo>
+          <RepoType>BSB</RepoType>
+          <IssueDate>2026-06-22</IssueDate>
+          <BaseValueQuotationCurrency>1</BaseValueQuotationCurrency>
+          <MaturityDate>2026-06-23</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400LGXW3K0GDAG361</LEI>
+              <OtherID FreeType="AladdinBrokerCode">SANTPL</OtherID>
+              <OtherID FreeType="AMSIBrokerID">284</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+          </Counterparty>
+          <UnderlyingType>Bond</UnderlyingType>
+          <InitialMargin/>
+          <MarginCallType>None</MarginCallType>
+          <PledgeType>None</PledgeType>
+        </Repo>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4878</UniqueID>
+      <Identifiers>
+        <ISIN>DE000ZAL1111</ISIN>
+        <Bloomberg>
+          <Ticker>ZAL</Ticker>
+          <Exchange>GR</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Name>ZALANDO SE</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4089</OtherID>
+              <OtherID FreeType="IssuerShortName">Zalando SE</OtherID>
+            </Identifiers>
+            <Name>ZALANDO SE</Name>
+            <BusinessCountry>DE</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_8649</UniqueID>
+      <Identifiers>
+        <ISIN>PLVRCM000016</ISIN>
+        <Bloomberg>
+          <Ticker>VRC</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>VERCOM S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">5106</OtherID>
+              <OtherID FreeType="IssuerShortName">VERCOM</OtherID>
+            </Identifiers>
+            <Name>VERCOM S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4922</UniqueID>
+      <Identifiers>
+        <ISIN>PLLKMDW00049</ISIN>
+        <Bloomberg>
+          <Ticker>LKD</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>LOKUM DEWELOPER</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4110</OtherID>
+              <OtherID FreeType="IssuerShortName">LOKUM DEWE</OtherID>
+            </Identifiers>
+            <Name>LOKUM DEWELOPER S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4777</UniqueID>
+      <Identifiers>
+        <ISIN>PLWRTPL00027</ISIN>
+        <Bloomberg>
+          <Ticker>WPL</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WIRTUALNA POLSKA HOLDING S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4042</OtherID>
+              <OtherID FreeType="IssuerShortName">WP SA</OtherID>
+            </Identifiers>
+            <Name>WIRTUALNA POLSKA HOLDING S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4881</UniqueID>
+      <Identifiers>
+        <ISIN>PLWTCHN00030</ISIN>
+        <Bloomberg>
+          <Ticker>WTN</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WITTCHEN S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4092</OtherID>
+              <OtherID FreeType="IssuerShortName">WITTCHEN</OtherID>
+            </Identifiers>
+            <Name>WITTCHEN S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3330</UniqueID>
+      <Identifiers>
+        <ISIN>PLASSEE00014</ISIN>
+        <Bloomberg>
+          <Ticker>ASE</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ASSECO SOUTH EASTERN EUROPE S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">2302</OtherID>
+              <OtherID FreeType="IssuerShortName">ASE</OtherID>
+            </Identifiers>
+            <Name>ASSECO SOUTH EASTERN EUROPE S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_29434</UniqueID>
+      <Identifiers>
+        <ISIN>PLDGNST00012</ISIN>
+        <Bloomberg>
+          <Ticker>DIA</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>DIAGNOSTYKA S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">6676</OtherID>
+              <OtherID FreeType="IssuerShortName">DIA</OtherID>
+            </Identifiers>
+            <Name>DIAGNOSTYKA S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5247</UniqueID>
+      <Identifiers>
+        <ISIN>PLDINPL00011</ISIN>
+        <Bloomberg>
+          <Ticker>DNP</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>DINO POLSKA S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4265</OtherID>
+              <OtherID FreeType="IssuerShortName">DINO</OtherID>
+            </Identifiers>
+            <Name>DINO POLSKA S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4869</UniqueID>
+      <Identifiers>
+        <ISIN>PLGRODN00015</ISIN>
+        <Bloomberg>
+          <Ticker>GRN</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>GRODNO S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4083</OtherID>
+              <OtherID FreeType="IssuerShortName">GRN</OtherID>
+            </Identifiers>
+            <Name>GRODNO S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_961</UniqueID>
+      <Identifiers>
+        <ISIN>PLECHPS00019</ISIN>
+        <Bloomberg>
+          <Ticker>ECH</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ECHO INVESTMENT S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">762</OtherID>
+              <OtherID FreeType="IssuerShortName">ECHPW</OtherID>
+            </Identifiers>
+            <Name>ECHO INVESTMENT S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_423</UniqueID>
+      <Identifiers>
+        <ISIN>PLBIG0000016</ISIN>
+        <Bloomberg>
+          <Ticker>MIL</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>BANK MILLENNIUM S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">2259</OtherID>
+              <OtherID FreeType="IssuerShortName">MILPW</OtherID>
+            </Identifiers>
+            <Name>BANK MILLENNIUM S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3635</UniqueID>
+      <Identifiers>
+        <ISIN>PLFERRO00016</ISIN>
+        <Bloomberg>
+          <Ticker>FRO</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>FERRO S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3405</OtherID>
+              <OtherID FreeType="IssuerShortName">FERRO</OtherID>
+            </Identifiers>
+            <Name>FERRO S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4600</UniqueID>
+      <Identifiers>
+        <ISIN>PLLVTSF00010</ISIN>
+        <Bloomberg>
+          <Ticker>TXT</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>TEXT S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3934</OtherID>
+              <OtherID FreeType="IssuerShortName">LIVECHAT</OtherID>
+            </Identifiers>
+            <Name>TEXT S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3338</UniqueID>
+      <Identifiers>
+        <ISIN>PLPGER000010</ISIN>
+        <Bloomberg>
+          <Ticker>PGE</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>PGE POLSKA GRUPA ENERGETYCZNA S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">2280</OtherID>
+              <OtherID FreeType="IssuerShortName">PGEPW</OtherID>
+            </Identifiers>
+            <Name>PGE POLSKA GRUPA ENERGETYCZNA S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3620</UniqueID>
+      <Identifiers>
+        <ISIN>PLPZU0000011</ISIN>
+        <Bloomberg>
+          <Ticker>PZU</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>POWSZECHNY ZAKŁAD UBEZPIECZEŃ S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1661</OtherID>
+              <OtherID FreeType="IssuerShortName">PZU</OtherID>
+            </Identifiers>
+            <Name>POWSZECHNY ZAKŁAD UBEZPIECZEŃ S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_1690</UniqueID>
+      <Identifiers>
+        <ISIN>HU0000073507</ISIN>
+        <Bloomberg>
+          <Ticker>MTELEKOM</Ticker>
+          <Exchange>HB</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>HUF</Currency>
+      <Name>MAGYAR TELEKOM NYRT.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1274</OtherID>
+              <OtherID FreeType="IssuerShortName">MATAV</OtherID>
+            </Identifiers>
+            <Name>MAGYAR TELEKOM NYRT.</Name>
+            <BusinessCountry>HU</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2203</UniqueID>
+      <Identifiers>
+        <ISIN>PLPKN0000018</ISIN>
+        <Bloomberg>
+          <Ticker>PKN</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ORLEN S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1588</OtherID>
+              <OtherID FreeType="IssuerShortName">PKNPW</OtherID>
+            </Identifiers>
+            <Name>ORLEN S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4547</UniqueID>
+      <Identifiers>
+        <ISIN>PLMFO0000013</ISIN>
+        <Bloomberg>
+          <Ticker>MFO</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>MFO S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3904</OtherID>
+              <OtherID FreeType="IssuerShortName">MFO SA</OtherID>
+            </Identifiers>
+            <Name>MFO S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_6350</UniqueID>
+      <Identifiers>
+        <ISIN>PLANSWR00019</ISIN>
+        <Bloomberg>
+          <Ticker>ANR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ANSWEAR.COM S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">5029</OtherID>
+              <OtherID FreeType="IssuerShortName">ANSWEAR</OtherID>
+            </Identifiers>
+            <Name>ANSWEAR.COM S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_1573</UniqueID>
+      <Identifiers>
+        <ISIN>PLKGHM000017</ISIN>
+        <Bloomberg>
+          <Ticker>KGH</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>KGHM POLSKA MIEDŹ S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1192</OtherID>
+              <OtherID FreeType="IssuerShortName">KGHPW</OtherID>
+            </Identifiers>
+            <Name>KGHM POLSKA MIEDŹ S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_35579</UniqueID>
+      <Identifiers>
+        <ISIN>FR0014004L86</ISIN>
+        <Bloomberg>
+          <Ticker>FR0014004L86</Ticker>
+          <Exchange>FP</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>EUR</Currency>
+      <Name>DASSAULT AVIATION SA</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">6894</OtherID>
+              <OtherID FreeType="IssuerShortName">DASA</OtherID>
+            </Identifiers>
+            <Name>DASSAULT AVIATION SA</Name>
+            <BusinessCountry>FR</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_845</UniqueID>
+      <Identifiers>
+        <ISIN>PLCFRPT00013</ISIN>
+        <Bloomberg>
+          <Ticker>CPS</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>CYFROWY POLSAT S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">702</OtherID>
+              <OtherID FreeType="IssuerShortName">CPSPW</OtherID>
+            </Identifiers>
+            <Name>CYFROWY POLSAT S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_1409</UniqueID>
+      <Identifiers>
+        <ISIN>PLINTCS00010</ISIN>
+        <Bloomberg>
+          <Ticker>CAR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>INTER CARS S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1084</OtherID>
+              <OtherID FreeType="IssuerShortName">CARPW</OtherID>
+            </Identifiers>
+            <Name>INTER CARS S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5201</UniqueID>
+      <Identifiers>
+        <ISIN>PLPLAYW00015</ISIN>
+        <Bloomberg>
+          <Ticker>PLW</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>PLAYWAY S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4238</OtherID>
+              <OtherID FreeType="IssuerShortName">PLAYWAY SA</OtherID>
+            </Identifiers>
+            <Name>PLAYWAY S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_481</UniqueID>
+      <Identifiers>
+        <ISIN>PLBRE0000012</ISIN>
+        <Bloomberg>
+          <Ticker>MBK</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>MBANK S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">548</OtherID>
+              <OtherID FreeType="IssuerShortName">MBKPW</OtherID>
+            </Identifiers>
+            <Name>MBANK S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2385</UniqueID>
+      <Identifiers>
+        <ISIN>PLRNBWT00031</ISIN>
+        <Bloomberg>
+          <Ticker>RBW</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>RAINBOW TOURS S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1673</OtherID>
+              <OtherID FreeType="IssuerShortName">RBW</OtherID>
+            </Identifiers>
+            <Name>RAINBOW TOURS S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_9014</UniqueID>
+      <Identifiers>
+        <ISIN>NL0015000AU7</ISIN>
+        <Bloomberg>
+          <Ticker>PCO</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>PEPCO GROUP N.V.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">5119</OtherID>
+              <OtherID FreeType="IssuerShortName">PEPCO</OtherID>
+            </Identifiers>
+            <Name>PEPCO GROUP NV</Name>
+            <BusinessCountry>GB</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2206</UniqueID>
+      <Identifiers>
+        <ISIN>PLPKO0000016</ISIN>
+        <Bloomberg>
+          <Ticker>PKO</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>POWSZECHNA KASA OSZCZĘDNOŚCI BANK POLSKI S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1603</OtherID>
+              <OtherID FreeType="IssuerShortName">PKOBP</OtherID>
+            </Identifiers>
+            <Name>POWSZECHNA KASA OSZCZĘDNOŚCI BANK POLSKI S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_10058</UniqueID>
+      <Identifiers>
+        <ISIN>PLCVTNH00040</ISIN>
+        <Bloomberg>
+          <Ticker>CAV</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>CAVATINA HOLDING S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">5135</OtherID>
+              <OtherID FreeType="IssuerShortName">CAVATINA</OtherID>
+            </Identifiers>
+            <Name>CAVATINA HOLDING S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2632</UniqueID>
+      <Identifiers>
+        <ISIN>PLSTLPF00012</ISIN>
+        <Bloomberg>
+          <Ticker>STF</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>STALPROFIL S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1827</OtherID>
+              <OtherID FreeType="IssuerShortName">STF</OtherID>
+            </Identifiers>
+            <Name>STALPROFIL S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2025</UniqueID>
+      <Identifiers>
+        <ISIN>PLOPTTC00011</ISIN>
+        <Bloomberg>
+          <Ticker>CDR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>CD PROJEKT S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1457</OtherID>
+              <OtherID FreeType="IssuerShortName">CDR</OtherID>
+            </Identifiers>
+            <Name>CD PROJEKT S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4825</UniqueID>
+      <Identifiers>
+        <ISIN>PLENTER00017</ISIN>
+        <Bloomberg>
+          <Ticker>ENT</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ENTER AIR S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4063</OtherID>
+              <OtherID FreeType="IssuerShortName">ENTER AIR </OtherID>
+            </Identifiers>
+            <Name>ENTER AIR S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_1803</UniqueID>
+      <Identifiers>
+        <ISIN>US5949181045</ISIN>
+        <Bloomberg>
+          <Ticker>MSFT</Ticker>
+          <Exchange>US</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>USD</Currency>
+      <Name>MICROSOFT CORPORATION</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1325</OtherID>
+              <OtherID FreeType="IssuerShortName">MSFT</OtherID>
+            </Identifiers>
+            <Name>MICROSOFT CORPORATION</Name>
+            <BusinessCountry>US</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3638</UniqueID>
+      <Identifiers>
+        <ISIN>PLTAURN00011</ISIN>
+        <Bloomberg>
+          <Ticker>TPE</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>TAURON POLSKA ENERGIA S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3404</OtherID>
+              <OtherID FreeType="IssuerShortName">TAURON</OtherID>
+            </Identifiers>
+            <Name>TAURON POLSKA ENERGIA S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4340</UniqueID>
+      <Identifiers>
+        <ISIN>PLALIOR00045</ISIN>
+        <Bloomberg>
+          <Ticker>ALR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ALIOR BANK S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3787</OtherID>
+              <OtherID FreeType="IssuerShortName">Alior Bank</OtherID>
+            </Identifiers>
+            <Name>ALIOR BANK S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_701</UniqueID>
+      <Identifiers>
+        <ISIN>PLCCC0000016</ISIN>
+        <Bloomberg>
+          <Ticker>MDV</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>MODIVO S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1395</OtherID>
+              <OtherID FreeType="IssuerShortName">CCCPW</OtherID>
+            </Identifiers>
+            <Name>MODIVO S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5017</UniqueID>
+      <Identifiers>
+        <ISIN>PLXTRDM00011</ISIN>
+        <Bloomberg>
+          <Ticker>XTB</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>X-TRADE BROKERS DOM MAKLERSKI S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4141</OtherID>
+              <OtherID FreeType="IssuerShortName">XTB</OtherID>
+            </Identifiers>
+            <Name>X-TRADE BROKERS DOM MAKLERSKI S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_661</UniqueID>
+      <Identifiers>
+        <ISIN>PLBZ00000044</ISIN>
+        <Bloomberg>
+          <Ticker>SPL</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ERSTE BANK POLSKA S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">284</OtherID>
+              <OtherID FreeType="IssuerShortName">BZWPW</OtherID>
+            </Identifiers>
+            <Name>ERSTE BANK POLSKA S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_9859</UniqueID>
+      <Identifiers>
+        <ISIN>PLSHPR000021</ISIN>
+        <Bloomberg>
+          <Ticker>SHO</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>SHOPER S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">5132</OtherID>
+              <OtherID FreeType="IssuerShortName">SHOPER</OtherID>
+            </Identifiers>
+            <Name>SHOPER S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_316</UniqueID>
+      <Identifiers>
+        <ISIN>PLSOFTB00016</ISIN>
+        <Bloomberg>
+          <Ticker>ACP</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ASSECO POLAND S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1803</OtherID>
+              <OtherID FreeType="IssuerShortName">ACP</OtherID>
+            </Identifiers>
+            <Name>ASSECO POLAND S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_312</UniqueID>
+      <Identifiers>
+        <ISIN>CY1000031710</ISIN>
+        <Bloomberg>
+          <Ticker>ASB</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ASBISC ENTERPRISES PLC</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">410</OtherID>
+              <OtherID FreeType="IssuerShortName">ASB</OtherID>
+            </Identifiers>
+            <Name>ASBISC ENTERPRISES PLC</Name>
+            <BusinessCountry>CY</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_1666</UniqueID>
+      <Identifiers>
+        <ISIN>PLLPP0000011</ISIN>
+        <Bloomberg>
+          <Ticker>LPP</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>LPP S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1253</OtherID>
+              <OtherID FreeType="IssuerShortName">LPPPW</OtherID>
+            </Identifiers>
+            <Name>LPP S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2141</UniqueID>
+      <Identifiers>
+        <ISIN>PLPEKAO00016</ISIN>
+        <Bloomberg>
+          <Ticker>PEO</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>BANK POLSKA KASA OPIEKI S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1521</OtherID>
+              <OtherID FreeType="IssuerShortName">PEOPW</OtherID>
+            </Identifiers>
+            <Name>BANK POLSKA KASA OPIEKI S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3863</UniqueID>
+      <Identifiers>
+        <ISIN>PLBGZ0000010</ISIN>
+        <Bloomberg>
+          <Ticker>BNPPPL</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>BNP PARIBAS BANK POLSKA S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">460</OtherID>
+              <OtherID FreeType="IssuerShortName">BNP</OtherID>
+            </Identifiers>
+            <Name>BNP PARIBAS BANK POLSKA S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_12530</UniqueID>
+      <Identifiers>
+        <ISIN>PLMURPL00190</ISIN>
+        <Bloomberg>
+          <Ticker>MUR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>MURAPOL S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">5153</OtherID>
+              <OtherID FreeType="IssuerShortName">MURPL</OtherID>
+            </Identifiers>
+            <Name>MURAPOL S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_902</UniqueID>
+      <Identifiers>
+        <ISIN>PLDMDVL00012</ISIN>
+        <Bloomberg>
+          <Ticker>DOM</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>DOM DEVELOPMENT S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">734</OtherID>
+              <OtherID FreeType="IssuerShortName">DOMPW</OtherID>
+            </Identifiers>
+            <Name>DOM DEVELOPMENT S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5019</UniqueID>
+      <Identifiers>
+        <ISIN>PLATPRT00018</ISIN>
+        <Bloomberg>
+          <Ticker>APR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>AUTO PARTNER S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4145</OtherID>
+              <OtherID FreeType="IssuerShortName">AUTO PARTN</OtherID>
+            </Identifiers>
+            <Name>AUTO PARTNER S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5433</UniqueID>
+      <Identifiers>
+        <ISIN>PLR220000018</ISIN>
+        <Bloomberg>
+          <Ticker>CBF</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>CYBER_FOLKS S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4434</OtherID>
+              <OtherID FreeType="IssuerShortName">R22</OtherID>
+            </Identifiers>
+            <Name>CYBER_FOLKS S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_183</UniqueID>
+      <Identifiers>
+        <ISIN>PLAB00000019</ISIN>
+        <Bloomberg>
+          <Ticker>ABE</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>AB S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">292</OtherID>
+              <OtherID FreeType="IssuerShortName">ABEPW</OtherID>
+            </Identifiers>
+            <Name>AB S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3785</UniqueID>
+      <Identifiers>
+        <ISIN>PLBNFTS00018</ISIN>
+        <Bloomberg>
+          <Ticker>BFT</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>BENEFIT SYSTEMS S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3488</OtherID>
+              <OtherID FreeType="IssuerShortName">Benefit Sy</OtherID>
+            </Identifiers>
+            <Name>BENEFIT SYSTEMS S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_33248</UniqueID>
+      <Identifiers>
+        <ISIN>CA14071L1085</ISIN>
+        <Bloomberg>
+          <Ticker>CS</Ticker>
+          <Exchange>CN</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>CAD</Currency>
+      <Name>CAPSTONE COPPER CORP.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">6789</OtherID>
+              <OtherID FreeType="IssuerShortName">CAPCOP</OtherID>
+            </Identifiers>
+            <Name>CAPSTONE COPPER CORP.</Name>
+            <BusinessCountry>CA</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_28497</UniqueID>
+      <Identifiers>
+        <ISIN>LU2910446546</ISIN>
+        <Bloomberg>
+          <Ticker>ZAB</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ZABKA GROUP SA</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">6651</OtherID>
+              <OtherID FreeType="IssuerShortName">ZABKA</OtherID>
+            </Identifiers>
+            <Name>ZABKA GROUP SA</Name>
+            <BusinessCountry>LU</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_3684</UniqueID>
+      <Identifiers>
+        <ISIN>PLMOBRK00013</ISIN>
+        <Bloomberg>
+          <Ticker>MBR</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>MO-BRUK S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">3436</OtherID>
+              <OtherID FreeType="IssuerShortName">MOBRUK SA</OtherID>
+            </Identifiers>
+            <Name>MO-BRUK S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_4836</UniqueID>
+      <Identifiers>
+        <ISIN>PLESTHN00018</ISIN>
+        <Bloomberg>
+          <Ticker>EAH</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ESOTIQ &amp; HENDERSON S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4067</OtherID>
+              <OtherID FreeType="IssuerShortName">ESOTIQ  HE</OtherID>
+            </Identifiers>
+            <Name>ESOTIQ &amp; HENDERSON S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_6278</UniqueID>
+      <Identifiers>
+        <ISIN>LU2237380790</ISIN>
+        <Bloomberg>
+          <Ticker>ALE</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>ALLEGRO.EU</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">4984</OtherID>
+              <OtherID FreeType="IssuerShortName">ALLEGRO</OtherID>
+            </Identifiers>
+            <Name>ALLEGRO.EU</Name>
+            <BusinessCountry>LU</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_2022</UniqueID>
+      <Identifiers>
+        <ISIN>PLOPNPL00013</ISIN>
+        <Bloomberg>
+          <Ticker>OPN</Ticker>
+          <Exchange>PW</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>OPONEO.PL S.A.</Name>
+      <AssetType>EQ</AssetType>
+      <AssetDetails>
+        <Equity>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">1456</OtherID>
+              <OtherID FreeType="IssuerShortName">OPN</OtherID>
+            </Identifiers>
+            <Name>OPONEO.PL S.A.</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+        </Equity>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_14636</UniqueID>
+      <Identifiers>
+        <ISIN>PL0000114559</ISIN>
+        <Bloomberg>
+          <Ticker>PL0000114559</Ticker>
+          <Exchange>MTSP</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WZ1127</Name>
+      <AssetType>BO</AssetType>
+      <AssetDetails>
+        <Bond>
+          <ConvertibleFlag>false</ConvertibleFlag>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">164</OtherID>
+              <OtherID FreeType="IssuerShortName">POLAND</OtherID>
+            </Identifiers>
+            <Name>POLSKA</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+          <IssueDate>2020-10-12</IssueDate>
+          <MaturityDate>2027-11-25</MaturityDate>
+        </Bond>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>INS_5897</UniqueID>
+      <Identifiers>
+        <ISIN>PL0000111928</ISIN>
+        <Bloomberg>
+          <Ticker>PL0000111928</Ticker>
+          <Exchange>MTSP</Exchange>
+        </Bloomberg>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WZ1129</Name>
+      <AssetType>BO</AssetType>
+      <AssetDetails>
+        <Bond>
+          <ConvertibleFlag>false</ConvertibleFlag>
+          <Issuer>
+            <Identifiers>
+              <OtherID FreeType="AMSIIssuerID">164</OtherID>
+              <OtherID FreeType="IssuerShortName">POLAND</OtherID>
+            </Identifiers>
+            <Name>POLSKA</Name>
+            <BusinessCountry>PL</BusinessCountry>
+          </Issuer>
+          <IssueDate>2019-07-15</IssueDate>
+          <MaturityDate>2029-11-25</MaturityDate>
+        </Bond>
+      </AssetDetails>
+    </Asset>
+    <Asset>
+      <UniqueID>RRP_277_PL0000111928_1387853</UniqueID>
+      <Identifiers>
+        <OtherID FreeType="AMSIArtificialISIN">RRP_277_PL0000111928_1387853</OtherID>
+      </Identifiers>
+      <Currency>PLN</Currency>
+      <Name>WZ1129</Name>
+      <AssetType>RP</AssetType>
+      <AssetDetails>
+        <Repo>
+          <RepoType>SBB</RepoType>
+          <IssueDate>2026-06-19</IssueDate>
+          <BaseValueQuotationCurrency>1</BaseValueQuotationCurrency>
+          <MaturityDate>2026-06-22</MaturityDate>
+          <Counterparty>
+            <Identifiers>
+              <LEI>259400QHDOZWMJ103294</LEI>
+              <OtherID FreeType="AladdinBrokerCode">ALIOR</OtherID>
+              <OtherID FreeType="AMSIBrokerID">3787</OtherID>
+            </Identifiers>
+            <Name>ALIOR BANK S.A.</Name>
+          </Counterparty>
+          <UnderlyingType>Bond</UnderlyingType>
+          <InitialMargin/>
+          <MarginCallType>None</MarginCallType>
+          <PledgeType>None</PledgeType>
+        </Repo>
+      </AssetDetails>
+    </Asset>
+  </AssetMasterData>
+</FundsXML4>

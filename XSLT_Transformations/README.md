@@ -9,7 +9,8 @@ Central by the committed Maven Wrapper — no prior fetch step, no `.lib/`.
 |--------|-----------|-------|
 | HTML factsheet | [`Factsheet/factsheet_html.xslt`](Factsheet/factsheet_html.xslt) | header, KPIs, share classes, top-10 holdings |
 | PDF factsheet | [`Factsheet/factsheet_fo.xslt`](Factsheet/factsheet_fo.xslt) | emits XSL-FO → render with Apache FOP: `fop -fo out.fo -pdf out.pdf` |
-| Positions CSV | [`CSV_Export/positions_csv.xslt`](CSV_Export/positions_csv.xslt) | RFC-4180 quoting; `delimiter` param |
+| Positions CSV | [`CSV_Export/positions_csv.xslt`](CSV_Export/positions_csv.xslt) | 19 columns, one row per position; RFC-4180 quoting; `delimiter` param |
+| TPT V7.0 CSV | [`CSV_Export/tpt_v7_export.xslt`](CSV_Export/tpt_v7_export.xslt) | FinDatEx Tripartite Template, all 152 columns, one row per position × share class; see [`CSV_Export/README.md`](CSV_Export/README.md) |
 
 Company-internal DQ rules live next door in
 [`../XSLT_DataQuality_Checks/Custom_Internal_Checks/`](../XSLT_DataQuality_Checks/Custom_Internal_Checks/).
