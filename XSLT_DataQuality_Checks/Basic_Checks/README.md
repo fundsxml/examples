@@ -64,9 +64,13 @@ Compares calculated price to reported price:
 
 | Result | Difference | Status |
 |--------|------------|--------|
-| OK | < 0.1 | ✓ OK |
-| ROUNDING | 0.1 - 1.0 | ⚠ ROUNDING |
-| ERROR | ≥ 1.0 | ✗ ERROR |
+| OK | < 0.01 | ✓ OK |
+| ROUNDING | 0.01 - 0.1 | ⚠ ROUNDING |
+| ERROR | ≥ 0.1 | ✗ ERROR |
+
+These bands are identical to the Schematron `Price Calculation` / `Price
+Rounding` rules in `Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch`;
+change both together.
 
 ### 4. Portfolio Position Reconciliation
 

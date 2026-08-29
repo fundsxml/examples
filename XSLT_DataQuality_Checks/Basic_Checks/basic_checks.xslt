@@ -242,10 +242,13 @@
                         <td class="number"><xsl:value-of select="format-number($diff, '#,##0.00')"/></td>
                         <td>
                             <xsl:choose>
-                                <xsl:when test="abs($diff) &lt; 0.1">
+                                <!-- Same bands as basic_checks.sch (price-calculation
+                                     rule): ERROR from 0.1, rounding warning 0.01-0.1.
+                                     Keep the two in sync (both READMEs document them). -->
+                                <xsl:when test="abs($diff) &lt; 0.01">
                                     <span class="check-passed">✓ OK</span>
                                 </xsl:when>
-                                <xsl:when test="abs($diff) &lt; 1">
+                                <xsl:when test="abs($diff) &lt; 0.1">
                                     <span class="warning">⚠ ROUNDING</span>
                                 </xsl:when>
                                 <xsl:otherwise>
