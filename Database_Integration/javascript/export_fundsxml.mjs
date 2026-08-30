@@ -34,7 +34,18 @@ const POSITION_KINDS = new Set(["Equity", "Bond", "ShareClass", "Warrant",
 const QTY_ELEM = { Equity: "Units", Warrant: "Units", Certificate: "Units",
   Bond: "Nominal", ShareClass: "Shares", Option: "Contracts",
   Future: "Contracts" };
-const f2 = (v) => Number(v).toFixed(2);
+// Number formatting follows the DDL scale (schema.sql): amounts DECIMAL(20,2),
+// TotalPercentage DECIMAL(9,4), quantities / NavPrice / SharesOutstanding
+// DECIMAL(28,6). Render at that scale, then drop trailing zeros down to a floor
+// of `minDec` decimals: 8.33 -> "8.33", 8.3333 -> "8.3333", 550000 shares ->
+// "550000". A fixed toFixed(2) would silently truncate what the model stores
+// (xml_equiv.py compares numerically and would flag the loss).
+const num = (v, scale, minDec = 2) => {
+  const [whole, frac = ""] = Number(v).toFixed(scale).split(".");
+  const f = frac.replace(/0+$/, "").padEnd(minDec, "0");
+  return f ? `${whole}.${f}` : whole;
+};
+const f2 = (v) => num(v, 2);           // amounts (scale 2)
 
 function el(doc, parent, tag, text) {   // the one XML-build primitive
   const e = doc.createElement(tag);
@@ -119,11 +130,11 @@ for (const f of rows(db,
       const tv = el(doc, el(doc, pos, "TotalValue"), "Amount",
         f2(p.value_fund_ccy));
       tv.setAttribute("ccy", ccy);
-      el(doc, pos, "TotalPercentage", f2(p.percentage));
+      el(doc, pos, "TotalPercentage", num(p.percentage, 4));
       const kind = POSITION_KINDS.has(p.kind) ? p.kind : "Generic";
       const ke = el(doc, pos, kind);
       if (QTY_ELEM[kind] && p.kind_qty != null)
-        el(doc, ke, QTY_ELEM[kind], f2(p.kind_qty));
+        el(doc, ke, QTY_ELEM[kind], num(p.kind_qty, 6));
     }
   }
 
@@ -143,7 +154,7 @@ for (const f of rows(db,
         el(doc, pr, "NavDate", f.nav_date);
         el(doc, pr, "PriceCurrency", sc.currency);
         el(doc, pr, "PriceNature", "OFFICIAL");
-        el(doc, pr, "NavPrice", f2(sc.nav_price));
+        el(doc, pr, "NavPrice", num(sc.nav_price, 6));
       }
       if (sc.nav_fund_ccy != null) {
         const t2 = el(doc, el(doc, x, "TotalAssetValues"),
@@ -155,7 +166,7 @@ for (const f of rows(db,
         a2.setAttribute("ccy", ccy);
         if (sc.shares_outstanding != null)
           el(doc, t2, "SharesOutstanding",
-            Number(sc.shares_outstanding).toFixed(0));
+            num(sc.shares_outstanding, 6, 0));
       }
     }
   }
