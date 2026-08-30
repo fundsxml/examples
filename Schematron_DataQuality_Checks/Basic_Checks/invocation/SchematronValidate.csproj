@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!-- Reference variant. SaxonHE comes from NuGet (restored by dotnet build);
-       the SchXslt jar is located via $FUNDSXML_SCHXSLT_JAR or the Maven local
-       repo (no NuGet SchXslt). Run from the repo root with "dotnet run", the
-       project switch pointing at this directory, then
-       Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch <xml-file>
-       [fail-on error|any]; see the SchematronValidate.cs header for the exact
-       command line (XML comments cannot contain a double dash). -->
+  <!-- .NET Schematron example: no NuGet dependencies. There is no Saxon-HE
+       library package for .NET 8 (Saxonica ships dotnet tools only), so the
+       program runs the self-contained SchXslt CLI jar as a child process and
+       does the SVRL classification itself. The jar is located via
+       $FUNDSXML_SCHXSLT_JAR or the Maven local repo (populated by
+       ./mvnw compile of the Java module); a JDK must be on PATH or $JAVA_HOME.
+       Run from the repo root with "dotnet run", the project switch pointing
+       at this directory, then basic_checks.sch <xml-file> [fail-on error|any];
+       see the SchematronValidate.cs header for the exact command line. -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
@@ -13,15 +15,4 @@
     <AssemblyName>SchematronValidate</AssemblyName>
     <RootNamespace>FundsXml.Schematron</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- REFERENCE VARIANT — not verified, not in CI. Saxonica's Saxon-HE 12
-         for .NET (the `Saxon.Api` s9api this file uses) is published as a set
-         of `SaxonHE12Net*` packages whose exact id/version/target-framework
-         pairing is environment-specific (and unrelated to FundsXML). Pick the
-         one matching your TFM, e.g.:
-           dotnet add package SaxonHE12NetXslt
-         The Java Schematron example is the verified, fully standalone path
-         (Maven Wrapper); this .NET file mirrors its logic for reference. -->
-    <PackageReference Include="SaxonHE12NetXslt" Version="12.9.10" />
-  </ItemGroup>
 </Project>

@@ -1,27 +1,32 @@
-// Schematron validation in .NET / C# via Saxon for .NET (Saxonica SaxonHE).
+// Schematron validation in .NET / C# — drives the SchXslt CLI, classifies SVRL.
 //
-//   # add the Saxon-HE-for-.NET package matching your TFM (see .csproj note)
 //   dotnet run --project Schematron_DataQuality_Checks/Basic_Checks/invocation \
-//       -- Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch document.xml
+//       -- Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch document.xml [--fail-on error|any]
 // Exit: 0 = no error-role failed-assert, 1 = at least one, 2 = setup error.
 //
-// basic_checks.sch uses queryBinding="xslt2"; the SaxonHE NuGet package
-// supplies the XSLT 3.0 engine (resolved by `dotnet build`, standalone). The
-// SchXslt pipeline stylesheets have no NuGet/.NET distribution, so they are
-// reused from the SchXslt CLI jar, located via $FUNDSXML_SCHXSLT_JAR or the
-// Maven local repo (see below); the whole xslt/ tree is extracted so the
-// pipeline's relative imports resolve, then compile .sch -> SVRL stylesheet
-// -> apply to instance -> SVRL, then classify (same logic as svrl-summary.py).
+// WHY NOT A .NET XSLT ENGINE
+// basic_checks.sch uses queryBinding="xslt2". The .NET BCL only has XSLT 1.0
+// (System.Xml.Xsl), and there is no Saxon-HE library on NuGet for .NET 8:
+// Saxonica publishes its .NET packages (SaxonHE12Net*) as dotnet *tools*,
+// SaxonCS is not on NuGet, and the third-party IKVM cross-compiles are
+// experimental. So this example does what a .NET service in a mixed shop
+// typically does: it runs the SchXslt CLI (a self-contained jar that bundles
+// its own Saxon) as a child process and owns the result — the SVRL parsing,
+// the error/warning classification and the exit-code contract are the same
+// as in svrl-summary.py and the Java example. Prerequisite: a JDK on PATH
+// (or $JAVA_HOME) — the same one the Maven Wrapper uses.
 //
-// NOTE: reference variant. The Java Schematron example is the verified, fully
-// standalone path (Maven Wrapper). The flow here mirrors it exactly.
+// The SchXslt CLI jar has no NuGet distribution; it is located standalone via
+// $FUNDSXML_SCHXSLT_JAR or the Maven local repo (populated by the Java module).
+//
+// Verified with .NET SDK 8 + JDK 21/26 (also in CI): canonical sample -> 0
+// errors / 12 warnings, negative fixture -> 1 error / exit 1.
 
 using System;
+using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Xml;
-using Saxon.Api;
 
 internal static class SchematronValidate
 {
@@ -66,34 +71,50 @@ internal static class SchematronValidate
         }
 
         string tmp = Directory.CreateTempSubdirectory().FullName;
-        using (var zip = ZipFile.OpenRead(cliJar))
-            foreach (var e in zip.Entries.Where(e => e.FullName.StartsWith("xslt/")
-                                                     && !e.FullName.EndsWith("/")))
-            {
-                string dest = Path.Combine(tmp, e.FullName);
-                Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
-                e.ExtractToFile(dest, true);
-            }
-
-        var processor = new Processor(false);
-        var comp = processor.NewXsltCompiler();
-
-        string compiled = Path.Combine(tmp, "compiled.xsl");
         string svrl = Path.Combine(tmp, "report.svrl");
 
-        // 1) Schematron -> SVRL stylesheet
-        Transform(comp, Path.Combine(tmp, "xslt/2.0/pipeline-for-svrl.xsl"),
-                  sch, compiled, processor);
-        // 2) instance -> SVRL
-        Transform(comp, compiled, xml, svrl, processor);
+        // java from $JAVA_HOME if set (what the Maven Wrapper honours), else PATH.
+        string? javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+        string java = string.IsNullOrEmpty(javaHome) ? "java"
+            : Path.Combine(javaHome, "bin", "java");
+
+        // SchXslt CLI: -s schema, -d document, -o SVRL output. Its own exit code
+        // is left at the default (0) on purpose — the classification below
+        // decides, exactly like the Java example and svrl-summary.py.
+        var psi = new ProcessStartInfo(java)
+        {
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+        };
+        foreach (var a in new[] { "-jar", cliJar, "-s", sch, "-d", xml, "-o", svrl })
+            psi.ArgumentList.Add(a);
+        using (var proc = Process.Start(psi)!)
+        {
+            // Drain both pipes concurrently so a chatty child cannot block.
+            var stdoutTask = proc.StandardOutput.ReadToEndAsync();
+            string stderr = proc.StandardError.ReadToEnd();
+            stdoutTask.Wait();
+            proc.WaitForExit();
+            if (proc.ExitCode != 0 || !File.Exists(svrl))
+            {
+                Console.Error.WriteLine("SchXslt CLI failed (exit "
+                    + proc.ExitCode + "):\n" + stderr.Trim());
+                return 2;
+            }
+        }
 
         var doc = new XmlDocument();
         doc.Load(svrl);
         var ns = new XmlNamespaceManager(doc.NameTable);
         ns.AddNamespace("svrl", Svrl);
 
+        // Severity is the @role attribute, not the element name: this ruleset
+        // raises warnings as <assert role="warning"> (=> failed-assert) and the
+        // rounding checks as <report role="warning"> (=> successful-report).
         int errors = 0, warnings = 0;
-        foreach (XmlElement fa in doc.SelectNodes("//svrl:failed-assert", ns)!)
+        foreach (XmlElement fa in doc.SelectNodes(
+                     "//svrl:failed-assert | //svrl:successful-report", ns)!)
         {
             string role = fa.GetAttribute("role").ToLowerInvariant();
             string text = (fa.SelectSingleNode("svrl:text", ns)?.InnerText ?? "")
@@ -105,15 +126,5 @@ internal static class SchematronValidate
 
         if (failOn == "any" && (errors > 0 || warnings > 0)) return 1;
         return errors > 0 ? 1 : 0;
-    }
-
-    private static void Transform(XsltCompiler comp, string xsl, string src,
-                                  string outFile, Processor p)
-    {
-        var exe = comp.Compile(new Uri(Path.GetFullPath(xsl)));
-        var t = exe.Load30();
-        using var os = File.Create(outFile);
-        t.Transform(new Uri(Path.GetFullPath(src)),
-                    p.NewSerializer(os));
     }
 }
