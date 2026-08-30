@@ -35,7 +35,7 @@ Windows too) to write a throwaway self-signed RSA-2048 keystore
 | Stack | Entry point | Status |
 |-------|-------------|--------|
 | Java — Apache Santuario | [`java/SignFundsXml.java`](java/SignFundsXml.java) / [`java/VerifyFundsXml.java`](java/VerifyFundsXml.java) | ✅ verified (sign, verify, tamper-detect) |
-| CLI — `xmlsec1` | [`cli/sign-verify-xmlsec1.sh`](cli/sign-verify-xmlsec1.sh) | reference (needs `xmlsec1`) |
+| CLI — `xmlsec1` | [`cli/sign-verify-xmlsec1.sh`](cli/sign-verify-xmlsec1.sh) | ✅ verified (xmlsec1 1.2.33, in CI): sign, verify, tamper; cross-verifies with Java and .NET both ways |
 | Python — `signxml` | [`python/sign_verify_signxml.py`](python/sign_verify_signxml.py) | reference (`pip install -e ".[signature]"` adds `signxml`) |
 | .NET — `SignedXml` | [`dotnet/SignVerify.cs`](dotnet/SignVerify.cs) | verified (.NET SDK 8): sign, verify, tamper; cross-verifies with Java both ways |
 
@@ -65,13 +65,14 @@ flipping one digit in a signed file → `INVALID`). Santuario verification runs
 with **secure validation** enabled.
 
 > **Note on `xmlsec1`:** it signs an *existing* `ds:Signature` template, so it
-> pairs naturally with the committed signed skeleton; the Java/.NET/Python
-> examples instead build and append the `ds:Signature` themselves. Because
-> the skeleton's template uses **inclusive** C14N (`REC-xml-c14n-20010315`),
-> only the enveloped transform and a `ds:KeyName` in `KeyInfo`, the xmlsec1
-> output does **not** follow the exclusive-C14N / embedded-X509 profile above:
-> Java and .NET can still verify it against the pinned certificate, but not
-> from the embedded `KeyInfo` (which carries no key).
+> pairs naturally with the committed signed skeleton
+> (`FundsXML_Files/4.2.9/signed/Signed_Fund_Skeleton.xml`); the
+> Java/.NET/Python examples instead build and append the `ds:Signature`
+> themselves. The skeleton's template carries exactly the profile above
+> (exclusive C14N, enveloped + exc-C14N transforms, RSA-SHA256, empty
+> `X509Certificate` placeholder that xmlsec1 fills), so the signed result
+> verifies in Java and .NET both pinned and from the embedded certificate,
+> and xmlsec1 verifies the Java/.NET output.
 
 A real signed file is **not committed** — the signature is bound to the
 throwaway key, which is regenerated per run. CI signs → verifies as a roundtrip.
