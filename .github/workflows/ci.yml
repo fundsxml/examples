@@ -173,6 +173,17 @@ jobs:
           fi
           echo "schematron-invalid correctly failed"
 
+      - name: Schematron - .NET variant (drives the SchXslt CLI jar from the Maven local repo)
+        run: |
+          set -e
+          SCH=Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch
+          D="dotnet run --project Schematron_DataQuality_Checks/Basic_Checks/invocation --"
+          $D $SCH FundsXML_Files/4.2.9/positions/Mixed-Fund_Positions.xml
+          if $D $SCH tests/fixtures/invalid/schematron-invalid_Positions.xml; then
+            echo "::error::schematron-invalid fixture unexpectedly passed (.NET)"; exit 1
+          fi
+          echo ".NET SchematronValidate: sample ok, fixture correctly failed"
+
       - name: Smoke - XSLT transforms produce non-empty output
         run: |
           set -e
