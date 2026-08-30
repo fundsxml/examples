@@ -20,11 +20,15 @@ local `FundsXML.xsd` in any complete copy of the release).
 > ⚠️ **Placeholder:** `DigestValue` and `SignatureValue` are schema-valid base64
 > strings but **not cryptographically verifiable**. Real signing and
 > verification (Apache Santuario / .NET `SignedXml` / `xmlsec1` / Python
-> `signxml`) lives in [`XML_Signature/`](../../../XML_Signature/README.md);
-> note that this template uses inclusive C14N and a `ds:KeyName`, whereas the
-> Java/.NET examples sign with exclusive C14N and embed the X.509 certificate.
+> `signxml`) lives in [`XML_Signature/`](../../../XML_Signature/README.md).
+> The `ds:Signature` here doubles as the **signing template** for the
+> `xmlsec1` CLI example: it already carries the shared profile, so once
+> signed in place it cross-verifies with the Java and .NET verifiers.
 
-Algorithms used (enveloped signature): C14N 2001-03-15, RSA-SHA256, SHA-256.
+Algorithms (enveloped signature, same profile as every `XML_Signature/`
+stack): exclusive C14N (`xml-exc-c14n#`) for both canonicalization and the
+second transform, RSA-SHA256, SHA-256 digest, signer certificate embedded as
+`ds:X509Certificate` (empty placeholder until signed).
 
 ## Validation
 
