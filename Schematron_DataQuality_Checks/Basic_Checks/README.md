@@ -49,51 +49,68 @@ Recommended processors:
 
 ## Validation Rules Summary
 
-### Pattern 1: Structural Checks
+One section per `<pattern>` in `basic_checks.sch`, in file order. Several
+patterns hold a single rule on purpose: ISO Schematron fires only the first
+`rule` whose `context` matches a node *within a pattern*, so rules that share
+a context (`Fund`, `Position`, `Asset[...]`) must live in separate patterns to
+all execute (see *Known ruleset fix* above).
 
-Validates the basic structure and required elements of FundsXML documents.
+### 1. `structural-checks` — Structural Checks
 
 | Rule | Context | Severity | Description |
 |------|---------|----------|-------------|
 | Fund LEI | `Fund` | WARNING | Fund should have a LEI identifier |
 | Portfolio Exists | `Fund` | WARNING | Fund must have at least one portfolio |
 | NAV in Fund Currency | `Fund` | ERROR | Total Asset Value must be provided in fund currency |
-| ShareClass ISIN | `ShareClass` | WARNING | ShareClasses should have an ISIN |
+| ShareClass ISIN | `ShareClass` | WARNING | ShareClasses should have an ISIN (also matches `AssetDetails/ShareClass` — source of 4 advisory warnings on the sample) |
 
-### Pattern 2: NAV Calculations
-
-Validates NAV consistency between fund and share class levels.
+### 2. `nav-calculations` — NAV Calculations
 
 | Rule | Context | Severity | Description | Tolerance |
 |------|---------|----------|-------------|-----------|
-| ShareClass NAV Sum | `Fund` | ERROR | Sum of ShareClass NAVs must equal Fund Total NAV | < 1 currency unit |
-| Rounding Warning | `Fund` | WARNING | Alert for small rounding differences | 0.01 - 1 |
+| ShareClass NAV Sum | `Fund[…/ShareClass]` | ERROR | Sum of ShareClass NAVs must equal Fund Total NAV | < 1 currency unit |
+| Rounding Warning | `Fund[…/ShareClass]` | WARNING (`report`) | Alert for small rounding differences | 0.01 – 1 |
 | Price Calculation | `ShareClass` | ERROR | Price × Shares must equal NAV | < 0.1 |
-| Price Rounding | `ShareClass` | WARNING | Alert for small price differences | 0.01 - 0.1 |
+| Price Rounding | `ShareClass` | WARNING (`report`) | Alert for small price differences | 0.01 – 0.1 |
 
-### Pattern 3: Portfolio Validations
-
-Checks portfolio positions and allocation consistency.
+### 3. `portfolio-validations` — Position Value Sum
 
 | Rule | Context | Severity | Description | Tolerance |
 |------|---------|----------|-------------|-----------|
-| Position Sum | `Fund` | ERROR | Sum of position values must equal Fund Total NAV | < 1 currency unit |
-| Percentage Sum | `Fund` | ERROR | Position percentages must sum to 100% | ≤ 1% |
-| Percentage Warning | `Fund` | WARNING | Alert for small percentage deviations | 0.01% - 1% |
-| Position Currency | `Position` | ERROR | Each position must have value in fund currency | - |
-| Value Direction | `Position` | ERROR | Position values must be consistent (+/-) across currencies | - |
+| Position Sum | `Fund[…/Portfolio]` | ERROR | Sum of position values must equal Fund Total NAV | < 1 currency unit |
 
-### Pattern 4: Asset-Specific Validations
+### 4. `percentage-validations` — Percentage Sum
 
-Asset type-specific requirements based on the AssetType code.
+Own pattern (was dead code while it shared `portfolio-validations`).
+
+| Rule | Context | Severity | Description | Tolerance |
+|------|---------|----------|-------------|-----------|
+| Percentage Sum | `Fund[…/Position]` | ERROR | Position percentages must sum to 100 % | ≤ 1 % |
+| Percentage Warning | `Fund[…/Position]` | WARNING (`report`) | Alert for small percentage deviations | 0.01 % – 1 % |
+
+### 5. `position-currency-validations` — Position Currency
+
+| Rule | Context | Severity | Description |
+|------|---------|----------|-------------|
+| Position Currency | `Position` | ERROR | Each position must have a value in fund currency |
+
+### 6. `position-direction-validations` — Value Direction
+
+Own pattern (was shadowed by the position-currency rule).
+
+| Rule | Context | Severity | Description |
+|------|---------|----------|-------------|
+| Value Direction | `Position[count(TotalValue/Amount) > 1]` | ERROR | Position values must be consistent (+/−) across currencies |
+
+### 7. `asset-validations` — Asset-Specific Validations
 
 | Rule | Asset Types | Severity | Description |
 |------|-------------|----------|-------------|
 | ISIN Required | EQ, BO, SC | ERROR | Equity, Bond, ShareClass assets must have ISIN |
 | Counterparty ID | AC | WARNING | Account assets should have counterparty LEI or BIC |
-| Derivative Exposure | OP, FU, FX, SW | WARNING | Derivatives should have exposure information |
+| Derivative Exposure | OP, FU, FX, SW | WARNING | Derivatives should have exposure information (8 advisory warnings on the sample) |
 
-### Pattern 4b: Derivative Underlyings (`asset-underlying-validations`)
+### 8. `asset-underlying-validations` — Derivative Underlyings
 
 Own pattern so these rules are not shadowed by the Derivative Exposure rule
 above (see *Known ruleset fix*).
@@ -103,28 +120,18 @@ above (see *Known ruleset fix*).
 | Option Underlying | OP | ERROR | Options must have at least one underlying |
 | Future Underlying | FU | ERROR | Futures must have at least one underlying |
 
-**Asset Type Codes:**
-- EQ = Equity
-- BO = Bond
-- SC = ShareClass (Fund investment)
-- AC = Account
-- OP = Option
-- FU = Future
-- FX = FX Forward
-- SW = Swap
+**Asset Type Codes:** EQ = Equity, BO = Bond, SC = ShareClass (fund
+investment), AC = Account, OP = Option, FU = Future, FX = FX Forward,
+SW = Swap (full list in the XSD: EQ BO SC OP FU FX SW WA CE AC RP RE CM).
 
-### Pattern 5: Date Consistency
-
-Validates temporal consistency across the document.
+### 9. `date-validations` — Date Consistency
 
 | Rule | Context | Severity | Description |
 |------|---------|----------|-------------|
 | NAV Date Match | `Fund` | WARNING | All ShareClass NAV dates should match Fund NAV date |
 | Future Date | `ContentDate` | WARNING | Content date should not be in the future |
 
-### Pattern 6: Identifier Validations
-
-Validates format and structure of identifiers.
+### 10. `identifier-validations` — Identifier Validations
 
 | Rule | Identifier | Severity | Format |
 |------|------------|----------|--------|
@@ -134,14 +141,12 @@ Validates format and structure of identifiers.
 | LEI Format | LEI | WARNING | 18 alphanumeric + 2 check digits |
 | BIC Length | BIC | ERROR | 8 or 11 characters |
 
-### Pattern 7: Currency Validations
-
-Validates currency codes and Amount elements.
+### 11. `currency-validations` — Currency Validations
 
 | Rule | Context | Severity | Description |
 |------|---------|----------|-------------|
 | Currency Code | `Currency`, `@ccy` | WARNING | Must be 3-letter ISO 4217 code |
-| Amount Currency | `Amount` | ERROR | All Amount elements must have @ccy attribute |
+| Amount Currency | `Amount[not(@ccy)]` | ERROR | All Amount elements must have @ccy attribute |
 
 ## Running the Validation
 
@@ -205,7 +210,7 @@ java -jar saxon-he.jar \
 # Set paths
 $SAXON = "C:\saxon\saxon-he.jar"
 $SCHXSLT = "C:\schxslt\2.0\pipeline-for-svrl.xsl"
-$INPUT = "..\..\FundsXML_Files\4.2.9\Mixed-Fund_Positions.xml"
+$INPUT = "..\..\FundsXML_Files\4.2.9\positions\Mixed-Fund_Positions.xml"
 
 # Run validation
 java -jar $SAXON `
@@ -216,8 +221,12 @@ java -jar $SAXON `
 
 # Display results summary
 $report = [xml](Get-Content validation_report.xml)
-$errors = $report.SelectNodes("//*[local-name()='failed-assert']").Count
-$warnings = $report.SelectNodes("//*[local-name()='successful-report']").Count
+# Severity is the @role attribute — NOT the element name: this ruleset emits
+# most warnings as <assert role="warning"> (svrl:failed-assert), and only the
+# rounding checks as <report> (svrl:successful-report).
+$hits = $report.SelectNodes("//*[local-name()='failed-assert' or local-name()='successful-report']")
+$errors   = @($hits | Where-Object { $_.GetAttribute('role') -eq 'error' }).Count
+$warnings = @($hits | Where-Object { $_.GetAttribute('role') -ne 'error' }).Count
 Write-Host "Errors: $errors, Warnings: $warnings"
 ```
 
@@ -236,9 +245,10 @@ java -jar "$SAXON_JAR" \
     sch.file=basic_checks.sch \
     -o:"$OUTPUT"
 
-# Count results
-echo "Errors: $(grep -c 'failed-assert' "$OUTPUT")"
-echo "Warnings: $(grep -c 'successful-report' "$OUTPUT")"
+# Count by @role (not by element name — warnings are mostly failed-asserts
+# with role="warning" in this ruleset); or use invocation/svrl-summary.py.
+echo "Errors:   $(xmllint --xpath 'count(//*[@role="error"])' "$OUTPUT")"
+echo "Warnings: $(xmllint --xpath 'count(//*[(local-name()="failed-assert" or local-name()="successful-report") and @role!="error"])' "$OUTPUT")"
 ```
 
 ## Understanding the Output
@@ -254,14 +264,21 @@ The validation produces an SVRL report in XML format:
 
     <!-- Passed assertion (no output normally) -->
 
-    <!-- Failed assertion (ERROR) -->
+    <!-- Failed assertion; @role carries the severity -->
     <svrl:failed-assert test="Identifiers/ISIN"
                         location="/FundsXML4/AssetMasterData/Asset[3]"
                         role="error">
         <svrl:text>ERROR: EQ asset "Example Stock" must have an ISIN identifier</svrl:text>
     </svrl:failed-assert>
 
-    <!-- Successful report (WARNING/INFO) -->
+    <!-- A warning-level assert also appears as failed-assert, with role="warning" -->
+    <svrl:failed-assert test="Identifiers/LEI"
+                        location="/FundsXML4/Funds/Fund[1]"
+                        role="warning">
+        <svrl:text>WARNING: Fund "Example" should have a LEI identifier</svrl:text>
+    </svrl:failed-assert>
+
+    <!-- Successful report (used by the rounding checks) -->
     <svrl:successful-report test="$difference >= 0.01 and $difference &lt; 1"
                             location="/FundsXML4/Funds/Fund[1]"
                             role="warning">
@@ -274,8 +291,8 @@ The validation produces an SVRL report in XML format:
 
 | Element | Meaning |
 |---------|---------|
-| `svrl:failed-assert` | Validation rule failed (ERROR) |
-| `svrl:successful-report` | Report condition triggered (WARNING/INFO) |
+| `svrl:failed-assert` | An `assert` test was false — severity in `@role` (`error` or `warning`) |
+| `svrl:successful-report` | A `report` test was true (the rounding checks, `role="warning"`) |
 | `@location` | XPath to the element that triggered the message |
 | `@test` | The XPath expression that was evaluated |
 | `@role` | Severity level (error, warning, info) |
@@ -291,8 +308,10 @@ import xml.etree.ElementTree as ET
 tree = ET.parse('validation_report.xml')
 ns = {'svrl': 'http://purl.oclc.org/dsdl/svrl'}
 
-errors = tree.findall('.//svrl:failed-assert', ns)
-warnings = tree.findall('.//svrl:successful-report', ns)
+# Classify by @role, not by element: assert role="warning" is a failed-assert too.
+hits = tree.findall('.//svrl:failed-assert', ns) + tree.findall('.//svrl:successful-report', ns)
+errors = [h for h in hits if h.get('role') == 'error']
+warnings = [h for h in hits if h.get('role') != 'error']
 
 print(f"Errors: {len(errors)}")
 for err in errors:
@@ -313,13 +332,17 @@ DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 factory.setNamespaceAware(true);
 Document doc = factory.newDocumentBuilder().parse("validation_report.xml");
 
-NodeList errors = doc.getElementsByTagNameNS(
-    "http://purl.oclc.org/dsdl/svrl", "failed-assert");
-NodeList warnings = doc.getElementsByTagNameNS(
-    "http://purl.oclc.org/dsdl/svrl", "successful-report");
-
-System.out.println("Errors: " + errors.getLength());
-System.out.println("Warnings: " + warnings.getLength());
+// Classify by @role, not by element (assert role="warning" is a failed-assert too).
+int errors = 0, warnings = 0;
+for (String tag : new String[] {"failed-assert", "successful-report"}) {
+    NodeList hits = doc.getElementsByTagNameNS("http://purl.oclc.org/dsdl/svrl", tag);
+    for (int i = 0; i < hits.getLength(); i++) {
+        Element e = (Element) hits.item(i);
+        if ("error".equals(e.getAttribute("role"))) errors++; else warnings++;
+    }
+}
+System.out.println("Errors: " + errors);
+System.out.println("Warnings: " + warnings);
 ```
 
 ## Customization
@@ -348,7 +371,10 @@ To add a new validation rule:
 
 ### Adjusting Tolerance Levels
 
-Modify the tolerance variables in the .sch file:
+Modify the tolerance variables in the .sch file. The NAV-sum, percentage-sum
+and share-class price bands are mirrored in
+`XSLT_DataQuality_Checks/Basic_Checks/basic_checks.xslt` (and both READMEs) —
+change them together so the two DQ reports keep agreeing.
 
 ```xml
 <!-- Original: 1 currency unit tolerance -->
