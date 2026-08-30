@@ -39,7 +39,7 @@ exits 1 on any failed-assert (including warnings).
 |-------|------|----------------------|
 | Java (native) | [`SchematronValidate.java`](SchematronValidate.java) | ✅ verified (SchXslt Java API, via Maven Wrapper) |
 | Python | [`validate_schematron.py`](validate_schematron.py) | saxonche via repo venv (`pip install -e .`); SchXslt jar via `$FUNDSXML_SCHXSLT_JAR` or Maven local repo — reference variant |
-| .NET/C# | [`SchematronValidate.cs`](SchematronValidate.cs) | reference variant, **does not restore as-is**: Saxonica publishes its .NET packages (`SaxonHE12Net*`) as dotnet *tools*, not libraries (`NU1212`); pair the code with a Saxon .NET library build of your own. SchXslt jar via `$FUNDSXML_SCHXSLT_JAR` or Maven local repo |
+| .NET/C# | [`SchematronValidate.cs`](SchematronValidate.cs) | ✅ verified (.NET SDK 8, in CI): no NuGet deps — runs the self-contained SchXslt CLI jar (`$FUNDSXML_SCHXSLT_JAR` or Maven local repo) as a child process and classifies the SVRL itself; needs a JDK on PATH/`$JAVA_HOME` |
 | shared | [`svrl-summary.py`](svrl-summary.py) | ✅ classifier used by all + CI |
 
 The Java example runs standalone and cross-platform via the committed Maven
