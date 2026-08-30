@@ -47,7 +47,24 @@ internal static class ExportFundsXml
                 ["ShareClass"] = "Shares", ["Option"] = "Contracts",
                 ["Future"] = "Contracts" };
 
-    static string Inv(double v) => v.ToString("0.00", CultureInfo.InvariantCulture);
+    /// <summary>Amounts: DDL scale 2 (see Num).</summary>
+    static string Inv(double v) => Num(v, 2, 2);
+
+    /// <summary>
+    /// Number formatting follows the DDL scale (schema.sql): amounts
+    /// DECIMAL(20,2), TotalPercentage DECIMAL(9,4), quantities / NavPrice /
+    /// SharesOutstanding DECIMAL(28,6). Render at that scale, then drop
+    /// trailing zeros down to a floor of <paramref name="minDec"/> decimals
+    /// (custom format "0.00####"): 8.33 -> "8.33", 8.3333 -> "8.3333",
+    /// 550000 shares -> "550000". A fixed "0.00" would silently truncate what
+    /// the model stores (xml_equiv.py compares numerically and would flag it).
+    /// </summary>
+    static string Num(double v, int scale, int minDec)
+    {
+        decimal d = Math.Round((decimal)v, scale, MidpointRounding.AwayFromZero);
+        string fmt = "0" + (scale > 0 ? "." + new string('0', minDec) + new string('#', scale - minDec) : "");
+        return d.ToString(fmt, CultureInfo.InvariantCulture);
+    }
 
     static XmlElement El(XmlDocument doc, XmlNode parent, string tag,
                          string? text = null)
@@ -198,12 +215,12 @@ internal static class ExportFundsXml
                     var tv = El(doc, El(doc, pos, "TotalValue"), "Amount",
                         Inv((double)p["value"]!));
                     tv.SetAttribute("ccy", ccy);
-                    El(doc, pos, "TotalPercentage", Inv((double)p["pct"]!));
+                    El(doc, pos, "TotalPercentage", Num((double)p["pct"]!, 4, 2));
                     var kind = p["kind"] is string k
                         && PositionKinds.Contains(k) ? k : "Generic";
                     var ke = El(doc, pos, kind);
                     if (QtyElem.ContainsKey(kind) && p["qty"] != null)
-                        El(doc, ke, QtyElem[kind], Inv((double)p["qty"]!));
+                        El(doc, ke, QtyElem[kind], Num((double)p["qty"]!, 6, 2));
                 }
             }
 
@@ -245,7 +262,7 @@ internal static class ExportFundsXml
                            (string?)sc["currency"]);
                         El(doc, pr2, "PriceNature", "OFFICIAL");
                         El(doc, pr2, "NavPrice",
-                           Inv((double)sc["nav_price"]!));
+                           Num((double)sc["nav_price"]!, 6, 2));
                     }
                     if (sc["nav_fund_ccy"] != null)
                     {
@@ -258,8 +275,7 @@ internal static class ExportFundsXml
                         a2.SetAttribute("ccy", ccy);
                         if (sc["shares"] != null)
                             El(doc, t2, "SharesOutstanding",
-                               ((double)sc["shares"]!).ToString("0",
-                                   CultureInfo.InvariantCulture));
+                               Num((double)sc["shares"]!, 6, 0));
                     }
                 }
             }
