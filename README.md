@@ -27,13 +27,13 @@ Linux/macOS) with no bash prerequisite, and is exercised by the CI workflow.
 | Sample data (positions, transactions, documents, regulatory, signed) | XML, 3 versions (4.2.9 / 4.1.0 / 4.0.0) | [FundsXML_Files/](./FundsXML_Files/) |
 | XSD validation | CLI (sh + ps1), Python, Java, .NET, PowerShell | [XSD_Validation/](./XSD_Validation/) |
 | Schematron business rules | ISO Schematron + SchXslt | [Schematron_DataQuality_Checks/](./Schematron_DataQuality_Checks/) |
-| Schematron invocation | Java, Python, .NET | [Schematron_DataQuality_Checks/Basic_Checks/invocation/](./Schematron_DataQuality_Checks/Basic_Checks/) |
+| Schematron invocation | Java (SchXslt API), Python (saxonche), .NET (drives the SchXslt CLI jar) — all three in CI | [Schematron_DataQuality_Checks/Basic_Checks/invocation/](./Schematron_DataQuality_Checks/Basic_Checks/invocation/) |
 | Data-quality reports | XSLT 1.0 / 2.0 | [XSLT_DataQuality_Checks/](./XSLT_DataQuality_Checks/) |
 | Company-internal DQ rules | XSLT 2.0 | [XSLT_DataQuality_Checks/Custom_Internal_Checks/](./XSLT_DataQuality_Checks/) |
-| Factsheet (HTML/PDF) & CSV export | XSLT, XSL-FO/FOP | [XSLT_Transformations/](./XSLT_Transformations/) |
+| Factsheet (HTML/PDF), positions CSV & FinDatEx **TPT V7.0** export (152 columns) | XSLT 2.0, XSL-FO/FOP | [XSLT_Transformations/](./XSLT_Transformations/) |
 | Transformation invocation | Java, Python, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) |
 | XQuery analytics (aggregation, top-holdings, look-through) | Saxon (Java), Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) |
-| XML signature sign / verify | Apache Santuario (Java), .NET, xmlsec1, signxml | [XML_Signature/](./XML_Signature/) |
+| XML signature sign / verify | Apache Santuario (Java), .NET `SignedXml`, `xmlsec1` CLI — one shared profile, cross-verified in CI; Python `signxml` as reference | [XML_Signature/](./XML_Signature/) |
 | Database import / export (multi-fund) | Separate import + export programs in Python · Java · JavaScript · C# (SQLite); Oracle/SQL Server/Postgres SQL (code refs) | [Database_Integration/](./Database_Integration/) |
 | Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) |
 | Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) |
@@ -140,10 +140,16 @@ XSD_Validation/cli/validate.sh "$XSD" $SRC          # Windows: pwsh .../validate
 # Schematron business rules (SVRL; exit 0 = no ERROR-role failures)
 ./mvnw -q -pl Schematron_DataQuality_Checks/Basic_Checks/invocation compile exec:java \
   -Dexec.args="Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch $SRC"
+# same ruleset from .NET (runs the SchXslt CLI jar the Java build fetched):
+dotnet run --project Schematron_DataQuality_Checks/Basic_Checks/invocation -- \
+  Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch $SRC
 
 # XSLT 2.0 transform — CSV export (also: Factsheet HTML / XSL-FO)
 ./mvnw -q -pl XSLT_Transformations/invocation compile exec:java \
   -Dexec.args="XSLT_Transformations/CSV_Export/positions_csv.xslt $SRC out.csv"
+# FinDatEx TPT V7.0 (Solvency II tripartite template), 152 columns:
+./mvnw -q -pl XSLT_Transformations/invocation exec:java \
+  -Dexec.args="XSLT_Transformations/CSV_Export/tpt_v7_export.xslt $SRC tpt.csv"
 
 # XQuery analytics — top 5 holdings (serialized to stdout)
 ./mvnw -q -pl XQuery_Examples/invocation compile exec:java \
@@ -155,6 +161,10 @@ XSD_Validation/cli/validate.sh "$XSD" $SRC          # Windows: pwsh .../validate
   -Dexec.args="$SRC signed.xml XML_Signature/keys/test-signing.p12 changeit fundsxml"
 ./mvnw -q -pl XML_Signature/java exec:java -Dexec.mainClass=VerifyFundsXml \
   -Dexec.args="signed.xml XML_Signature/keys/test-signing-cert.pem"
+# same profile with xmlsec1 (signs the committed template in place; the
+# result verifies in Java/.NET and vice versa):
+XML_Signature/cli/sign-verify-xmlsec1.sh sign FundsXML_Files/4.2.9/signed/Signed_Fund_Skeleton.xml xs.xml
+XML_Signature/cli/sign-verify-xmlsec1.sh verify xs.xml
 
 # Database round-trip — import → export → prove equivalence
 FX=FundsXML_Files/4.2.9/positions/Multi-Fund_Positions.xml
@@ -207,12 +217,12 @@ Each folder contains detailed README files with:
 |--------------|-------------|
 | [FundsXML Files](./FundsXML_Files/README.md) | FundsXML structure, versions and sample documents |
 | [XSD Validation](./XSD_Validation/README.md) | Schema validation per stack (CLI/Python/Java/.NET/PowerShell) |
-| [Schematron Validation](./Schematron_DataQuality_Checks/README.md) | Business-rule validation with Schematron + invocation |
+| [Schematron Validation](./Schematron_DataQuality_Checks/Basic_Checks/README.md) | Business-rule validation (11 patterns) + [invocation per stack](./Schematron_DataQuality_Checks/Basic_Checks/invocation/README.md) |
 | [XSLT DQ Checks](./XSLT_DataQuality_Checks/README.md) | HTML/PDF data-quality reports & custom internal rules |
 | [XSLT Transformations](./XSLT_Transformations/README.md) | Factsheet (HTML/PDF) and CSV export |
 | [XQuery Examples](./XQuery_Examples/README.md) | Aggregation, top-holdings, look-through analytics |
 | [XML Signature](./XML_Signature/README.md) | Enveloped XML-DSig sign/verify (Apache Santuario & co.) |
-| [Database Integration](./Database_Integration/README.md) | Multi-fund import/export, 4 languages, round-trip-verified |
+| [Database Integration](./Database_Integration/README.md) | Multi-fund import/export, 4 languages, round-trip-verified at DDL precision |
 | [Large-File Processing](./Large_File_Processing/README.md) | Constant-memory streaming, split, INITIAL/DELTA diff |
 | [Data Binding & JSON](./Data_Binding_JSON/README.md) | FundsXML⇄JSON and native binding vs. codegen |
 
@@ -228,6 +238,7 @@ libraries (Saxon, SchXslt, Apache Santuario, SQLite drivers, lxml, saxonche,
 | Python | Python 3.9+ | `pip install -e .` (pyproject.toml) |
 | .NET | .NET SDK 8+ | NuGet (`dotnet run` restores) |
 | Node | Node 20+ | `npm install` (Database_Integration/javascript) |
+| CLI (optional) | `xmllint`/`xsltproc` (libxml2), `xmlsec1` for the signature CLI | OS package manager |
 | CLI | a POSIX shell + `xmllint` (Linux/macOS) **or** PowerShell 5.1+/7+ (Windows) | n/a |
 | Legacy XSLT 1.0 | `xsltproc` | n/a |
 
