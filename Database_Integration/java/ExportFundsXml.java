@@ -51,7 +51,24 @@ public class ExportFundsXml {
         "Bond", "Nominal", "ShareClass", "Shares",
         "Option", "Contracts", "Future", "Contracts");
 
-    static String f2(double v) { return String.format(Locale.ROOT, "%.2f", v); }
+    /** Amounts: DDL scale 2 (see num). */
+    static String f2(double v) { return num(v, 2, 2); }
+
+    /**
+     * Number formatting follows the DDL scale (schema.sql): amounts
+     * DECIMAL(20,2), TotalPercentage DECIMAL(9,4), quantities / NavPrice /
+     * SharesOutstanding DECIMAL(28,6). Render at that scale, then drop trailing
+     * zeros down to a floor of {@code minDec} decimals: 8.33 -> "8.33",
+     * 8.3333 -> "8.3333", 550000 shares -> "550000". A fixed "%.2f" would
+     * silently truncate what the model can store (xml_equiv.py compares
+     * numerically and would flag the loss).
+     */
+    static String num(double v, int scale, int minDec) {
+        java.math.BigDecimal d = java.math.BigDecimal.valueOf(v)
+            .setScale(scale, java.math.RoundingMode.HALF_UP).stripTrailingZeros();
+        if (d.scale() < minDec) d = d.setScale(minDec);
+        return d.toPlainString();
+    }
 
     /** Append <tag>text</tag> to parent (the one XML-build primitive). */
     static Element el(Document doc, org.w3c.dom.Node parent, String tag,
@@ -161,7 +178,7 @@ public class ExportFundsXml {
                             "Amount", f2(qr.getDouble("value_fund_ccy")));
                         tv.setAttribute("ccy", ccy);
                         el(doc, pos, "TotalPercentage",
-                           f2(qr.getDouble("percentage")));
+                           num(qr.getDouble("percentage"), 4, 2));
                         String kind = qr.getString("kind");
                         if (kind == null || !POSITION_KINDS.contains(kind))
                             kind = "Generic";
@@ -169,7 +186,7 @@ public class ExportFundsXml {
                         Object q = qr.getObject("kind_qty");
                         if (QTY_ELEM.containsKey(kind) && q != null)
                             el(doc, ke, QTY_ELEM.get(kind),
-                               f2(((Number) q).doubleValue()));
+                               num(((Number) q).doubleValue(), 6, 2));
                     }
                 }
 
@@ -199,7 +216,7 @@ public class ExportFundsXml {
                         el(doc, pe2, "PriceCurrency", sr.getString("currency"));
                         el(doc, pe2, "PriceNature", "OFFICIAL");
                         el(doc, pe2, "NavPrice",
-                           f2(((Number) navp).doubleValue()));
+                           num(((Number) navp).doubleValue(), 6, 2));
                     }
                     Object navf = sr.getObject("nav_fund_ccy");
                     if (navf != null) {
@@ -213,9 +230,8 @@ public class ExportFundsXml {
                         a2.setAttribute("ccy", ccy);
                         Object so = sr.getObject("shares_outstanding");
                         if (so != null)
-                            el(doc, t2, "SharesOutstanding", String.format(
-                               Locale.ROOT, "%.0f",
-                               ((Number) so).doubleValue()));
+                            el(doc, t2, "SharesOutstanding",
+                               num(((Number) so).doubleValue(), 6, 0));
                     }
                 }
             }

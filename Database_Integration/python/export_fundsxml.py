@@ -45,6 +45,20 @@ QTY_ELEM = {"Equity": "Units", "Warrant": "Units", "Certificate": "Units",
             "Option": "Contracts", "Future": "Contracts"}
 
 
+# Number formatting follows the DDL scale (schema.sql): amounts DECIMAL(20,2),
+# TotalPercentage DECIMAL(9,4), quantities / NavPrice / SharesOutstanding
+# DECIMAL(28,6). Render with that scale, then drop trailing zeros down to a
+# floor of `min_dec` decimals, so 8.33 -> "8.33", 8.3333 -> "8.3333",
+# 50000.123456 -> "50000.123456" and 550000 shares -> "550000". A fixed "%.2f"
+# would silently truncate anything the model can store with more decimals
+# (xml_equiv.py compares numerically, so it would flag the loss).
+def _num(v, scale, min_dec=2):
+    s = f"{float(v):.{scale}f}"
+    whole, _, frac = s.partition(".")
+    frac = frac.rstrip("0")
+    frac = frac.ljust(min_dec, "0")
+    return f"{whole}.{frac}" if frac else whole
+
 def _el(parent, tag, text=None, **attrs):
     """Append a child element — the single XML-building primitive."""
     e = etree.SubElement(parent, tag)
@@ -106,7 +120,7 @@ def main() -> int:
                   "NavDate", f["nav_date"]).getparent()
         _el(tav, "TotalAssetNature", "OFFICIAL")
         _el(_el(tav, "TotalNetAssetValue"), "Amount",
-            f'{f["total_nav"]:.2f}', ccy=ccy)
+            _num(f["total_nav"], 2), ccy=ccy)
 
         ports = _el(fdd, "Portfolios")
         for pf in con.execute(
@@ -126,12 +140,12 @@ def main() -> int:
                 if p["currency"]:
                     _el(pos, "Currency", p["currency"])
                 _el(_el(pos, "TotalValue"), "Amount",
-                    f'{p["value_fund_ccy"]:.2f}', ccy=ccy)
-                _el(pos, "TotalPercentage", f'{p["percentage"]:.2f}')
+                    _num(p["value_fund_ccy"], 2), ccy=ccy)
+                _el(pos, "TotalPercentage", _num(p["percentage"], 4))
                 kind = p["kind"] if p["kind"] in POSITION_KINDS else "Generic"
                 ke = _el(pos, kind)
                 if kind in QTY_ELEM and p["kind_qty"] is not None:
-                    _el(ke, QTY_ELEM[kind], f'{p["kind_qty"]:.2f}')
+                    _el(ke, QTY_ELEM[kind], _num(p["kind_qty"], 6))
 
         scs = con.execute(
             "SELECT * FROM share_class WHERE document_id=? AND fund_seq=? "
@@ -150,16 +164,16 @@ def main() -> int:
                     _el(pr, "NavDate", f["nav_date"])
                     _el(pr, "PriceCurrency", sc["currency"])
                     _el(pr, "PriceNature", "OFFICIAL")
-                    _el(pr, "NavPrice", f'{sc["nav_price"]:.2f}')
+                    _el(pr, "NavPrice", _num(sc["nav_price"], 6))
                 if sc["nav_fund_ccy"] is not None:
                     t = _el(_el(x, "TotalAssetValues"), "TotalAssetValue")
                     _el(t, "NavDate", f["nav_date"])
                     _el(t, "TotalAssetNature", "OFFICIAL")
                     _el(_el(t, "TotalNetAssetValue"), "Amount",
-                        f'{sc["nav_fund_ccy"]:.2f}', ccy=ccy)
+                        _num(sc["nav_fund_ccy"], 2), ccy=ccy)
                     if sc["shares_outstanding"] is not None:
                         _el(t, "SharesOutstanding",
-                            f'{sc["shares_outstanding"]:.0f}')
+                            _num(sc["shares_outstanding"], 6, 0))
 
     assets = con.execute(
         "SELECT * FROM asset WHERE document_id=? ORDER BY unique_id",
