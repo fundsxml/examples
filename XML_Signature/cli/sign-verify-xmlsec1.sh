@@ -5,20 +5,27 @@
 #   sign-verify-xmlsec1.sh sign   <in.xml>  <out.xml>
 #   sign-verify-xmlsec1.sh verify <signed.xml> [cert.pem]
 #
-# Reference example — xmlsec1 is a native CLI tool (not bundled):
+# xmlsec1 is a native CLI tool (not bundled):
 #   Debian/Ubuntu: sudo apt-get install xmlsec1
 #   macOS:         brew install xmlsec1
-# (The verified, fully cross-platform signing path is the Java example,
-#  XML_Signature/java — run via the Maven Wrapper.)
+# Verified (xmlsec1 1.2.33, also in CI): sign -> verify, tamper detected, and
+# the output cross-verifies with the Java (Santuario) and .NET (SignedXml)
+# verifiers, both pinned and from the embedded certificate; xmlsec1 in turn
+# verifies files signed by Java and .NET.
 #
 # Keys: generated cross-platform by the Java GenerateTestKey (no openssl):
 #   ./mvnw -q -pl XML_Signature/java compile exec:java -Dexec.mainClass=GenerateTestKey
 # It writes test-signing.p12, test-signing-cert.pem AND test-signing-key.pem
 # (PKCS#8) into XML_Signature/keys/ — the last two are what xmlsec1 needs.
 #
-# Unlike the Java/Python examples, xmlsec1 signs an EXISTING <ds:Signature>
-# template in the document, so it pairs naturally with the committed
-# FundsXML_Files/4.2.9/signed/Signed_Fund_Skeleton.xml (placeholder signature).
+# Unlike the Java/.NET/Python examples, xmlsec1 signs an EXISTING <ds:Signature>
+# template in the document. The committed
+# FundsXML_Files/4.2.9/signed/Signed_Fund_Skeleton.xml is exactly that
+# template, already in the shared profile: SignedInfo with exclusive C14N,
+# enveloped + exclusive-C14N transforms, RSA-SHA256 / SHA-256, and an empty
+# <ds:X509Certificate/> that xmlsec1 fills with the signer cert (that is why
+# --privkey-pem gets "key,cert"). To sign any other FundsXML file, append that
+# ds:Signature block as the last child of <FundsXML4> first.
 #
 # POSIX sh; the Windows counterpart is sign-verify.ps1 in this directory.
 
