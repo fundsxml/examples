@@ -49,9 +49,15 @@ public class VerifyFundsXml {
 
         // xmlsec 4.x: secure validation is a constructor argument (blocks
         // RetrievalMethod loops, dangerous transforms, weak algorithms, etc.).
+        // Everything from here on is "INVALID, exit 1" territory when Santuario
+        // throws: a malformed SignatureValue, an empty or unparsable
+        // X509Certificate (the committed skeleton is an unsigned template with
+        // exactly those placeholders), a broken transform chain, and so on.
+        // They are properties of the document under test, not setup errors.
+        boolean ok;
+        try {
         XMLSignature signature = new XMLSignature(sigEl, "", true);
 
-        boolean ok;
         if (args.length >= 2) {
             try (FileInputStream cf = new FileInputStream(args[1])) {
                 X509Certificate pinned = (X509Certificate) CertificateFactory
@@ -79,6 +85,11 @@ public class VerifyFundsXml {
             System.out.println("verifying against KeyInfo-embedded key"
                 + (embedded != null ? " (cert: "
                    + embedded.getSubjectX500Principal() + ")" : ""));
+        }
+        } catch (org.apache.xml.security.exceptions.XMLSecurityException e) {
+            System.out.println("INVALID: " + e.getMessage());
+            System.exit(1);
+            return;
         }
 
         System.out.println(ok ? "VALID: signature OK" : "INVALID: signature check failed");

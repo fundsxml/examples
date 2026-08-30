@@ -2,9 +2,13 @@
 <!-- FundsXML 4.2.9 — skeleton for a SIGNED FundsXML file (enveloped XMLDSig).
      ds:Signature is the last optional child of <FundsXML4> (xmldsig-core-schema.xsd
      is imported from release 4.2.9 on). The DigestValue/SignatureValue here are
-     PLACEHOLDERS — schema-valid but NOT cryptographically verifiable. Real
-     signing/verification (Apache Santuario etc.) follows in Phase 3 under
-     XML_Signature/. Version: see ControlData/Version and
+     PLACEHOLDERS — schema-valid but NOT cryptographically verifiable. The
+     ds:Signature is a signing TEMPLATE in the profile every stack in
+     XML_Signature/ uses (RSA-SHA256, exclusive C14N, enveloped, signer cert
+     embedded as X509Certificate): xmlsec1 fills DigestValue, SignatureValue
+     and the empty X509Certificate in place (XML_Signature/cli/), and the
+     result cross-verifies with the Java (Santuario) and .NET (SignedXml)
+     verifiers. Version: see ControlData/Version and
      xsi:noNamespaceSchemaLocation. -->
 <FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
@@ -47,11 +51,12 @@
    </Funds>
    <ds:Signature>
       <ds:SignedInfo>
-         <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+         <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
          <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
          <ds:Reference URI="">
             <ds:Transforms>
                <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+               <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
             </ds:Transforms>
             <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
             <ds:DigestValue>UExBQ0VIT0xERVItRElHRVNU</ds:DigestValue>
@@ -60,6 +65,10 @@
       <ds:SignatureValue>UExBQ0VIT0xERVItU0lHTkFUVVJFLVZBTFVFLU5PVC1DUllQVE9HUkFQSElDQUxMWS1WQUxJRA==</ds:SignatureValue>
       <ds:KeyInfo>
          <ds:KeyName>erste-am-funds-signing-2025</ds:KeyName>
+         <ds:X509Data>
+            <!-- empty placeholder: xmlsec1 writes the signer certificate here -->
+            <ds:X509Certificate/>
+         </ds:X509Data>
       </ds:KeyInfo>
    </ds:Signature>
 </FundsXML4>
