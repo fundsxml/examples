@@ -33,6 +33,16 @@ portfolios, multiple positions** and preserve their order, so the export is
 deterministic and faithful. SQLite makes the examples zero-setup; the same SQL
 runs on PostgreSQL (Oracle/SQL Server need only type tweaks — noted in the DDL).
 
+### Numeric precision on export
+
+All four exporters render numbers at the **DDL scale** (`schema.sql`:
+amounts `DECIMAL(20,2)`, `TotalPercentage` `DECIMAL(9,4)`, quantities /
+`NavPrice` / `SharesOutstanding` `DECIMAL(28,6)`), then trim trailing zeros
+down to two decimals (zero for `SharesOutstanding`). So `8.33` stays `8.33`,
+`8.3333` stays `8.3333` and `50000.123456` units survive the round-trip;
+values with *more* decimals than the DDL allows are rounded on export
+(`xml_equiv.py` compares numerically and would report it).
+
 ## Round-trip is proven by equivalence
 
 The user requirement: export the data the import wrote, then check the import
