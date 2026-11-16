@@ -82,6 +82,22 @@ jobs:
             done
           done
 
+      - name: Realistic samples - generator is deterministic, identifiers valid, XSD
+        run: |
+          set -e
+          G=FundsXML_Files/4.2.9/realistic
+          OUT=$(mktemp -d)
+          .venv/bin/python $G/make_realistic.py --out "$OUT"
+          test "$(ls "$OUT"/*.xml | wc -l)" = "$(ls $G/*.xml | wc -l)"
+          for f in "$OUT"/*.xml; do
+            cmp "$f" "$G/$(basename "$f")" || { echo "::error::$(basename "$f") differs from the generator output - run make_realistic.py"; exit 1; }
+          done
+          # every ISIN and LEI of every sample and fixture has valid check digits
+          .venv/bin/python $G/make_realistic.py --lint FundsXML_Files tests/fixtures
+          for f in $G/*.xml; do
+            xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd "$f"
+          done
+
       - name: XSD - negative fixture must FAIL
         run: |
           if xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd \
@@ -214,6 +230,27 @@ jobs:
             xmllint --noout "$f"
           done
           test "$(xmllint --xpath 'count(//Holding)' out_top.xml)" = "5"
+
+      - name: Realistic samples - Schematron, DQ reports, reconciliation
+        run: |
+          set -e
+          SCH=Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch
+          S="./mvnw -q -B -pl Schematron_DataQuality_Checks/Basic_Checks/invocation exec:java"
+          X="./mvnw -q -B -pl XSLT_Transformations/invocation exec:java"
+          Q="./mvnw -q -B -pl XQuery_Examples/invocation exec:java"
+          for f in FundsXML_Files/4.2.9/realistic/*.xml; do
+            echo "== $f"
+            $S -Dexec.args="$SCH $f"
+            $X -Dexec.args="XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt $f r_dq.html"
+            if grep -q 'class="fail"' r_dq.html; then echo "::error::custom DQ check failed for $f"; exit 1; fi
+            $X -Dexec.args="XSLT_Transformations/Factsheet/factsheet_html.xslt $f r_fs.html"
+            $X -Dexec.args="XSLT_Transformations/CSV_Export/positions_csv.xslt $f r_pos.csv"
+            test -s r_fs.html && test "$(wc -l < r_pos.csv)" -ge 2
+            # positions add up to the net assets, percentages to 100
+            $Q -Dexec.args="XQuery_Examples/fund-summary.xq $f" > r_sum.xml
+            test "$(xmllint --xpath 'string(//NavDelta)' r_sum.xml)" = "0.00"
+            test "$(xmllint --xpath 'string(//PercentageOk)' r_sum.xml)" = "true"
+          done
 
       - name: XML signature - Apache Santuario sign/verify/tamper roundtrip
         run: |

@@ -24,7 +24,7 @@ Linux/macOS) with no bash prerequisite, and is exercised by the CI workflow.
 
 | Area | Technology | Location |
 |------|-----------|----------|
-| Sample data (positions, transactions, documents, regulatory, signed) | XML, 3 versions (4.2.9 / 4.1.0 / 4.0.0) | [FundsXML_Files/](./FundsXML_Files/) |
+| Sample data (positions, transactions, documents, regulatory, signed, realistic month-end files) | XML, 3 versions (4.2.9 / 4.1.0 / 4.0.0) | [FundsXML_Files/](./FundsXML_Files/) |
 | XSD validation | CLI (sh + ps1), Python, Java, .NET, PowerShell | [XSD_Validation/](./XSD_Validation/) |
 | Schematron business rules | ISO Schematron + SchXslt | [Schematron_DataQuality_Checks/](./Schematron_DataQuality_Checks/) |
 | Schematron invocation | Java (SchXslt API), Python (saxonche), .NET (drives the SchXslt CLI jar) — all three in CI | [Schematron_DataQuality_Checks/Basic_Checks/invocation/](./Schematron_DataQuality_Checks/Basic_Checks/invocation/) |
@@ -52,7 +52,7 @@ fundsxml_examples/
 │                                          #   dependency-only, nothing packaged
 │
 ├── FundsXML_Files/                        # Sample documents, per version & use-case
-│   ├── 4.2.9/{positions,transactions,documents,regulatory,signed}/
+│   ├── 4.2.9/{positions,transactions,documents,regulatory,signed,realistic}/
 │   ├── 4.1.0/positions/   └── 4.0.0/positions/
 │
 ├── XSD_Validation/                        # Validation per stack
@@ -259,13 +259,14 @@ The sample files demonstrate various FundsXML asset types:
 | OP | Option | Call/Put options |
 | FU | Future | Futures contracts |
 | FX | FX Forward | Currency forwards |
-| SW | Swap | Interest rate, currency swaps |
+| SW | Swap | Interest rate, cross currency, credit default and total return swaps |
 | WA | Warrant | Warrants |
 | CE | Certificate | Structured products |
 | AC | Account | Bank accounts |
 | RP | Repo | Repurchase agreements |
 | RE | Real Estate | Property investments |
 | CM | Call Money | Short-term deposits |
+| FE | Fee | Accrued fees (negative position) |
 
 ## Contributing
 
