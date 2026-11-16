@@ -35,7 +35,7 @@ Windows too) to write a throwaway self-signed RSA-2048 keystore
 | Stack | Entry point | Status |
 |-------|-------------|--------|
 | Java — Apache Santuario | [`java/SignFundsXml.java`](java/SignFundsXml.java) / [`java/VerifyFundsXml.java`](java/VerifyFundsXml.java) | ✅ verified (sign, verify, tamper-detect) |
-| CLI — `xmlsec1` | [`cli/sign-verify-xmlsec1.sh`](cli/sign-verify-xmlsec1.sh) | ✅ verified (xmlsec1 1.2.33, in CI): sign, verify, tamper; cross-verifies with Java and .NET both ways |
+| CLI — `xmlsec1` | [`cli/sign-verify-xmlsec1.sh`](cli/sign-verify-xmlsec1.sh) | ✅ verified (xmlsec1 1.2.39 and 1.3.9, in CI): sign, verify, tamper; cross-verifies with Java and .NET both ways |
 | Python — `signxml` | [`python/sign_verify_signxml.py`](python/sign_verify_signxml.py) | reference (`pip install -e ".[signature]"` adds `signxml`) |
 | .NET — `SignedXml` | [`dotnet/SignVerify.cs`](dotnet/SignVerify.cs) | verified (.NET SDK 8): sign, verify, tamper; cross-verifies with Java both ways |
 
