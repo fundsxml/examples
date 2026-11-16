@@ -8,7 +8,7 @@
 # xmlsec1 is a native CLI tool (not bundled):
 #   Debian/Ubuntu: sudo apt-get install xmlsec1
 #   macOS:         brew install xmlsec1
-# Verified (xmlsec1 1.2.33, also in CI): sign -> verify, tamper detected, and
+# Verified (xmlsec1 1.2.39 and 1.3.9, the latter in CI): sign -> verify, tamper detected, and
 # the output cross-verifies with the Java (Santuario) and .NET (SignedXml)
 # verifiers, both pinned and from the embedded certificate; xmlsec1 in turn
 # verifies files signed by Java and .NET.
@@ -27,6 +27,11 @@
 # --privkey-pem gets "key,cert"). To sign any other FundsXML file, append that
 # ds:Signature block as the last child of <FundsXML4> first.
 #
+# The template names the key (<ds:KeyName>). Since xmlsec1 1.3 the signing key is
+# looked up by that name, so the loaded key gets the same name
+# (--privkey-pem:<name>); without it 1.3 fails with KEY-NOT-FOUND. 1.2 accepts
+# the named key as well.
+#
 # POSIX sh; the Windows counterpart is sign-verify.ps1 in this directory.
 
 set -eu
@@ -43,8 +48,10 @@ case "$MODE" in
     IN="${2:?in.xml}"; OUT="${3:?out.xml}"
     # The template's ds:Signature/SignedInfo must already exist (it does in the
     # signed skeleton). xmlsec1 fills DigestValue + SignatureValue + KeyInfo.
+    KEYNAME=$(sed -n 's:.*<ds\:KeyName>\(.*\)</ds\:KeyName>.*:\1:p' "$IN" | head -n 1)
+    PRIVKEY_OPT="--privkey-pem${KEYNAME:+:$KEYNAME}"
     xmlsec1 --sign \
-      --privkey-pem "${KEYS}/test-signing-key.pem,${KEYS}/test-signing-cert.pem" \
+      "$PRIVKEY_OPT" "${KEYS}/test-signing-key.pem,${KEYS}/test-signing-cert.pem" \
       --output "$OUT" "$IN"
     echo "signed -> $OUT"
     ;;
