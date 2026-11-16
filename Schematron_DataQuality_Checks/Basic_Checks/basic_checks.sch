@@ -42,8 +42,9 @@
             </assert>
         </rule>
         
-        <!-- Rule: ShareClasses should have ISIN -->
-        <rule context="ShareClass">
+        <!-- Rule: ShareClasses should have ISIN (the fund's own share classes; a ShareClass holding in
+             Position or AssetDetails is identified on its Position/Asset) -->
+        <rule context="SingleFund/ShareClasses/ShareClass">
             <assert test="Identifiers/ISIN" role="warning">
                 WARNING: ShareClass "<value-of select="Names/OfficialName"/>" should have an ISIN
             </assert>

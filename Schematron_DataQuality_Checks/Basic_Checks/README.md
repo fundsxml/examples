@@ -34,9 +34,9 @@ them as `svrl:suppressed-rule`). They now live in their own pattern,
 passes with 0 errors.
 
 Run it across stacks via [`invocation/`](invocation/) (CLI, native Java,
-Python/saxonche, .NET). The canonical sample yields **0 errors + 12 advisory
-warnings** (the broad `ShareClass` rule also matches `AssetDetails/ShareClass`;
-derivative assets without exposure info).
+Python/saxonche, .NET). The canonical sample yields **0 errors + 8 advisory
+warnings** (derivative assets without exposure info); the realistic samples in
+`FundsXML_Files/4.2.9/realistic/` yield none.
 
 ## Requirements
 
@@ -62,7 +62,7 @@ all execute (see *Known ruleset fix* above).
 | Fund LEI | `Fund` | WARNING | Fund should have a LEI identifier |
 | Portfolio Exists | `Fund` | WARNING | Fund must have at least one portfolio |
 | NAV in Fund Currency | `Fund` | ERROR | Total Asset Value must be provided in fund currency |
-| ShareClass ISIN | `ShareClass` | WARNING | ShareClasses should have an ISIN (also matches `AssetDetails/ShareClass` — source of 4 advisory warnings on the sample) |
+| ShareClass ISIN | `SingleFund/ShareClasses/ShareClass` | WARNING | The fund's share classes should have an ISIN (a share-class holding is identified on its `Position`/`Asset`) |
 
 ### 2. `nav-calculations` — NAV Calculations
 

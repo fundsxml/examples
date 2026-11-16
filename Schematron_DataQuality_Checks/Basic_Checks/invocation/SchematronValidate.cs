@@ -20,7 +20,7 @@
 // $FUNDSXML_SCHXSLT_JAR or the Maven local repo (populated by the Java module).
 //
 // Verified with .NET SDK 8 + JDK 21/26 (also in CI): canonical sample -> 0
-// errors / 12 warnings, negative fixture -> 1 error / exit 1.
+// errors / 8 warnings, negative fixture -> 1 error / exit 1.
 
 using System;
 using System.Diagnostics;

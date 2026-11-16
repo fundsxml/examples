@@ -9,7 +9,7 @@ This directory contains a comprehensive FundsXML sample document demonstrating a
 > position value so they sum to exactly 100 %; both share classes given
 > `TotalAssetValues` (NAV + `SharesOutstanding`) consistent with their
 > `NavPrice`. The **XML file is authoritative**; any older per-row figures below
-> are illustrative. Schematron now reports **0 errors** (12 advisory warnings).
+> are illustrative. Schematron now reports **0 errors** (8 advisory warnings).
 
 ## File Overview
 
@@ -303,7 +303,7 @@ This sample file is useful for:
 ### Data Quality Considerations
 
 This sample **passes all ERROR-level validation checks** (verified against
-`basic_checks.sch` via SchXslt — 0 errors; 12 advisory warnings remain, see the
+`basic_checks.sch` via SchXslt — 0 errors; 8 advisory warnings remain, see the
 Schematron README):
 - All position percentages sum to exactly 100%
 - Sum of position values equals Fund `TotalNetAssetValue` (112,500,000 EUR)
