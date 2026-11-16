@@ -35,7 +35,7 @@ HEAD = """<?xml version="1.0" encoding="UTF-8"?>
     <DataOperation>INITIAL</DataOperation>
   </ControlData>
   <Funds><Fund>
-    <Identifiers><LEI>529900T8BM49AURSDO55</LEI></Identifiers>
+    <Identifiers><LEI>XMPL00SAMPLE00000127</LEI></Identifiers>
     <Names><OfficialName>Erste Large Synthetic Fund (chunk {idx})</OfficialName></Names>
     <Currency>EUR</Currency>
     <SingleFundFlag>true</SingleFundFlag>

@@ -43,7 +43,7 @@ def main() -> int:
         w('    <DataOperation>INITIAL</DataOperation>\n')
         w('  </ControlData>\n')
         w('  <Funds><Fund>\n')
-        w('    <Identifiers><LEI>529900T8BM49AURSDO55</LEI></Identifiers>\n')
+        w('    <Identifiers><LEI>XMPL00SAMPLE00000127</LEI></Identifiers>\n')
         w('    <Names><OfficialName>Erste Large Synthetic Fund</OfficialName></Names>\n')
         w('    <Currency>EUR</Currency>\n')
         w('    <SingleFundFlag>true</SingleFundFlag>\n')

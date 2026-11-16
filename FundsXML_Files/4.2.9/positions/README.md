@@ -27,7 +27,7 @@ This directory contains a comprehensive FundsXML sample document demonstrating a
 | Field | Value |
 |-------|-------|
 | Fund Name | Erste Responsible Stock Global |
-| LEI | 529900T8BM49AURSDO55 |
+| LEI | XMPL00SAMPLE00000127 |
 | Base Currency | EUR |
 | NAV Date | 2025-10-01 |
 | Total Net Asset Value | 112,500,000 EUR |
@@ -40,8 +40,8 @@ This directory contains a comprehensive FundsXML sample document demonstrating a
 
 | ISIN | Name | Currency | NAV Price |
 |------|------|----------|-----------|
-| AT0000A2QM74 | Erste Responsible Stock Global USD R01 | USD | 142.87 |
-| AT0000A2QM66 | Erste Responsible Stock Global EUR R01 | EUR | 134.25 |
+| ATXMPLS00015 | Erste Responsible Stock Global USD R01 | USD | 142.87 |
+| ATXMPLS00023 | Erste Responsible Stock Global EUR R01 | EUR | 134.25 |
 
 ### Portfolio Summary
 
@@ -74,18 +74,18 @@ This sample file includes examples of all major FundsXML asset types:
 |----|------|------|------|-------------|---|
 | ID_001 | US0378331005 | Apple Inc. | EQ | 9,375,000 | 8.33% |
 | ID_002 | NL0010273215 | ASML Holding N.V. | EQ | 8,125,000 | 6.50% |
-| ID_003 | DE0001102424 | Germany 1.70% 2032 | BO | 6,250,000 | 5.00% |
-| ID_004 | XS2444622110 | Siemens 0.75% 2030 | BO | 6,250,000 | 5.00% |
-| ID_005 | IE00B11XZB12 | PIMCO GIS Global Bond | SC | 10,000,000 | 8.00% |
-| ID_006 | IE00B5BMR087 | Vanguard S&P 500 ETF | SC | 12,500,000 | 10.00% |
-| ID_007 | DE000PN738Q3 | BNP Call Warrant LVMH | WA | 1,875,000 | 1.50% |
-| ID_008 | DE000SQ962F7 | SocGen Put Warrant SAP | WA | 1,875,000 | 1.50% |
-| ID_009 | DE000XM03HC3 | X-markets DAX Index Cert | CE | 3,125,000 | 2.50% |
-| ID_010 | DE000DFM0XG2 | DZ Bank Euro Stoxx Cert | CE | 3,125,000 | 2.50% |
-| ID_011 | DE000C0B6XV0 | Call Option Allianz | OP | 1,250,000 | 1.00% |
-| ID_012 | DE000C0B6YC8 | Put Option Volkswagen | OP | 1,250,000 | 1.00% |
-| ID_013 | DE000C0B6ZR4 | Euro Stoxx 50 Future | FU | 2,500,000 | 2.00% |
-| ID_014 | XS2123456789 | EUR/USD Currency Future | FU | 2,500,000 | 2.00% |
+| ID_003 | DEXMPLS00045 | Germany 1.70% 2032 | BO | 6,250,000 | 5.00% |
+| ID_004 | XSXMPLS00050 | Siemens 0.75% 2030 | BO | 6,250,000 | 5.00% |
+| ID_005 | IEXMPLS00069 | PIMCO GIS Global Bond | SC | 10,000,000 | 8.00% |
+| ID_006 | IEXMPLS00036 | Vanguard S&P 500 ETF | SC | 12,500,000 | 10.00% |
+| ID_007 | DEXMPLS00078 | BNP Call Warrant LVMH | WA | 1,875,000 | 1.50% |
+| ID_008 | DEXMPLS00086 | SocGen Put Warrant SAP | WA | 1,875,000 | 1.50% |
+| ID_009 | DEXMPLS00094 | X-markets DAX Index Cert | CE | 3,125,000 | 2.50% |
+| ID_010 | DEXMPLS00102 | DZ Bank Euro Stoxx Cert | CE | 3,125,000 | 2.50% |
+| ID_011 | DEXMPLS00110 | Call Option Allianz | OP | 1,250,000 | 1.00% |
+| ID_012 | DEXMPLS00128 | Put Option Volkswagen | OP | 1,250,000 | 1.00% |
+| ID_013 | DEXMPLS00136 | Euro Stoxx 50 Future | FU | 2,500,000 | 2.00% |
+| ID_014 | XSXMPLS00142 | EUR/USD Currency Future | FU | 2,500,000 | 2.00% |
 | ID_015 | - | FX Forward EUR/USD | FX | 5,000,000 | 4.00% |
 | ID_016 | - | FX Forward EUR/GBP | FX | 4,375,000 | 3.50% |
 | ID_017 | - | EUR 5Y Interest Rate Swap | SW | 6,250,000 | 5.00% |
@@ -122,7 +122,7 @@ illustrative; the XML file is authoritative (see Reconciliation note).
 ```xml
 <Fund>
     <Identifiers>
-        <LEI>529900T8BM49AURSDO55</LEI>
+        <LEI>XMPL00SAMPLE00000127</LEI>
     </Identifiers>
     <Names>
         <OfficialName>Erste Responsible Stock Global</OfficialName>
@@ -161,7 +161,7 @@ illustrative; the XML file is authoritative (see Reconciliation note).
 <Position>
     <UniqueID>ID_003</UniqueID>
     <Identifiers>
-        <ISIN>DE0001102424</ISIN>
+        <ISIN>DEXMPLS00045</ISIN>
     </Identifiers>
     <Currency>EUR</Currency>
     <TotalValue>
@@ -230,7 +230,7 @@ illustrative; the XML file is authoritative (see Reconciliation note).
             <MaturityDate>2030-10-01</MaturityDate>
             <Counterparty>
                 <Identifiers>
-                    <LEI>549300V65Q6MY42G2B26</LEI>
+                    <LEI>XMPL00SAMPLE00001194</LEI>
                 </Identifiers>
                 <Name>J.P. Morgan SE</Name>
             </Counterparty>

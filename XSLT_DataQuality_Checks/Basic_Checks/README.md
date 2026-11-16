@@ -130,11 +130,11 @@ The generated HTML report includes:
 │  Content Date: 2025-10-01                                   │
 ├─────────────────────────────────────────────────────────────┤
 │  Fund: Erste Responsible Stock Global                       │
-│  LEI: 529900T8BM49AURSDO55                                 │
+│  LEI: XMPL00SAMPLE00000127                                 │
 │  NAV Date: 2025-10-01                                       │
 ├─────────────────────────────────────────────────────────────┤
 │  Structural Checks                                          │
-│  ✓ Fund has LEI: 529900T8BM49AURSDO55                      │
+│  ✓ Fund has LEI: XMPL00SAMPLE00000127                      │
 │  ✓ File has 1 portfolio(s)                                  │
 │  ✓ Fund Total Asset Value is in fund currency (EUR)        │
 ├─────────────────────────────────────────────────────────────┤
