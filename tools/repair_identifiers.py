@@ -23,8 +23,9 @@ import pathlib
 import sys
 
 ISINS = {
-    "AT0000A2QM74": "ATXMPLS00015",  # share class, not in FIRDS
-    "AT0000A2QM66": "ATXMPLS00023",  # share class; real ISIN of a silver certificate
+    # The two share classes keep their order: the database exports sort share classes by ISIN.
+    "AT0000A2QM66": "ATXMPLS00015",  # share class; real ISIN of a silver certificate
+    "AT0000A2QM74": "ATXMPLS00023",  # share class, not in FIRDS
     "IE00B5BMR087": "IEXMPLS00036",  # labelled Vanguard; real iShares Core S&P 500
     "DE0001102424": "DEXMPLS00045",  # labelled Bund 1.70% 2032; real Bund 0.5% 2027
     "XS2444622110": "XSXMPLS00050",  # wrong check digit

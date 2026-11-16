@@ -40,8 +40,8 @@ This directory contains a comprehensive FundsXML sample document demonstrating a
 
 | ISIN | Name | Currency | NAV Price |
 |------|------|----------|-----------|
-| ATXMPLS00015 | Erste Responsible Stock Global USD R01 | USD | 142.87 |
-| ATXMPLS00023 | Erste Responsible Stock Global EUR R01 | EUR | 134.25 |
+| ATXMPLS00023 | Erste Responsible Stock Global USD R01 | USD | 142.87 |
+| ATXMPLS00015 | Erste Responsible Stock Global EUR R01 | EUR | 134.25 |
 
 ### Portfolio Summary
 
