@@ -70,7 +70,7 @@ all execute (see *Known ruleset fix* above).
 |------|---------|----------|-------------|-----------|
 | ShareClass NAV Sum | `Fund[…/ShareClass]` | ERROR | Sum of ShareClass NAVs must equal Fund Total NAV | < 1 currency unit |
 | Rounding Warning | `Fund[…/ShareClass]` | WARNING (`report`) | Alert for small rounding differences | 0.01 – 1 |
-| Price Calculation | `ShareClass` | ERROR | Price × Shares must equal NAV | < 0.1 |
+| Price Calculation | `ShareClass` | ERROR | Price × Shares must equal NAV (with a price history: the price of the NAV date, else the last one) | < 0.1 |
 | Price Rounding | `ShareClass` | WARNING (`report`) | Alert for small price differences | 0.01 – 0.1 |
 
 ### 3. `portfolio-validations` — Position Value Sum
@@ -108,7 +108,7 @@ Own pattern (was shadowed by the position-currency rule).
 |------|-------------|----------|-------------|
 | ISIN Required | EQ, BO, SC | ERROR | Equity, Bond, ShareClass assets must have ISIN |
 | Counterparty ID | AC | WARNING | Account assets should have counterparty LEI or BIC |
-| Derivative Exposure | OP, FU, FX, SW | WARNING | Derivatives should have exposure information (8 advisory warnings on the sample) |
+| Derivative Exposure | OP, FU, FX, SW | WARNING | Derivatives should have exposure information: `Exposures/Exposure` on their `Position` (8 advisory warnings on the sample) |
 
 ### 8. `asset-underlying-validations` — Derivative Underlyings
 

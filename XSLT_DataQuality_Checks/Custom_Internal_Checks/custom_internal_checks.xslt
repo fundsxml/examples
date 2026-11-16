@@ -25,7 +25,7 @@
 
   <!-- Configurable house parameters -->
   <xsl:param name="allowedAssetTypes" as="xs:string"
-             select="'EQ BO SC OP FU FX SW WA CE AC RP RE CM'"/>
+             select="'EQ BO SC OP FU FX SW WA CE AC RP RE CM FE'"/>
   <!-- Untyped on purpose: command-line runners (RunTransform, run_transform.py,
        Saxon CLI) hand parameters over as strings, and a typed xs:decimal param
        rejects a string with a type error. Cast where it is used. -->
