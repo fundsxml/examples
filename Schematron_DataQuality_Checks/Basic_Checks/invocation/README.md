@@ -27,9 +27,8 @@ committed Maven Wrapper — no prior fetch step, no `.lib/`.
 `--fail-on error` (default) exits 1 only on ERROR-role failures; `--fail-on any`
 exits 1 on any failed-assert (including warnings).
 
-> The canonical sample currently yields **0 errors + 12 warnings**. The
-> warnings are advisory (4× the broad `ShareClass` rule also matching
-> `AssetDetails/ShareClass`; 8× derivative assets without exposure info). The
+> The canonical sample currently yields **0 errors + 8 warnings**. The
+> warnings are advisory (derivative assets without exposure info). The
 > percentage-sum rule is now active — see
 > [`../README.md`](../README.md#known-ruleset-fix).
 
