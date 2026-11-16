@@ -1104,7 +1104,7 @@
                                     </thead>
                                     <tbody>
                                         <xsl:for-each select="FundDynamicData/ShareClasses/ShareClass">
-                                            <xsl:variable name="navPrice" select="Prices/Price/NavPrice"/>
+                                            <xsl:variable name="navPrice" select="(Prices/Price[NavDate = ../../TotalAssetValues/TotalAssetValue/NavDate] | Prices/Price[last()][not(../Price[NavDate = ../../TotalAssetValues/TotalAssetValue/NavDate])])/NavPrice"/>
                                             <xsl:variable name="shares" select="TotalAssetValues/TotalAssetValue/SharesOutstanding"/>
                                             <xsl:variable name="tna" select="TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount"/>
                                             <xsl:variable name="calculatedTNA" select="$navPrice * $shares"/>

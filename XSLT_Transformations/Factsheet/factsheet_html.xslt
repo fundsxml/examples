@@ -66,7 +66,7 @@
             <tr><td><xsl:value-of select="Identifiers/ISIN"/></td>
                 <td><xsl:value-of select="Names/OfficialName"/></td>
                 <td><xsl:value-of select="Currency"/></td>
-                <td class="n"><xsl:value-of select="format-number(number(Prices/Price/NavPrice),'#,##0.00')"/></td></tr>
+                <td class="n"><xsl:value-of select="format-number(number((Prices/Price[NavDate = ../../TotalAssetValues/TotalAssetValue/NavDate] | Prices/Price[last()][not(../Price[NavDate = ../../TotalAssetValues/TotalAssetValue/NavDate])])/NavPrice),'#,##0.00')"/></td></tr>
           </xsl:for-each>
         </table>
 

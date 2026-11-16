@@ -228,7 +228,8 @@
                 <xsl:for-each select="SingleFund/ShareClasses/ShareClass">
                     <!-- Get ShareClass-specific currency -->
                     <xsl:variable name="shareclassCCY" select="Currency"/>
-                    <xsl:variable name="price" select="Prices/Price/NavPrice"/>
+                    <!-- Prices may hold a history: the price of the NAV date, else the last one -->
+                    <xsl:variable name="price" select="(Prices/Price[NavDate = ../../TotalAssetValues/TotalAssetValue/NavDate] | Prices/Price[last()][not(../Price[NavDate = ../../TotalAssetValues/TotalAssetValue/NavDate])])/NavPrice"/>
                     <xsl:variable name="shares" select="TotalAssetValues/TotalAssetValue/SharesOutstanding"/>
                     <xsl:variable name="reportedNAV" select="TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy = $shareclassCCY]"/>
                     <xsl:variable name="calculatedPrice" select="$reportedNAV div $shares"/>

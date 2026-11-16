@@ -40,7 +40,8 @@ return
     {
       for $sc in $fund/SingleFund/ShareClasses/ShareClass
       return <ShareClass isin="{$sc/Identifiers/ISIN}" ccy="{$sc/Currency}"
-                         navPrice="{$sc/Prices/Price/NavPrice}">
+                         navPrice="{($sc/Prices/Price[NavDate = $sc/TotalAssetValues/TotalAssetValue/NavDate],
+                                     $sc/Prices/Price[last()])[1]/NavPrice}">
                {string($sc/Names/OfficialName)}</ShareClass>
     }
     </ShareClasses>

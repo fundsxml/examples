@@ -81,7 +81,9 @@
         <!-- Rule: ShareClass Price × Shares should equal NAV -->
         <rule context="SingleFund/ShareClasses/ShareClass">
             <let name="shareclassCurrency" value="Currency"/>
-            <let name="price" value="number(Prices/Price/NavPrice)"/>
+            <!-- Prices may hold a history: take the price of the NAV date, else the last one -->
+            <let name="navDate" value="TotalAssetValues/TotalAssetValue/NavDate"/>
+            <let name="price" value="number((Prices/Price[NavDate = $navDate], Prices/Price[last()])[1]/NavPrice)"/>
             <let name="shares" value="number(TotalAssetValues/TotalAssetValue/SharesOutstanding)"/>
             <let name="reportedNAV" value="number(TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy = $shareclassCurrency])"/>
             <let name="calculatedNAV" value="$price * $shares"/>
@@ -209,9 +211,10 @@
             </assert>
         </rule>
         
-        <!-- Rule: Derivatives should have exposure -->
+        <!-- Rule: Derivatives should have exposure (reported per position: Position/Exposures) -->
         <rule context="AssetMasterData/Asset[AssetType = 'OP' or AssetType = 'FU' or AssetType = 'FX' or AssetType = 'SW']">
-            <assert test="AssetDetails//Exposure" role="warning">
+            <let name="assetId" value="UniqueID"/>
+            <assert test="//Position[UniqueID = $assetId]/Exposures/Exposure" role="warning">
                 WARNING: Derivative asset "<value-of select="Name"/>" (Type: <value-of select="AssetType"/>) should have exposure information
             </assert>
         </rule>

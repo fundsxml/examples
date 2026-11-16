@@ -8,7 +8,7 @@ standard. XSLT 2.0, self-contained HTML report.
 
 | Rule | Description | Default |
 |------|-------------|---------|
-| R1 | AssetType whitelist — only approved asset types held | `EQ BO SC OP FU FX SW WA CE AC RP RE CM` (param `allowedAssetTypes`) |
+| R1 | AssetType whitelist — only approved asset types held | `EQ BO SC OP FU FX SW WA CE AC RP RE CM FE` (param `allowedAssetTypes`) |
 | R2 | Position `UniqueID` convention — `ID_<≥3 digits>` | — |
 | R3 | Concentration limit — no single position over the cap | 20% (param `concentrationLimitPct`) |
 | R4 | OTC derivative (FX, SW) must carry a counterparty LEI | — |
