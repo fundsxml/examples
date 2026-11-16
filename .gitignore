@@ -53,3 +53,10 @@ obj/
 
 # Claude Code local session state
 .claude/
+
+# TPT export: the zips are unpacked into work/ while working on it (identical to
+# example_files_fundsxml.zip / example_files_tpt.zip, ~360 MB); WebDAV state.
+XSLT_Transformations/CSV_Export/2026-06-25_FundsXML_TPT/work/fundsxml/
+XSLT_Transformations/CSV_Export/2026-06-25_FundsXML_TPT/work/tpt/
+XSLT_Transformations/CSV_Export/2026-06-25_FundsXML_TPT/work/smoke.csv
+.DAV/
