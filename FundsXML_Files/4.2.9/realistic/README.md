@@ -16,8 +16,11 @@ warnings (checked in CI).
 |---|---|---|---|---|---|---|---|
 | `Global-Equity-Fund_2025-10.xml` | 0.6 MB | 602,060,878.93 | 123: 112 equities in 7 currencies, 2 index futures, 3 FX forwards, 5 accounts, fee accrual | 3: EUR R acc, EUR I dist, USD R hedged | 67 (trades, a stock split, subscriptions/redemptions) | 31 dividends with withholding tax, account interest | Fund static data (companies, managers, benchmark, costs, SFDR), daily prices and benchmark values, distribution, fees, flows, performance with data series, breakdowns, risk codes, exposures, NACE industry codes |
 | `Euro-Bond-Fund_2025-10.xml` | 1.0 MB | 838,581,814.97 | 207: 200 bonds (fixed, floating, zero; sovereign, agency, covered, corporate), 4 interest rate futures, 1 interest rate swap, account, fee accrual | 2: EUR R acc, EUR I dist | 56 (trades with accrued interest, flows) | coupons, account interest | Accrued interest, dirty prices, yields, durations, ratings, maturity/rating/issuer-type breakdowns |
-| `Multi-Asset-Derivatives-Fund_2025-10.xml` | 0.5 MB | 278,791,093.07 | 81 over 12 asset types: equities, bonds, ETFs, warrants, certificates, options, futures, FX forwards, swaps (IRS, cross currency, CDS, total return), call money, accounts, fee accrual | 4: EUR R, EUR I, CHF and USD hedged | 56 | dividends, coupons, interest | Counterparties, swap legs, underlyings with delta, delta-adjusted and commitment exposures, leverage and VaR |
+| `Multi-Asset-Derivatives-Fund_2025-10.xml` | 0.6 MB | 278,791,093.07 | 81 over 12 asset types: equities, bonds, ETFs, warrants, certificates, options, futures, FX forwards, swaps (IRS, cross currency, CDS, total return), call money, accounts, fee accrual | 4: EUR R, EUR I, CHF and USD hedged | 56 | dividends, coupons, interest | Counterparties, swap legs, underlyings with delta, delta-adjusted and commitment exposures, leverage and VaR; `RegulatoryReportings` with an EMT V4.2 per share class and a TPT V7 (Solvency II) of the EUR R class with its equities and bonds |
 | `Fund-of-Funds_2025-10.xml` | 0.4 MB | 155,706,556.38 | 38: 35 target funds of 5 managers, 2 accounts, fee accrual | 2: EUR T acc, EUR A dist | 30 | fund distributions, interest | `FundOfFundFlag`, look-through level 1 (`PositionsDecomposed`) into the target funds' securities |
+
+Share classes in another currency than the fund report their net assets twice, marked with `isShareClassCcy` and
+`isFundCcy`.
 
 Reporting date is 2025-10-31; transactions, income, subscriptions and redemptions cover October 2025.
 

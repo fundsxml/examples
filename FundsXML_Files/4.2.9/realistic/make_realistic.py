@@ -1057,7 +1057,13 @@ def emit_share_class(w, c, fund):
     w.open("TotalAssetValue")
     w.leaf("NavDate", AS_OF.isoformat())
     w.leaf("TotalAssetNature", "OFFICIAL")
-    w.amounts("TotalNetAssetValue", (c["ccy_tna"], c["ccy"]), (c["eur_tna"], "EUR"))
+    if c["ccy"] == "EUR":
+        w.amounts("TotalNetAssetValue", (c["eur_tna"], "EUR"))
+    else:  # a class in another currency: the flags tell the share-class amount from the fund-currency one
+        w.open("TotalNetAssetValue")
+        w.leaf("Amount", c["ccy_tna"], ccy=c["ccy"], isShareClassCcy="true")
+        w.leaf("Amount", c["eur_tna"], ccy="EUR", isFundCcy="true")
+        w.close("TotalNetAssetValue")
     w.leaf("SharesOutstanding", c["shares"])
     w.close("TotalAssetValue")
     w.close("TotalAssetValues")
@@ -1171,6 +1177,209 @@ def emit_assets(w, doc):
             w.close("Ratings")
         w.close("Asset")
     w.close("AssetMasterData")
+
+
+EEA = {"AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT",
+       "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO"}
+BOND_CIC = {"Sovereign": "11", "Supranational/Agency": "12", "Covered bond": "26", "Corporate": "21"}
+BOND_NACE = {"Sovereign": "O8411", "Supranational/Agency": "K6492", "Covered bond": "K6419"}
+EQUITY_BY_ISSUER = {e["issuer"]: e for e in EQUITIES}
+
+
+def emit_regulatory(w, doc, fund, classes):
+    """RegulatoryReportings: an EMT V4.2 per share class (to distributors) and a TPT V7 of the first
+    share class (to insurers, Solvency II look-through) with the fund's equities and bonds."""
+    tna = doc.tna
+    costs = dict(fund["costs"])
+    w.open("RegulatoryReportings")
+    w.open("DirectReporting")
+    w.open("EMT_V4_2")
+    for c in classes:
+        w.open("FinancialInstrument")
+        w.open("DataSetInformation")
+        w.leaf("Version", "V4S2")
+        w.leaf("ProducerName", MANCO["name"])
+        w.leaf("FileGenerationDateTime", GENERATED)
+        w.leaf("DataReportingTargetMarket", "Y")
+        w.leaf("DataReportingExAnte", "Y")
+        w.leaf("DataReportingExPost", "N")
+        w.close("DataSetInformation")
+        w.open("GeneralInformation")
+        w.leaf("Code", c["isin"])
+        w.leaf("CodificationSystem", 1)
+        w.leaf("InstrumentName", f"{fund['name']} {c['name_suffix']}")
+        w.leaf("InstrumentCurrency", c["ccy"])
+        w.leaf("InstrumentPerformanceFee", "Y" if "Performance Fee" in costs else "N")
+        w.leaf("InstrumentDistributionCash", "Y" if c.get("distribution") else "N")
+        w.leaf("GeneralReferenceDate", AS_OF.isoformat())
+        w.leaf("ProductType", "U")
+        w.leaf("ManufacturerName", MANCO["name"])
+        w.leaf("LeveragedOrContingentLiability", "N")
+        w.close("GeneralInformation")
+        w.open("TargetMarket")
+        w.leaf("GeneralReferenceDate", AS_OF.isoformat())
+        retail = c["minimum"] < 100000
+        w.open("InvestorType")
+        w.leaf("Retail", "Y" if retail else "N")
+        w.leaf("Professional", "Y")
+        w.leaf("EligibleCounterparty", "Y")
+        w.close("InvestorType")
+        w.open("KnowledgeAndExperience")
+        w.leaf("BasicInvestor", "Y" if retail else "N")
+        w.leaf("InformedInvestor", "Y")
+        w.leaf("AdvancedInvestor", "Y")
+        w.close("KnowledgeAndExperience")
+        w.open("AbilityToBearLosses")
+        w.leaf("CompatibleWithClientsWhoCanNotBearCapitalLoss", "N")
+        w.leaf("CompatibleWithClientsWhoDoNotNeedCapitalGuarantee", "Y")
+        w.leaf("CompatibleWithClientsWhoCanBearLossBeyondCapital", "N")
+        w.close("AbilityToBearLosses")
+        w.open("RiskTolerance")
+        w.leaf("PRIIPSMethodology", 3)
+        w.close("RiskTolerance")
+        w.open("ClientObjectives")
+        w.open("ReturnProfile")
+        w.leaf("ClientLookingForPreservation", "N")
+        w.leaf("ClientLookingForCapitalGrowth", "Y")
+        w.leaf("ClientLookingForIncome", "Y" if c.get("distribution") else "N")
+        w.close("ReturnProfile")
+        w.open("MinimumRecommendedHoldingPeriod")
+        w.leaf("Years", 5)
+        w.close("MinimumRecommendedHoldingPeriod")
+        w.leaf("IntendedCompatibleWithClientsHavingSustainabilityPreferences", "Y" if fund["sfdr"] != "6" else "Neutral")
+        w.close("ClientObjectives")
+        w.open("DistributionStrategy")
+        for tag in ("ExecutionOnly", "ExecutionWithCheckOrNonAdvisedServices", "InvestmentAdvice", "PortfolioManagement"):
+            w.leaf(tag, "B" if retail else "P")
+        w.close("DistributionStrategy")
+        w.close("TargetMarket")
+        w.open("CostsAndChargesExAnte")
+        w.open("Fund")
+        w.leaf("OngoingCosts", q(costs["Ongoing Charges"] / 100, "0.0001"))
+        w.leaf("ManagementFee", q(c["fee"] / 100, "0.0001"))
+        w.leaf("TransactionCosts", q(costs.get("Transaction Costs", D("0")) / 100, "0.0001"))
+        w.leaf("IncidentalCosts", q(costs.get("Performance Fee", D("0")) / 100, "0.0001"))
+        w.close("Fund")
+        w.leaf("CostsReferenceDate", AS_OF.isoformat())
+        w.close("CostsAndChargesExAnte")
+        w.close("FinancialInstrument")
+    w.close("EMT_V4_2")
+    w.close("DirectReporting")
+
+    c = classes[0]
+    cash = sum(p["value"] for p in doc.positions if p["block"]["type"] in ("Account", "CallMoney"))
+    w.open("IndirectReporting")
+    w.open("TripartiteTemplateSolvencyII_V7")
+    w.open("Portfolio")
+    w.leaf("TPTVersion", "V7.0")
+    w.open("PortfolioID")
+    w.leaf("CodificationSystem", 1)
+    w.leaf("Code", c["isin"])
+    w.close("PortfolioID")
+    w.leaf("PortfolioName", f"{fund['name']} {c['name_suffix']}")
+    w.leaf("PortfolioCurrency", "EUR")
+    w.leaf("TotalNetAssets", tna)
+    w.leaf("ValuationDate", AS_OF.isoformat())
+    w.leaf("ReportingDate", "2025-11-14")
+    w.open("ShareClass")
+    w.leaf("SharePrice", c["nav"])
+    w.leaf("TotalNumberOfShares", c["shares"])
+    w.close("ShareClass")
+    w.leaf("CashPercentage", q(cash / tna, "0.0001"))
+    w.leaf("CompleteSCRDelivery", "N")
+    w.open("QRTPortfolioInformation")
+    w.open("FundIssuer")
+    w.leaf("Name", MANCO["name"])
+    w.leaf("Code", MANCO["lei"])
+    w.leaf("CodeType", 1)
+    w.leaf("EconomicSector", "K6630")
+    w.leaf("Country", MANCO["country"])
+    w.close("FundIssuer")
+    w.open("FundIssuerGroup")
+    w.leaf("Name", MANCO["name"])
+    w.leaf("Code", MANCO["lei"])
+    w.leaf("CodeType", 1)
+    w.close("FundIssuerGroup")
+    w.leaf("FundCIC", fund["country"] + "44")
+    w.leaf("FundCustodianCountry", DEPOSITARY["country"])
+    w.leaf("Duration", q(sum(p["value"] * dict(p["risk"])["MODIFIED DURATION"] for p in doc.positions
+                            if p["block"]["type"] == "Bond") / tna))  # bonds only, without futures and swaps
+    w.close("QRTPortfolioInformation")
+    w.open("Positions")
+    for p in doc.positions:
+        a, b = p["asset"], p["block"]
+        if b["type"] not in ("Equity", "Bond"):
+            continue
+        equity = b["type"] == "Equity"
+        weight = q(p["value"] / tna, "0.000001")
+        w.open("Position")
+        w.leaf("InstrumentCIC", a["country"] + ("31" if equity else BOND_CIC[a["sector"]]))
+        w.open("InstrumentCode")
+        w.leaf("CodificationSystem", 1)
+        w.leaf("Code", a["isin"])
+        w.close("InstrumentCode")
+        w.leaf("InstrumentName", a["name"])
+        w.open("Valuation")
+        if equity:
+            w.leaf("Quantity", b["units"])
+        else:
+            w.leaf("TotalNominalValueQC", b["nominal"])
+        w.leaf("QuotationCurrency", a["ccy"])
+        local = b["local"] if equity else b["clean"] + b["accrued"]
+        w.leaf("MarketValueQC", local)
+        w.leaf("CleanValueQC", local if equity else b["clean"])
+        if not equity:
+            w.leaf("AccruedIncomeQC", b["accrued"])
+        w.leaf("MarketValuePC", p["value"])
+        w.leaf("CleanValuePC", p["value"] if equity else b["clean"])
+        if not equity:
+            w.leaf("AccruedIncomePC", b["accrued"])
+        w.leaf("PositionWeight", weight)
+        w.leaf("MarketExposureQC", local)
+        w.leaf("MarketExposurePC", p["value"])
+        w.leaf("MarketExposureWeight", weight)
+        w.close("Valuation")
+        if not equity:
+            w.open("InterestRateInstrumentCharacteristics")
+            w.leaf("RateType", {"fix": "Fixed", "float": "Floating", "zero": "Fixed"}[a["coupon_type"]])
+            w.leaf("CouponRate", a["coupon"])
+            w.leaf("CouponFrequency", 4 if a["frequency"] == "QURT" else 1)
+            w.leaf("EffectiveDateOfInstrument", a["issue"].isoformat())
+            w.open("Redemption")
+            w.leaf("MaturityDate", a["maturity"].isoformat())
+            w.leaf("Type", "Bullet")
+            w.leaf("Rate", 1)
+            w.close("Redemption")
+            w.close("InterestRateInstrumentCharacteristics")
+        w.open("CreditRiskData")
+        for tag in ("InstrumentIssuer", "IssuerGroup"):
+            w.open(tag)
+            w.leaf("Name", a["issuer"])
+            w.leaf("Code", a["issuer_lei"])
+            w.leaf("CodeType", 1)
+            w.close(tag)
+        w.leaf("IssuerCountry", issuer(a)["country"])
+        w.leaf("EconomicArea", 1 if issuer(a)["country"] in EEA else 2)
+        if equity or a["sector"] == "Corporate":
+            e = a if equity else EQUITY_BY_ISSUER[a["issuer"]]
+            w.leaf("EconomicSector", e["section"][0] + e["nace"].replace(".", ""))
+        else:
+            w.leaf("EconomicSector", BOND_NACE[a["sector"]])
+        w.close("CreditRiskData")
+        if not equity:
+            w.open("Analytics")
+            w.leaf("ModifiedDurationToMaturity", dict(p["risk"])["MODIFIED DURATION"])
+            w.close("Analytics")
+        w.open("AdditionalInformation")
+        w.leaf("InfrastructureInvestment", 0)
+        w.leaf("InfrastructureInvestmentAdditionalQRT", 1)
+        w.close("AdditionalInformation")
+        w.close("Position")
+    w.close("Positions")
+    w.close("Portfolio")
+    w.close("TripartiteTemplateSolvencyII_V7")
+    w.close("IndirectReporting")
+    w.close("RegulatoryReportings")
 
 
 def issuer(a):
@@ -1745,9 +1954,10 @@ FILES = {
     "Multi-Asset-Derivatives-Fund_2025-10.xml": multi_asset,
     "Fund-of-Funds_2025-10.xml": fund_of_funds,
 }
+REGULATORY = {"Multi-Asset-Derivatives-Fund_2025-10.xml"}  # files with RegulatoryReportings (EMT, TPT)
 
 
-def render(builder, doc_id):
+def render(builder, doc_id, regulatory=False):
     doc, fund, classes, breakdowns, risk, benchmark = builder()
     seq = 0
     for t in sorted(doc.transactions, key=lambda t: (t["date"], t["kind"] == "CASH")):
@@ -1768,6 +1978,8 @@ def render(builder, doc_id):
     emit_fund(w, doc, fund, classes, breakdowns, risk, benchmark)
     w.close("Funds")
     emit_assets(w, doc)
+    if regulatory:
+        emit_regulatory(w, doc, fund, classes)
     w.depth = 0
     w.lines.append("</FundsXML4>")
     return w.text()
@@ -1863,7 +2075,7 @@ def main():
             continue
         doc_id = "EXAMPLE-" + name.replace(".xml", "").upper().replace("_", "-")
         with open(args.out / name, "w", encoding="utf-8", newline="\n") as f:
-            f.write(render(builder, doc_id))
+            f.write(render(builder, doc_id, regulatory=name in REGULATORY))
         print("wrote", args.out / name)
     return 0
 

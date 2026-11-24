@@ -81,7 +81,7 @@
         <!-- R2: UniqueID naming convention -->
         <h2>R2 — Position UniqueID convention (ID_&lt;digits&gt;)</h2>
         <xsl:variable name="badIds"
-          select="//Position[not(matches(UniqueID,'^ID_\d{3,}$'))]"/>
+          select="//Portfolios/Portfolio/Positions/Position[not(matches(UniqueID,'^ID_\d{3,}$'))]"/>
         <xsl:choose>
           <xsl:when test="empty($badIds)">
             <p class="ok">PASS — all position IDs follow the convention.</p>
@@ -97,7 +97,7 @@
         <!-- R3: Concentration limit -->
         <h2>R3 — Concentration limit (max <xsl:value-of select="$concentrationLimitPct"/>% per position)</h2>
         <xsl:variable name="over"
-          select="//Position[number(TotalPercentage) gt $limitPct]"/>
+          select="//Portfolios/Portfolio/Positions/Position[number(TotalPercentage) gt $limitPct]"/>
         <xsl:choose>
           <xsl:when test="empty($over)">
             <p class="ok">PASS — no position exceeds the concentration limit.</p>

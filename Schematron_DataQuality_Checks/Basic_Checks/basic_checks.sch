@@ -25,7 +25,7 @@
         <title>Structural Integrity Checks</title>
         
         <!-- Rule: Fund should have a LEI identifier -->
-        <rule context="Fund">
+        <rule context="Funds/Fund">
             <assert test="Identifiers/LEI" role="warning">
                 WARNING: Fund "<value-of select="Names/OfficialName"/>" should have a LEI identifier
             </assert>
@@ -255,7 +255,7 @@
         <title>Date Consistency Validations</title>
         
         <!-- Rule: All NAV dates should be consistent -->
-        <rule context="Fund">
+        <rule context="Funds/Fund">
             <let name="fundNavDate" value="FundDynamicData/TotalAssetValues/TotalAssetValue/NavDate"/>
             
             <!-- Check ShareClass NAV dates -->
