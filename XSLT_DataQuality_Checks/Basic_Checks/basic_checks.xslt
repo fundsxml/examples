@@ -64,7 +64,7 @@
                 <p>Content Date: <xsl:value-of select="//ContentDate"/></p>
                 
                 <!-- Process each fund in the document -->
-                <xsl:for-each select="//Fund">
+                <xsl:for-each select="//Funds/Fund">
                     <xsl:call-template name="check-fund"/>
                 </xsl:for-each>
             </body>
