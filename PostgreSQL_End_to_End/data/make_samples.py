@@ -119,14 +119,16 @@ def funds():
          "MA": prepare(R.multi_asset), "FF": prepare(R.fund_of_funds)}
     # One AssetMasterData for the whole file: an asset with an ISIN appears once, whatever fund holds
     # it. Cash accounts, fee accruals and OTC contracts have no ISIN and belong to one fund each.
-    registry, n = {}, 0
+    # The UniqueIDs are the sender's own: fund code and a number, valid in this file only.
+    registry = {}
     for code, x in f.items():
+        n = 0
         for a in x["doc"].assets.values():
             if a.get("isin") and a["isin"] in registry:
                 a["uid"] = registry[a["isin"]]["uid"]
                 continue
             n += 1
-            a["uid"] = f"A{n:05d}"
+            a["uid"] = f"{code}_{n:04d}"
             registry[a.get("isin") or (code, a["key"])] = a
     return f, list(registry.values())
 

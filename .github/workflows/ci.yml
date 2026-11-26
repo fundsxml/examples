@@ -483,6 +483,7 @@ jobs:
         run: |
           set -e
           SCH=Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch
+          ./mvnw -q -B -pl Schematron_DataQuality_Checks/Basic_Checks/invocation -am compile
           M="./mvnw -q -B -pl Schematron_DataQuality_Checks/Basic_Checks/invocation exec:java"
           for f in PostgreSQL_End_to_End/data/in/*.xml PostgreSQL_End_to_End/data/expected/*.xml; do
             echo "== $f"
