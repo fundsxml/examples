@@ -5,9 +5,9 @@
 Four complete month-end files of fictional funds, sized and structured like real reporting data: hundreds of
 positions, a month of transactions and income, several share classes with a daily NAV history. The small
 samples in `../positions/` stay the place to learn the structure; these files are for testing tools, mappings
-and performance on data that looks like production.
+and performance on data that looks like production. A fifth file delivers the documents of the multi-asset fund.
 
-All four are valid against the
+All five are valid against the
 [4.2.9 schema](https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd) and pass
 [`basic_checks.sch`](../../../Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch) without errors or
 warnings (checked in CI).
@@ -18,11 +18,30 @@ warnings (checked in CI).
 | `Euro-Bond-Fund_2025-10.xml` | 1.0 MB | 838,581,814.97 | 207: 200 bonds (fixed, floating, zero; sovereign, agency, covered, corporate), 4 interest rate futures, 1 interest rate swap, account, fee accrual | 2: EUR R acc, EUR I dist | 56 (trades with accrued interest, flows) | coupons, account interest | Accrued interest, dirty prices, yields, durations, ratings, maturity/rating/issuer-type breakdowns |
 | `Multi-Asset-Derivatives-Fund_2025-10.xml` | 0.6 MB | 278,791,093.07 | 81 over 12 asset types: equities, bonds, ETFs, warrants, certificates, options, futures, FX forwards, swaps (IRS, cross currency, CDS, total return), call money, accounts, fee accrual | 4: EUR R, EUR I, CHF and USD hedged | 56 | dividends, coupons, interest | Counterparties, swap legs, underlyings with delta, delta-adjusted and commitment exposures, leverage and VaR; `RegulatoryReportings` with an EMT V4.2 per share class and a TPT V7 (Solvency II) of the EUR R class with its equities and bonds |
 | `Fund-of-Funds_2025-10.xml` | 0.4 MB | 155,706,556.38 | 38: 35 target funds of 5 managers, 2 accounts, fee accrual | 2: EUR T acc, EUR A dist | 30 | fund distributions, interest | `FundOfFundFlag`, look-through level 1 (`PositionsDecomposed`) into the target funds' securities |
+| `Fund-Documents_2025-10.xml` | 10 KB | – | – | – | – | – | `ControlData` + `Documents` only, for the Multi-Asset fund: prospectus as a **link** (`DocumentURL` on example.com, assigned to the fund by LEI), PRIIPs KID (two share classes) and factsheet (one share class) **embedded** as base64 PDF in `BinaryData`, with `SizeInBytes` = decoded length; see below |
 
 Share classes in another currency than the fund report their net assets twice, marked with `isShareClassCcy` and
 `isFundCcy`.
 
 Reporting date is 2025-10-31; transactions, income, subscriptions and redemptions cover October 2025.
+
+## Documents: link or embedded
+
+`Fund-Documents_2025-10.xml` shows the two ways to deliver a document in `Documents/Document`:
+
+| Document | `Type/ListedType` | Assigned to | Delivery | `FileName` |
+|---|---|---|---|---|
+| Prospectus | `Prospectus` | `Fund` (LEI `XMPL00FNDMULTI000170`) | `DocumentURL` (https://www.example.com/…), `SizeInBytes` of the file behind the link | `EX-Multi-Asset_Prospectus_2025-01_en.pdf` |
+| PRIIPs KID | `PRIIPS-KID` | `ShareClasses`: `ATXMPLF03016` (EUR R), `ATXMPLF03024` (EUR I) | `BinaryData` (base64, 76 characters per line) | `EX-Multi-Asset_PRIIPs-KID_2025-02_en.pdf` |
+| Factsheet | `Factsheet` | `ShareClasses`: `ATXMPLF03016` (EUR R) | `BinaryData` | `EX-Multi-Asset_Factsheet_ATXMPLF03016_2025-10_en.pdf` |
+
+The embedded PDFs are one-page PDF 1.4 files that the generator writes byte for byte (no timestamps, no `/ID`),
+so the base64 stays identical on every run; they only say that they are fictitious training samples.
+`SizeInBytes` is the exact length of the decoded bytes. To extract one:
+
+```bash
+python -c "import base64,sys,xml.etree.ElementTree as E; d=E.parse(sys.argv[1]).find('Documents/Document[2]'); open(d.findtext('FileName'),'wb').write(base64.b64decode(d.findtext('BinaryData')))" Fund-Documents_2025-10.xml
+```
 
 ## What is consistent
 
@@ -57,7 +76,7 @@ Both have valid check digits, so validators accept them. Company names ("Example
 ## Regenerate
 
 ```bash
-python FundsXML_Files/4.2.9/realistic/make_realistic.py                 # writes the four files here
+python FundsXML_Files/4.2.9/realistic/make_realistic.py                 # writes the five files here
 python FundsXML_Files/4.2.9/realistic/make_realistic.py --lint FundsXML_Files tests/fixtures
 python FundsXML_Files/4.2.9/realistic/make_realistic.py --verify-online # asks GLEIF and ESMA FIRDS
 ```
