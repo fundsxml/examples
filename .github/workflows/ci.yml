@@ -416,6 +416,80 @@ jobs:
   # file directly. A focused subset (Python / Java / .NET XSD + one XSLT + a
   # DB round-trip + the PowerShell CLI), not the full bash-heavy matrix.
   # =======================================================================
+  # PostgreSQL_End_to_End: the example of the "FundsXML in production" films, end to end:
+  # load the deliveries into PostgreSQL (bad files rejected), correct, delete, reconcile, query,
+  # generate one file per partner, validate it (XSD 1.1 and Schematron), compare it with the golden
+  # files and load it again. Also: the sample generator must reproduce data/in and data/bad exactly.
+  postgres-end-to-end:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: fundsxml
+          POSTGRES_PASSWORD: fundsxml
+          POSTGRES_DB: fundsxml
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U fundsxml -d fundsxml"
+          --health-interval 2s --health-retries 15
+    env:
+      DATABASE_URL: postgresql://fundsxml:fundsxml@localhost:5432/fundsxml
+      PGHOST: localhost
+      PGUSER: fundsxml
+      PGPASSWORD: fundsxml
+      PGDATABASE: fundsxml
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install psql and the Python dependencies
+        run: |
+          command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
+          pip install -r PostgreSQL_End_to_End/requirements.txt
+
+      - name: Fetch the FundsXML 4.2.9 schema (official release)
+        run: |
+          set -e
+          mkdir -p ci-schemas/4.2.9
+          for f in FundsXML.xsd xmldsig-core-schema.xsd; do
+            curl -sSLf -o "ci-schemas/4.2.9/$f" "https://github.com/fundsxml/schema/releases/download/4.2.9/$f"
+          done
+
+      - name: Sample deliveries are reproducible
+        run: |
+          set -e
+          python PostgreSQL_End_to_End/data/make_samples.py
+          git diff --exit-code -- PostgreSQL_End_to_End/data
+          test -z "$(git status --porcelain -- PostgreSQL_End_to_End/data)"
+
+      - name: Code lists match the schema
+        run: |
+          python PostgreSQL_End_to_End/ddl/codes_from_xsd.py ci-schemas/4.2.9/FundsXML.xsd > /tmp/codes.sql
+          diff /tmp/codes.sql PostgreSQL_End_to_End/ddl/09_codes.sql
+
+      - name: End to end (run_all.sh)
+        run: FUNDSXML_XSD=$PWD/ci-schemas/4.2.9/FundsXML.xsd PostgreSQL_End_to_End/run_all.sh
+
+      - name: Schematron - inputs and exports have no errors
+        run: |
+          set -e
+          SCH=Schematron_DataQuality_Checks/Basic_Checks/basic_checks.sch
+          M="./mvnw -q -B -pl Schematron_DataQuality_Checks/Basic_Checks/invocation exec:java"
+          for f in PostgreSQL_End_to_End/data/in/*.xml PostgreSQL_End_to_End/data/expected/*.xml; do
+            echo "== $f"
+            $M -Dexec.args="$SCH $f" | tee r_sch.txt
+            grep -q "summary: 0 error(s)" r_sch.txt
+          done
+
   windows-smoke:
     runs-on: windows-latest
     defaults:

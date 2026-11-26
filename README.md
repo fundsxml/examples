@@ -34,6 +34,7 @@ Linux/macOS) with no bash prerequisite, and is exercised by the CI workflow.
 | Transformation invocation | Java, Python, Node | [XSLT_Transformations/invocation/](./XSLT_Transformations/) |
 | XQuery analytics (aggregation, top-holdings, look-through) | Saxon (Java), Python, BaseX | [XQuery_Examples/](./XQuery_Examples/) |
 | XML signature sign / verify | Apache Santuario (Java), .NET `SignedXml`, `xmlsec1` CLI — one shared profile, cross-verified in CI; Python `signxml` as reference | [XML_Signature/](./XML_Signature/) |
+| End to end with PostgreSQL: table model, loader, generator, sample deliveries (the example of the "FundsXML in production" films) | PostgreSQL DDL, Python (lxml, psycopg), XSD 1.1 (Xerces-J) — run end to end in CI | [PostgreSQL_End_to_End/](./PostgreSQL_End_to_End/) |
 | Database import / export (multi-fund) | Separate import + export programs in Python · Java · JavaScript · C# (SQLite); Oracle/SQL Server/Postgres SQL (code refs) | [Database_Integration/](./Database_Integration/) |
 | Large-file / streaming | lxml iterparse + Java StAX, split, delta-diff | [Large_File_Processing/](./Large_File_Processing/) |
 | Data binding & JSON | FundsXML⇄JSON, native Java binding, codegen refs | [Data_Binding_JSON/](./Data_Binding_JSON/) |

@@ -1,0 +1,25 @@
+{
+  "_comment": "The partner register: which funds, data blocks and templates each partner receives. Adding a fund or a template for a partner is a change here, not in the code. Funds are given by LEI; an umbrella includes all its subfunds.",
+  "DISTRIBUTOR-B": {
+    "name": "Example Distribution Bank (fictitious)",
+    "funds": ["XMPL00FNDUMBRELLA182", "XMPL00FNDMULTI000170"],
+    "nav_days": 3,
+    "blocks": ["navs", "prices", "documents"],
+    "templates": ["EMT", "EET"]
+  },
+  "INSURER-A": {
+    "name": "Example Life Insurance AG (fictitious)",
+    "funds": ["XMPL00FNDMULTI000170", "XMPL00FNDFOFBAL00195"],
+    "nav_days": 1,
+    "blocks": ["navs", "prices", "portfolio", "look_through"],
+    "templates": ["TPT"]
+  },
+  "DATAVENDOR-C": {
+    "name": "Example Fund Data Services (fictitious)",
+    "funds": ["XMPL00FNDUMBRELLA182", "XMPL00FNDMULTI000170", "XMPL00FNDFOFBAL00195"],
+    "nav_days": 1,
+    "blocks": ["static", "navs", "prices", "portfolio", "transactions", "income", "look_through", "flows",
+               "distributions", "documents"],
+    "templates": ["EMT", "EET", "TPT"]
+  }
+}
