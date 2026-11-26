@@ -59,3 +59,8 @@ obj/
 # WebDAV mount state.
 XSLT_Transformations/CSV_Export/2026-06-25_FundsXML_TPT/
 .DAV/
+
+# PostgreSQL_End_to_End: validator jars (downloaded by tools/xsd11/validate.sh), local schema, venv
+PostgreSQL_End_to_End/tools/xsd11/lib/
+PostgreSQL_End_to_End/schemas/
+PostgreSQL_End_to_End/.venv/

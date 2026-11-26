@@ -1,0 +1,2055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic sample: written by generator/export.py for DISTRIBUTOR-B from the example database. -->
+<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/fundsxml/schema/releases/download/4.2.9/FundsXML.xsd">
+  <ControlData>
+    <UniqueDocumentID>EXAMPLE-AM-DISTRIBUTOR-B-2025-11-05</UniqueDocumentID>
+    <DocumentGenerated>2025-11-06T07:00:00</DocumentGenerated>
+    <Version>4.2.9</Version>
+    <ContentDate>2025-11-05</ContentDate>
+    <DataSupplier>
+      <SystemCountry>AT</SystemCountry>
+      <Short>EXAMPLE-AM</Short>
+      <Name>Example Asset Management GmbH</Name>
+      <Type>Asset Manager</Type>
+    </DataSupplier>
+    <DataOperation>INITIAL</DataOperation>
+    <Language>en</Language>
+  </ControlData>
+  <Funds>
+    <Fund>
+      <Identifiers>
+        <LEI>XMPL00FNDUMBRELLA182</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>Example Invest SICAV</OfficialName>
+        <ShortName>EX Invest SICAV</ShortName>
+        <LanguageNames>
+          <Name language="de">Example Invest SICAV (Umbrella)</Name>
+          <Name language="en">Example Invest SICAV</Name>
+        </LanguageNames>
+      </Names>
+      <Currency>EUR</Currency>
+      <SingleFundFlag>false</SingleFundFlag>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2025-11-03</NavDate>
+            <TotalAssetNature>ESTIMATED</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">1442112505.57</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-03</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">1441889363.94</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-04</NavDate>
+            <TotalAssetNature>ESTIMATED</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">1440049623.01</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-04</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">1440842799.09</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-05</NavDate>
+            <TotalAssetNature>ESTIMATED</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">1439351337.84</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-05</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">1439726970.31</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+      </FundDynamicData>
+      <Subfunds>
+        <Subfund>
+          <Identifiers>
+            <LEI>XMPL00FNDGLOBEQ00172</LEI>
+          </Identifiers>
+          <Names>
+            <OfficialName>Example Global Equity Fund</OfficialName>
+            <ShortName>EX Global Equity</ShortName>
+            <LanguageNames>
+              <Name language="de">Beispiel Global Aktien</Name>
+              <Name language="en">Example Global Equity Fund</Name>
+            </LanguageNames>
+          </Names>
+          <Currency>EUR</Currency>
+          <SubfundDynamicData>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">599915094.84</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">599816493.57</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">597814871.13</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">598042884.60</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">597428285.87</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">597266995.81</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </SubfundDynamicData>
+          <ShareClasses>
+            <ShareClass>
+              <Identifiers>
+                <ISIN>ATXMPLF01010</ISIN>
+              </Identifiers>
+              <Names>
+                <OfficialName>Example Global Equity Fund EUR R (acc)</OfficialName>
+              </Names>
+              <Currency>EUR</Currency>
+              <CurrencyHedgedFlag>false</CurrencyHedgedFlag>
+              <Prices>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>186.47</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>186.47</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>186.26</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>186.30</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>185.18</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>185.18</NavPrice>
+                </Price>
+              </Prices>
+              <TotalAssetValues>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">275647154.35</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>1478238.614</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">275647154.35</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>1478238.614</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">275336724.24</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>1478238.614</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">275395853.79</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>1478238.614</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">273740226.54</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>1478238.614</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">273740226.54</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>1478238.614</SharesOutstanding>
+                </TotalAssetValue>
+              </TotalAssetValues>
+            </ShareClass>
+            <ShareClass>
+              <Identifiers>
+                <ISIN>ATXMPLF01028</ISIN>
+              </Identifiers>
+              <Names>
+                <OfficialName>Example Global Equity Fund EUR I (dist)</OfficialName>
+              </Names>
+              <Currency>EUR</Currency>
+              <CurrencyHedgedFlag>false</CurrencyHedgedFlag>
+              <Prices>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>1339.36</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>1339.09</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>1332.26</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>1333.06</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>1336.00</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>1335.33</NavPrice>
+                </Price>
+              </Prices>
+              <TotalAssetValues>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">246326323.75</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>183913.454</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">246276667.12</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>183913.454</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">245020538.23</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>183913.454</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">245167668.99</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>183913.454</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">245708374.54</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>183913.454</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">245585152.53</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>183913.454</SharesOutstanding>
+                </TotalAssetValue>
+              </TotalAssetValues>
+            </ShareClass>
+            <ShareClass>
+              <Identifiers>
+                <ISIN>ATXMPLF01036</ISIN>
+              </Identifiers>
+              <Names>
+                <OfficialName>Example Global Equity Fund USD R (acc, hedged)</OfficialName>
+              </Names>
+              <Currency>USD</Currency>
+              <CurrencyHedgedFlag>true</CurrencyHedgedFlag>
+              <Prices>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>USD</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>143.32</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>USD</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>143.23</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>USD</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>142.43</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>USD</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>142.47</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>USD</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>143.39</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>USD</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>143.32</NavPrice>
+                </Price>
+              </Prices>
+              <TotalAssetValues>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="USD" isShareClassCcy="true">90053743.98</Amount>
+                    <Amount ccy="EUR" isFundCcy="true">77941616.74</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>628340.385</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="USD" isShareClassCcy="true">89997193.34</Amount>
+                    <Amount ccy="EUR" isFundCcy="true">77892672.10</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>628340.385</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="USD" isShareClassCcy="true">89494521.04</Amount>
+                    <Amount ccy="EUR" isFundCcy="true">77457608.66</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>628340.385</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="USD" isShareClassCcy="true">89519654.65</Amount>
+                    <Amount ccy="EUR" isFundCcy="true">77479361.82</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>628340.385</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="USD" isShareClassCcy="true">90097727.81</Amount>
+                    <Amount ccy="EUR" isFundCcy="true">77979684.79</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>628340.385</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="USD" isShareClassCcy="true">90053743.98</Amount>
+                    <Amount ccy="EUR" isFundCcy="true">77941616.74</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>628340.385</SharesOutstanding>
+                </TotalAssetValue>
+              </TotalAssetValues>
+            </ShareClass>
+          </ShareClasses>
+        </Subfund>
+        <Subfund>
+          <Identifiers>
+            <LEI>XMPL00FNDEUROBO00175</LEI>
+          </Identifiers>
+          <Names>
+            <OfficialName>Example Euro Bond Fund</OfficialName>
+            <ShortName>EX Euro Bond</ShortName>
+            <LanguageNames>
+              <Name language="de">Beispiel Euro Anleihen</Name>
+              <Name language="en">Example Euro Bond Fund</Name>
+            </LanguageNames>
+          </Names>
+          <Currency>EUR</Currency>
+          <SubfundDynamicData>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">842197410.73</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">842072870.37</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">842234751.88</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">842799914.49</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">841923051.97</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">842459974.50</Amount>
+                </TotalNetAssetValue>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </SubfundDynamicData>
+          <ShareClasses>
+            <ShareClass>
+              <Identifiers>
+                <ISIN>ATXMPLF02018</ISIN>
+              </Identifiers>
+              <Names>
+                <OfficialName>Example Euro Bond Fund EUR R (acc)</OfficialName>
+              </Names>
+              <Currency>EUR</Currency>
+              <CurrencyHedgedFlag>false</CurrencyHedgedFlag>
+              <Prices>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>112.96</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>112.99</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>113.51</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>113.58</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>113.64</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>113.70</NavPrice>
+                </Price>
+              </Prices>
+              <TotalAssetValues>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">318999970.68</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>2824008.239</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">319084690.92</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>2824008.239</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">320553175.21</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>2824008.239</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">320750855.79</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>2824008.239</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">320920296.28</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>2824008.239</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">321089736.77</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>2824008.239</SharesOutstanding>
+                </TotalAssetValue>
+              </TotalAssetValues>
+            </ShareClass>
+            <ShareClass>
+              <Identifiers>
+                <ISIN>ATXMPLF02026</ISIN>
+              </Identifiers>
+              <Names>
+                <OfficialName>Example Euro Bond Fund EUR I (dist)</OfficialName>
+              </Names>
+              <Currency>EUR</Currency>
+              <CurrencyHedgedFlag>false</CurrencyHedgedFlag>
+              <Prices>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>1025.09</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-03</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>1024.68</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>1022.12</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-04</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>1022.84</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>ESTIMATED</PriceNature>
+                  <NavPrice>1020.79</NavPrice>
+                </Price>
+                <Price>
+                  <ActionCode>C</ActionCode>
+                  <NavDate>2025-11-05</NavDate>
+                  <PriceCurrency>EUR</PriceCurrency>
+                  <PriceNature>OFFICIAL</PriceNature>
+                  <NavPrice>1021.51</NavPrice>
+                </Price>
+              </Prices>
+              <TotalAssetValues>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">523197440.05</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>510391.712</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-03</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">522988179.45</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>510391.712</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">521681576.67</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>510391.712</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-04</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">522049058.70</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>510391.712</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">521002755.69</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>510391.712</SharesOutstanding>
+                </TotalAssetValue>
+                <TotalAssetValue>
+                  <NavDate>2025-11-05</NavDate>
+                  <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                  <TotalNetAssetValue>
+                    <Amount ccy="EUR">521370237.73</Amount>
+                  </TotalNetAssetValue>
+                  <SharesOutstanding>510391.712</SharesOutstanding>
+                </TotalAssetValue>
+              </TotalAssetValues>
+            </ShareClass>
+          </ShareClasses>
+        </Subfund>
+      </Subfunds>
+    </Fund>
+    <Fund>
+      <Identifiers>
+        <LEI>XMPL00FNDMULTI000170</LEI>
+      </Identifiers>
+      <Names>
+        <OfficialName>Example Multi Asset Opportunities Fund</OfficialName>
+        <ShortName>EX Multi Asset</ShortName>
+      </Names>
+      <Currency>EUR</Currency>
+      <SingleFundFlag>true</SingleFundFlag>
+      <FundDynamicData>
+        <TotalAssetValues>
+          <TotalAssetValue>
+            <NavDate>2025-11-03</NavDate>
+            <TotalAssetNature>ESTIMATED</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">280113135.51</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-03</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">280065248.75</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-04</NavDate>
+            <TotalAssetNature>ESTIMATED</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">280712788.02</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-04</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">280968046.39</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-05</NavDate>
+            <TotalAssetNature>ESTIMATED</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">280859375.03</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+          <TotalAssetValue>
+            <NavDate>2025-11-05</NavDate>
+            <TotalAssetNature>OFFICIAL</TotalAssetNature>
+            <TotalNetAssetValue>
+              <Amount ccy="EUR">280882278.75</Amount>
+            </TotalNetAssetValue>
+          </TotalAssetValue>
+        </TotalAssetValues>
+      </FundDynamicData>
+      <SingleFund>
+        <ShareClasses>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>ATXMPLF03016</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Example Multi Asset Opportunities Fund EUR R (acc)</OfficialName>
+            </Names>
+            <Currency>EUR</Currency>
+            <CurrencyHedgedFlag>false</CurrencyHedgedFlag>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>129.01</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>128.95</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>129.57</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>129.58</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>129.40</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>129.44</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">145648751.90</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1128972.575</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">145581013.55</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1128972.575</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">146280976.54</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1128972.575</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">146292266.27</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1128972.575</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">146089051.20</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1128972.575</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">146134210.11</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>1128972.575</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>ATXMPLF03024</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Example Multi Asset Opportunities Fund EUR I (acc)</OfficialName>
+            </Names>
+            <Currency>EUR</Currency>
+            <CurrencyHedgedFlag>false</CurrencyHedgedFlag>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>1190.19</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>1190.79</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>1185.31</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>1185.07</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>1183.88</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>EUR</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>1184.00</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">61548131.22</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>51712.862</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">61579158.94</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>51712.862</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">61295772.46</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>51712.862</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">61283361.37</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>51712.862</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">61221823.06</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>51712.862</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="EUR">61228028.61</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>51712.862</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>ATXMPLF03032</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Example Multi Asset Opportunities Fund CHF R (acc, hedged)</OfficialName>
+            </Names>
+            <Currency>CHF</Currency>
+            <CurrencyHedgedFlag>true</CurrencyHedgedFlag>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>CHF</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>105.44</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>CHF</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>105.38</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>CHF</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>105.00</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>CHF</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>106.29</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>CHF</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>105.40</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>CHF</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>105.42</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CHF" isShareClassCcy="true">18230011.90</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">19640176.58</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>172894.650</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CHF" isShareClassCcy="true">18219638.22</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">19629000.45</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>172894.650</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CHF" isShareClassCcy="true">18153938.25</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">19558218.33</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>172894.650</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CHF" isShareClassCcy="true">18376972.35</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">19798505.01</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>172894.650</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CHF" isShareClassCcy="true">18223096.11</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">19632725.82</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>172894.650</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="CHF" isShareClassCcy="true">18226554.00</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">19636451.20</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>172894.650</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+          <ShareClass>
+            <Identifiers>
+              <ISIN>ATXMPLF03040</ISIN>
+            </Identifiers>
+            <Names>
+              <OfficialName>Example Multi Asset Opportunities Fund USD R (acc, hedged)</OfficialName>
+            </Names>
+            <Currency>USD</Currency>
+            <CurrencyHedgedFlag>true</CurrencyHedgedFlag>
+            <Prices>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>132.42</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-03</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>132.42</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>133.17</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-04</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>133.21</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>ESTIMATED</PriceNature>
+                <NavPrice>134.01</NavPrice>
+              </Price>
+              <Price>
+                <ActionCode>C</ActionCode>
+                <NavDate>2025-11-05</NavDate>
+                <PriceCurrency>USD</PriceCurrency>
+                <PriceNature>OFFICIAL</PriceNature>
+                <NavPrice>133.93</NavPrice>
+              </Price>
+            </Prices>
+            <TotalAssetValues>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isShareClassCcy="true">61555177.99</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">53276075.81</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>464848.044</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-03</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isShareClassCcy="true">61555177.99</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">53276075.81</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>464848.044</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isShareClassCcy="true">61903814.02</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">53577820.69</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>464848.044</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-04</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isShareClassCcy="true">61922407.94</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">53593913.74</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>464848.044</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>ESTIMATED</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isShareClassCcy="true">62294286.38</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">53915774.95</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>464848.044</SharesOutstanding>
+              </TotalAssetValue>
+              <TotalAssetValue>
+                <NavDate>2025-11-05</NavDate>
+                <TotalAssetNature>OFFICIAL</TotalAssetNature>
+                <TotalNetAssetValue>
+                  <Amount ccy="USD" isShareClassCcy="true">62257098.53</Amount>
+                  <Amount ccy="EUR" isFundCcy="true">53883588.83</Amount>
+                </TotalNetAssetValue>
+                <SharesOutstanding>464848.044</SharesOutstanding>
+              </TotalAssetValue>
+            </TotalAssetValues>
+          </ShareClass>
+        </ShareClasses>
+      </SingleFund>
+    </Fund>
+  </Funds>
+  <Documents>
+    <Document>
+      <Type>
+        <ListedType>Prospectus</ListedType>
+      </Type>
+      <Version>2025-01</Version>
+      <Language>en</Language>
+      <Fund>
+        <Identifiers>
+          <LEI>XMPL00FNDMULTI000170</LEI>
+        </Identifiers>
+        <Name>Example Multi Asset Opportunities Fund</Name>
+        <Currency>EUR</Currency>
+      </Fund>
+      <Name>Prospectus Example Multi Asset Opportunities Fund</Name>
+      <FileName>EX-Multi-Asset_Prospectus_2025-01_en.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-01-15</CreationDate>
+      <SizeInBytes>1843206</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDMULTI000170/documents/EX-Multi-Asset_Prospectus_2025-01_en.pdf</DocumentURL>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>en</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF03016</ISIN>
+          </Identifiers>
+          <Name>Example Multi Asset Opportunities Fund EUR R (acc)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF03024</ISIN>
+          </Identifiers>
+          <Name>Example Multi Asset Opportunities Fund EUR I (acc)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>PRIIPs KID Example Multi Asset Opportunities Fund</Name>
+      <FileName>EX-Multi-Asset_PRIIPs-KID_2025-02_en.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>1696</SizeInBytes>
+      <BinaryData>
+JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4K
+ZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4K
+ZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAg
+MCA1OTUgODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiAvRjIgNSAwIFIgPj4g
+Pj4gL0NvbnRlbnRzIDYgMCBSID4+CmVuZG9iago0IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0
+eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGlu
+ZyA+PgplbmRvYmoKNSAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VG
+b250IC9IZWx2ZXRpY2EtQm9sZCAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoK
+NiAwIG9iago8PCAvTGVuZ3RoIDc0OSA+PgpzdHJlYW0KQlQKL0YyIDE4IFRmCjU2IDc3MCBUZAoo
+S2V5IEluZm9ybWF0aW9uIERvY3VtZW50IFwyMjcgUFJJSVBzKSBUagovRjIgMTMgVGYKMCAtMjQg
+VGQKKEV4YW1wbGUgTXVsdGkgQXNzZXQgT3Bwb3J0dW5pdGllcyBGdW5kIFwoZmljdGl0aW91c1wp
+KSBUagovRjEgMTAuNSBUZgowIC0xNiBUZAowIC0xNSBUZAooU2hhcmUgY2xhc3NlczogRVVSIFIg
+XChhY2NcKSBBVFhNUExGMDMwMTYsIEVVUiBJIFwoYWNjXCkgQVRYTVBMRjAzMDI0KSBUagowIC0x
+NSBUZAooTWFudWZhY3R1cmVyOiBFeGFtcGxlIEFzc2V0IE1hbmFnZW1lbnQgR21iSCwgVmllbm5h
+IFwoZmljdGl0aW91c1wpKSBUagowIC0xNSBUZAooRGF0ZSBvZiB0aGlzIGRvY3VtZW50OiAyMDI1
+LTAyLTE0KSBUagowIC0xNSBUZAooKSBUagowIC0xNSBUZAooVGhpcyBpcyBhIGZpY3RpdGlvdXMg
+dHJhaW5pbmcgc2FtcGxlIGZvciB0aGUgRnVuZHNYTUwgPERvY3VtZW50cz4gZWxlbWVudC4pIFRq
+CjAgLTE1IFRkCihJdCBpcyBub3QgYSByZWFsIGRvY3VtZW50IGFuZCBjb250YWlucyBubyBpbnZl
+c3RtZW50IGluZm9ybWF0aW9uLikgVGoKMCAtMTUgVGQKKENvbXBhbmllcywgZnVuZHMgYW5kIGlk
+ZW50aWZpZXJzIGFyZSBpbnZlbnRlZCBcKElTSU5zIGFuZCBMRUlzIHdpdGggdGhlIHByZWZpeCBY
+TVBMXCkuKSBUagowIC0xNSBUZAooR2VuZXJhdGVkIGJ5IG1ha2VfcmVhbGlzdGljLnB5IC0gaHR0
+cHM6Ly9naXRodWIuY29tL2Z1bmRzeG1sL2V4YW1wbGVzKSBUagpFVAplbmRzdHJlYW0KZW5kb2Jq
+CjcgMCBvYmoKPDwgL1RpdGxlIChLZXkgSW5mb3JtYXRpb24gRG9jdW1lbnQgLSBQUklJUHMgLSBF
+eGFtcGxlIE11bHRpIEFzc2V0IE9wcG9ydHVuaXRpZXMgRnVuZCBcKGZpY3RpdGlvdXNcKSkgL0F1
+dGhvciAoRXhhbXBsZSBBc3NldCBNYW5hZ2VtZW50IEdtYkggXChmaWN0aXRpb3VzXCkpIC9Qcm9k
+dWNlciAobWFrZV9yZWFsaXN0aWMucHkpID4+CmVuZG9iagp4cmVmCjAgOAowMDAwMDAwMDAwIDY1
+NTM1IGYgCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMDA2NCAwMDAwMCBuIAowMDAwMDAwMTIx
+IDAwMDAwIG4gCjAwMDAwMDAyNTcgMDAwMDAgbiAKMDAwMDAwMDM1NCAwMDAwMCBuIAowMDAwMDAw
+NDU2IDAwMDAwIG4gCjAwMDAwMDEyNTUgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA4IC9Sb290
+IDEgMCBSIC9JbmZvIDcgMCBSID4+CnN0YXJ0eHJlZgoxNDYwCiUlRU9GCg==
+</BinaryData>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>Factsheet</ListedType>
+      </Type>
+      <Version>2025-10</Version>
+      <Language>en</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF03016</ISIN>
+          </Identifiers>
+          <Name>Example Multi Asset Opportunities Fund EUR R (acc)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Factsheet Example Multi Asset Opportunities Fund EUR R (acc) October 2025</Name>
+      <FileName>EX-Multi-Asset_Factsheet_ATXMPLF03016_2025-10_en.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-11-03</CreationDate>
+      <ExpirationDate>2025-11-30</ExpirationDate>
+      <SizeInBytes>1605</SizeInBytes>
+      <BinaryData>
+JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4K
+ZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4K
+ZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAg
+MCA1OTUgODQyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiAvRjIgNSAwIFIgPj4g
+Pj4gL0NvbnRlbnRzIDYgMCBSID4+CmVuZG9iago0IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0
+eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGlu
+ZyA+PgplbmRvYmoKNSAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VG
+b250IC9IZWx2ZXRpY2EtQm9sZCAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyA+PgplbmRvYmoK
+NiAwIG9iago8PCAvTGVuZ3RoIDY2OSA+PgpzdHJlYW0KQlQKL0YyIDE4IFRmCjU2IDc3MCBUZAoo
+RmFjdHNoZWV0IE9jdG9iZXIgMjAyNSkgVGoKL0YyIDEzIFRmCjAgLTI0IFRkCihFeGFtcGxlIE11
+bHRpIEFzc2V0IE9wcG9ydHVuaXRpZXMgRnVuZCBcKGZpY3RpdGlvdXNcKSkgVGoKL0YxIDEwLjUg
+VGYKMCAtMTYgVGQKMCAtMTUgVGQKKFNoYXJlIGNsYXNzOiBFVVIgUiBcKGFjY1wpIEFUWE1QTEYw
+MzAxNikgVGoKMCAtMTUgVGQKKFJlcG9ydGluZyBkYXRlOiAyMDI1LTEwLTMxKSBUagowIC0xNSBU
+ZAooTmV0IGFzc2V0IHZhbHVlIHBlciBzaGFyZTogMTI4LjQxIEVVUikgVGoKMCAtMTUgVGQKKCkg
+VGoKMCAtMTUgVGQKKFRoaXMgaXMgYSBmaWN0aXRpb3VzIHRyYWluaW5nIHNhbXBsZSBmb3IgdGhl
+IEZ1bmRzWE1MIDxEb2N1bWVudHM+IGVsZW1lbnQuKSBUagowIC0xNSBUZAooSXQgaXMgbm90IGEg
+cmVhbCBkb2N1bWVudCBhbmQgY29udGFpbnMgbm8gaW52ZXN0bWVudCBpbmZvcm1hdGlvbi4pIFRq
+CjAgLTE1IFRkCihDb21wYW5pZXMsIGZ1bmRzIGFuZCBpZGVudGlmaWVycyBhcmUgaW52ZW50ZWQg
+XChJU0lOcyBhbmQgTEVJcyB3aXRoIHRoZSBwcmVmaXggWE1QTFwpLikgVGoKMCAtMTUgVGQKKEdl
+bmVyYXRlZCBieSBtYWtlX3JlYWxpc3RpYy5weSAtIGh0dHBzOi8vZ2l0aHViLmNvbS9mdW5kc3ht
+bC9leGFtcGxlcykgVGoKRVQKZW5kc3RyZWFtCmVuZG9iago3IDAgb2JqCjw8IC9UaXRsZSAoRmFj
+dHNoZWV0IE9jdG9iZXIgMjAyNSAtIEV4YW1wbGUgTXVsdGkgQXNzZXQgT3Bwb3J0dW5pdGllcyBG
+dW5kIFwoZmljdGl0aW91c1wpKSAvQXV0aG9yIChFeGFtcGxlIEFzc2V0IE1hbmFnZW1lbnQgR21i
+SCBcKGZpY3RpdGlvdXNcKSkgL1Byb2R1Y2VyIChtYWtlX3JlYWxpc3RpYy5weSkgPj4KZW5kb2Jq
+CnhyZWYKMCA4CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAw
+MDY0IDAwMDAwIG4gCjAwMDAwMDAxMjEgMDAwMDAgbiAKMDAwMDAwMDI1NyAwMDAwMCBuIAowMDAw
+MDAwMzU0IDAwMDAwIG4gCjAwMDAwMDA0NTYgMDAwMDAgbiAKMDAwMDAwMTE3NSAwMDAwMCBuIAp0
+cmFpbGVyCjw8IC9TaXplIDggL1Jvb3QgMSAwIFIgL0luZm8gNyAwIFIgPj4Kc3RhcnR4cmVmCjEz
+NjkKJSVFT0YK
+</BinaryData>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>en</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF01010</ISIN>
+          </Identifiers>
+          <Name>Example Global Equity Fund EUR R (acc)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Key Information Document Example Global Equity Fund EUR R (acc)</Name>
+      <FileName>EX-Global-Equity_PRIIPs-KID_ATXMPLF01010_2025-02_en.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>182035</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDGLOBEQ00172/documents/EX-Global-Equity_PRIIPs-KID_ATXMPLF01010_2025-02_en.pdf</DocumentURL>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>en</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF01028</ISIN>
+          </Identifiers>
+          <Name>Example Global Equity Fund EUR I (dist)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Key Information Document Example Global Equity Fund EUR I (dist)</Name>
+      <FileName>EX-Global-Equity_PRIIPs-KID_ATXMPLF01028_2025-02_en.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>182035</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDGLOBEQ00172/documents/EX-Global-Equity_PRIIPs-KID_ATXMPLF01028_2025-02_en.pdf</DocumentURL>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>en</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF01036</ISIN>
+          </Identifiers>
+          <Name>Example Global Equity Fund USD R (acc, hedged)</Name>
+          <Currency>USD</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Key Information Document Example Global Equity Fund USD R (acc, hedged)</Name>
+      <FileName>EX-Global-Equity_PRIIPs-KID_ATXMPLF01036_2025-02_en.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>182035</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDGLOBEQ00172/documents/EX-Global-Equity_PRIIPs-KID_ATXMPLF01036_2025-02_en.pdf</DocumentURL>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>de</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF01010</ISIN>
+          </Identifiers>
+          <Name>Example Global Equity Fund EUR R (acc)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Basisinformationsblatt Example Global Equity Fund EUR R (acc)</Name>
+      <FileName>EX-Global-Equity_PRIIPs-KID_ATXMPLF01010_2025-02_de.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>182035</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDGLOBEQ00172/documents/EX-Global-Equity_PRIIPs-KID_ATXMPLF01010_2025-02_de.pdf</DocumentURL>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>de</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF01028</ISIN>
+          </Identifiers>
+          <Name>Example Global Equity Fund EUR I (dist)</Name>
+          <Currency>EUR</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Basisinformationsblatt Example Global Equity Fund EUR I (dist)</Name>
+      <FileName>EX-Global-Equity_PRIIPs-KID_ATXMPLF01028_2025-02_de.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>182035</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDGLOBEQ00172/documents/EX-Global-Equity_PRIIPs-KID_ATXMPLF01028_2025-02_de.pdf</DocumentURL>
+    </Document>
+    <Document>
+      <Type>
+        <ListedType>PRIIPS-KID</ListedType>
+      </Type>
+      <Version>2025-02</Version>
+      <Language>de</Language>
+      <ShareClasses>
+        <ShareClass>
+          <Identifiers>
+            <ISIN>ATXMPLF01036</ISIN>
+          </Identifiers>
+          <Name>Example Global Equity Fund USD R (acc, hedged)</Name>
+          <Currency>USD</Currency>
+        </ShareClass>
+      </ShareClasses>
+      <Name>Basisinformationsblatt Example Global Equity Fund USD R (acc, hedged)</Name>
+      <FileName>EX-Global-Equity_PRIIPs-KID_ATXMPLF01036_2025-02_de.pdf</FileName>
+      <ForPublicUsage>true</ForPublicUsage>
+      <Format>application/pdf</Format>
+      <CreationDate>2025-02-14</CreationDate>
+      <ExpirationDate>2026-02-13</ExpirationDate>
+      <SizeInBytes>182035</SizeInBytes>
+      <DocumentURL>https://www.example.com/funds/XMPL00FNDGLOBEQ00172/documents/EX-Global-Equity_PRIIPs-KID_ATXMPLF01036_2025-02_de.pdf</DocumentURL>
+    </Document>
+  </Documents>
+  <RegulatoryReportings>
+    <DirectReporting>
+      <EMT_V4_2>
+        <FinancialInstrument>
+          <DataSetInformation>
+            <Version>V4S2</Version>
+            <ProducerName>Example Asset Management GmbH</ProducerName>
+            <FileGenerationDateTime>2025-11-03T06:15:00</FileGenerationDateTime>
+            <DataReportingTargetMarket>Y</DataReportingTargetMarket>
+            <DataReportingExAnte>Y</DataReportingExAnte>
+            <DataReportingExPost>N</DataReportingExPost>
+          </DataSetInformation>
+          <GeneralInformation>
+            <Code>ATXMPLF03016</Code>
+            <CodificationSystem>1</CodificationSystem>
+            <InstrumentName>Example Multi Asset Opportunities Fund EUR R (acc)</InstrumentName>
+            <InstrumentCurrency>EUR</InstrumentCurrency>
+            <InstrumentPerformanceFee>Y</InstrumentPerformanceFee>
+            <InstrumentDistributionCash>N</InstrumentDistributionCash>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <ProductType>U</ProductType>
+            <ManufacturerName>Example Asset Management GmbH</ManufacturerName>
+            <LeveragedOrContingentLiability>N</LeveragedOrContingentLiability>
+          </GeneralInformation>
+          <TargetMarket>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <InvestorType>
+              <Retail>Y</Retail>
+              <Professional>Y</Professional>
+              <EligibleCounterparty>Y</EligibleCounterparty>
+            </InvestorType>
+            <KnowledgeAndExperience>
+              <BasicInvestor>Y</BasicInvestor>
+              <InformedInvestor>Y</InformedInvestor>
+              <AdvancedInvestor>Y</AdvancedInvestor>
+            </KnowledgeAndExperience>
+            <AbilityToBearLosses>
+              <CompatibleWithClientsWhoCanNotBearCapitalLoss>N</CompatibleWithClientsWhoCanNotBearCapitalLoss>
+              <CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>Y</CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>
+              <CompatibleWithClientsWhoCanBearLossBeyondCapital>N</CompatibleWithClientsWhoCanBearLossBeyondCapital>
+            </AbilityToBearLosses>
+            <RiskTolerance>
+              <PRIIPSMethodology>3</PRIIPSMethodology>
+            </RiskTolerance>
+            <ClientObjectives>
+              <ReturnProfile>
+                <ClientLookingForPreservation>N</ClientLookingForPreservation>
+                <ClientLookingForCapitalGrowth>Y</ClientLookingForCapitalGrowth>
+                <ClientLookingForIncome>N</ClientLookingForIncome>
+              </ReturnProfile>
+              <MinimumRecommendedHoldingPeriod>
+                <Years>5</Years>
+              </MinimumRecommendedHoldingPeriod>
+              <IntendedCompatibleWithClientsHavingSustainabilityPreferences>Neutral</IntendedCompatibleWithClientsHavingSustainabilityPreferences>
+            </ClientObjectives>
+            <DistributionStrategy>
+              <ExecutionOnly>B</ExecutionOnly>
+              <ExecutionWithCheckOrNonAdvisedServices>B</ExecutionWithCheckOrNonAdvisedServices>
+              <InvestmentAdvice>B</InvestmentAdvice>
+              <PortfolioManagement>B</PortfolioManagement>
+            </DistributionStrategy>
+          </TargetMarket>
+          <CostsAndChargesExAnte>
+            <Fund>
+              <OngoingCosts>0.0158</OngoingCosts>
+              <ManagementFee>0.0160</ManagementFee>
+              <TransactionCosts>0.0019</TransactionCosts>
+              <IncidentalCosts>0.0021</IncidentalCosts>
+            </Fund>
+            <CostsReferenceDate>2025-10-31</CostsReferenceDate>
+          </CostsAndChargesExAnte>
+        </FinancialInstrument>
+        <FinancialInstrument>
+          <DataSetInformation>
+            <Version>V4S2</Version>
+            <ProducerName>Example Asset Management GmbH</ProducerName>
+            <FileGenerationDateTime>2025-11-03T06:15:00</FileGenerationDateTime>
+            <DataReportingTargetMarket>Y</DataReportingTargetMarket>
+            <DataReportingExAnte>Y</DataReportingExAnte>
+            <DataReportingExPost>N</DataReportingExPost>
+          </DataSetInformation>
+          <GeneralInformation>
+            <Code>ATXMPLF03024</Code>
+            <CodificationSystem>1</CodificationSystem>
+            <InstrumentName>Example Multi Asset Opportunities Fund EUR I (acc)</InstrumentName>
+            <InstrumentCurrency>EUR</InstrumentCurrency>
+            <InstrumentPerformanceFee>Y</InstrumentPerformanceFee>
+            <InstrumentDistributionCash>N</InstrumentDistributionCash>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <ProductType>U</ProductType>
+            <ManufacturerName>Example Asset Management GmbH</ManufacturerName>
+            <LeveragedOrContingentLiability>N</LeveragedOrContingentLiability>
+          </GeneralInformation>
+          <TargetMarket>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <InvestorType>
+              <Retail>N</Retail>
+              <Professional>Y</Professional>
+              <EligibleCounterparty>Y</EligibleCounterparty>
+            </InvestorType>
+            <KnowledgeAndExperience>
+              <BasicInvestor>N</BasicInvestor>
+              <InformedInvestor>Y</InformedInvestor>
+              <AdvancedInvestor>Y</AdvancedInvestor>
+            </KnowledgeAndExperience>
+            <AbilityToBearLosses>
+              <CompatibleWithClientsWhoCanNotBearCapitalLoss>N</CompatibleWithClientsWhoCanNotBearCapitalLoss>
+              <CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>Y</CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>
+              <CompatibleWithClientsWhoCanBearLossBeyondCapital>N</CompatibleWithClientsWhoCanBearLossBeyondCapital>
+            </AbilityToBearLosses>
+            <RiskTolerance>
+              <PRIIPSMethodology>3</PRIIPSMethodology>
+            </RiskTolerance>
+            <ClientObjectives>
+              <ReturnProfile>
+                <ClientLookingForPreservation>N</ClientLookingForPreservation>
+                <ClientLookingForCapitalGrowth>Y</ClientLookingForCapitalGrowth>
+                <ClientLookingForIncome>N</ClientLookingForIncome>
+              </ReturnProfile>
+              <MinimumRecommendedHoldingPeriod>
+                <Years>5</Years>
+              </MinimumRecommendedHoldingPeriod>
+              <IntendedCompatibleWithClientsHavingSustainabilityPreferences>Neutral</IntendedCompatibleWithClientsHavingSustainabilityPreferences>
+            </ClientObjectives>
+            <DistributionStrategy>
+              <ExecutionOnly>P</ExecutionOnly>
+              <ExecutionWithCheckOrNonAdvisedServices>P</ExecutionWithCheckOrNonAdvisedServices>
+              <InvestmentAdvice>P</InvestmentAdvice>
+              <PortfolioManagement>P</PortfolioManagement>
+            </DistributionStrategy>
+          </TargetMarket>
+          <CostsAndChargesExAnte>
+            <Fund>
+              <OngoingCosts>0.0158</OngoingCosts>
+              <ManagementFee>0.0080</ManagementFee>
+              <TransactionCosts>0.0019</TransactionCosts>
+              <IncidentalCosts>0.0021</IncidentalCosts>
+            </Fund>
+            <CostsReferenceDate>2025-10-31</CostsReferenceDate>
+          </CostsAndChargesExAnte>
+        </FinancialInstrument>
+        <FinancialInstrument>
+          <DataSetInformation>
+            <Version>V4S2</Version>
+            <ProducerName>Example Asset Management GmbH</ProducerName>
+            <FileGenerationDateTime>2025-11-03T06:15:00</FileGenerationDateTime>
+            <DataReportingTargetMarket>Y</DataReportingTargetMarket>
+            <DataReportingExAnte>Y</DataReportingExAnte>
+            <DataReportingExPost>N</DataReportingExPost>
+          </DataSetInformation>
+          <GeneralInformation>
+            <Code>ATXMPLF03032</Code>
+            <CodificationSystem>1</CodificationSystem>
+            <InstrumentName>Example Multi Asset Opportunities Fund CHF R (acc, hedged)</InstrumentName>
+            <InstrumentCurrency>CHF</InstrumentCurrency>
+            <InstrumentPerformanceFee>Y</InstrumentPerformanceFee>
+            <InstrumentDistributionCash>N</InstrumentDistributionCash>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <ProductType>U</ProductType>
+            <ManufacturerName>Example Asset Management GmbH</ManufacturerName>
+            <LeveragedOrContingentLiability>N</LeveragedOrContingentLiability>
+          </GeneralInformation>
+          <TargetMarket>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <InvestorType>
+              <Retail>Y</Retail>
+              <Professional>Y</Professional>
+              <EligibleCounterparty>Y</EligibleCounterparty>
+            </InvestorType>
+            <KnowledgeAndExperience>
+              <BasicInvestor>Y</BasicInvestor>
+              <InformedInvestor>Y</InformedInvestor>
+              <AdvancedInvestor>Y</AdvancedInvestor>
+            </KnowledgeAndExperience>
+            <AbilityToBearLosses>
+              <CompatibleWithClientsWhoCanNotBearCapitalLoss>N</CompatibleWithClientsWhoCanNotBearCapitalLoss>
+              <CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>Y</CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>
+              <CompatibleWithClientsWhoCanBearLossBeyondCapital>N</CompatibleWithClientsWhoCanBearLossBeyondCapital>
+            </AbilityToBearLosses>
+            <RiskTolerance>
+              <PRIIPSMethodology>3</PRIIPSMethodology>
+            </RiskTolerance>
+            <ClientObjectives>
+              <ReturnProfile>
+                <ClientLookingForPreservation>N</ClientLookingForPreservation>
+                <ClientLookingForCapitalGrowth>Y</ClientLookingForCapitalGrowth>
+                <ClientLookingForIncome>N</ClientLookingForIncome>
+              </ReturnProfile>
+              <MinimumRecommendedHoldingPeriod>
+                <Years>5</Years>
+              </MinimumRecommendedHoldingPeriod>
+              <IntendedCompatibleWithClientsHavingSustainabilityPreferences>Neutral</IntendedCompatibleWithClientsHavingSustainabilityPreferences>
+            </ClientObjectives>
+            <DistributionStrategy>
+              <ExecutionOnly>B</ExecutionOnly>
+              <ExecutionWithCheckOrNonAdvisedServices>B</ExecutionWithCheckOrNonAdvisedServices>
+              <InvestmentAdvice>B</InvestmentAdvice>
+              <PortfolioManagement>B</PortfolioManagement>
+            </DistributionStrategy>
+          </TargetMarket>
+          <CostsAndChargesExAnte>
+            <Fund>
+              <OngoingCosts>0.0158</OngoingCosts>
+              <ManagementFee>0.0160</ManagementFee>
+              <TransactionCosts>0.0019</TransactionCosts>
+              <IncidentalCosts>0.0021</IncidentalCosts>
+            </Fund>
+            <CostsReferenceDate>2025-10-31</CostsReferenceDate>
+          </CostsAndChargesExAnte>
+        </FinancialInstrument>
+        <FinancialInstrument>
+          <DataSetInformation>
+            <Version>V4S2</Version>
+            <ProducerName>Example Asset Management GmbH</ProducerName>
+            <FileGenerationDateTime>2025-11-03T06:15:00</FileGenerationDateTime>
+            <DataReportingTargetMarket>Y</DataReportingTargetMarket>
+            <DataReportingExAnte>Y</DataReportingExAnte>
+            <DataReportingExPost>N</DataReportingExPost>
+          </DataSetInformation>
+          <GeneralInformation>
+            <Code>ATXMPLF03040</Code>
+            <CodificationSystem>1</CodificationSystem>
+            <InstrumentName>Example Multi Asset Opportunities Fund USD R (acc, hedged)</InstrumentName>
+            <InstrumentCurrency>USD</InstrumentCurrency>
+            <InstrumentPerformanceFee>Y</InstrumentPerformanceFee>
+            <InstrumentDistributionCash>N</InstrumentDistributionCash>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <ProductType>U</ProductType>
+            <ManufacturerName>Example Asset Management GmbH</ManufacturerName>
+            <LeveragedOrContingentLiability>N</LeveragedOrContingentLiability>
+          </GeneralInformation>
+          <TargetMarket>
+            <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            <InvestorType>
+              <Retail>Y</Retail>
+              <Professional>Y</Professional>
+              <EligibleCounterparty>Y</EligibleCounterparty>
+            </InvestorType>
+            <KnowledgeAndExperience>
+              <BasicInvestor>Y</BasicInvestor>
+              <InformedInvestor>Y</InformedInvestor>
+              <AdvancedInvestor>Y</AdvancedInvestor>
+            </KnowledgeAndExperience>
+            <AbilityToBearLosses>
+              <CompatibleWithClientsWhoCanNotBearCapitalLoss>N</CompatibleWithClientsWhoCanNotBearCapitalLoss>
+              <CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>Y</CompatibleWithClientsWhoDoNotNeedCapitalGuarantee>
+              <CompatibleWithClientsWhoCanBearLossBeyondCapital>N</CompatibleWithClientsWhoCanBearLossBeyondCapital>
+            </AbilityToBearLosses>
+            <RiskTolerance>
+              <PRIIPSMethodology>3</PRIIPSMethodology>
+            </RiskTolerance>
+            <ClientObjectives>
+              <ReturnProfile>
+                <ClientLookingForPreservation>N</ClientLookingForPreservation>
+                <ClientLookingForCapitalGrowth>Y</ClientLookingForCapitalGrowth>
+                <ClientLookingForIncome>N</ClientLookingForIncome>
+              </ReturnProfile>
+              <MinimumRecommendedHoldingPeriod>
+                <Years>5</Years>
+              </MinimumRecommendedHoldingPeriod>
+              <IntendedCompatibleWithClientsHavingSustainabilityPreferences>Neutral</IntendedCompatibleWithClientsHavingSustainabilityPreferences>
+            </ClientObjectives>
+            <DistributionStrategy>
+              <ExecutionOnly>B</ExecutionOnly>
+              <ExecutionWithCheckOrNonAdvisedServices>B</ExecutionWithCheckOrNonAdvisedServices>
+              <InvestmentAdvice>B</InvestmentAdvice>
+              <PortfolioManagement>B</PortfolioManagement>
+            </DistributionStrategy>
+          </TargetMarket>
+          <CostsAndChargesExAnte>
+            <Fund>
+              <OngoingCosts>0.0158</OngoingCosts>
+              <ManagementFee>0.0160</ManagementFee>
+              <TransactionCosts>0.0019</TransactionCosts>
+              <IncidentalCosts>0.0021</IncidentalCosts>
+            </Fund>
+            <CostsReferenceDate>2025-10-31</CostsReferenceDate>
+          </CostsAndChargesExAnte>
+        </FinancialInstrument>
+      </EMT_V4_2>
+      <EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF01010</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Global Equity Fund EUR R (acc)</Name>
+            <Currency>EUR</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>8</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF01028</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Global Equity Fund EUR I (dist)</Name>
+            <Currency>EUR</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>8</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF01036</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Global Equity Fund USD R (acc, hedged)</Name>
+            <Currency>USD</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>8</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF03016</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Multi Asset Opportunities Fund EUR R (acc)</Name>
+            <Currency>EUR</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>6</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF03024</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Multi Asset Opportunities Fund EUR I (acc)</Name>
+            <Currency>EUR</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>6</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF03032</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Multi Asset Opportunities Fund CHF R (acc, hedged)</Name>
+            <Currency>CHF</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>6</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+        <EET1.1.3>
+          <DataSetInformation>
+            <DataSetInformation>
+              <Version>V1.1.3</Version>
+              <FileGeneration>2025-11-03T06:15:00</FileGeneration>
+              <DataReporting>
+                <SFDRPreContractual>Y</SFDRPreContractual>
+                <SFDRPeriodic>Y</SFDRPeriodic>
+                <SFDREntityLevel>N</SFDREntityLevel>
+                <MiFID>Y</MiFID>
+                <IDD>Y</IDD>
+              </DataReporting>
+            </DataSetInformation>
+            <ManufacturerInformation>
+              <Name>Example Asset Management GmbH</Name>
+              <CodeType>L</CodeType>
+              <Code>XMPL00EXAMPLEAM00123</Code>
+              <GeneralReferenceDate>2025-10-31</GeneralReferenceDate>
+            </ManufacturerInformation>
+            <ManufacturerWebsiteInformationStewardshipAndEngagement>https://www.example.com/stewardship</ManufacturerWebsiteInformationStewardshipAndEngagement>
+          </DataSetInformation>
+          <GeneralFinancialInstrumentInformation>
+            <IdentifyingData>ATXMPLF03040</IdentifyingData>
+            <TypeOfIdentification>1</TypeOfIdentification>
+            <Name>Example Multi Asset Opportunities Fund USD R (acc, hedged)</Name>
+            <Currency>USD</Currency>
+          </GeneralFinancialInstrumentInformation>
+          <MainCriterias>
+            <SFDRProductType>6</SFDRProductType>
+            <ConsidersPrincipleAdverseImpact>Y</ConsidersPrincipleAdverseImpact>
+          </MainCriterias>
+          <MiFIDIDDTargetMarket>
+            <EndClientSustainabilityPreferences_Considered>Y</EndClientSustainabilityPreferences_Considered>
+          </MiFIDIDDTargetMarket>
+          <ScreeningCriteria>
+            <ExistingNegativeScreeningStrategy>Y</ExistingNegativeScreeningStrategy>
+          </ScreeningCriteria>
+        </EET1.1.3>
+      </EET1.1.3>
+    </DirectReporting>
+  </RegulatoryReportings>
+</FundsXML4>

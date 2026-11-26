@@ -1,0 +1,18 @@
+# Local PostgreSQL 16 for the example, created from ddl/*.sql. The defaults are harmless and for local use only;
+# override them with environment variables (or a .env file) if you need to.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-fundsxml}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-fundsxml}
+      POSTGRES_DB: ${POSTGRES_DB:-fundsxml}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      # Runs once, when the database is created.
+      - ./ddl:/docker-entrypoint-initdb.d:ro       # 01_delivery.sql ... 09_codes.sql, in this order
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      retries: 15

@@ -30,8 +30,8 @@
                 WARNING: Fund "<value-of select="Names/OfficialName"/>" should have a LEI identifier
             </assert>
             
-            <!-- Check for at least one portfolio -->
-            <assert test="count(FundDynamicData/Portfolios/Portfolio) > 0" role="warning">
+            <!-- Check for at least one portfolio (an umbrella's portfolios are in its subfunds) -->
+            <assert test="count(FundDynamicData/Portfolios/Portfolio | Subfunds/Subfund/SubfundDynamicData/Portfolios/Portfolio) > 0" role="warning">
                 WARNING: Fund must have at least one portfolio
             </assert>
             
@@ -58,49 +58,58 @@
     <pattern id="nav-calculations">
         <title>NAV Calculation Validations</title>
         
-        <!-- Rule: Sum of ShareClass NAVs should equal Fund Total NAV -->
-        <rule context="Fund[SingleFund/ShareClasses/ShareClass]">
-            <let name="fundCurrency" value="Currency"/>
-            <let name="fundTotalNAV" value="number(FundDynamicData/TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy = $fundCurrency])"/>
-            <let name="sumShareClassNAV" value="sum(SingleFund/ShareClasses/ShareClass/TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy = $fundCurrency])"/>
-            <let name="difference" value="abs($fundTotalNAV - $sumShareClassNAV)"/>
-            
+        <!-- Rule: Sum of ShareClass NAVs should equal the fund's (or subfund's) total NAV.
+             A file may carry many NAV dates and several natures (ESTIMATED, OFFICIAL) per date:
+             each TotalAssetValue is compared with the share-class values of the same date and nature. -->
+        <rule context="FundDynamicData/TotalAssetValues/TotalAssetValue | SubfundDynamicData/TotalAssetValues/TotalAssetValue">
+            <let name="owner" value="../../.."/>
+            <let name="fundCurrency" value="$owner/Currency"/>
+            <let name="navDate" value="NavDate"/>
+            <let name="nature" value="TotalAssetNature"/>
+            <let name="classValues" value="($owner/SingleFund/ShareClasses/ShareClass | $owner/ShareClasses/ShareClass)/TotalAssetValues/TotalAssetValue[NavDate = $navDate and TotalAssetNature = $nature]"/>
+            <let name="fundTotalNAV" value="number(TotalNetAssetValue/Amount[@ccy = $fundCurrency][1])"/>
+            <let name="sumShareClassNAV" value="sum($classValues/TotalNetAssetValue/Amount[@ccy = $fundCurrency])"/>
+            <let name="difference" value="if (exists($classValues)) then abs($fundTotalNAV - $sumShareClassNAV) else 0"/>
+
             <!-- Allow small rounding differences (< 1 currency unit) -->
             <assert test="$difference &lt; 1" role="error">
-                ERROR: Sum of ShareClass NAVs (<value-of select="format-number($sumShareClassNAV, '#,##0.00')"/> <value-of select="$fundCurrency"/>) 
-                does not equal Fund Total NAV (<value-of select="format-number($fundTotalNAV, '#,##0.00')"/> <value-of select="$fundCurrency"/>). 
+                ERROR: Sum of ShareClass NAVs (<value-of select="format-number($sumShareClassNAV, '#,##0.00')"/> <value-of select="$fundCurrency"/>)
+                does not equal Fund Total NAV (<value-of select="format-number($fundTotalNAV, '#,##0.00')"/> <value-of select="$fundCurrency"/>)
+                on <value-of select="$navDate"/> (<value-of select="$nature"/>).
                 Difference: <value-of select="format-number($difference, '#,##0.00')"/>
             </assert>
-            
+
             <!-- Warning for small rounding differences -->
             <report test="$difference &gt;= 0.01 and $difference &lt; 1" role="warning">
-                WARNING: Small rounding difference detected in NAV summation. 
+                WARNING: Small rounding difference detected in NAV summation on <value-of select="$navDate"/>.
                 Difference: <value-of select="format-number($difference, '#,##0.00')"/> <value-of select="$fundCurrency"/>
             </report>
         </rule>
-        
-        <!-- Rule: ShareClass Price × Shares should equal NAV -->
-        <rule context="SingleFund/ShareClasses/ShareClass">
-            <let name="shareclassCurrency" value="Currency"/>
-            <!-- Prices may hold a history: take the price of the NAV date, else the last one -->
-            <let name="navDate" value="TotalAssetValues/TotalAssetValue/NavDate"/>
-            <let name="price" value="number((Prices/Price[NavDate = $navDate], Prices/Price[last()])[1]/NavPrice)"/>
-            <let name="shares" value="number(TotalAssetValues/TotalAssetValue/SharesOutstanding)"/>
-            <let name="reportedNAV" value="number(TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy = $shareclassCurrency])"/>
-            <let name="calculatedNAV" value="$price * $shares"/>
+
+        <!-- Rule: ShareClass Price × Shares should equal NAV, per date and nature -->
+        <rule context="ShareClass/TotalAssetValues/TotalAssetValue">
+            <let name="shareClass" value="../.."/>
+            <let name="shareclassCurrency" value="$shareClass/Currency"/>
+            <let name="navDate" value="NavDate"/>
+            <let name="nature" value="TotalAssetNature"/>
+            <!-- the price of the same date and nature, else of the same date -->
+            <let name="priceElement" value="($shareClass/Prices/Price[NavDate = $navDate and PriceNature = $nature], $shareClass/Prices/Price[NavDate = $navDate])[1]"/>
+            <let name="price" value="number($priceElement/NavPrice)"/>
+            <let name="shares" value="number(SharesOutstanding)"/>
+            <let name="reportedNAV" value="number(TotalNetAssetValue/Amount[@ccy = $shareclassCurrency][1])"/>
             <let name="calculatedPrice" value="if ($shares > 0) then $reportedNAV div $shares else 0"/>
-            <let name="priceDifference" value="abs($calculatedPrice - $price)"/>
-            
+            <let name="priceDifference" value="if (exists($priceElement) and $shares > 0) then abs($calculatedPrice - $price) else 0"/>
+
             <!-- Check if price calculation is correct (tolerance: 0.1) -->
-            <assert test="$priceDifference &lt; 0.1 or $shares = 0" role="error">
-                ERROR: ShareClass <value-of select="Identifiers/ISIN"/> price calculation mismatch. 
-                Reported price: <value-of select="format-number($price, '#,##0.00')"/>, 
+            <assert test="$priceDifference &lt; 0.1" role="error">
+                ERROR: ShareClass <value-of select="$shareClass/Identifiers/ISIN"/> price calculation mismatch on <value-of select="$navDate"/>.
+                Reported price: <value-of select="format-number($price, '#,##0.00')"/>,
                 Calculated price from NAV/Shares: <value-of select="format-number($calculatedPrice, '#,##0.00')"/>
             </assert>
-            
+
             <!-- Warning for small differences -->
             <report test="$priceDifference &gt;= 0.01 and $priceDifference &lt; 0.1" role="warning">
-                WARNING: Small rounding difference in ShareClass <value-of select="Identifiers/ISIN"/> price calculation. 
+                WARNING: Small rounding difference in ShareClass <value-of select="$shareClass/Identifiers/ISIN"/> price calculation.
                 Difference: <value-of select="format-number($priceDifference, '#,##0.00')"/>
             </report>
         </rule>
@@ -113,16 +122,22 @@
     <pattern id="portfolio-validations">
         <title>Portfolio Position Validations</title>
         
-        <!-- Rule: Sum of position values should equal Fund Total NAV -->
-        <rule context="Fund[FundDynamicData/Portfolios/Portfolio]">
-            <let name="fundCurrency" value="Currency"/>
-            <let name="fundTotalNAV" value="number(FundDynamicData/TotalAssetValues/TotalAssetValue/TotalNetAssetValue/Amount[@ccy = $fundCurrency])"/>
-            <let name="sumPositionValues" value="sum(FundDynamicData/Portfolios/Portfolio/Positions/Position/TotalValue/Amount[@ccy = $fundCurrency])"/>
-            <let name="difference" value="abs($sumPositionValues - $fundTotalNAV)"/>
-            
+        <!-- Rule: Sum of position values should equal the total NAV of the portfolio's date
+             (the official one, if there are several natures). -->
+        <rule context="Portfolios/Portfolio[Positions/Position]">
+            <let name="owner" value="../../.."/>
+            <let name="fundCurrency" value="$owner/Currency"/>
+            <let name="navDate" value="NavDate"/>
+            <let name="tav" value="(../../TotalAssetValues/TotalAssetValue[NavDate = $navDate and TotalAssetNature = 'OFFICIAL'], ../../TotalAssetValues/TotalAssetValue[NavDate = $navDate])[1]"/>
+            <let name="fundTotalNAV" value="number($tav/TotalNetAssetValue/Amount[@ccy = $fundCurrency][1])"/>
+            <!-- a fund may split its holdings over several portfolios of the same date -->
+            <let name="sumPositionValues" value="sum(../Portfolio[NavDate = $navDate]/Positions/Position/TotalValue/Amount[@ccy = $fundCurrency])"/>
+            <let name="difference" value="if (exists($tav)) then abs($sumPositionValues - $fundTotalNAV) else 0"/>
+
             <assert test="$difference &lt; 1" role="error">
-                ERROR: Sum of portfolio position values (<value-of select="format-number($sumPositionValues, '#,##0.00')"/> <value-of select="$fundCurrency"/>) 
-                does not equal Fund Total NAV (<value-of select="format-number($fundTotalNAV, '#,##0.00')"/> <value-of select="$fundCurrency"/>). 
+                ERROR: Sum of portfolio position values (<value-of select="format-number($sumPositionValues, '#,##0.00')"/> <value-of select="$fundCurrency"/>)
+                does not equal Fund Total NAV (<value-of select="format-number($fundTotalNAV, '#,##0.00')"/> <value-of select="$fundCurrency"/>)
+                on <value-of select="$navDate"/>.
                 Difference: <value-of select="format-number($difference, '#,##0.00')"/>
             </assert>
         </rule>

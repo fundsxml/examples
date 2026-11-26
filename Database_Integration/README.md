@@ -1,5 +1,9 @@
 # Database Integration
 
+> Looking for a production-style setup with PostgreSQL — versioned deliveries, corrections, transactions,
+> documents, regulatory templates, a partner register? See [`../PostgreSQL_End_to_End/`](../PostgreSQL_End_to_End/),
+> the example of the "FundsXML in production" films. This folder stays the small, multi-language round trip.
+
 ![python](https://img.shields.io/badge/Python-verified-brightgreen) ![java](https://img.shields.io/badge/Java-verified-brightgreen) ![node](https://img.shields.io/badge/JavaScript-verified-brightgreen) ![csharp](https://img.shields.io/badge/C%23-verified-brightgreen) ![multi-fund](https://img.shields.io/badge/multi--node-yes-blue)
 
 Standalone, copy-me examples in the language you already use. **Import and
