@@ -97,6 +97,19 @@ jobs:
           for f in $G/*.xml; do
             xmllint --noout --nonet --schema ci-schemas/4.2.9/FundsXML.xsd "$f"
           done
+          # embedded documents: base64 decodes to exactly SizeInBytes bytes, each one a PDF
+          .venv/bin/python - $G/Fund-Documents_2025-10.xml <<'PY'
+          import base64, sys
+          import xml.etree.ElementTree as ET
+          docs = ET.parse(sys.argv[1]).getroot().findall("Documents/Document")
+          embedded = [d for d in docs if d.find("BinaryData") is not None]
+          assert embedded, "no embedded document"
+          for d in embedded:
+              data = base64.b64decode(d.findtext("BinaryData"))
+              assert len(data) == int(d.findtext("SizeInBytes")), d.findtext("FileName")
+              assert data.startswith(b"%PDF-1.4") and data.rstrip().endswith(b"%%EOF"), d.findtext("FileName")
+              print("embedded", d.findtext("FileName"), len(data), "bytes ok")
+          PY
 
       - name: XSD - negative fixture must FAIL
         run: |
@@ -241,6 +254,8 @@ jobs:
           for f in FundsXML_Files/4.2.9/realistic/*.xml; do
             echo "== $f"
             $S -Dexec.args="$SCH $f"
+            # a documents-only delivery (ControlData + Documents) has no fund, positions or share classes
+            if ! grep -q '<Funds>' "$f"; then echo "no <Funds>: portfolio checks skipped"; continue; fi
             $X -Dexec.args="XSLT_DataQuality_Checks/Custom_Internal_Checks/custom_internal_checks.xslt $f r_dq.html"
             if grep -q 'class="fail"' r_dq.html; then echo "::error::custom DQ check failed for $f"; exit 1; fi
             $X -Dexec.args="XSLT_Transformations/Factsheet/factsheet_html.xslt $f r_fs.html"

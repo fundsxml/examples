@@ -9,7 +9,9 @@ Usage:
 
 The samples describe four fictional funds of a fictional management company at the
 reporting date 2025-10-31, with the transactions, income, subscriptions and
-redemptions of October 2025. Everything is invented, but consistent:
+redemptions of October 2025, plus a Documents delivery (prospectus as a link, PRIIPs KID
+and factsheet as embedded base64 PDFs) for the multi-asset fund. Everything is invented,
+but consistent:
 
 * positions (incl. cash, accrued interest and accrued fees) add up to the fund's net
   assets exactly; the position percentages add up to 100;
@@ -1948,6 +1950,166 @@ def fund_of_funds():
     return doc, fund, classes, breakdowns, risk, None
 
 
+# ---------------------------------------------------------------------------------------------
+# documents: a Documents delivery for the multi-asset fund (one link, two embedded PDFs)
+# ---------------------------------------------------------------------------------------------
+
+def pdf_text(text):
+    """A PDF literal string in WinAnsiEncoding (cp1252), non-ASCII bytes as octal escapes."""
+    out = []
+    for b in text.encode("cp1252"):
+        ch = chr(b)
+        out.append("\\" + ch if ch in "\\()" else ch if 32 <= b < 127 else "\\%03o" % b)
+    return "(" + "".join(out) + ")"
+
+
+def build_pdf(title, subtitle, lines):
+    """A one-page PDF 1.4 (A4, Helvetica, uncompressed), byte-identical on every run.
+
+    No creation date, no /ID, fixed object order; the xref offsets are computed from the bytes. The /Info
+    title is ASCII only (document info strings use PDFDocEncoding, not WinAnsi).
+    """
+    content = ["BT", "/F2 18 Tf", "56 770 Td", pdf_text(title) + " Tj",
+               "/F2 13 Tf", "0 -24 Td", pdf_text(subtitle) + " Tj", "/F1 10.5 Tf", "0 -16 Td"]
+    for line in lines:
+        content += ["0 -15 Td", pdf_text(line) + " Tj"]
+    content.append("ET")
+    stream = ("\n".join(content) + "\n").encode("latin-1")
+    objects = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] "
+        b"/Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>",
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
+        b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
+        b"<< /Length %d >>\nstream\n" % len(stream) + stream + b"endstream",
+        ("<< /Title " + pdf_text((title + " - " + subtitle).replace("\u2014", "-")) + " /Author " + pdf_text(MANCO["name"] + " (fictitious)")
+         + " /Producer (make_realistic.py) >>").encode("latin-1"),
+    ]
+    out = bytearray(b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n")
+    offsets = []
+    for n, body in enumerate(objects, 1):
+        offsets.append(len(out))
+        out += b"%d 0 obj\n" % n + body + b"\nendobj\n"
+    xref = len(out)
+    out += b"xref\n0 %d\n0000000000 65535 f \n" % (len(objects) + 1)
+    out += b"".join(b"%010d 00000 n \n" % o for o in offsets)
+    out += b"trailer\n<< /Size %d /Root 1 0 R /Info 7 0 R >>\nstartxref\n%d\n%%%%EOF\n" % (len(objects) + 1, xref)
+    pdf = bytes(out)
+    # self-check: every xref entry points at its object, startxref at the xref table
+    for n, o in enumerate(offsets, 1):
+        assert pdf.startswith(b"%d 0 obj" % n, o)
+    assert pdf.startswith(b"xref", int(pdf.rsplit(b"startxref\n", 1)[1].split(b"\n")[0]))
+    return pdf
+
+
+def emit_binary(w, data):
+    """base64 in lines of 76 characters (MIME style), indented like the other content."""
+    import base64
+    b64 = base64.b64encode(data).decode("ascii")
+    w.open("BinaryData")
+    w.lines.extend("   " * w.depth + b64[i:i + 76] for i in range(0, len(b64), 76))
+    w.close("BinaryData")
+
+
+def emit_document(w, d):
+    w.open("Document")
+    w.open("Type")
+    w.leaf("ListedType", d["type"])
+    w.close("Type")
+    w.leaf("Version", d.get("version"))
+    w.leaf("Language", "en")
+    w.leaf("TranslationsAvailable", d.get("translations"))
+    w.open("PublicationCountries")
+    for c in d["countries"]:
+        w.leaf("Country", c)
+    w.close("PublicationCountries")
+    if d.get("fund"):
+        f = d["fund"]
+        w.open("Fund")
+        w.open("Identifiers")
+        w.leaf("LEI", f["lei"])
+        w.close("Identifiers")
+        w.leaf("Name", f["name"])
+        w.leaf("Currency", "EUR")
+        w.close("Fund")
+    if d.get("classes"):
+        w.open("ShareClasses")
+        for c in d["classes"]:
+            w.open("ShareClass")
+            w.open("Identifiers")
+            w.leaf("ISIN", c["isin"])
+            w.close("Identifiers")
+            w.leaf("Name", c["full_name"])
+            w.leaf("Currency", c["ccy"])
+            w.close("ShareClass")
+        w.close("ShareClasses")
+    w.leaf("Name", d["name"])
+    w.leaf("FileName", d["file"])
+    w.leaf("ForPublicUsage", True)
+    w.leaf("Format", "application/pdf")
+    w.leaf("Signature", "No")
+    w.leaf("CreationDate", d["created"])
+    w.leaf("ExpirationDate", d.get("expires"))
+    w.leaf("SizeInBytes", len(d["pdf"]) if d.get("pdf") else d["size"])
+    w.leaf("DocumentURL", d.get("url"))
+    if d.get("pdf"):
+        emit_binary(w, d["pdf"])
+    w.close("Document")
+
+
+def fund_documents():
+    """Prospectus as a link, PRIIPs KID and factsheet embedded as base64 PDFs (multi-asset fund)."""
+    _, fund, classes, *_ = multi_asset()
+    for c in classes:
+        c["full_name"] = fund["name"] + " " + c["name_suffix"]
+    r, i = classes[0], classes[1]
+    sample = ["This is a fictitious training sample for the FundsXML <Documents> element.",
+              "It is not a real document and contains no investment information.",
+              "Companies, funds and identifiers are invented (ISINs and LEIs with the prefix XMPL).",
+              "Generated by make_realistic.py - https://github.com/fundsxml/examples"]
+    kid = build_pdf(
+        "Key Information Document \u2014 PRIIPs", fund["name"] + " (fictitious)",
+        [f"Share classes: {r['name_suffix']} {r['isin']}, {i['name_suffix']} {i['isin']}",
+         f"Manufacturer: {MANCO['name']}, {MANCO['city']} (fictitious)", "Date of this document: 2025-02-14", ""] + sample)
+    factsheet = build_pdf(
+        "Factsheet October 2025", fund["name"] + " (fictitious)",
+        [f"Share class: {r['name_suffix']} {r['isin']}", f"Reporting date: {AS_OF.isoformat()}",
+         f"Net asset value per share: {r['nav']} {r['ccy']}", ""] + sample)
+    slug = "EX-Multi-Asset"
+    documents = [
+        {"type": "Prospectus", "version": "2025-01", "translations": True, "countries": ["AT", "DE", "CH"], "fund": fund,
+         "name": f"Prospectus {fund['name']}", "file": f"{slug}_Prospectus_2025-01_en.pdf", "created": "2025-01-15",
+         "size": 1843206, "url": f"https://www.example.com/funds/{fund['lei']}/documents/{slug}_Prospectus_2025-01_en.pdf"},
+        {"type": "PRIIPS-KID", "version": "2025-02", "countries": ["AT", "DE"], "classes": [r, i],
+         "name": f"PRIIPs KID {fund['name']}", "file": f"{slug}_PRIIPs-KID_2025-02_en.pdf", "created": "2025-02-14",
+         "expires": "2026-02-13", "pdf": kid},
+        {"type": "Factsheet", "version": "2025-10", "countries": ["AT", "DE"], "classes": [r],
+         "name": f"Factsheet {fund['name']} {r['name_suffix']} October 2025",
+         "file": f"{slug}_Factsheet_{r['isin']}_2025-10_en.pdf", "created": "2025-11-03", "expires": "2025-11-30",
+         "pdf": factsheet},
+    ]
+    return documents
+
+
+def render_documents(doc_id):
+    w = Writer()
+    w.lines.append('<?xml version="1.0" encoding="UTF-8"?>')
+    w.lines.append("<!-- Synthetic sample: fictional companies, funds, identifiers and documents. "
+                   "Generated by make_realistic.py. -->")
+    w.lines.append('<FundsXML4 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+                   f'xsi:noNamespaceSchemaLocation="{SCHEMA_URL}">')
+    w.depth = 1
+    emit_control(w, doc_id)
+    w.open("Documents")
+    for d in fund_documents():
+        emit_document(w, d)
+    w.close("Documents")
+    w.depth = 0
+    w.lines.append("</FundsXML4>")
+    return w.text()
+
+
 FILES = {
     "Global-Equity-Fund_2025-10.xml": global_equity,
     "Euro-Bond-Fund_2025-10.xml": euro_bond,
@@ -1955,6 +2117,7 @@ FILES = {
     "Fund-of-Funds_2025-10.xml": fund_of_funds,
 }
 REGULATORY = {"Multi-Asset-Derivatives-Fund_2025-10.xml"}  # files with RegulatoryReportings (EMT, TPT)
+DOCUMENT_FILES = {"Fund-Documents_2025-10.xml": render_documents}  # ControlData + Documents only
 
 
 def render(builder, doc_id, regulatory=False):
@@ -2076,6 +2239,13 @@ def main():
         doc_id = "EXAMPLE-" + name.replace(".xml", "").upper().replace("_", "-")
         with open(args.out / name, "w", encoding="utf-8", newline="\n") as f:
             f.write(render(builder, doc_id, regulatory=name in REGULATORY))
+        print("wrote", args.out / name)
+    for name, renderer in DOCUMENT_FILES.items():
+        if args.only and args.only != name:
+            continue
+        doc_id = "EXAMPLE-" + name.replace(".xml", "").upper().replace("_", "-")
+        with open(args.out / name, "w", encoding="utf-8", newline="\n") as f:
+            f.write(renderer(doc_id))
         print("wrote", args.out / name)
     return 0
 
