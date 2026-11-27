@@ -33,7 +33,7 @@ flowchart LR
 | [`data/in/`](data/in/) | Six deliveries of a fictional asset manager (below) |
 | [`data/bad/`](data/bad/) | Four files a loader must not accept |
 | [`data/expected/`](data/expected/) | The files the generator writes from the loaded data (golden files) |
-| [`queries/`](queries/) | The questions of the films: deliveries, what repeats, NAV as known today and before, positions, transactions, documents, templates, access, reconciliation |
+| [`queries/`](queries/) | The questions of the films: deliveries, what repeats, NAV as known today and before, positions, transactions, documents, templates, access, reconciliation, rows per table |
 | [`run_all.sh`](run_all.sh) | The whole chain end to end; CI runs exactly this |
 | [`tools/xsd11/`](tools/xsd11/) | XSD 1.1 validation with Xerces-J 2.12.2 (jars from Maven Central, checked by SHA-1) |
 
